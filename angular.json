@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "decorate"
+    }
+  },
+  "defaultProject": "decorate",
+  "cli": {
+    "analytics": false
+  }
 }
