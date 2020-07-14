@@ -7,5 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'decorate';
-  // TODO make a cool website!
+
+
 }
