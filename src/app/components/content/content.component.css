@@ -1,3 +1,35 @@
 .content{
+    height: 100vh;
     display: grid;
+    grid-template-rows:1fr  ;
+    grid-template-columns:1.2fr 2.8fr 2fr ;
+    grid-template-areas: "a1 a2 a3" ;
+}
+.firstCard{
+    height: 100%;
+    display: grid;
+    grid-area: a1;
+    background-image:url("src/assets/JOURNEY BEYOND CAM 12.jpg") ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.secondCard{
+    height: 100%;
+    display: grid;
+    grid-area: a2;
+    background-image:url("src/assets/ABSTRACT CAM 5.jpg") ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+.thirdCard{
+    height: 100%;
+    display: grid;
+    grid-area: a3;
+    background-image:url("src/assets/REFLECTIONS CAM 4.jpg") ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
