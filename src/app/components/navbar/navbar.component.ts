@@ -8,7 +8,7 @@ import {Component, HostListener, OnInit} from '@angular/core';
 export class NavbarComponent implements OnInit {
   screenHeight: number;
   screenWidth: number;
-  show: boolean;
+  largeNavToShow: boolean;
 
   constructor() {
 
@@ -24,9 +24,9 @@ export class NavbarComponent implements OnInit {
     this.screenWidth = window.innerWidth;
     console.log(this.screenHeight, this.screenWidth);
     if (this.screenWidth >= 1000) {
-      this.show = true;
+      this.largeNavToShow = true;
     } else {
-      this.show = false;
+      this.largeNavToShow = false;
     }
   }
 
