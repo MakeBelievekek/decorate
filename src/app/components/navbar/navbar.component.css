@@ -1,0 +1,30 @@
+.navbar{
+  margin: 0;
+  padding-left: 50px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.make-background{
+  background: #fde6de;
+
+}
+
+nav ul li:hover {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.dropdown-menu {
+  width: 1000px !important;
+  height: 400px !important;
+}
+
+.make-custom{
+  float: right;
+  padding-left: 10px;
+  padding-right: 10px;
+}
