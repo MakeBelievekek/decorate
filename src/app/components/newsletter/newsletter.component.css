@@ -41,14 +41,14 @@ p {
     font-size: 15px;
     width: 25rem;
     border-radius: 20%;
-    border: 2px solid #609;
+    border: 1px solid  #C5C5C5;
     padding: 10px;
 }
 .signButton{
     font-size: 15px;
     width: 5rem;
     border-radius: 5%;
-    border: 2px solid #609;
+    border: 1px solid  #C6D7CD;
     padding: 10px;
 }
 

@@ -2,40 +2,58 @@
     height: 80vh;
     display: grid;
     grid-template-rows: 1fr;
-    grid-template-columns: 2.8fr 1.2fr 2fr;
+    grid-template-columns: 2fr 1fr 1fr;
     grid-template-areas: "a1 a2 a3";
 
 }
+.child{
+height: 100%;
+width: 100%;
+background-size: cover;
+background-repeat: no-repeat;
+-webkit-transition: all .5s;
+-moz-transition: all .5s;
+-o-transition: all .5s;
+transition: all .5s;
+}
+.parent:hover .child,
+.parent:focus .child {
+    transform: scale(1.2);
+}
+.parent{
+    overflow: hidden;
+    position: relative;
+    float: left;
+    display: inline-block;
+    cursor: pointer;
+}
+.child::before {
+    content: "";
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(52, 73, 94, 0.75);
+}
+
+.parent:hover .child:before,
+.parent:focus .child:before {
+    display: block;
+}
 
 .firstCard {
-    height: 100%;
-    display: grid;
     grid-area: a1;
     background-image: url("src/assets/JOURNEY BEYOND CAM 12.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .secondCard {
-    height: 100%;
-    display: grid;
     grid-area: a2;
     background-image: url("src/assets/ABSTRACT CAM 5.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
 }
 
 .thirdCard {
-    height: 100%;
-    display: grid;
     grid-area: a3;
     background-image: url("src/assets/REFLECTIONS CAM 4.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
 }
-
