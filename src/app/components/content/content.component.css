@@ -35,7 +35,7 @@ transition: all .5s;
     position: absolute;
     top: 0;
     left: 0;
-    background-color: rgba(52, 73, 94, 0.75);
+    background-color: rgba(89, 110, 132, 0.63);
 }
 
 .parent:hover .child:before,
