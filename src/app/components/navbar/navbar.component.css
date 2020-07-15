@@ -1,30 +1,39 @@
-.navbar{
-  margin: 0;
-  padding-left: 50px;
-  padding-top: 0px;
-  padding-right: 0px;
-  padding-bottom: 0px;
+nav{
+  background: #fde6de;
+  width: 100%;
+  height: 60px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
 }
 
-.make-background{
-  background: #fde6de;
+nav ul {
+  float: left;
+}
 
+nav ul li {
+  float: left;
+  list-style: none;
+  position: relative;
+}
+
+nav ul li a {
+  display: block;
+  font-family: Arial;
+  color: #222;
+  font-size: 14px;
+  padding: 20px 14px;
+  text-decoration: none;
 }
 
 nav ul li:hover {
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
-.dropdown-menu {
-  width: 1000px !important;
-  height: 400px !important;
+nav div a:hover {
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.make-custom{
-  float: right;
-  padding-left: 10px;
-  padding-right: 10px;
+.make-right{
+  float: right !important;
 }
+
