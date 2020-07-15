@@ -1,0 +1,54 @@
+.newsletter-container {
+    background-color: ghostwhite;
+    height: 180px;
+    display: grid;
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-columns: 0.2fr 1fr 0.2fr;
+    grid-template-areas: "a1 a2 a3" "b1 b2 b3" "c1 c2 c3";
+}
+
+.newsletter-content {
+    grid-area: b2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "a b  ";
+}
+
+.newsletter-title {
+    grid-area: a;
+}
+
+h4 {
+    font-family: "Nexa W01 Bold", sans-serif;
+    font-size: 45px;
+    color: #555555;
+}
+
+span {
+    font-family: "NexaRustScriptL-00", sans-serif;
+}
+
+p {
+    font-size: 0.875rem;
+    color: #555555;
+}
+
+.newsletter-input {
+    grid-area: b;
+}
+
+.rounded {
+    font-size: 15px;
+    width: 25rem;
+    border-radius: 20%;
+    border: 2px solid #609;
+    padding: 10px;
+}
+.signButton{
+    font-size: 15px;
+    width: 5rem;
+    border-radius: 5%;
+    border: 2px solid #609;
+    padding: 10px;
+}
+

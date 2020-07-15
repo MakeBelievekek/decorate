@@ -4,7 +4,7 @@
     grid-template-rows: 1fr;
     grid-template-columns: 2.8fr 1.2fr 2fr;
     grid-template-areas: "a1 a2 a3";
-    grid-gap: 0.5rem;
+
 }
 
 .firstCard {
