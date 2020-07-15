@@ -4,6 +4,8 @@
     display: grid;
     grid-template-columns: 0.2fr 1fr 0.2fr;
     grid-template-areas: "h1 h2 h3";
+    padding-left: 32px;
+    padding-right: 32px;
 }
 
 .dot {
@@ -15,7 +17,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 40px;
+    margin-left: 20px;
     cursor: pointer;
     transition: 700ms;
     transition-timing-function: linear;
