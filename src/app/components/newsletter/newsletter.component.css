@@ -37,20 +37,18 @@ p {
     grid-area: b;
 }
 
-input.rounded {
-    border: 1px solid #ccc;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 1px;
-    -moz-box-shadow: 2px 2px 3px #666;
-    -webkit-box-shadow: 2px 2px 3px #666;
-    box-shadow: 2px 2px 3px #666;
-    font-size: 20px;
-    padding: 4px 7px;
-    outline: 0;
-    -webkit-appearance: none;
+.rounded {
+    font-size: 15px;
+    width: 25rem;
+    border-radius: 20%;
+    border: 2px solid #609;
+    padding: 10px;
+}
+.signButton{
+    font-size: 15px;
+    width: 5rem;
+    border-radius: 5%;
+    border: 2px solid #609;
+    padding: 10px;
 }
 
-input.rounded:focus {
-    border-color: #339933;
-}
