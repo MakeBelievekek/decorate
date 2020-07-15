@@ -481,7 +481,7 @@ class NavbarComponent {
         this.screenHeight = window.innerHeight;
         this.screenWidth = window.innerWidth;
         console.log(this.screenHeight, this.screenWidth);
-        if (this.screenWidth >= 800) {
+        if (this.screenWidth >= 1000) {
             this.show = true;
         }
         else {
