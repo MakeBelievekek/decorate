@@ -1,0 +1,7 @@
+.content {
+    height: 60vh;
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+    grid-template-areas: "a1 a2";
+
+}

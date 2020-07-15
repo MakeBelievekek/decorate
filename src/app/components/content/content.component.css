@@ -6,27 +6,31 @@
     grid-template-areas: "a1 a2 a3";
 
 }
-.child{
-height: 100%;
-width: 100%;
-background-size: cover;
-background-repeat: no-repeat;
--webkit-transition: all .5s;
--moz-transition: all .5s;
--o-transition: all .5s;
-transition: all .5s;
+
+.child {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -o-transition: all .5s;
+    transition: all .5s;
 }
+
 .parent:hover .child,
 .parent:focus .child {
-    transform: scale(1.2);
+    transform: scale(1.1);
 }
-.parent{
+
+.parent {
     overflow: hidden;
     position: relative;
     float: left;
     display: inline-block;
     cursor: pointer;
 }
+
 .child::before {
     content: "";
     display: none;

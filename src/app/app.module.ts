@@ -13,6 +13,7 @@ import {NewsletterComponent} from './components/newsletter/newsletter.component'
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ReactiveFormsModule} from "@angular/forms";
+import { SecondContentComponent } from './components/second-content/second-content.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     HomeComponent,
     ContentHeaderComponent,
     NewsletterComponent,
+    SecondContentComponent,
   ],
   imports: [
     BrowserModule,
