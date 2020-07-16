@@ -34,12 +34,39 @@
           <a href="#">Login</a>
         </div>
         <div class="col-md-auto p-0">
-          <a href="#">Search</a>
+          <a href="#">Search<i class="fa fa-search pl-2" aria-hidden="true"></i></a>
         </div>
         <div class="col-md-auto p-0 make-right">
-          <a href="#">Basket</a>
+          <a href="#">Basket<i class="fa fa-shopping-basket pl-2" aria-hidden="true"></i></a>
         </div>
       </div>
     </div>
   </div>
+  <div class="row" *ngIf="!this.largeNavToShow">
+    <div>
+      <a href="#" class="burger" (click)="toggleModal()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
+    </div>
+    <div class="col">
+      <div class="row justify-content-end">
+        <div>
+          <a href="#">Search<i class="fa fa-search pl-2" aria-hidden="true"></i></a>
+        </div>
+        <div class="make-right">
+          <a href="#">Basket<i class="fa fa-shopping-basket pl-2" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 </nav>
+
+<!-- The Modal -->
+<div id="myModal" class="make-modal" *ngIf="this.showModal">
+
+  <!-- Modal content -->
+  <div class="make-modal-content">
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>

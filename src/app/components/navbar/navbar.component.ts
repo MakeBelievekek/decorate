@@ -9,6 +9,7 @@ export class NavbarComponent implements OnInit {
   screenHeight: number;
   screenWidth: number;
   largeNavToShow: boolean;
+  showModal: boolean = false;
 
   constructor() {
 
@@ -30,4 +31,8 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  toggleModal() {
+    this.showModal = !this.showModal;
+    console.log(this.showModal);
+  }
 }
