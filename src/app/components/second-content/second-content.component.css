@@ -7,10 +7,13 @@
 }
 .firstCard {
     grid-area: a1;
-    background-image: url("src/assets/ABSTRACT CAM 4.jpg");
+    background: url("src/assets/ABSTRACT CAM 4.jpg") no-repeat center center;
+    background-size: cover;
+    width: 100%;
 }
-
 .secondCard {
     grid-area: a2;
-    background-image: url("src/assets/JOURNEY BEYOND CAM 4.jpg");
+    background: url("src/assets/JOURNEY BEYOND CAM 4.jpg") no-repeat center center;
+    background-size: cover;
+    width: 100%;
 }

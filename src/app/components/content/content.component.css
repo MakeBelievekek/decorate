@@ -1,42 +1,54 @@
 @media screen and (min-width: 1000px) {
     .content {
-        height: 80vh;
+ height: 60vh;
         display: grid;
         grid-template-rows: 1fr;
         grid-template-columns: 2fr 1fr 1fr;
         grid-template-areas: "a1 a2 a3";
     }
+
     .firstCard {
         grid-area: a1;
-        background-image: url("src/assets/JOURNEY BEYOND CAM 12.jpg");
+        background: url("src/assets/JOURNEY BEYOND CAM 12.jpg") no-repeat center center;
+        background-size: cover;
+        width: 100%;
     }
     .secondCard {
         grid-area: a2;
-        background-image: url("src/assets/ABSTRACT CAM 5.jpg");
+        background: url("src/assets/ABSTRACT CAM 5.jpg") no-repeat center center;
+        background-size: cover;
+        width: 100%;
     }
     .thirdCard {
         grid-area: a3;
-        background-image: url("src/assets/REFLECTIONS CAM 4.jpg");
+        background: url("src/assets/REFLECTIONS CAM 4.jpg") no-repeat center center;
+        background-size: cover;
+        width: 100%;
     }
 }
 @media screen and (max-width: 999px) {
     .content {
-       height: 100vh;
+        height: 100vh;
         display: grid;
         grid-auto-rows:auto;
     }
+
     .firstCard {
 
-        background-image: url("src/assets/JOURNEY BEYOND CAM 12.jpg");
+        background: url("src/assets/JOURNEY BEYOND CAM 12.jpg") no-repeat center center;
+        background-size: cover;
+        width: 100%;
     }
-
     .secondCard {
 
-        background-image: url("src/assets/ABSTRACT CAM 5.jpg");
+        background: url("src/assets/ABSTRACT CAM 5.jpg") no-repeat center center;
+        background-size: cover;
+        width: 100%;
     }
-
     .thirdCard {
 
-        background-image: url("src/assets/REFLECTIONS CAM 4.jpg");
+        background: url("src/assets/REFLECTIONS CAM 4.jpg") no-repeat center center;
+        background-size: cover;
+        width: 100%;
     }
 }
