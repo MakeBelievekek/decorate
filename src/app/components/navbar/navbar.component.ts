@@ -8,7 +8,8 @@ import {Component, HostListener, OnInit} from '@angular/core';
 export class NavbarComponent implements OnInit {
   screenHeight: number;
   screenWidth: number;
-  show: boolean;
+  largeNavToShow: boolean;
+  showModal: boolean = false;
 
   constructor() {
 
@@ -23,11 +24,15 @@ export class NavbarComponent implements OnInit {
     this.screenHeight = window.innerHeight;
     this.screenWidth = window.innerWidth;
     console.log(this.screenHeight, this.screenWidth);
-    if (this.screenWidth >= 800) {
-      this.show = true;
+    if (this.screenWidth >= 1000) {
+      this.largeNavToShow = true;
     } else {
-      this.show = false;
+      this.largeNavToShow = false;
     }
   }
 
+  toggleModal() {
+    this.showModal = !this.showModal;
+    console.log(this.showModal);
+  }
 }

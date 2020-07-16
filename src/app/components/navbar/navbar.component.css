@@ -15,25 +15,49 @@ nav ul li {
   position: relative;
 }
 
-nav ul li a {
+nav div a {
   display: block;
   font-family: Arial;
   color: #222;
   font-size: 14px;
-  padding: 20px 14px;
+  padding: 19.5px 24px;
   text-decoration: none;
 }
 
-nav ul li:hover {
-  background-color: white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+
 nav div a:hover {
   background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+
+.make-left{
+  padding-left: 75px !important;
+}
+
 .make-right{
-  float: right !important;
+  padding-right: 55px !important;
+}
+
+.burger {
+  padding: 12px 20px 17.5px 30px !important;
+  text-decoration: none;
+}
+
+.make-modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 60px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  transition: 3000ms transform;
+}
+
+.make-modal-content {
+  background-color: #fefefe;
 }
 
