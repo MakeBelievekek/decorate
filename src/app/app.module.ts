@@ -16,6 +16,7 @@ import {ReactiveFormsModule} from "@angular/forms";
 import { SecondContentComponent } from './components/second-content/second-content.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { ModalComponent } from './components/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     ContentHeaderComponent,
     NewsletterComponent,
     SecondContentComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -28,6 +28,7 @@
     <div class="col-md-auto p-0">
       <a href="#">Wish list</a>
     </div>
+
     <div class="col p-0">
       <div class="row justify-content-end">
         <div class="col-md-auto p-0">
@@ -44,7 +45,7 @@
   </div>
   <div class="row" *ngIf="!this.largeNavToShow">
     <div>
-      <a href="#" class="burger" (click)="toggleModal()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
+      <a class="burger" (click)="toggleModal()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
     </div>
     <div class="col">
       <div class="row justify-content-end">
@@ -61,8 +62,9 @@
 
 </nav>
 
-<!-- The Modal -->
-<div id="myModal" class="make-modal animate__animated animate__fadeInDown" *ngIf="this.showModal">
+<app-modal *ngIf="this.showModal" [@fade] ></app-modal>
+
+<div id="myModal" class="make-modal animate__animated animate__fadeInDown" *ngIf="false">
 
   <!-- Modal content -->
   <div class="make-modal-content">
@@ -85,8 +87,8 @@
     <p>Some text in the Modal..</p>
     <p>Some text in the Modal..</p>
   </div>
-
 </div>
+
 
 
 
