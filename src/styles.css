@@ -6,7 +6,8 @@
     -webkit-transition: all .5s;
     -moz-transition: all .5s;
     -o-transition: all .5s;
-    transition: all .5s;
+    transition: transform .5s ease;
+
 }
 .parent:hover .child,
 .parent:focus .child {
@@ -15,9 +16,7 @@
 
 .parent {
     overflow: hidden;
-    position: relative;
-    float: left;
-    display: inline-block;
+    display: block;
     cursor: pointer;
 }
 

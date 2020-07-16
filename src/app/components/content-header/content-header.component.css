@@ -1,71 +1,98 @@
-.content-header {
-    background-color: #E5E5E5;
-    height: 210px;
-    display: grid;
-    grid-template-rows: 1fr 2fr;
-    grid-template-columns: 0.2fr 1fr 0.2fr;
-    grid-template-areas: "h1 h2 h3" "i1 i2 i3";
-    padding-left: 32px;
-    padding-right: 32px;
+@media screen and (min-width: 1000px) {
+    .content-header {
+        background-color: #E5E5E5;
+        height: 210px;
+        display: grid;
+        grid-template-rows: 1fr 2fr;
+        grid-template-columns: 0.2fr 1fr 0.2fr;
+        grid-template-areas: "h1 h2 h3" "i1 h2 i3";
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .dot {
+        grid-area: i1;
+        height: 50px;
+        width: 50px;
+        background-color: white;
+        border-radius: 50%;
+        border: 1px solid #CCCCCC;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 20px;
+        cursor: pointer;
+        transition: 700ms;
+        transition-timing-function: linear;
+    }
+
+    .icons {
+        grid-area: i1;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+
+    }
+
+    .phone {
+        grid-area: i3;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+
+    .telIcon {
+
+        height: 50px;
+        width: 250px;
+        background-color: white;
+        border-radius: 15px;
+        border: 1px solid #CCCCCC;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 20px;
+        cursor: pointer;
+        transition: 700ms;
+        transition-timing-function: linear;
+    }
+
+    .dot:hover {
+        background-color: #C5C5C5;
+    }
+
+    .telIcon:hover {
+        background-color: #C5C5C5;
+    }
+
+    #imgMail {
+        width: 30px;
+    }
+
+    #imgTel {
+        width: 30px;
+    }
 }
 
-.dot {
-    height: 50px;
-    width: 50px;
-    background-color: white;
-    border-radius: 50%;
-    border: 1px solid #CCCCCC;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 20px;
-    cursor: pointer;
-    transition: 700ms;
-    transition-timing-function: linear;
+.logo {
+    grid-area: h2;
 }
 
-.icons {
-    grid-area: i1;
-    display: flex;
-    align-items: center;
-    justify-content: start;
+@media screen and (max-width: 999px) {
+    .content-header {
+        background-color: #E5E5E5;
+        height: 210px;
+        display: grid;
+        grid-template-areas: "a";
+    }
 
-}
-
-.phone {
-    grid-area: i3;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-}
-
-.telIcon {
-    height: 50px;
-    width: 250px;
-    background-color: white;
-    border-radius: 15px;
-    border: 1px solid #CCCCCC;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 20px;
-    cursor: pointer;
-    transition: 700ms;
-    transition-timing-function: linear;
-}
-
-.dot:hover {
-    background-color: #C5C5C5;
-}
-
-.telIcon:hover {
-    background-color: #C5C5C5;
-}
-
-#imgMail {
-    width: 30px;
-}
-
-#imgTel {
-    width: 30px;
+  .icons{
+      display: none;
+  }
+    .phone {
+        display: none;
+    }
+    .logo {
+        grid-area: a;
+    }
 }
