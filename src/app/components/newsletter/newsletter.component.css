@@ -1,54 +1,103 @@
-.newsletter-container {
-    background-color: ghostwhite;
-    height: 180px;
-    display: grid;
-    grid-template-rows: 1fr 2fr 1fr;
-    grid-template-columns: 0.2fr 1fr 0.2fr;
-    grid-template-areas: "a1 a2 a3" "b1 b2 b3" "c1 c2 c3";
-}
+@media screen and (min-width: 1000px) {
+    .newsletter-container {
+        background-color: ghostwhite;
+        height: 180px;
+        display: grid;
+        grid-template-rows: 1fr 2fr 1fr;
+        grid-template-columns: 0.2fr 1fr 0.2fr;
+        grid-template-areas: "a1 a2 a3" "b1 b2 b3" "c1 c2 c3";
+    }
 
-.newsletter-content {
-    grid-area: b2;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "a b  ";
-}
+    .newsletter-content {
+        grid-area: b2;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "a b  ";
+    }
 
-.newsletter-title {
-    grid-area: a;
-}
+    .newsletter-title {
+        grid-area: a;
+    }
 
-h4 {
-    font-family: "Nexa W01 Bold", sans-serif;
-    font-size: 45px;
-    color: #555555;
-}
+    h4 {
+        font-family: "Nexa W01 Bold", sans-serif;
+        font-size: 45px;
+        color: #555555;
+    }
 
-span {
-    font-family: "NexaRustScriptL-00", sans-serif;
-}
+    span {
+        font-family: "NexaRustScriptL-00", sans-serif;
+    }
 
-p {
-    font-size: 0.875rem;
-    color: #555555;
-}
+    p {
+        font-size: 0.875rem;
+        color: #555555;
+    }
 
-.newsletter-input {
-    grid-area: b;
-}
+    .newsletter-input {
+        grid-area: b;
+        margin-top: 25px;
+    }
 
-.rounded {
-    font-size: 15px;
-    width: 25rem;
-    border-radius: 20%;
-    border: 1px solid  #C5C5C5;
-    padding: 10px;
-}
-.signButton{
-    font-size: 15px;
-    width: 5rem;
-    border-radius: 5%;
-    border: 1px solid  #C6D7CD;
-    padding: 10px;
-}
+    .rounded {
+        font-size: 15px;
+        width: 25rem;
+        border-radius: 20%;
+        border: 1px solid #C5C5C5;
+        padding: 10px;
+    }
 
+    .signButton {
+        font-size: 15px;
+        width: 5rem;
+        border-radius: 5%;
+        border: 1px solid #C6D7CD;
+        padding: 10px;
+        margin-left: 50px
+    }
+}
+@media screen and (max-width: 999px) {
+    .newsletter-container {
+        background-color: ghostwhite;
+        height: 180px;
+        display: grid;
+        grid-template-rows: 1fr  1fr;
+        grid-template-areas: "a " "b " ;
+    }
+    .newsletter-title{
+        grid-area: a;
+    }
+    .newsletter-input{
+        grid-area: b;
+    }
+    .rounded {
+        font-size: 15px;
+        width: 20rem;
+        border-radius: 20%;
+        border: 1px solid #C5C5C5;
+        padding: 10px;
+        margin-left: 20px;
+    }
+
+    .signButton {
+        font-size: 15px;
+        width: 5rem;
+        border-radius: 5%;
+        border: 1px solid #C6D7CD;
+        padding: 10px;
+        margin-left: 20px
+    }
+    h4 {
+        padding-left: 40px;
+        font-family: "Nexa W01 Bold", sans-serif;
+        color: #555555;
+    }
+
+    span {
+        font-family: "NexaRustScriptL-00", sans-serif;
+    }
+
+    p {
+       display: none;
+    }
+}
