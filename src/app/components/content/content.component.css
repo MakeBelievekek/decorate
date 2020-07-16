@@ -1,9 +1,9 @@
 @media screen and (min-width: 1000px) {
     .content {
- height: 60vh;
+        height: 60vh;
         display: grid;
         grid-template-rows: 1fr;
-        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-columns: 1.6fr 1fr 1fr;
         grid-template-areas: "a1 a2 a3";
     }
 
@@ -13,24 +13,40 @@
         background-size: cover;
         width: 100%;
     }
+
     .secondCard {
-        grid-area: a2;
+
         background: url("src/assets/ABSTRACT CAM 5.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
     }
+
     .thirdCard {
         grid-area: a3;
         background: url("src/assets/REFLECTIONS CAM 4.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
     }
+
+    .mozaik {
+        height: 300px;
+        background-color: #C6D7CD;
+        background-size: cover;
+        width: 100%;
+    }
+
+    .grid {
+        grid-area: a2;
+    }
 }
+
 @media screen and (max-width: 999px) {
     .content {
-        height: 100vh;
+        height: 90vh;
         display: grid;
-        grid-auto-rows:auto;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "a a" "b c";
     }
 
     .firstCard {
@@ -38,17 +54,40 @@
         background: url("src/assets/JOURNEY BEYOND CAM 12.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
+
     }
+
     .secondCard {
 
         background: url("src/assets/ABSTRACT CAM 5.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
     }
+
     .thirdCard {
 
         background: url("src/assets/REFLECTIONS CAM 4.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
+
+    }
+
+    .mozaik {
+        height: 175px;
+        background-color: #C6D7CD;
+        background-size: cover;
+        width: 100%;
+    }
+
+    .cardGrid3 {
+        grid-area: b;
+    }
+
+    .cardGrid2 {
+        grid-area: c;
+    }
+
+    .cardGrid1 {
+        grid-area: a;
     }
 }
