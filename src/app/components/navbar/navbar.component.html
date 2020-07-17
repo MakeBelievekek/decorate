@@ -1,42 +1,33 @@
 <nav class="fixed-top">
   <div class="row" *ngIf="this.largeNavToShow">
-    <div class="col-md-auto p-0 make-left">
+    <div class="make-left">
       <a href="#">Home</a>
     </div>
-    <div class="col-md-auto p-0 ">
-      <div class="dropdown">
-        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
+    <div>
+      <a (click)="toggleProductsModal()">Products<i class="fa fa-chevron-down pl-1 pb-1" aria-hidden="true"></i></a>
     </div>
-    <div class="col-md-auto p-0">
+    <div>
       <a href="#">Designer</a>
     </div>
-    <div class="col-md-auto p-0">
+    <div>
       <a href="#">About Us</a>
     </div>
-    <div class="col-md-auto p-0">
+    <div>
       <a href="#">Contact</a>
     </div>
-    <div class="col-md-auto p-0">
+    <div>
       <a href="#">Wish list</a>
     </div>
+
     <div class="col p-0">
       <div class="row justify-content-end">
-        <div class="col-md-auto p-0">
+        <div>
           <a href="#">Login</a>
         </div>
-        <div class="col-md-auto p-0">
+        <div>
           <a href="#">Search<i class="fa fa-search pl-2" aria-hidden="true"></i></a>
         </div>
-        <div class="col-md-auto p-0 make-right">
+        <div class="make-right">
           <a href="#">Basket<i class="fa fa-shopping-basket pl-2" aria-hidden="true"></i></a>
         </div>
       </div>
@@ -44,7 +35,7 @@
   </div>
   <div class="row" *ngIf="!this.largeNavToShow">
     <div>
-      <a href="#" class="burger" (click)="toggleModal()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
+      <a class="burger" (click)="toggleNavigationModal()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
     </div>
     <div class="col">
       <div class="row justify-content-end">
@@ -61,32 +52,10 @@
 
 </nav>
 
-<!-- The Modal -->
-<div id="myModal" class="make-modal animate__animated animate__fadeInDown" *ngIf="this.showModal">
+<app-modal *ngIf="this.showNavigationModal" [control]=this.modalController [@fade]></app-modal>
 
-  <!-- Modal content -->
-  <div class="make-modal-content">
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-  </div>
 
-</div>
+
 
 
 
