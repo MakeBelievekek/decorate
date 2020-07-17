@@ -1,21 +1,8 @@
-<div id="myModal" class="make-modal animate__animated animate__fadeInDown"
-            [@fade] >
+<div class="navigation-modal animate__animated animate__fadeInDown" *ngIf="control === 'navigation'">
 
   <!-- Modal content -->
-  <div class="make-modal-content">
-    <p>ez a modal compones</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
+  <div class="custom-modal-content">
+    <p>ez a modal compones NAVIGATION</p>
     <p>Some text in the Modal..</p>
     <p>Some text in the Modal..</p>
     <p>Some text in the Modal..</p>
@@ -23,3 +10,17 @@
     <p>Some text in the Modal..</p>
   </div>
 </div>
+
+<div class="products-modal animate__animated animate__fadeInDown" *ngIf="control === 'products'">
+
+  <!-- Modal content -->
+  <div class="custom-modal-content">
+    <p>ez a modal compones PRODUCTS</p>
+    <p>Some text in the Modal..</p>
+    <p>Some text in the Modal..</p>
+    <p>Some text in the Modal..</p>
+    <p>Some text in the Modal..</p>
+    <p>Some text in the Modal..</p>
+  </div>
+</div>
+

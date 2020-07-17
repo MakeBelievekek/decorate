@@ -4,17 +4,7 @@
       <a href="#">Home</a>
     </div>
     <div>
-      <div class="dropdown">
-        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false">
-          Dropdown link
-        </a>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </div>
+      <a (click)="toggleProductsModal()">Products<i class="fa fa-chevron-down pl-1 pb-1" aria-hidden="true"></i></a>
     </div>
     <div>
       <a href="#">Designer</a>
@@ -45,7 +35,7 @@
   </div>
   <div class="row" *ngIf="!this.largeNavToShow">
     <div>
-      <a class="burger" (click)="toggleModal()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
+      <a class="burger" (click)="toggleNavigationModal()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
     </div>
     <div class="col">
       <div class="row justify-content-end">
@@ -62,32 +52,9 @@
 
 </nav>
 
-<app-modal *ngIf="this.showModal" [@fade] ></app-modal>
+<app-modal *ngIf="this.showNavigationModal" [control]=this.modalController [@fade]></app-modal>
 
-<div id="myModal" class="make-modal animate__animated animate__fadeInDown" *ngIf="false">
 
-  <!-- Modal content -->
-  <div class="make-modal-content">
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-  </div>
-</div>
 
 
 

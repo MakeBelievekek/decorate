@@ -45,21 +45,5 @@ nav div a:hover {
   text-decoration: none;
 }
 
-.make-modal {
-  display: block; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 60px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  transition: 3000ms transform;
-}
-
-.make-modal-content {
-  background-color: #fefefe;
-}
 
 
