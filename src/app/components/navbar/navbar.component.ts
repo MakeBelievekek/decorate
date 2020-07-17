@@ -8,9 +8,8 @@ import {ModalService} from "../../services/modal.service";
   styleUrls: ['./navbar.component.css'],
   animations: [trigger('fade', [
     transition(
-      ':leave', [
-        style({opacity: 1}),
-        animate(500,
+      '* => void', [
+        animate('1s linear',
           style({opacity: 0}))
       ]
     )])]
@@ -20,7 +19,6 @@ export class NavbarComponent implements OnInit {
   private _screenWidth: number;
   largeNavToShow: boolean;
   showNavigationModal: boolean;
-  showProductsModal: boolean;
   modalController: string;
 
   constructor(private modalService:ModalService) {
@@ -44,8 +42,8 @@ export class NavbarComponent implements OnInit {
       this.modalService.showModal = this.showNavigationModal;
     } else {
       this.largeNavToShow = false;
-      this.showProductsModal = false;
-      this.modalService.showModal = this.showProductsModal;
+      this.showNavigationModal = false;
+      this.modalService.showModal = this.showNavigationModal;
     }
   }
 
