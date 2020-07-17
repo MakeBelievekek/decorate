@@ -12,13 +12,15 @@
         background: url("src/assets/JOURNEY BEYOND CAM 12.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
+        filter: brightness(75%);
     }
 
     .secondCard {
 
-        background: url("src/assets/ABSTRACT CAM 5.jpg") no-repeat center center;
+        background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
+
     }
 
     .thirdCard {
@@ -26,6 +28,7 @@
         background: url("src/assets/REFLECTIONS CAM 4.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
+        filter: brightness(50%);
     }
 
     .mozaik {
@@ -56,8 +59,9 @@
     }
     .secondCard {
 
-        background: url("src/assets/ABSTRACT CAM 5.jpg") no-repeat center center;
+        background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
         background-size: cover;
+
         width: 100%;
     }
     .thirdCard {
@@ -66,7 +70,7 @@
         width: 100%;
     }
     .mozaik {
-        height: 175px;
+        height: 125px;
         background-color: #C6D7CD;
         background-size: cover;
         width: 100%;
