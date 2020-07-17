@@ -3,7 +3,7 @@
     background-color: ghostwhite;
     display: grid;
     grid-template-rows: 1fr 2fr 1fr;
-    grid-template-columns: 0.2fr 2.4fr 0.3fr;
+    grid-template-columns: minmax(100px, 0.5fr) 2.4fr minmax(auto, 125px);
     grid-template-areas: "a1 a2 a3" "b1 b2 b3" "c1 c2 c3";
     min-height: 160px;
   }
