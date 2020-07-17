@@ -2,13 +2,21 @@
     .content {
         height: 90vh;
         display: grid;
-        grid-template-rows: 1fr;
+        grid-template-rows: 1fr 1fr;
         grid-template-columns: 2fr 1fr 1fr;
-        grid-template-areas: "a1 a2 a3";
+        grid-template-areas: "a1 a2 a3" "a1 a4 a3";
+    }
+    .cardGrid3 {
+        grid-area: a4;
+    }
+    .cardGrid2 {
+        grid-area: a3;
+    }
+    .cardGrid1 {
+        grid-area: a1;
     }
 
     .firstCard {
-        grid-area: a1;
         background: url("src/assets/JOURNEY BEYOND CAM 12.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
@@ -16,13 +24,10 @@
     }
 
     .secondCard {
-
         background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
-
     }
-
     .thirdCard {
         grid-area: a3;
         background: url("src/assets/REFLECTIONS CAM 4.jpg") no-repeat center center;
@@ -30,16 +35,11 @@
         width: 100%;
         filter: brightness(65%);
     }
-
     .mozaik {
-        height: 420px;
+        grid-area: a2;
         background-color: #C6D7CD;
         background-size: cover;
         width: 100%;
-    }
-
-    .grid {
-        grid-area: a2;
     }
 }
 
@@ -48,8 +48,8 @@
         height: 90vh;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-        grid-template-areas: "a a" "b c";
+        grid-template-rows: 2fr 1fr 1fr;
+        grid-template-areas: "a a" "b1 c" "b2 c";
     }
 
     .firstCard {
@@ -59,10 +59,8 @@
         filter: brightness(80%);
     }
     .secondCard {
-
         background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
         background-size: cover;
-
         width: 100%;
     }
     .thirdCard {
@@ -72,13 +70,13 @@
         filter: brightness(65%);
     }
     .mozaik {
-        height: 125px;
+        grid-area: b1;
         background-color: #C6D7CD;
         background-size: cover;
         width: 100%;
     }
     .cardGrid3 {
-        grid-area: b;
+        grid-area: b2;
     }
     .cardGrid2 {
         grid-area: c;

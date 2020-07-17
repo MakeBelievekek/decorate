@@ -109,6 +109,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
   }
 
   .custom-email {
@@ -147,15 +148,18 @@
   p {
     display: none;
   }
-  input:focus {
-    outline: none !important;
-    border-color: #719ECE;
-    box-shadow: 0 0 10px #719ECE;
-  }
 
   button:focus {
     outline: none !important;
     border-color: #719ECE;
     box-shadow: 0 0 10px #719ECE;
+  }
+  .custom-email {
+    border-radius: 25px;
+    border: 1px solid #C5C5C5;;
+    padding: 20px;
+    width: 200px;
+    height: 15px;
+
   }
 }
