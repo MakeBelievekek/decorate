@@ -76,6 +76,17 @@
 
 .logo {
     grid-area: h2;
+    display: grid;
+    grid-template-rows: 1fr 2.4fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "a1 a2 a3" "b1 c b2";
+}
+
+.logoImg {
+    grid-area: c;
+    background: url("src/assets/2916902.jpg") no-repeat center center;
+    background-size: cover;
+    width: 100%;
 }
 
 @media screen and (max-width: 999px) {
@@ -86,13 +97,26 @@
         grid-template-areas: "a";
     }
 
-  .icons{
-      display: none;
-  }
+    .icons {
+        display: none;
+    }
+
     .phone {
         display: none;
     }
+
     .logo {
         grid-area: a;
+        display: grid;
+        grid-template-rows: 1fr 2.4fr;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas: "a1 a2 a3" "c c c";
+     }
+    .logoImg {
+        grid-area:c ;
+        background: url("src/assets/2916902.jpg") no-repeat center center;
+        background-size: cover;
+        width: 100%;
     }
+
 }

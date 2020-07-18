@@ -5,15 +5,46 @@
     grid-template-areas: "a1 a2";
 
 }
+
 .firstCard {
+    position: relative;
     grid-area: a1;
     background: url("src/assets/ABSTRACT CAM 4.jpg") no-repeat center center;
     background-size: cover;
-    width: 100%;
+    overflow: hidden;
+    transition: all .8s;
+}
+.firstCard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    transition: inherit;
+}
+.firstCard:hover::before {
+    transform:scale(1.1);
 }
 .secondCard {
+    position: relative;
     grid-area: a2;
     background: url("src/assets/JOURNEY BEYOND CAM 4.jpg") no-repeat center center;
     background-size: cover;
-    width: 100%;
+    overflow: hidden;
+    transition: all .8s;
+}
+.secondCard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    transition: inherit;
+}
+.secondCard:hover::before {
+    transform:scale(1.1);
 }

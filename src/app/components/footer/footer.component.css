@@ -1,3 +1,10 @@
-.footer {
+.footer-cop {
     background-color: #E5E5E5;
+}
+
+.container-grid {
+    background-color: #E5E5E5;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "a b c d e f g j";
 }
