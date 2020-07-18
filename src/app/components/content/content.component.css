@@ -39,6 +39,7 @@
         overflow: hidden;
         transition: all .8s;
     }
+
     .firstCard::before {
         content: "";
         position: absolute;
@@ -49,9 +50,11 @@
         background: inherit;
         transition: inherit;
     }
+
     .firstCard:hover::before {
-    transform:scale(1.1);
+        transform: scale(1.1);
     }
+
     .secondCard {
         position: relative;
         grid-area: a4;
@@ -60,6 +63,7 @@
         overflow: hidden;
         transition: all .8s;
     }
+
     .secondCard::before {
         content: "";
         position: absolute;
@@ -70,8 +74,9 @@
         background: inherit;
         transition: inherit;
     }
+
     .secondCard:hover::before {
-        transform:scale(1.1);
+        transform: scale(1.1);
     }
 
     .thirdCard {
@@ -84,6 +89,7 @@
         transition: all .8s;
 
     }
+
     .thirdCard::before {
         content: "";
         position: absolute;
@@ -94,15 +100,35 @@
         background: inherit;
         transition: inherit;
     }
+
     .thirdCard:hover::before {
-        transform:scale(1.1);
+        transform: scale(1.1);
     }
+
     .mozaik {
         grid-area: a2;
         background-color: #C6D7CD;
         background-size: cover;
         width: 100%;
+        position: relative;
+
     }
+    .mozaik:before {
+        content: "";
+        position: absolute;
+        right: 45%;
+        bottom: -30px;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-top: 23px solid #C6D7CD;
+
+
+    }
+
+
 }
 
 @media screen and (max-width: 999px) {
@@ -121,12 +147,14 @@
         filter: brightness(80%);
         grid-area: a;
     }
+
     .secondCard {
         background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
         grid-area: b2;
     }
+
     .thirdCard {
         background: url("src/assets/REFLECTIONS CAM 4.jpg") no-repeat center center;
         background-size: cover;
@@ -134,6 +162,7 @@
         filter: brightness(65%);
         grid-area: c;
     }
+
     .mozaik {
         grid-area: b1;
         background-color: #C6D7CD;
