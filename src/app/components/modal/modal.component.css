@@ -7,7 +7,6 @@
   top: 0;
   width: 100%; /* Full width */
   overflow: auto; /* Enable scroll if needed */
-  transition: 3000ms transform;
 }
 
 .products-modal {
@@ -20,7 +19,6 @@
   top: 0;
   width: 500px; /* Full width */
   overflow: auto; /* Enable scroll if needed */
-  transition: 3000ms transform;
 }
 
 

@@ -1,6 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import {animate, style, transition, trigger} from "@angular/animations";
+import {animate, keyframes, style, transition, trigger} from "@angular/animations";
 import {ModalService} from "../../services/modal.service";
+import * as kf from '../../utils/keyframes';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,8 @@ import {ModalService} from "../../services/modal.service";
   animations: [trigger('fade', [
     transition(
       '* => void', [
-        animate('1s linear',
+        style({opacity: 1}),
+        animate(500,
           style({opacity: 0}))
       ]
     )])]
