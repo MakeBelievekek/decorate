@@ -2,26 +2,19 @@ import {Component, HostListener, OnInit} from '@angular/core';
 import {animate, keyframes, style, transition, trigger} from "@angular/animations";
 import {ModalService} from "../../services/modal.service";
 import * as kf from '../../utils/keyframes';
+import {ModalControllerModel} from "../../models/ModalController.model";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-  animations: [trigger('fade', [
-    transition(
-      '* => void', [
-        style({opacity: 1}),
-        animate(500,
-          style({opacity: 0}))
-      ]
-    )])]
+
 })
 export class NavbarComponent implements OnInit {
   private _screenHeight: number;
   private _screenWidth: number;
   largeNavToShow: boolean;
   showNavigationModal: boolean;
-  modalController: string;
 
   constructor(private modalService:ModalService) {
   }
@@ -29,9 +22,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.getScreenSize();
     this.modalService.showModalState.subscribe(
-      show => this.showNavigationModal = show
+      value => this.showNavigationModal = value.show
     );
-    console.log(this.showNavigationModal)
   }
 
   @HostListener('window:resize', ['$event'])
@@ -40,25 +32,19 @@ export class NavbarComponent implements OnInit {
     this.screenWidth = window.innerWidth;
     if (this.screenWidth >= 1000) {
       this.largeNavToShow = true;
-      this.showNavigationModal = false;
-      this.modalService.showModal = this.showNavigationModal;
+      this.modalService.showModalState.next({control: '', show: false})
     } else {
+      this.modalService.showModalState.next({control: '', show: false})
       this.largeNavToShow = false;
-      this.showNavigationModal = false;
-      this.modalService.showModal = this.showNavigationModal;
     }
   }
 
   toggleNavigationModal() {
-    this.showNavigationModal = !this.showNavigationModal;
-    this.modalService.showModal = this.showNavigationModal;
-    this.modalController = 'navigation';
+    this.modalService.showModalState.next({control: 'navigation', show: !this.showNavigationModal })
   }
 
   toggleProductsModal() {
-    this.showNavigationModal = !this.showNavigationModal;
-    this.modalService.showModal = this.showNavigationModal;
-    this.modalController = 'products';
+    this.modalService.showModalState.next({control: 'products', show: !this.showNavigationModal })
   }
 
   get screenWidth(): number {
