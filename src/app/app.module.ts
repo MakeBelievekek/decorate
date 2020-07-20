@@ -17,6 +17,7 @@ import { SecondContentComponent } from './components/second-content/second-conte
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ModalComponent } from './components/modal/modal.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ModalComponent } from './components/modal/modal.component';
     NewsletterComponent,
     SecondContentComponent,
     ModalComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
