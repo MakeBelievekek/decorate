@@ -1,5 +1,8 @@
 <div class="admin-main">
-<div>
-   <app-admin-product-form></app-admin-product-form>
-</div>
+    <div *ngIf="inputToggle.product">
+        <app-admin-product-form></app-admin-product-form>
+    </div>
+    <div *ngIf="inputToggle.category">
+        <app-category-form></app-category-form>
+    </div>
 </div>

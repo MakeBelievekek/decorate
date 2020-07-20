@@ -22,6 +22,7 @@ import { AdminContentComponent } from './components/admin/admin-content/admin-co
 import { AdminMainComponent } from './components/admin/admin-main/admin-main.component';
 import { AdminSidebarComponent } from './components/admin/admin-sidebar/admin-sidebar.component';
 import { AdminProductFormComponent } from './components/admin/admin-product-form/admin-product-form.component';
+import { CategoryFormComponent } from './components/admin/category-form/category-form.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { AdminProductFormComponent } from './components/admin/admin-product-form
     AdminMainComponent,
     AdminSidebarComponent,
     AdminProductFormComponent,
+    CategoryFormComponent,
   ],
   imports: [
     BrowserModule,

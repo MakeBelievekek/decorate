@@ -46,4 +46,5 @@ export class AdminProductFormComponent implements OnInit {
         data.productImg = this.productForm.controls['productImg'].value;
         return data;
     }
+
 }

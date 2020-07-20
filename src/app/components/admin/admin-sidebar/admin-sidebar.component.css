@@ -7,8 +7,10 @@
     flex-direction: column;
 
 }
-.option{
+
+.option {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }

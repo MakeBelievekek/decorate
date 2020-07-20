@@ -1,0 +1,8 @@
+<form [formGroup]="categoryForm" method="post">
+    <div class="form-group">
+        <label for="category">Category Name</label>
+        <input type="text" class="form-control" id="category" formControlName="categoryName">
+    </div>
+
+    <a  class="btn btn-primary" (click)="saveCategory()">Save</a>
+</form>
