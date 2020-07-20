@@ -5,6 +5,7 @@
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 2fr 1fr 1fr;
         grid-template-areas: "a1 a2 a3" "a1 a4 a3";
+        cursor: pointer;
     }
 
     .descOne {
@@ -31,7 +32,7 @@
         grid-template-rows: 1fr 1fr 0.5fr;
         grid-template-areas: "a b c" "d e f" "i j k";
         position: relative;
-        background: url("src/assets/JOURNEY BEYOND CAM 12.jpg") no-repeat center center;
+        background: url("../../../../assets/JOURNEY BEYOND CAM 12.jpg") no-repeat center center;
         background-size: cover;
         overflow: hidden;
         transition: all .8s;
@@ -55,7 +56,7 @@
     .secondCard {
         position: relative;
         grid-area: a4;
-        background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
+        background: url("../../../../assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
         background-size: cover;
         overflow: hidden;
         transition: all .8s;
@@ -79,7 +80,7 @@
     .thirdCard {
         position: relative;
         grid-area: a3;
-        background: url("src/assets/REFLECTIONS CAM 4.jpg") no-repeat center center;
+        background: url("../../../../assets/REFLECTIONS CAM 4.jpg") no-repeat center center;
         filter: brightness(65%);
         background-size: cover;
         overflow: hidden;
@@ -110,6 +111,7 @@
         position: relative;
 
     }
+
     .mozaik:before {
         content: "";
         position: absolute;
@@ -122,6 +124,8 @@
         border-bottom: 15px solid transparent;
         border-top: 23px solid #C6D7CD;
     }
+
+
 }
 
 @media screen and (max-width: 999px) {
@@ -134,22 +138,23 @@
     }
 
     .firstCard {
-        background: url("src/assets/JOURNEY BEYOND CAM 12.jpg") no-repeat center center;
+        background: url("../../../../assets/JOURNEY BEYOND CAM 12.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
         filter: brightness(80%);
         grid-area: a;
+
     }
 
     .secondCard {
-        background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
+        background: url("../../../../assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
         grid-area: b2;
     }
 
     .thirdCard {
-        background: url("src/assets/REFLECTIONS CAM 4.jpg") no-repeat center center;
+        background: url("../../../../assets/REFLECTIONS CAM 4.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
         filter: brightness(65%);
@@ -164,6 +169,7 @@
         position: relative;
 
     }
+
     .mozaik:before {
         content: "";
         position: absolute;

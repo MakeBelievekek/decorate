@@ -1,0 +1,27 @@
+<form [formGroup]="productForm" method="post">
+    <div class="form-group">
+        <label for="product">Product Name</label>
+        <input type="text" class="form-control" id="product" formControlName="productName">
+    </div>
+    <div class="form-group">
+        <label for="description">Product description</label>
+        <textarea class="form-control" id="description" rows="3" style="" formControlName="productDesc"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="categories">Categories</label>
+        <select class="form-control" id="categories" formControlName="productCategory">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="img">Image</label>
+        <input type="text" class="form-control" id="img" formControlName="productImg">
+    </div>
+    <a  class="btn btn-primary" (click)="saveProduct()">Save</a>
+</form>

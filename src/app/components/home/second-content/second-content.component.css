@@ -9,7 +9,7 @@
 .firstCard {
     position: relative;
     grid-area: a1;
-    background: url("src/assets/ABSTRACT CAM 4.jpg") no-repeat center center;
+    background: url("../../../../assets/ABSTRACT CAM 4.jpg") no-repeat center center;
     background-size: cover;
     overflow: hidden;
     transition: all .8s;
@@ -30,7 +30,7 @@
 .secondCard {
     position: relative;
     grid-area: a2;
-    background: url("src/assets/JOURNEY BEYOND CAM 4.jpg") no-repeat center center;
+    background: url("../../../../assets/JOURNEY BEYOND CAM 4.jpg") no-repeat center center;
     background-size: cover;
     overflow: hidden;
     transition: all .8s;

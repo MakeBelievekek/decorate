@@ -1,0 +1,14 @@
+.admin-sidebar {
+    grid-area: admin-sidebar;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+
+}
+.option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
