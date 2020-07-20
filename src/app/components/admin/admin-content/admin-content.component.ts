@@ -22,4 +22,5 @@ export class AdminContentComponent implements OnInit {
     setToggle(toggle: SwitchModel) {
         this.parentToggle = toggle;
     }
+
 }

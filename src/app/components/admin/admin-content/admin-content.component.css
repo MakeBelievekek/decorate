@@ -1,13 +1,36 @@
-.admin-content {
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    grid-template-areas: 'admin-sidebar admin-main';
-    height: 60vh;
-}
+@media screen and (min-width: 1000px) {
+    .admin-content {
+        display: grid;
+        grid-template-columns: 1fr 4fr;
+        grid-template-areas: 'admin-sidebar admin-main';
 
-.sidebar-container {
-    background-color: #C6D7CD;
+    }
+
+    .sidebar-container {
+        background-color: #C6D7CD;
+        grid-area: admin-sidebar;
+    }
+
+    .main-container {
+        grid-area: admin-main;
+        background-color: #C6D7CD;
+    }
 }
-.main-container{
-    background-color: #C6D7CD;
+@media screen and (max-width: 999px) {
+    .admin-content {
+        display: grid;
+        grid-template-rows: 1fr 4fr;
+        grid-template-areas: 'admin-sidebar' 'admin-main';
+        height: 800px
+    }
+
+    .sidebar-container {
+        background-color: #C6D7CD;
+        grid-area: admin-sidebar;
+    }
+
+    .main-container {
+        grid-area: admin-main;
+        background-color: #C6D7CD;
+    }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SwitchModel } from '../../models/switchModel';
 
 @Component({
     selector: 'app-admin',

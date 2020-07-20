@@ -1,11 +1,12 @@
 <div class="admin-main">
-    <div *ngIf="this.inputToggle.product">
+    <div class="form" *ngIf="this.inputToggle.product">
         <app-admin-product-form></app-admin-product-form>
     </div>
-    <div *ngIf="this.inputToggle.category">
+    <div class="form" *ngIf="this.inputToggle.category">
         <app-category-form></app-category-form>
     </div>
-    <div *ngIf="this.inputToggle.diagram">
+    <div class="form" *ngIf="this.inputToggle.diagram">
         <app-diagrams></app-diagrams>
     </div>
 </div>
+

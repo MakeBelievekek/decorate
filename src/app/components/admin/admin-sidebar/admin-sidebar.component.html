@@ -1,12 +1,12 @@
-
 <div class="sidebar">
     <div class="sidebar-options" [ngStyle]="{'background-color': this.chosen === 'product' ? '#E5E5E5':'#C6D7CD'}">
-    <h3 class="option" (click)="switchToggle('product')">Termék regisztráció</h3>
+        <h3 class="option" (click)="switchToggle('product')">Termék regisztráció</h3>
+    </div>
+    <div class="sidebar-options" [ngStyle]="{'background-color': this.chosen === 'category' ? '#E5E5E5':'#C6D7CD'}">
+        <h3 class="option" (click)="switchToggle('category')">Kategoria regisztráció</h3>
+    </div>
+    <div class="sidebar-options" [ngStyle]="{'background-color': this.chosen === 'diagrams' ? '#E5E5E5':'#C6D7CD'}">
+        <h3 class="option" (click)="switchToggle('diagrams')">Diagrammok</h3>
+    </div>
 </div>
-<div class="sidebar-options" [ngStyle]="{'background-color': this.chosen === 'category' ? '#E5E5E5':'#C6D7CD'}">
-    <h3 class="option" (click)="switchToggle('category')">Kategoria regisztráció</h3>
-</div>
-<div class="sidebar-options" [ngStyle]="{'background-color': this.chosen === 'diagrams' ? '#E5E5E5':'#C6D7CD'}">
-    <h3 class="option" (click)="switchToggle('diagrams')">Diagrammok</h3>
-</div>
-</div>
+

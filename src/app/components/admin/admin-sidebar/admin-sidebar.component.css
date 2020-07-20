@@ -1,22 +1,54 @@
-.admin-sidebar {
-    grid-area: admin-sidebar;
+@media screen and (min-width: 1000px) {
+    .sidebar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-left: 50px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        height: 400px;
+    }
+
+    .sidebar-options {
+        padding: 20px;
+    }
+
+    .sidebar-option:hover {
+        background-color: #E5E5E5;
+    }
+
+    .option {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        cursor: pointer;
+    }
 }
 
-.sidebar {
-    margin: 20px;
-}
+@media screen and (max-width: 999px) {
+    .sidebar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 50px;
+        margin-bottom: 20px;
+    }
 
-.sidebar-options {
-    padding: 20px;
-}
+    .sidebar-options {
+        padding: 10px;
+    }
 
-.sidebar-option:hover {
-    background-color: #E5E5E5;
-}
+    .sidebar-option:hover {
+        background-color: #E5E5E5;
+    }
 
-.option {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    cursor: pointer;
+    .option {
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        cursor: pointer;
+        font-size: 20px;
+    }
 }
