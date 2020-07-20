@@ -9,6 +9,7 @@
     .sidebar-container {
         background-color: #C6D7CD;
         grid-area: admin-sidebar;
+        border-right: black solid;
     }
 
     .main-container {
