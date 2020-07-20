@@ -23,6 +23,11 @@ import { AdminMainComponent } from './components/admin/admin-main/admin-main.com
 import { AdminSidebarComponent } from './components/admin/admin-sidebar/admin-sidebar.component';
 import { AdminProductFormComponent } from './components/admin/admin-product-form/admin-product-form.component';
 import { CategoryFormComponent } from './components/admin/category-form/category-form.component';
+import { ProductsComponent } from './components/products/products.component';
+import { HeaderComponent } from './components/products/header/header.component';
+import { FilterComponent } from './components/products/filter/filter.component';
+import { ProductsListComponent } from './components/products/products-list/products-list.component';
+import { ProductComponent } from './components/products/products-list/product/product.component';
 
 @NgModule({
   declarations: [
@@ -36,11 +41,16 @@ import { CategoryFormComponent } from './components/admin/category-form/category
     SecondContentComponent,
     ModalComponent,
     AdminComponent,
+    ProductsComponent,
     AdminContentComponent,
     AdminMainComponent,
     AdminSidebarComponent,
     AdminProductFormComponent,
     CategoryFormComponent,
+    HeaderComponent,
+    FilterComponent,
+    ProductsListComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,

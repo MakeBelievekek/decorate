@@ -18,9 +18,7 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.modalService.showModalState.subscribe(
-      value => {this.modalState = value;
-        console.log(value);
-      }
+      value => this.modalState = value
     );
   }
 
