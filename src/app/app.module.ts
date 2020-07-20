@@ -24,10 +24,10 @@ import { AdminSidebarComponent } from './components/admin/admin-sidebar/admin-si
 import { AdminProductFormComponent } from './components/admin/admin-product-form/admin-product-form.component';
 import { CategoryFormComponent } from './components/admin/category-form/category-form.component';
 import { ProductsComponent } from './components/products/products.component';
-import { HeaderComponent } from './components/products/header/header.component';
 import { FilterComponent } from './components/products/filter/filter.component';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { ProductComponent } from './components/products/products-list/product/product.component';
+import { ProductsHeaderComponent } from './components/products/products-header/products-header.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +51,7 @@ import { ProductComponent } from './components/products/products-list/product/pr
     FilterComponent,
     ProductsListComponent,
     ProductComponent,
+    ProductsHeaderComponent,
   ],
   imports: [
     BrowserModule,

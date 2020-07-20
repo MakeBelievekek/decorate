@@ -3,6 +3,8 @@ import {animate, keyframes, style, transition, trigger} from "@angular/animation
 import {ModalService} from "../../services/modal.service";
 import * as kf from '../../utils/keyframes';
 import {ModalControllerModel} from "../../models/ModalController.model";
+import {ScreenService} from "../../services/screen.service";
+import {ScreenSizeModel} from "../../models/ScreenSize.model";
 
 @Component({
   selector: 'app-navbar',
@@ -11,26 +13,26 @@ import {ModalControllerModel} from "../../models/ModalController.model";
 
 })
 export class NavbarComponent implements OnInit {
-  private _screenHeight: number;
-  private _screenWidth: number;
+  screenSizeModel: ScreenSizeModel;
   largeNavToShow: boolean;
   showNavigationModal: boolean;
 
-  constructor(private modalService:ModalService) {
+  constructor(private modalService:ModalService, private screenService: ScreenService) {
   }
 
   ngOnInit(): void {
-    this.getScreenSize();
+    this.changeContentOnResize();
+
     this.modalService.showModalState.subscribe(
       value => this.showNavigationModal = value.show
     );
   }
 
+
   @HostListener('window:resize', ['$event'])
-  getScreenSize(event?) {
-    this.screenHeight = window.innerHeight;
-    this.screenWidth = window.innerWidth;
-    if (this.screenWidth >= 1000) {
+  changeContentOnResize() {
+    this.screenSizeModel = this.screenService.getScreenSize();
+    if (this.screenSizeModel.width >= 1000) {
       this.largeNavToShow = true;
       this.modalService.showModalState.next({control: '', show: false})
     } else {
@@ -47,20 +49,4 @@ export class NavbarComponent implements OnInit {
     this.modalService.showModalState.next({control: 'products', show: !this.showNavigationModal })
   }
 
-  get screenWidth(): number {
-    return this._screenWidth;
-  }
-
-
-  set screenWidth(value: number) {
-    this._screenWidth = value;
-  }
-
-  get screenHeight(): number {
-    return this._screenHeight;
-  }
-
-  set screenHeight(value: number) {
-    this._screenHeight = value;
-  }
 }
