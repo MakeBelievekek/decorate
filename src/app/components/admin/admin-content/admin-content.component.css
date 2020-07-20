@@ -1,5 +1,13 @@
-.admin-content{
+.admin-content {
     display: grid;
     grid-template-columns: 1fr 4fr;
     grid-template-areas: 'admin-sidebar admin-main';
+    height: 60vh;
+}
+
+.sidebar-container {
+    background-color: #C6D7CD;
+}
+.main-container{
+    background-color: #C6D7CD;
 }

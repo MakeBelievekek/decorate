@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { SwitchModel } from '../../../models/switchModel';
+import { SwitchService } from '../../../services/switch.service';
+
 
 @Component({
     selector: 'app-admin-sidebar',
@@ -8,25 +10,18 @@ import { SwitchModel } from '../../../models/switchModel';
 })
 export class AdminSidebarComponent implements OnInit {
 
-    constructor() { }
+    constructor(private switchService: SwitchService) { }
 
-    switch: SwitchModel = new class implements SwitchModel {
-        category: boolean;
-        product: boolean;
-    };
     @Output() toggle: EventEmitter<SwitchModel> = new EventEmitter();
+    chosen: string;
 
     ngOnInit(): void {
+        this.chosen = 'product';
     }
 
     switchToggle(type: string) {
-        if (type === 'category') {
-            this.switch.category = true;
-            this.switch.product = false;
-        } else {
-            this.switch.category = false;
-            this.switch.product = true;
-        }
-        this.toggle.emit(this.switch);
+        this.chosen = type;
+        this.toggle.emit(this.switchService.switch(type));
+
     }
 }

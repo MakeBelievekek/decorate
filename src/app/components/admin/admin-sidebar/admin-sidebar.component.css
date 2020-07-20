@@ -3,14 +3,20 @@
 }
 
 .sidebar {
-    display: flex;
-    flex-direction: column;
+    margin: 20px;
+}
 
+.sidebar-options {
+    padding: 20px;
+}
+
+.sidebar-option:hover {
+    background-color: #E5E5E5;
 }
 
 .option {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     cursor: pointer;
 }

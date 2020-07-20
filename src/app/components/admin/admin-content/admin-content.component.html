@@ -1,4 +1,8 @@
 <div class="admin-content">
-    <app-admin-sidebar (toggle)="setToggle($event)"></app-admin-sidebar>
-    <app-admin-main [inputToggle]="parentToggle" ></app-admin-main>
+    <div class="sidebar-container">
+        <app-admin-sidebar (toggle)="setToggle($event)"></app-admin-sidebar>
+    </div>
+    <div class="main-container">
+        <app-admin-main [inputToggle]="parentToggle"></app-admin-main>
+    </div>
 </div>

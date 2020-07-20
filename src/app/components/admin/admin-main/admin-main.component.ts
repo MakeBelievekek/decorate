@@ -10,14 +10,16 @@ export class AdminMainComponent implements OnInit {
 
     constructor() { }
 
+
     @Input() inputToggle: SwitchModel = new class implements SwitchModel {
         category: boolean;
-        product: boolean = true;
+        product: boolean;
+        diagram: boolean;
     };
 
 
     ngOnInit(): void {
-
+        this.inputToggle.product = true;
     }
 
 
