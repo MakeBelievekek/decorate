@@ -30,9 +30,7 @@ export class ProductsHeaderComponent implements OnInit {
     this.screenSizeModel = this.screenService.getScreenSize();
     if (this.screenSizeModel.width >= 1000) {
       this.navToShow = true;
-      this.modalService.showModalState.next({control: '', show: false})
     } else {
-      this.modalService.showModalState.next({control: '', show: false})
       this.navToShow = false;
     }
   }

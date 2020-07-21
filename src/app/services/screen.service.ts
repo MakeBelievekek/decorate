@@ -6,11 +6,14 @@ import {ScreenSizeModel} from "../models/ScreenSize.model";
 })
 export class ScreenService {
 
-  constructor() { }
+
+  constructor() {
+  }
 
 
-  getScreenSize(event?) : ScreenSizeModel {
+  getScreenSize(event?): ScreenSizeModel {
     return {height: window.innerHeight, width: window.innerWidth}
   }
+
 
 }

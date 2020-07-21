@@ -31,6 +31,7 @@ import { ThirdContentComponent } from './components/home/third-content/third-con
 import { FourthContentComponent } from './components/home/fourth-content/fourth-content.component';
 import { NewsComponent } from './components/home/news/news.component';
 import { SalesComponent } from './components/home/sales/sales.component';
+import { ProductsModalComponent } from './components/products/products-modal/products-modal.component';
 
 @NgModule({
     declarations: [
@@ -59,6 +60,7 @@ import { SalesComponent } from './components/home/sales/sales.component';
         FourthContentComponent,
         NewsComponent,
         SalesComponent,
+        ProductsModalComponent,
     ],
     imports: [
         BrowserModule,

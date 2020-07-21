@@ -1,4 +1,5 @@
 export interface ModalControllerModel {
   control: string;
-  show: boolean;
+  showModal: boolean;
+  modalButtonPressed: boolean;
 }
