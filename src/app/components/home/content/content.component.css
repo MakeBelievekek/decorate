@@ -3,8 +3,8 @@
         height: 90vh;
         display: grid;
         grid-template-rows: 1fr 1fr;
-        grid-template-columns: 2fr 1fr 1fr;
-        grid-template-areas: "a1 a2 a3" "a1 a4 a3";
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas: "a2 a1 a3" "a4 a1 a5";
         cursor: pointer;
     }
 
@@ -19,9 +19,7 @@
         font-size: 4.375em;
         line-height: 0.9;
         color: white;
-        transform: none;
-        transition: none;
-        display: block;
+
     }
 
     .firstCard {
@@ -32,7 +30,7 @@
         grid-template-rows: 1fr 1fr 0.5fr;
         grid-template-areas: "a b c" "d e f" "i j k";
         position: relative;
-        background: url("../../../../assets/JOURNEY BEYOND CAM 12.jpg") no-repeat center center;
+        background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
         background-size: cover;
         overflow: hidden;
         transition: all .8s;
@@ -56,7 +54,7 @@
     .secondCard {
         position: relative;
         grid-area: a4;
-        background: url("../../../../assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
+        background: url("src/assets/Fényáteresztő főoldal fotó.jpg") no-repeat center center;
         background-size: cover;
         overflow: hidden;
         transition: all .8s;
@@ -80,8 +78,8 @@
     .thirdCard {
         position: relative;
         grid-area: a3;
-        background: url("../../../../assets/REFLECTIONS CAM 4.jpg") no-repeat center center;
-        filter: brightness(65%);
+        background: url("src/assets/JOURNEY BEYOND CAM 4.jpg") no-repeat center center;
+        filter: brightness(90%);
         background-size: cover;
         overflow: hidden;
         transition: all .8s;
@@ -103,30 +101,69 @@
         transform: scale(1.1);
     }
 
-    .mozaik {
+    .mozaik-down {
         grid-area: a2;
-        background-color: #C6D7CD;
+        background-color: #FFDEE3;
         background-size: cover;
         width: 100%;
         position: relative;
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        filter: brightness(95%);
     }
 
-    .mozaik:before {
+    .mozaik-down:before {
         content: "";
         position: absolute;
         right: 45%;
-        bottom: -30px;
+        bottom: -35px;
         width: 0;
         height: 0;
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
         border-bottom: 15px solid transparent;
-        border-top: 23px solid #C6D7CD;
+        border-top: 23px solid #FFDEE3;
     }
 
+    .mozaik-up {
+        grid-area: a5;
+        background-color: #FFDEE3;
+        background-size: cover;
+        width: 100%;
+        position: relative;
+        filter: brightness(95%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-}
+    }
+
+    .mozaik-up:before {
+        content: "";
+        position: absolute;
+        right: 45%;
+        top: -35px;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 23px solid #FFDEE3;
+        border-top: 15px solid transparent;
+    }
+    .mozaik-text {
+        font-family: courier;
+        font-weight: bolder ;
+        font-size: 2rem;
+        line-height: 0.9;
+        color: white;
+        padding-bottom:30px;
+        text-decoration: underline;
+
+    }
+    }
+
 
 @media screen and (max-width: 999px) {
     .content {
@@ -161,25 +198,25 @@
         grid-area: c;
     }
 
-    .mozaik {
+    .mozaik-down {
         grid-area: b1;
-        background-color: #C6D7CD;
+        background-color: #FFDEE3;
         background-size: cover;
         width: 100%;
         position: relative;
 
     }
 
-    .mozaik:before {
+    .mozaik-down:before {
         content: "";
         position: absolute;
         right: 45%;
-        bottom: -30px;
+        bottom: -35px;
         width: 0;
         height: 0;
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
         border-bottom: 15px solid transparent;
-        border-top: 23px solid #C6D7CD;
+        border-top: 23px solid #FFDEE3;
     }
 }

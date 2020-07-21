@@ -27,6 +27,10 @@ import { ProductsHeaderComponent } from './components/products/products-header/p
 import { ProductComponent } from './components/products/products-list/product/product.component';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { ProductsComponent } from './components/products/products.component';
+import { ThirdContentComponent } from './components/home/third-content/third-content.component';
+import { FourthContentComponent } from './components/home/fourth-content/fourth-content.component';
+import { NewsComponent } from './components/home/news/news.component';
+import { SalesComponent } from './components/home/sales/sales.component';
 
 @NgModule({
     declarations: [
@@ -51,6 +55,10 @@ import { ProductsComponent } from './components/products/products.component';
         ProductComponent,
         ProductsHeaderComponent,
         DiagramsComponent,
+        ThirdContentComponent,
+        FourthContentComponent,
+        NewsComponent,
+        SalesComponent,
     ],
     imports: [
         BrowserModule,

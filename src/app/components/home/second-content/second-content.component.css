@@ -1,19 +1,20 @@
 .content {
-    height: 50vh;
+    height: 90vh;
     display: grid;
-    grid-template-columns:  1fr 1fr;
-    grid-template-areas: "a1 a2";
-
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-areas: "a1 a2 a3";
+    grid-gap:0.2rem
 }
 
 .firstCard {
     position: relative;
     grid-area: a1;
-    background: url("../../../../assets/ABSTRACT CAM 4.jpg") no-repeat center center;
+    background: url("src/assets/Blacl out főoldal fotó.jpg") no-repeat center center;
     background-size: cover;
     overflow: hidden;
     transition: all .8s;
 }
+
 .firstCard::before {
     content: "";
     position: absolute;
@@ -24,17 +25,21 @@
     background: inherit;
     transition: inherit;
 }
+
 .firstCard:hover::before {
-    transform:scale(1.1);
+    transform: scale(1.1);
 }
+
 .secondCard {
     position: relative;
     grid-area: a2;
-    background: url("../../../../assets/JOURNEY BEYOND CAM 4.jpg") no-repeat center center;
+    background: url("src/assets/Gyerekfüggöny főoldal fotó.jpg") no-repeat center center;
     background-size: cover;
     overflow: hidden;
     transition: all .8s;
+    filter: brightness(80%);
 }
+
 .secondCard::before {
     content: "";
     position: absolute;
@@ -45,6 +50,30 @@
     background: inherit;
     transition: inherit;
 }
+
 .secondCard:hover::before {
-    transform:scale(1.1);
+    transform: scale(1.1);
+}
+
+.thirdCard {
+    position: relative;
+    grid-area: a3;
+    background: url("src/assets/Bútorszövet főoldal fotó.jpg") no-repeat center center;
+    background-size: cover;
+    overflow: hidden;
+    transition: all .8s;
+}
+.thirdCard::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: inherit;
+    transition: inherit;
+}
+
+.thirdCard:hover::before {
+    transform: scale(1.1);
 }
