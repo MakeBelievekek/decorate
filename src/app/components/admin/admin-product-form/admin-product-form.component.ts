@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { CategoryListItem } from '../../../models/categoryListItem';
 import { ProductModel } from '../../../models/product-model';
 import { AdminService } from '../../../services/admin.service';
 
@@ -12,7 +13,7 @@ import { AdminService } from '../../../services/admin.service';
 export class AdminProductFormComponent implements OnInit {
 
     productForm: FormGroup;
-
+    categories: CategoryListItem[];
 
     constructor(private adminService: AdminService, private formBuilder: FormBuilder, private http: HttpClient) {
         this.productForm = this.formBuilder.group({
@@ -24,7 +25,11 @@ export class AdminProductFormComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
+        this.adminService.getAllCategories().subscribe(
+            (data) => {this.categories = data},
+            () =>{},
+            () =>{},
+        );
 
     }
 

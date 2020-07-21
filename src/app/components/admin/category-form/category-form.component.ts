@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AdminService } from '../../../services/admin.service';
 
@@ -16,6 +16,7 @@ export class CategoryFormComponent implements OnInit {
     constructor(private adminService: AdminService, private formBuilder: FormBuilder, private http: HttpClient) {
         this.categoryForm = this.formBuilder.group({
             categoryName: [''],
+            categoryType: [''],
         });
     }
 
