@@ -12,6 +12,7 @@
 .products-modal {
   display: block; /* Hidden by default */
   position: fixed; /* Stay in place */
+
   z-index: 1; /* Sit on top */
   padding-top: 65px; /* Location of the box */
   padding-left: 114px;
@@ -21,6 +22,18 @@
   overflow: auto; /* Enable scroll if needed */
 }
 
+
+.order-modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 65px; /* Location of the box */
+  padding-left: 114px;
+  left: 0;
+  top: 0;
+  width: 500px; /* Full width */
+  overflow: auto; /* Enable scroll if needed */
+}
 
 .custom-modal-content {
   background-color: #fefefe;

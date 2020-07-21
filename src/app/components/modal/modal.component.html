@@ -1,7 +1,6 @@
-
 <!-- NAVIGATION MODAL STATES -->
 
-<div class="navigation-modal animate__animated animate__fadeInDown"  *ngIf="modalState?.show && modalState?.control === 'navigation'"
+<div class="navigation-modal animate__animated animate__fadeInDown"  *ngIf="this.modalControl.control === 'navigation' && this.modalControl.showModal"
 >
   <!-- Modal content -->
   <div class="custom-modal-content">
@@ -14,7 +13,7 @@
   </div>
 </div>
 
-<div class="navigation-modal animate__animated animate__fadeOutUp"  *ngIf="!modalState?.show && modalState?.control === 'navigation'"
+<div class="navigation-modal animate__animated animate__fadeOutUp"  *ngIf="this.modalControl.control === 'navigation' && !this.modalControl.showModal"
 >
   <!-- Modal content -->
   <div class="custom-modal-content">
@@ -29,7 +28,7 @@
 
 <!-- PRODUCTS MODAL STATES -->
 
-<div class="products-modal animate__animated animate__fadeInDown" *ngIf="modalState?.show && modalState?.control === 'products'"
+<div class="products-modal animate__animated animate__fadeInDown" *ngIf="this.modalControl.control === 'products' && this.modalControl.showModal"
 >
   <!-- Modal content -->
   <div class="custom-modal-content">
@@ -43,7 +42,7 @@
   </div>
 </div>
 
-<div class="products-modal animate__animated animate__fadeOutUp" *ngIf="!modalState?.show && modalState?.control === 'products'"
+<div class="products-modal animate__animated animate__fadeOutUp" *ngIf="this.modalControl.control === 'products' && !this.modalControl.showModal"
 >
   <!-- Modal content -->
   <div class="custom-modal-content">
@@ -56,3 +55,5 @@
     <p>Some text in the Modal..</p>
   </div>
 </div>
+
+

@@ -1,8 +1,6 @@
-import {Component, HostListener, Input, OnDestroy, OnInit} from '@angular/core';
-import {animate, keyframes, style, transition, trigger} from "@angular/animations";
-import * as kf from "../../utils/keyframes";
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {ModalService} from "../../services/modal.service";
-import {ModalControllerModel} from "../../models/ModalController.model";
+import {ModalControllerModel} from "../../models/modalController.model";
 
 @Component({
   selector: 'app-modal',
@@ -11,15 +9,15 @@ import {ModalControllerModel} from "../../models/ModalController.model";
 
 })
 export class ModalComponent implements OnInit, OnDestroy {
-  modalState: ModalControllerModel;
+  modalControl: ModalControllerModel;
 
   constructor(private modalService: ModalService) {
   }
 
   ngOnInit(): void {
-    this.modalService.showModalState.subscribe(
-      value => this.modalState = value
-    );
+    this.modalControl = this.modalService.modalControl;
+    console.log('modal html')
+    console.log(this.modalControl);
   }
 
   @HostListener('window:beforeunload')

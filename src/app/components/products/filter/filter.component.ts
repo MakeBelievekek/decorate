@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ModalService} from "../../../services/modal.service";
 
 @Component({
   selector: 'app-filter',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FilterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: ModalService) { }
 
   ngOnInit(): void {
   }
 
+  toggleOrderModal() {
+    this.modalService.toggleModal('order');
+  }
 }

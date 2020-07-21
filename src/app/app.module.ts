@@ -27,6 +27,7 @@ import { ProductsHeaderComponent } from './components/products/products-header/p
 import { ProductComponent } from './components/products/products-list/product/product.component';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { ProductsComponent } from './components/products/products.component';
+import { ProductsModalComponent } from './components/products/products-modal/products-modal.component';
 
 @NgModule({
     declarations: [
@@ -51,6 +52,7 @@ import { ProductsComponent } from './components/products/products.component';
         ProductComponent,
         ProductsHeaderComponent,
         DiagramsComponent,
+        ProductsModalComponent,
     ],
     imports: [
         BrowserModule,
