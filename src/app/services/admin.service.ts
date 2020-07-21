@@ -15,6 +15,16 @@ export class AdminService {
 
     toggleService = new Subject<boolean>();
 
+    findCategoryId(categoryListItem: CategoryListItem[], categoryName: string) {
+        let id: number;
+        for (let category of categoryListItem) {
+            if (category.name === categoryName) {
+                id = category.id;
+            }
+        }
+        return id;
+    }
+
     createProduct(data: ProductModel): Observable<ProductModel> {
         return this.http.post<ProductModel>(PRODUCT_BASE_URL + '/admin', data);
     }

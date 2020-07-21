@@ -3,4 +3,5 @@ export interface ProductModel {
     productDesc: string;
     productImg: string;
     productCategory: string;
+    categoryId: number
 }

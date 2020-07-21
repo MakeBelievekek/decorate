@@ -26,9 +26,9 @@ export class AdminProductFormComponent implements OnInit {
 
     ngOnInit(): void {
         this.adminService.getAllCategories().subscribe(
-            (data) => {this.categories = data},
-            () =>{},
-            () =>{},
+            (data) => {this.categories = data;},
+            () => {},
+            () => {},
         );
 
     }
@@ -42,6 +42,7 @@ export class AdminProductFormComponent implements OnInit {
         const data: ProductModel = {
             productName: null,
             productDesc: null,
+            categoryId: null,
             productCategory: null,
             productImg: null,
         };
@@ -49,6 +50,7 @@ export class AdminProductFormComponent implements OnInit {
         data.productDesc = this.productForm.controls['productDesc'].value;
         data.productCategory = this.productForm.controls['productCategory'].value;
         data.productImg = this.productForm.controls['productImg'].value;
+        data.categoryId = this.adminService.findCategoryId(this.categories, data.productCategory);
         return data;
     }
 
