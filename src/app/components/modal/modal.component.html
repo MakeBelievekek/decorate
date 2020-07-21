@@ -1,59 +1,64 @@
-<!-- NAVIGATION MODAL STATES -->
+<div (click)="this.keepModalOnScreen()">
+  <!-- NAVIGATION MODAL STATES -->
 
-<div class="navigation-modal animate__animated animate__fadeInDown"  *ngIf="this.modalControl.control === 'navigation' && this.modalControl.showModal"
->
-  <!-- Modal content -->
-  <div class="custom-modal-content">
-    <p>ez a modal nem nem NAVIGATION</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
+  <div class="navigation-modal animate__animated animate__fadeInDown"
+       *ngIf="this.modalControl.control === 'navigation' && this.modalControl.showModal"
+  >
+    <!-- Modal content -->
+    <div class="custom-modal-content">
+      <p>ez a modal nem nem NAVIGATION</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+    </div>
+  </div>
+
+  <div class="navigation-modal animate__animated animate__fadeOutUp"
+       *ngIf="this.modalControl.control === 'navigation' && !this.modalControl.showModal"
+  >
+    <!-- Modal content -->
+    <div class="custom-modal-content">
+      <p>ez a modal nem nem NAVIGATION</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+    </div>
+  </div>
+
+  <!-- PRODUCTS MODAL STATES -->
+
+  <div class="products-modal animate__animated animate__fadeInDown"
+       *ngIf="this.modalControl.control === 'products' && this.modalControl.showModal"
+  >
+    <!-- Modal content -->
+    <div class="custom-modal-content">
+      <a>ez a</a>
+      <p>ez a modal compones PRODUCTS</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+    </div>
+  </div>
+
+  <div class="products-modal animate__animated animate__fadeOutUp"
+       *ngIf="this.modalControl.control === 'products' && !this.modalControl.showModal"
+  >
+    <!-- Modal content -->
+    <div class="custom-modal-content">
+      <a>ez a</a>
+      <p>ez a modal compones PRODUCTS</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+    </div>
   </div>
 </div>
-
-<div class="navigation-modal animate__animated animate__fadeOutUp"  *ngIf="this.modalControl.control === 'navigation' && !this.modalControl.showModal"
->
-  <!-- Modal content -->
-  <div class="custom-modal-content">
-    <p>ez a modal nem nem NAVIGATION</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-  </div>
-</div>
-
-<!-- PRODUCTS MODAL STATES -->
-
-<div class="products-modal animate__animated animate__fadeInDown" *ngIf="this.modalControl.control === 'products' && this.modalControl.showModal"
->
-  <!-- Modal content -->
-  <div class="custom-modal-content">
-    <a>ez a</a>
-    <p>ez a modal compones PRODUCTS</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-  </div>
-</div>
-
-<div class="products-modal animate__animated animate__fadeOutUp" *ngIf="this.modalControl.control === 'products' && !this.modalControl.showModal"
->
-  <!-- Modal content -->
-  <div class="custom-modal-content">
-    <a>ez a</a>
-    <p>ez a modal compones PRODUCTS</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-    <p>Some text in the Modal..</p>
-  </div>
-</div>
-
 

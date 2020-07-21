@@ -6,8 +6,7 @@
 
 .modal-container {
   position: fixed;
-  display: flex;
-  background: beige;
+  z-index: 1;
 }
 
 a {
@@ -19,12 +18,6 @@ a {
 
 i {
   padding-left: 0.5rem;
-}
-
-.filter-element-right {
-  display: flex;
-  background: #719ECE;
-
 }
 
 .push {
