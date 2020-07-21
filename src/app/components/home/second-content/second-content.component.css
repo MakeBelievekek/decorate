@@ -1,11 +1,18 @@
 .content {
     height: 90vh;
     display: grid;
+    grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr 2fr;
-    grid-template-areas: "a1 a2 a3";
-    grid-gap:0.2rem
+    grid-template-areas: "a1 a2 a3" "b1 b2 a3";
+
+}
+.grig-down {
+    grid-area: a2;
 }
 
+.grid-up {
+    grid-area: b1;
+}
 .firstCard {
     position: relative;
     grid-area: a1;
@@ -32,7 +39,7 @@
 
 .secondCard {
     position: relative;
-    grid-area: a2;
+    grid-area: b2;
     background: url("src/assets/Gyerekfüggöny főoldal fotó.jpg") no-repeat center center;
     background-size: cover;
     overflow: hidden;
