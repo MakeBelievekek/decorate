@@ -110,7 +110,6 @@
     }
 
 
-
     .mozaik-text {
         font-family: courier;
         font-weight: bolder;
@@ -130,31 +129,34 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 2fr 1fr 1fr;
-        grid-template-areas: "a a" "b1 c" "b2 c";
+        grid-template-areas: "a a" "b1 c1" "b2 c2";
     }
 
     .firstCard {
-        background: url("../../../../assets/JOURNEY BEYOND CAM 12.jpg") no-repeat center center;
+        background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
         filter: brightness(80%);
         grid-area: a;
+        overflow: hidden;
 
     }
 
     .secondCard {
-        background: url("../../../../assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
+        background: url("src/assets/Fényáteresztő főoldal fotó.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
         grid-area: b2;
+        overflow: hidden;
     }
 
     .thirdCard {
-        background: url("../../../../assets/REFLECTIONS CAM 4.jpg") no-repeat center center;
+        background: url("src/assets/JOURNEY BEYOND CAM 4.jpg") no-repeat center center;
         background-size: cover;
         width: 100%;
         filter: brightness(65%);
-        grid-area: c;
+        grid-area: c1;
+        overflow: hidden;
     }
 
     .mozaik-down {
@@ -163,7 +165,9 @@
         background-size: cover;
         width: 100%;
         position: relative;
-
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .mozaik-down:before {
@@ -177,5 +181,37 @@
         border-right: 20px solid transparent;
         border-bottom: 15px solid transparent;
         border-top: 23px solid #FFDEE3;
+    }
+
+    .mozaik-up {
+        grid-area: c2;
+        background-color: #FFDEE3;
+        background-size: cover;
+        width: 100%;
+        position: relative;
+        filter: brightness(95%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mozaik-up:before {
+        content: "";
+        position: absolute;
+        right: 45%;
+        top: -35px;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 23px solid #FFDEE3;
+        border-top: 15px solid transparent;
+    }
+    .mozaik-text {
+        font-family: courier;
+        font-weight: bolder;
+        color: white;
+    }
+    p {
+        display: none;
     }
 }
