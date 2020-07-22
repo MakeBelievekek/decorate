@@ -20,7 +20,7 @@ export class AppComponent implements OnInit {
   }
 
   closeModal() {
-    if (this.modalControl.modalButtonPressed && this.bodyPressed) {
+    if (this.modalControl.keepShowingModal && this.bodyPressed) {
       this.modalService.setModalButtonPressedFalse();
       this.bodyPressed = false;
     } else {

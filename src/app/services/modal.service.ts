@@ -12,7 +12,7 @@ export class ModalService {
 
 
   constructor() {
-    this.modalControl = {control: '', showModal: false, modalButtonPressed: false}
+    this.modalControl = {control: '', showModal: false, keepShowingModal: false}
   }
 
   closeModal() {
@@ -32,7 +32,12 @@ export class ModalService {
     } else if (!this.modalControl.showModal) {
       this.openModals = this.filterFromOpenModals(control);
     }
-    this.modalControl.modalButtonPressed = true;
+    this.modalControl.keepShowingModal = true;
+  }
+
+  keepModalOnScreen() {
+    this.modalControl.keepShowingModal = true;
+    console.log('keep it on screen');
   }
 
   addToOpenModals(control: string): void {
@@ -49,7 +54,7 @@ export class ModalService {
   }
 
   setModalButtonPressedFalse() {
-    this.modalControl.modalButtonPressed = false;
+    this.modalControl.keepShowingModal = false;
   }
 
 }

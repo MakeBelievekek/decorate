@@ -1,3 +1,39 @@
-* {
-  display: block;
+.products-modal-container-anti {
+  display: none;
+}
+
+.products-modal-container {
+  display: flex;
+  width: 175px;
+  flex-direction: column;
+}
+
+.order-element-active {
+  background: #555555;
+}
+
+
+div {
+  flex-direction: row;
+  background: greenyellow;
+  width: 100%;
+  text-align: center;
+
+}
+i {
+  padding-right: 0.5rem;
+}
+a {
+  padding-top: 7px;
+  font-family: Arial;
+  color: #222;
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: inline-block;
+  width: 100%;
+}
+
+a:hover {
+  background: lightgrey;
+
 }

@@ -1,1 +1,8 @@
-<div *ngIf="this.modalControl.control === 'order' && this.modalControl.showModal">ez itt a modal</div>
+<div class="products-modal-container-anti" (click)="this.keepModalOnScreen()" [ngClass]="{'products-modal-container': this.modalControl.control === 'order' && this.modalControl?.showModal}">
+  <ng-container *ngIf="this.modalControl.control === 'order' && this.modalControl.showModal">
+    <div *ngFor="let order of this.modalContent.order">
+      <a (click)="handleActiveOrders(order)" *ngIf="!this.activeOrders.includes(order)"><i class="fa fa-circle-thin" aria-hidden="true"></i>{{order}}</a>
+      <a (click)="handleActiveOrders(order)" *ngIf="this.activeOrders.includes(order)"><i class="fa fa-circle" aria-hidden="true"></i>{{order}}</a>
+    </div>
+  </ng-container>
+</div>

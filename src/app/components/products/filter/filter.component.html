@@ -1,9 +1,16 @@
 <div class="filter-container">
-  <div class="filter-element" (click)="toggleOrderModal()"><a>Recommended<i class="fa fa-chevron-down" aria-hidden="true"></i></a>
-    <div class="modal-container"><app-products-modal></app-products-modal></div>
+  <div class="filter-element" (click)="toggleOrderModal()"><a>Recommended<i class="fa fa-chevron-down"
+                                                                            aria-hidden="true"></i></a>
+
   </div>
   <div class="filter-element"><a href="">Colour<i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
   <div class="filter-element"><a href="">Design Style<i class="fa fa-chevron-down" aria-hidden="true"></i></a></div>
   <div class="push filter-element"><a href="">GridOne</a></div>
   <div class="filter-element"><a href="">GridTwo</a></div>
+</div>
+
+
+
+<div class="modal-container" >
+  <app-products-modal [modalContent]="this.content"></app-products-modal>
 </div>

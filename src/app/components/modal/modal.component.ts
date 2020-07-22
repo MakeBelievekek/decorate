@@ -8,7 +8,7 @@ import {ModalControllerModel} from "../../models/modalController.model";
   styleUrls: ['./modal.component.css'],
 
 })
-export class ModalComponent implements OnInit, OnDestroy {
+export class ModalComponent implements OnInit {
   modalControl: ModalControllerModel;
 
   constructor(private modalService: ModalService) {
@@ -16,11 +16,9 @@ export class ModalComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.modalControl = this.modalService.modalControl;
-    console.log('modal html')
-    console.log(this.modalControl);
   }
 
-  @HostListener('window:beforeunload')
-  ngOnDestroy(): void {
+  keepModalOnScreen() {
+    this.modalService.keepModalOnScreen();
   }
 }

@@ -28,10 +28,10 @@ export class NavbarComponent implements OnInit {
     this.screenSizeModel = this.screenService.getScreenSize();
     if (this.screenSizeModel.width >= 1000) {
       this.largeNavToShow = true;
-      //this.modalService.closeModal();
+      this.modalService.closeModal();
     } else {
       this.largeNavToShow = false;
-      //this.modalService.closeModal();
+      this.modalService.closeModal();
     }
   }
 
