@@ -20,7 +20,6 @@ import { ContentComponent } from './components/home/content/content.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewsletterComponent } from './components/home/newsletter/newsletter.component';
 import { SecondContentComponent } from './components/home/second-content/second-content.component';
-import { ModalComponent } from './components/modal/modal.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FilterComponent } from './components/products/filter/filter.component';
 import { ProductsHeaderComponent } from './components/products/products-header/products-header.component';
@@ -32,6 +31,7 @@ import { FourthContentComponent } from './components/home/fourth-content/fourth-
 import { NewsComponent } from './components/home/news/news.component';
 import { SalesComponent } from './components/home/sales/sales.component';
 import { ProductsModalComponent } from './components/products/products-modal/products-modal.component';
+import { NavbarModalComponent } from './components/navbar/navbar-modal/navbar-modal.component';
 
 @NgModule({
     declarations: [
@@ -43,7 +43,6 @@ import { ProductsModalComponent } from './components/products/products-modal/pro
         ContentHeaderComponent,
         NewsletterComponent,
         SecondContentComponent,
-        ModalComponent,
         AdminComponent,
         ProductsComponent,
         AdminContentComponent,
@@ -61,6 +60,7 @@ import { ProductsModalComponent } from './components/products/products-modal/pro
         NewsComponent,
         SalesComponent,
         ProductsModalComponent,
+        NavbarModalComponent,
     ],
     imports: [
         BrowserModule,

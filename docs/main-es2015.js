@@ -653,7 +653,7 @@ ModalComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineCom
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
                 selector: 'app-modal',
-                templateUrl: './modal.component.html',
+                templateUrl: './navbar-modal.component.html',
                 styleUrls: ['./modal.component.css'],
             }]
     }], function () { return [{ type: _services_modal_service__WEBPACK_IMPORTED_MODULE_1__["ModalService"] }]; }, { ngOnDestroy: [{

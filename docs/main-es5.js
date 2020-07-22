@@ -1317,7 +1317,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
           selector: 'app-modal',
-          templateUrl: './modal.component.html',
+          templateUrl: './navbar-modal.component.html',
           styleUrls: ['./modal.component.css']
         }]
       }], function () {
