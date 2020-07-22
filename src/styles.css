@@ -1,4 +1,9 @@
 @import "~animate.css/animate.min.css";
+
+*, *::before, *::after{
+  box-sizing: border-box;
+}
+
 @font-face {
     font-family: 'Great Vibes';
     font-style: normal;
