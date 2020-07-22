@@ -1,3 +1,24 @@
-.container-flex {
-    display:flex;
+footer {
+  display: grid;
+  height: 350px;
+  background: #fde6de;
+  grid-template-columns: minmax(2em, 300px) 425px 275px 275px minmax(350px, 425px) minmax(2em, 300px);
+  grid-template-areas: ". media menu info contact .";
+  grid-column-gap: 1em;
+}
+
+.footer-media {
+  grid-area: media;
+}
+
+.footer-menu {
+  grid-area: menu;
+}
+
+.footer-info {
+  grid-area: info;
+}
+
+.footer-contact {
+  grid-area: contact;
 }
