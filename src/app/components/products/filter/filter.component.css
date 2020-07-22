@@ -4,8 +4,12 @@
   flex-direction: row;
 }
 
+.filter-element {
+  position: relative;
+}
+
 .modal-container {
-  position: fixed;
+  position: absolute;
   z-index: 1;
 }
 
