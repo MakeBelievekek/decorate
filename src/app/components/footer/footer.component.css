@@ -1,44 +1,23 @@
-@media screen and (min-width: 760px) {
-  footer {
-    display: grid;
-    background: #fde6de;
-    grid-auto-flow: column;
-    grid-template-columns: minmax(400px, auto) 275px;
-    grid-column-gap: 1em;
-    grid-row-gap: 1em;
-    padding: 3em 2em 2em;
-  }
+.flex-valami {
 
-  .footer-media {
-    grid-column: 1 / 2;
-  }
-
-  .footer-menu {
-    grid-column: 2 / 3;
-  }
-
-  .footer-info {
-   grid-column: 2 / 3;
-  }
-
-  .footer-contact {
-    grid-column: 1 / 2;
-  }
-
-  .footer-pay {
-    grid-column: 1 / -1;
-    text-align: center;
-  }
 }
 
-@media screen and (min-width: 1450px) {
+a {
+  font-family: Arial, fantasy;
+  color: #222;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+
+@media all and (min-width: 1000px) {
 
   footer {
     display: grid;
     background: #fde6de;
-    grid-template-columns: minmax(2em, 300px) 425px 275px 275px minmax(350px, 425px) minmax(2em, 300px);
+    grid-template-columns: minmax(2em, 300px) minmax(300px, 425px) minmax(auto, 275px) minmax(auto, 275px) minmax(275px, 425px) minmax(2em, 300px);
     grid-template-rows: auto auto;
-    grid-column-gap: 1em;
+    grid-column-gap: 2em;
     padding: 3em 2em 2em;
   }
 
@@ -53,7 +32,7 @@
 
   .footer-info {
     grid-column: 4 / 5;
-}
+  }
 
   .footer-contact {
     grid-column: 5 / 6;
@@ -66,15 +45,48 @@
   }
 }
 
-@media screen and (max-width: 759px) {
+@media all and (min-width: 600px) and (max-width: 999px) {
+  footer {
+    display: grid;
+    background: #fde6de;
+    grid-auto-flow: column;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 2em;
+    grid-row-gap: 1em;
+    padding: 3em 2em 2em;
+  }
+
+  .footer-media {
+    grid-column: 1 / -1;
+    align-self: center;
+  }
+
+  .footer-menu {
+    grid-column: 2 / 3;
+  }
+
+  .footer-info {
+    grid-column: 3 / 4;
+  }
+
+  .footer-contact {
+    grid-column: 1 / 2;
+  }
+
+  .footer-pay {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+}
+
+
+@media all and (max-width: 599px) {
   footer {
     display: flex;
-    flex-direction: column;
-    padding-right: 1em;
-    padding-left: 1em;
-    align-items: center;
+    justify-content: space-evenly;
     background: #fde6de;
     padding: 2em 2em 2em;
+    flex-wrap: wrap;
   }
 
   .footer-media {
@@ -86,19 +98,20 @@
   .footer-menu {
     padding-top: 2em;
     order: 2;
-    width: 75%;
+    width: 48%;
   }
 
   .footer-info {
     padding-top: 2em;
     order: 3;
-    width: 75%;
+    width: 35%;
+
   }
 
   .footer-contact {
     padding-top: 2em;
+
     order: 4;
-    width: 90%;
   }
 
   .footer-pay {
@@ -106,5 +119,26 @@
     order: 5;
     width: 90%;
   }
+  .flex-valami {
+    order: 3;
+    display: flex;
+    flex-direction: row;
+  }
+
+
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-social-container {
+  display: flex;
+  padding-top: 1.5em;
+}
+
+.contact-social-container i {
+  padding-right: 0.75em;
 }
 
