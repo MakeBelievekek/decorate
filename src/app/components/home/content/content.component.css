@@ -7,21 +7,18 @@
         grid-template-areas: "a2 a1 a3" "a4 a1 a5";
         cursor: pointer;
     }
-
     .descOne {
         position: relative;
         grid-area: f;
     }
-
     .text {
-        font-family: "NexaRustScriptL-00", sans-serif;
+        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
         font-weight: normal;
-        font-size: 4.375em;
+        font-size: 5rem;
         line-height: 0.9;
         color: white;
 
     }
-
     .firstCard {
         grid-area: a1;
         filter: brightness(80%);
@@ -108,17 +105,19 @@
     .grid-up {
         grid-area: a5;
     }
-
-
     .mozaik-text {
-        font-family: courier;
+
+        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
         font-weight: bolder;
-        font-size: 2rem;
+        font-size:4rem;
         line-height: 0.9;
         color: white;
-        padding-bottom: 30px;
-        text-decoration: underline;
-
+    }
+    .mozaik-text-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
 
@@ -139,7 +138,10 @@
         filter: brightness(80%);
         grid-area: a;
         overflow: hidden;
-
+        display: grid;
+        grid-template-columns: 1fr 1fr 2fr;
+        grid-template-rows: 1fr 1fr 0.5fr;
+        grid-template-areas: "a b c" "d e f" "i j k";
     }
 
     .secondCard {
@@ -165,9 +167,6 @@
         background-size: cover;
         width: 100%;
         position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
 
     .mozaik-down:before {
@@ -190,9 +189,6 @@
         width: 100%;
         position: relative;
         filter: brightness(95%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
     }
     .mozaik-up:before {
         content: "";
@@ -207,11 +203,30 @@
         border-top: 15px solid transparent;
     }
     .mozaik-text {
-        font-family: courier;
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-weight: bolder;
         color: white;
     }
     p {
         display: none;
+    }
+    .mozaik-text-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .descOne {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        grid-area: f;
+    }
+    .text {
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-size: 3rem;
+        font-weight: bolder;
+        color: white;
     }
 }
