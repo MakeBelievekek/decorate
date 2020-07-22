@@ -7,21 +7,22 @@
         grid-template-areas: "a2 a1 a3" "a4 a1 a5";
         cursor: pointer;
     }
-    .descOne {
-        position: relative;
-        grid-area: f;
-    }
     .text {
         font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
         font-weight: normal;
         font-size: 5rem;
         line-height: 0.9;
-        color: white;
+        color: whitesmoke;
+        filter: brightness(100%);
+    }
 
+    .descOne {
+        position: relative;
+        grid-area: f;
+        text-align: center;
     }
     .firstCard {
         grid-area: a1;
-        filter: brightness(80%);
         display: grid;
         grid-template-columns: 1fr 1fr 2fr;
         grid-template-rows: 1fr 1fr 0.5fr;
@@ -31,6 +32,7 @@
         background-size: cover;
         overflow: hidden;
         transition: all .8s;
+        filter: brightness(85%);
     }
 
     .firstCard::before {
@@ -72,6 +74,7 @@
         transform: scale(1.1);
     }
 
+
     .thirdCard {
         position: relative;
         grid-area: a3;
@@ -80,9 +83,7 @@
         background-size: cover;
         overflow: hidden;
         transition: all .8s;
-
     }
-
     .thirdCard::before {
         content: "";
         position: absolute;
@@ -105,19 +106,25 @@
     .grid-up {
         grid-area: a5;
     }
-    .mozaik-text {
 
+    .mozaik-text {
         font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
         font-weight: bolder;
-        font-size:4rem;
+        font-size: 3.5vw;
         line-height: 0.9;
-        color: white;
+        color: WhiteSmoke;
     }
-    .mozaik-text-container{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+
+    .mozaik-text-container {
+        text-align: center;
+    }
+    p {
+        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+        font-weight: bolder;
+        font-size: 2vw;
+        line-height: 0.9;
+        color: #C6D7CD;
+        padding-top: 20px;
     }
 }
 
@@ -190,6 +197,7 @@
         position: relative;
         filter: brightness(95%);
     }
+
     .mozaik-up:before {
         content: "";
         position: absolute;
@@ -202,20 +210,24 @@
         border-bottom: 23px solid #FFDEE3;
         border-top: 15px solid transparent;
     }
+
     .mozaik-text {
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-weight: bolder;
         color: white;
     }
+
     p {
         display: none;
     }
-    .mozaik-text-container{
+
+    .mozaik-text-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
+
     .descOne {
         display: flex;
         justify-content: center;
@@ -223,6 +235,7 @@
         position: relative;
         grid-area: f;
     }
+
     .text {
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-size: 3rem;
