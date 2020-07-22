@@ -1,6 +1,6 @@
 @media screen and (min-width: 1000px) {
   .newsletter-container {
-    background-color: ghostwhite;
+    background-color: #E5E5E5;
     display: grid;
     grid-template-rows: 1fr 2fr 1fr;
     grid-template-columns: minmax(100px, 0.5fr) 2.4fr minmax(auto, 125px);
