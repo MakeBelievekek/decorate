@@ -4,29 +4,29 @@
     background: #fde6de;
     grid-template-columns: minmax(400px, auto) 275px;
     grid-column-gap: 1em;
-    padding-top: 3em;
-    padding-left: 2em;
-    padding-right: 2em;
+    grid-row-gap: 1em;
+    padding: 3em 2em 2em;
   }
 
   .footer-media {
-    display: block;
+    grid-column: 1 / 2;
   }
 
   .footer-menu {
-    display: block;
+    grid-column: 2 / 3;
   }
 
   .footer-info {
-    display: block;
+   grid-column: 2 / 3;
   }
 
   .footer-contact {
-    display: block;
+    grid-column: 1 / 2;
   }
 
   .footer-pay {
     grid-column: 1 / -1;
+    text-align: center;
   }
 }
 
@@ -39,7 +39,7 @@
     grid-template-columns: minmax(2em, 300px) 425px 275px 275px minmax(350px, 425px) minmax(2em, 300px);
     grid-template-areas: ". media menu info contact ." "p p p p p p";
     grid-column-gap: 1em;
-    padding-top: 3em;
+    padding: 3em 2em 2em;
   }
 
   .footer-media {
@@ -73,6 +73,7 @@
     padding-left: 1em;
     align-items: center;
     background: #fde6de;
+    padding: 2em 2em 2em;
   }
 
   .footer-media {
