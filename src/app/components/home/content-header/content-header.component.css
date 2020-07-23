@@ -1,13 +1,15 @@
 @media screen and (min-width: 1000px) {
     .content-header {
-        background-color: #E5E5E5;
-        height: 210px;
-        display: grid;
-        grid-template-rows: 1fr 2fr;
-        grid-template-columns: 0.2fr 1fr 0.2fr;
-        grid-template-areas: "h1 h2 h3" "i1 h2 i3";
-        padding-left: 32px;
-        padding-right: 32px;
+      background-color: #E5E5E5;
+      height: 210px;
+      display: grid;
+      grid-template-rows: 1fr 2fr;
+      grid-template-columns: 0.2fr 1fr 0.2fr;
+      grid-template-areas: "h1 h2 h3" "i1 h2 i3";
+      padding-left: 32px;
+      padding-right: 32px;
+      margin-top: 0;
+      padding-top: 0;
     }
 
     .dot {
