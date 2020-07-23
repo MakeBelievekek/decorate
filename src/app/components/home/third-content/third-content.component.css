@@ -96,18 +96,22 @@
         transition-timing-function: linear;
     }
 }
+
 @media screen and (max-width: 999px) {
     .content {
         height: 50vh;
         display: grid;
-        grid-template-rows: 1fr 1fr ;
-        grid-template-columns: 1fr 1fr ;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         grid-template-areas: "a1 a1" "b1 b1 ";
     }
 
     .firstCard {
         position: relative;
         grid-area: a1;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas: ". e . ";
         background: url("src/assets/Tapéta főoldal fotó.jpg") no-repeat center center;
         background-size: cover;
         overflow: hidden;
@@ -133,6 +137,9 @@
     .secondCard {
         position: relative;
         grid-area: b1;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas: ". e . ";
         background: url("src/assets/Lakástextil kiegészítők főoldal fotó.jpg") no-repeat center center;
         background-size: cover;
         overflow: hidden;
@@ -171,17 +178,11 @@
         text-align: center;
     }
 
-    .desc-backgr {
-        position: relative;
-        grid-area: e;
-        background-color: black;
-        opacity: 30%;
-    }
-
     .desc-text {
         position: relative;
         grid-area: e;
         text-align: center;
+        flex-direction: column;
     }
 
     span {
@@ -195,7 +196,7 @@
         font-size: 10vw;
         font-weight: bolder;
         color: white;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
         margin-top: 20px;
     }
 
