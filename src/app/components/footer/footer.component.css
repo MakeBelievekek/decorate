@@ -110,7 +110,7 @@ a {
     grid-auto-flow: column;
     grid-row-gap: 3em;
 
-    grid-template-areas: "cont cont" "men inf" "med med" "pay pay";
+    grid-template-areas:  "men inf" "cont cont" "med med" "pay pay";
   }
 
   .footer-media {
