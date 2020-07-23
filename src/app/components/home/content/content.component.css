@@ -37,6 +37,7 @@
     }
 
     span {
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-size: 0.9vw;
         color: white;
     }
@@ -284,6 +285,7 @@
     }
 
     span {
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-size: 3vw;
         color: white;
     }
@@ -304,13 +306,14 @@
         padding-right: 15px;
         padding-top: 5px;
         padding-bottom: 5px;
-        transition: 1s;
-        transition-timing-function: linear;
         background: none;
+        margin-top: 10px;
     }
 
     .detailsButton:hover {
         background-color: #C6D7CD;
+        transition: 1s;
+        transition-timing-function: linear;
     }
 
     .mozaik-down {
