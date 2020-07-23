@@ -1,115 +1,42 @@
 .content {
     height: 60vh;
     display: grid;
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas: "a1 a2 ";
 }
 
 .firstCard {
-    position: relative;
     grid-area: a1;
     background: url("src/assets/Karnis főoldali fotó.jpg") no-repeat center center;
     background-size: cover;
-    overflow: hidden;
-    transition: all .8s;
-    filter: brightness(80%);
-}
-
-.firstCard::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: inherit;
-    transition: inherit;
-}
-
-.firstCard:hover::before {
-    transform: scale(1.1);
 }
 
 .secondCard {
-    position: relative;
     grid-area: a2;
     background: url("src/assets/Textil Kiegészítők főoldal fotó.jpg") no-repeat center;
     background-size: cover;
-    overflow: hidden;
-    transition: all .8s;
-    filter: brightness(80%);
 }
 
-.secondCard::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: inherit;
-    transition: inherit;
-}
-
-.secondCard:hover::before {
-    transform: scale(1.1);
-}
 @media screen and (max-width: 999px) {
     .content {
         height: 50vh;
         display: grid;
-        grid-template-rows: 1fr 1fr ;
-        grid-template-columns: 1fr 1fr ;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
         grid-template-areas: "a1 a1" "b1 b1 ";
     }
 
     .firstCard {
-        position: relative;
         grid-area: a1;
         background: url("src/assets/Karnis főoldali fotó.jpg") no-repeat center center;
         background-size: cover;
-        overflow: hidden;
-        transition: all .8s;
-        filter: brightness(80%);
-    }
-
-    .firstCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .firstCard:hover::before {
-        transform: scale(1.1);
     }
 
     .secondCard {
-        position: relative;
         grid-area: b1;
         background: url("src/assets/Textil Kiegészítők főoldal fotó.jpg") no-repeat center;
         background-size: cover;
-        overflow: hidden;
-        transition: all .8s;
-        filter: brightness(80%);
     }
 
-    .secondCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
 
-    .secondCard:hover::before {
-        transform: scale(1.1);
-    }
 }

@@ -16,83 +16,30 @@
 }
 
 .firstCard {
-    position: relative;
     grid-area: a1;
     background: url("src/assets/Blacl out főoldal fotó.jpg") no-repeat center center;
     background-size: cover;
-    overflow: hidden;
-    transition: all .8s;
-}
-
-.firstCard::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: inherit;
-    transition: inherit;
-}
-
-.firstCard:hover::before {
-    transform: scale(1.1);
 }
 
 .secondCard {
-    position: relative;
     grid-area: b2;
     background: url("src/assets/Gyerekfüggöny főoldal fotó.jpg") no-repeat center center;
     background-size: cover;
-    overflow: hidden;
-    transition: all .8s;
-    filter: brightness(80%);
-}
-
-.secondCard::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: inherit;
-    transition: inherit;
-}
-
-.secondCard:hover::before {
-    transform: scale(1.1);
 }
 
 .thirdCard {
-    position: relative;
     grid-area: a3;
     background: url("src/assets/Bútorszövet főoldal fotó.jpg") no-repeat center center;
     background-size: cover;
-    overflow: hidden;
-    transition: all .8s;
 }
 
-.thirdCard::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: inherit;
-    transition: inherit;
-}
-
-.thirdCard:hover::before {
-    transform: scale(1.1);
-}
 p {
     font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
     font-size: 1.7vw;
     color: #C6D7CD;
     padding-top: 10px;
 }
+
 @media screen and (max-width: 999px) {
     .content {
         height: 90vh;
@@ -100,7 +47,6 @@ p {
         grid-template-rows: 1fr 1fr 2fr;
         grid-template-columns: 1fr 1fr;
         grid-template-areas: "a1 a2" "b1 b2" "c1 c1";
-
     }
 
     .grig-down {
@@ -112,142 +58,35 @@ p {
     }
 
     .firstCard {
-        position: relative;
         grid-area: a1;
         background: url("src/assets/Blacl out főoldal fotó.jpg") no-repeat center center;
         background-size: cover;
-        overflow: hidden;
-        transition: all .8s;
-    }
-
-    .firstCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .firstCard:hover::before {
-        transform: scale(1.1);
     }
 
     .secondCard {
-        position: relative;
         grid-area: b2;
         background: url("src/assets/Gyerekfüggöny főoldal fotó.jpg") no-repeat center center;
         background-size: cover;
-        overflow: hidden;
-        transition: all .8s;
-        filter: brightness(80%);
-    }
-
-    .secondCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .secondCard:hover::before {
-        transform: scale(1.1);
     }
 
     .thirdCard {
-        position: relative;
         grid-area: c1;
         background: url("src/assets/Bútorszövet főoldal fotó.jpg") no-repeat center center;
         background-size: cover;
-        overflow: hidden;
-        transition: all .8s;
     }
-
-    .thirdCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .thirdCard:hover::before {
-        transform: scale(1.1);
-    }
-
-    .mozaik-down {
-        background-color: #cd928d;
-        background-size: cover;
-        width: 100%;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        filter: brightness(95%);
-    }
-
     .mozaik-down:before {
-        content: "";
-        position: absolute;
         left: 99.5%;
         bottom: 35%;
-        width: 0;
-        height: 0;
-        border-left: 20px solid transparent;
-        border-right: 20px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-top: 23px solid #cd928d;
         transform: rotate(-90deg);
     }
-
-    .mozaik-up {
-        background-color: #cd928d;
-        background-size: cover;
-        width: 100%;
-        position: relative;
-        filter: brightness(95%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
     .mozaik-up:before {
-        content: "";
-        position: absolute;
         right: 99.5%;
         top: 35%;
-        width: 0;
-        height: 0;
-        border-left: 20px solid transparent;
-        border-right: 20px solid transparent;
-        border-bottom: 23px solid #cd928d;
-        border-top: 15px solid transparent;
         transform: rotate(-90deg);
-    }
-
-    .mozaik-text {
-        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
-        font-weight: bolder;
-        color: white;
-        font-size: 6vw;
-        text-align: center;
     }
 
     p {
         display: none;
     }
 
-    .mozaik-text-container {
-        text-align: center;
-    }
 }

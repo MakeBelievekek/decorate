@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 @font-face {
     font-family: 'Great Vibes';
     font-style: normal;
@@ -13,85 +12,224 @@
     url('src/assets/great-vibes-v7-latin-ext-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('src/assets/great-vibes-v7-latin-ext-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-.mozaik-down {
-    background-color: #cd928d;
-    background-size: cover;
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    filter: brightness(95%);
+@media screen and (min-width: 1000px) {
+    .card-direction {
+        position: relative;
+        overflow: hidden;
+        transition: all .8s;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .firstCard:hover::before, .secondCard:hover::before, .thirdCard:hover::before {
+        transform: scale(1.1);
+    }
+
+    .firstCard::before, .secondCard::before, .thirdCard::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: inherit;
+        transition: inherit;
+    }
+
+    .mozaik-down, .mozaik-up {
+        background-color: #cd928d;
+        background-size: cover;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mozaik-down:before {
+        content: "";
+        position: absolute;
+        right: 45%;
+        bottom: -35px;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-top: 23px solid #cd928d;
+    }
+
+    .mozaik-up:before {
+        content: "";
+        position: absolute;
+        right: 45%;
+        top: -35px;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 23px solid #cd928d;
+        border-top: 15px solid transparent;
+    }
+
+    .mozaik-text {
+        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+        font-weight: bolder;
+        font-size: 3.5vw;
+        line-height: 0.9;
+        color: WhiteSmoke;
+    }
+
+    .mozaik-text-container {
+        text-align: center;
+    }
+
+    .desc-backgr {
+        position: relative;
+        grid-area: e;
+        background-color: black;
+        opacity: 30%;
+    }
+
+    .desc-text {
+        position: relative;
+        grid-area: e;
+        text-align: center;
+    }
+
+    .text {
+        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+        font-weight: normal;
+        font-size: 4vw;
+        line-height: 0.9;
+        color: white;
+        margin-top: 40px;
+    }
+
+    .detailsButton {
+        border-radius: 25px;
+        border: 2px solid white;;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        width: 11vw;
+        background: none;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .detailsButton:hover {
+        background-color: black;
+        transition: 700ms;
+        transition-timing-function: linear;
+    }
 }
 
-.mozaik-down:before {
-    content: "";
-    position: absolute;
-    right: 45%;
-    bottom: -35px;
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-bottom: 15px solid transparent;
-    border-top: 23px solid #cd928d;
-}
+@media screen and (max-width: 999px) {
+    .card-direction {
+        position: relative;
+        overflow: hidden;
+        transition: all .8s;
+        width: 100%;
+        cursor: pointer;
+    }
 
-.mozaik-up {
-    background-color: #cd928d;
-    background-size: cover;
-    width: 100%;
-    position: relative;
-    filter: brightness(95%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .firstCard::before, .secondCard::before, .thirdCard::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: inherit;
+        transition: inherit;
+    }
 
-.mozaik-up:before {
-    content: "";
-    position: absolute;
-    right: 45%;
-    top: -35px;
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-bottom: 23px solid #cd928d;
-    border-top: 15px solid transparent;
-}
-.mozaik-text {
-    font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
-    font-weight: bolder;
-    font-size: 3.5vw;
-    line-height: 0.9;
-    color: WhiteSmoke;
-}
+    .firstCard:hover::before, .secondCard:hover::before, .thirdCard:hover::before {
+        transform: scale(1.1);
+    }
 
-.mozaik-text-container {
-    text-align: center;
-}
-.desc-backgr {
-    position: relative;
-    grid-area: e;
-    background-color: black;
-    opacity: 30%;
-}
+    .mozaik-text-container {
+        text-align: center;
+    }
 
-.desc-text {
-    position: relative;
-    grid-area: e;
-    text-align: center;
-}
-.text {
-    font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
-    font-weight: normal;
-    font-size: 4vw;
-    line-height: 0.9;
-    color: white;
-    margin-top: 40px;
-}
+    .desc-backgr {
+        position: relative;
+        grid-area: e;
+        background-color: black;
+        opacity: 30%;
+    }
 
+    .desc-text {
+        position: relative;
+        grid-area: e;
+        text-align: center;
+    }
+
+    .text {
+        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+        font-size: 10vw;
+        font-weight: bolder;
+        color: white;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+
+    .detailsButton {
+        border-radius: 25px;
+        border: 2px solid white;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        background: none;
+        margin-top: 10px;
+    }
+
+    .detailsButton:hover {
+        background-color: black;
+        transition: 1s;
+        transition-timing-function: linear;
+    }
+
+    .mozaik-down, .mozaik-up {
+        background-color: #cd928d;
+        background-size: cover;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mozaik-down:before, .mozaik-up:before {
+        content: "";
+        position: absolute;
+        right: 40%;
+        bottom: -35px;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-top: 23px solid #cd928d;
+    }
+
+    .mozaik-up:before {
+        bottom: 0px;
+        top: -35px;
+        border-bottom: 23px solid #cd928d;
+        border-top: 15px solid transparent;
+    }
+
+    .mozaik-text {
+        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+        font-weight: bolder;
+        color: white;
+        font-size: 6vw;
+        text-align: center;
+    }
+}
 
 

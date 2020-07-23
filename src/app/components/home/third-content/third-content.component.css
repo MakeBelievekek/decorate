@@ -14,7 +14,6 @@
     }
 
     .firstCard {
-        position: relative;
         grid-area: a1;
         display: grid;
         grid-template-columns: 1fr 1fr 0.2fr;
@@ -22,28 +21,10 @@
         grid-template-areas: "a b ." "d e ." "i j .";
         background: url("src/assets/Tapéta főoldal fotó.jpg") no-repeat center center;
         background-size: cover;
-        overflow: hidden;
-        transition: all .8s;
         filter: brightness(80%);
     }
 
-    .firstCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .firstCard:hover::before {
-        transform: scale(1.1);
-    }
-
     .secondCard {
-        position: relative;
         grid-area: a2;
         display: grid;
         grid-template-columns: 1fr 1fr 0.2fr;
@@ -51,24 +32,7 @@
         grid-template-areas: "a b ." "d e ." "i j .";
         background: url("src/assets/Lakástextil kiegészítők főoldal fotó.jpg") no-repeat center center;
         background-size: cover;
-        overflow: hidden;
-        transition: all .8s;
         filter: brightness(80%);
-    }
-
-    .secondCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .secondCard:hover::before {
-        transform: scale(1.1);
     }
 
     span {
@@ -76,30 +40,11 @@
         font-size: 0.9vw;
         color: white;
     }
-
-    .detailsButton {
-        border-radius: 25px;
-        border: 2px solid white;;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 9px;
-        padding-bottom: 9px;
-        width: 11vw;
-        background: none;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
-    .detailsButton:hover {
-        background-color: black;
-        transition: 700ms;
-        transition-timing-function: linear;
-    }
 }
 
 @media screen and (max-width: 999px) {
     .content {
-        height: 50vh;
+        height: 60vh;
         display: grid;
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
@@ -107,113 +52,32 @@
     }
 
     .firstCard {
-        position: relative;
         grid-area: a1;
         display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        grid-template-areas: ". e . ";
+        grid-auto-columns: 0.1fr 1fr 0.1fr;
+        grid-template-columns: 0.7fr 2fr 0.7fr;
+        grid-template-areas: ". . . " ". e . " ". . . ";
         background: url("src/assets/Tapéta főoldal fotó.jpg") no-repeat center center;
         background-size: cover;
-        overflow: hidden;
-        transition: all .8s;
-        filter: brightness(80%);
-    }
-
-    .firstCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .firstCard:hover::before {
-        transform: scale(1.1);
     }
 
     .secondCard {
-        position: relative;
         grid-area: b1;
         display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        grid-template-areas: ". e . ";
+        grid-auto-columns: 0.2fr 1fr 0.2fr;
+        grid-template-columns: 0.7fr 2fr 0.7fr;
+        grid-template-areas: ". . . " ". e . " ". . . ";
         background: url("src/assets/Lakástextil kiegészítők főoldal fotó.jpg") no-repeat center center;
         background-size: cover;
-        overflow: hidden;
-        transition: all .8s;
-        filter: brightness(80%);
-    }
-
-    .secondCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .secondCard:hover::before {
-        transform: scale(1.1);
-    }
-
-    .mozaik-text {
-        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
-        font-weight: bolder;
-        color: white;
-        font-size: 6vw;
-        text-align: center;
     }
 
     p {
         display: none;
     }
 
-    .mozaik-text-container {
-        text-align: center;
-    }
-
-    .desc-text {
-        position: relative;
-        grid-area: e;
-        text-align: center;
-        flex-direction: column;
-    }
-
     span {
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-size: 3vw;
         color: white;
-    }
-
-    .text {
-        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
-        font-size: 10vw;
-        font-weight: bolder;
-        color: white;
-        margin-bottom: 10px;
-        margin-top: 20px;
-    }
-
-    .detailsButton {
-        border-radius: 25px;
-        border: 2px solid white;
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        background: none;
-        margin-top: 10px;
-    }
-
-    .detailsButton:hover {
-        background-color: black;
-        transition: 1s;
-        transition-timing-function: linear;
     }
 }

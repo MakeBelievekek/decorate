@@ -7,88 +7,33 @@
         grid-template-areas: "a2 a1 a3" "a4 a1 a5";
         cursor: pointer;
     }
+
     span {
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-size: 0.9vw;
         color: white;
     }
+
     .firstCard {
         grid-area: a1;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 0.5fr 1fr 0.5fr;
         grid-template-areas: "a b " "d e " "i j ";
-        position: relative;
         background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
         background-size: cover;
-        overflow: hidden;
-        transition: all .8s;
-        filter: brightness(85%);
-    }
-
-    .firstCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .firstCard:hover::before {
-        transform: scale(1.1);
     }
 
     .secondCard {
-        position: relative;
         grid-area: a4;
         background: url("src/assets/Fényáteresztő főoldal fotó.jpg") no-repeat center center;
         background-size: cover;
-        overflow: hidden;
-        transition: all .8s;
     }
-
-    .secondCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .secondCard:hover::before {
-        transform: scale(1.1);
-    }
-
 
     .thirdCard {
-        position: relative;
         grid-area: a3;
         background: url("src/assets/JOURNEY BEYOND CAM 4.jpg") no-repeat center center;
-        filter: brightness(90%);
         background-size: cover;
-        overflow: hidden;
-        transition: all .8s;
-    }
-
-    .thirdCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .thirdCard:hover::before {
-        transform: scale(1.1);
     }
 
     .grig-down {
@@ -105,24 +50,6 @@
         color: #C6D7CD;
         padding-top: 10px;
     }
-    .detailsButton {
-        border-radius: 25px;
-        border: 2px solid white;;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 9px;
-        padding-bottom: 9px;
-        width: 11vw;
-        background: none;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
-    .detailsButton:hover {
-        background-color: black;
-        transition: 700ms;
-        transition-timing-function: linear;
-    }
 }
 
 @media screen and (max-width: 999px) {
@@ -133,115 +60,30 @@
         grid-template-rows: 2fr 1fr 1fr;
         grid-template-areas: "a a" "b1 c1" "b2 c2";
     }
-
     .firstCard {
-        position: relative;
         background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
         background-size: cover;
-        width: 100%;
-        filter: brightness(80%);
         grid-area: a;
-        overflow: hidden;
         display: grid;
         grid-template-columns: 1fr 2fr 1fr;
         grid-template-rows: 0.5fr 1fr 0.5fr;
         grid-template-areas: "a b c" "d e f" "i j k";
-        transition: all .8s;
-    }
-
-    .firstCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .firstCard:hover::before {
-        transform: scale(1.1);
     }
 
     .secondCard {
-        position: relative;
         background: url("src/assets/Fényáteresztő főoldal fotó.jpg") no-repeat center center;
-        background-size: cover;
-        width: 100%;
         grid-area: b2;
-        overflow: hidden;
-        transition: all .8s;
-    }
-
-    .secondCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .secondCard:hover::before {
-        transform: scale(1.1);
+        background-size: cover;
     }
 
     .thirdCard {
-        position: relative;
         background: url("src/assets/JOURNEY BEYOND CAM 4.jpg") no-repeat center center;
         background-size: cover;
-        width: 100%;
-        filter: brightness(65%);
         grid-area: c1;
-        overflow: hidden;
-        transition: all .8s;
-    }
-
-    .thirdCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .thirdCard:hover::before {
-        transform: scale(1.1);
-    }
-
-    .mozaik-text {
-        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
-        font-weight: bolder;
-        color: white;
-        font-size: 6vw;
-        text-align: center;
     }
 
     p {
         display: none;
-    }
-
-    .mozaik-text-container {
-        text-align: center;
-    }
-
-    .desc-backgr {
-        position: relative;
-        grid-area: e;
-        background-color: black;
-        opacity: 30%;
-    }
-
-    .desc-text {
-        position: relative;
-        grid-area: e;
-        text-align: center;
     }
 
     span {
@@ -250,78 +92,5 @@
         color: white;
     }
 
-    .text {
-        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
-        font-size: 10vw;
-        font-weight: bolder;
-        color: white;
-        margin-bottom: 20px;
-        margin-top: 20px;
-    }
 
-    .detailsButton {
-        border-radius: 25px;
-        border: 2px solid white;
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        background: none;
-        margin-top: 10px;
-    }
-
-    .detailsButton:hover {
-        background-color: black;
-        transition: 1s;
-        transition-timing-function: linear;
-    }
-
-    .mozaik-down {
-        background-color: #cd928d;
-        background-size: cover;
-        width: 100%;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        filter: brightness(95%);
-    }
-
-    .mozaik-down:before {
-        content: "";
-        position: absolute;
-        right: 40%;
-        bottom: -35px;
-        width: 0;
-        height: 0;
-        border-left: 20px solid transparent;
-        border-right: 20px solid transparent;
-        border-bottom: 15px solid transparent;
-        border-top: 23px solid #cd928d;
-    }
-
-    .mozaik-up {
-        background-color: #cd928d;
-        background-size: cover;
-        width: 100%;
-        position: relative;
-        filter: brightness(95%);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .mozaik-up:before {
-        content: "";
-        position: absolute;
-        right: 40%;
-        top: -35px;
-        width: 0;
-        height: 0;
-        border-left: 20px solid transparent;
-        border-right: 20px solid transparent;
-        border-bottom: 23px solid #cd928d;
-        border-top: 15px solid transparent;
-    }
 }
