@@ -12,6 +12,7 @@ export class ProductsModalComponent implements OnInit {
   @Input() modalContent: any;
   activeOrders: Array<string> = [];
 
+
   constructor(private modalService: ModalService) { }
 
   ngOnInit(): void {
