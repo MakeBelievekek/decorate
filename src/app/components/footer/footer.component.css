@@ -1,5 +1,5 @@
-.flex-valami {
-
+footer {
+  background: #fde6de;
 }
 
 a {
@@ -14,11 +14,11 @@ a {
 
   footer {
     display: grid;
-    background: #fde6de;
     grid-template-columns: minmax(2em, 150px) minmax(300px, 425px) 1fr 1fr 1fr 1fr minmax(2em, 150px);
     grid-template-rows: auto auto;
     grid-column-gap: 4em;
     padding: 3em 2em 2em;
+    grid-row-gap: 2em;
   }
 
   .footer-menu, .footer-info {
@@ -56,7 +56,6 @@ a {
 @media all and (min-width: 600px) and (max-width: 1299px) {
   footer {
     display: grid;
-    background: #fde6de;
     grid-auto-flow: column;
     grid-template-areas: "men inf" "med cont";
     grid-column-gap: 2em;
@@ -107,7 +106,6 @@ a {
 @media all and (max-width: 599px) {
   footer {
     display: grid;
-    background: #fde6de;
     padding: 2em 2em 2em;
     grid-auto-flow: column;
     grid-row-gap: 3em;
