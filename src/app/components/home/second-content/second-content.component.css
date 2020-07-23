@@ -6,6 +6,7 @@
     grid-template-areas: "a1 a2 a3" "b1 b2 a3";
 
 }
+
 .grig-down {
     grid-area: a2;
 }
@@ -13,6 +14,7 @@
 .grid-up {
     grid-area: b1;
 }
+
 .firstCard {
     position: relative;
     grid-area: a1;
@@ -70,6 +72,7 @@
     overflow: hidden;
     transition: all .8s;
 }
+
 .thirdCard::before {
     content: "";
     position: absolute;
@@ -83,4 +86,147 @@
 
 .thirdCard:hover::before {
     transform: scale(1.1);
+}
+
+@media screen and (max-width: 999px) {
+    .content {
+        height: 90vh;
+        display: grid;
+        grid-template-rows: 1fr 1fr 2fr;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "a1 a2" "b1 b2" "c1 c1";
+
+    }
+
+    .grig-down {
+        grid-area: b1;
+    }
+
+    .grid-up {
+        grid-area: a2;
+    }
+
+    .firstCard {
+        position: relative;
+        grid-area: a1;
+        background: url("src/assets/Blacl out főoldal fotó.jpg") no-repeat center center;
+        background-size: cover;
+        overflow: hidden;
+        transition: all .8s;
+    }
+
+    .firstCard::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: inherit;
+        transition: inherit;
+    }
+
+    .firstCard:hover::before {
+        transform: scale(1.1);
+    }
+
+    .secondCard {
+        position: relative;
+        grid-area: b2;
+        background: url("src/assets/Gyerekfüggöny főoldal fotó.jpg") no-repeat center center;
+        background-size: cover;
+        overflow: hidden;
+        transition: all .8s;
+        filter: brightness(80%);
+    }
+
+    .secondCard::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: inherit;
+        transition: inherit;
+    }
+
+    .secondCard:hover::before {
+        transform: scale(1.1);
+    }
+
+    .thirdCard {
+        position: relative;
+        grid-area: c1;
+        background: url("src/assets/Bútorszövet főoldal fotó.jpg") no-repeat center center;
+        background-size: cover;
+        overflow: hidden;
+        transition: all .8s;
+    }
+
+    .thirdCard::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: inherit;
+        transition: inherit;
+    }
+
+    .thirdCard:hover::before {
+        transform: scale(1.1);
+    }
+
+    .mozaik-down {
+        background-color: #cd928d;
+        background-size: cover;
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        filter: brightness(95%);
+    }
+
+    .mozaik-down:before {
+        content: "";
+        position: absolute;
+        left: 99.5%;
+        bottom: 35%;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 15px solid transparent;
+        border-top: 23px solid #cd928d;
+        transform: rotate(-90deg);
+    }
+
+    .mozaik-up {
+        background-color: #b86b77;
+        background-size: cover;
+        width: 100%;
+        position: relative;
+        filter: brightness(95%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .mozaik-up:before {
+        content: "";
+        position: absolute;
+        right: 99.5%;
+        top: 35%;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 23px solid #b86b77;
+        border-top: 15px solid transparent;
+        transform: rotate(-90deg);
+    }
 }
