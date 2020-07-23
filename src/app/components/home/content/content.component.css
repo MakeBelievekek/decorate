@@ -7,54 +7,11 @@
         grid-template-areas: "a2 a1 a3" "a4 a1 a5";
         cursor: pointer;
     }
-
-    .text {
-        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
-        font-weight: normal;
-        font-size: 4vw;
-        line-height: 0.9;
-        color: white;
-        margin-top: 40px;
-    }
-
-    .detailsButton {
-        border-radius: 25px;
-        border: 2px solid white;;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 9px;
-        padding-bottom: 9px;
-        width: 11vw;
-        background: none;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
-    .detailsButton:hover {
-        background-color: black;
-        transition: 700ms;
-        transition-timing-function: linear;
-    }
-
     span {
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-size: 0.9vw;
         color: white;
     }
-
-    .descOne {
-        position: relative;
-        grid-area: e;
-        background-color: black;
-        opacity: 30%;
-    }
-
-    .descOneText {
-        position: relative;
-        grid-area: e;
-        text-align: center;
-    }
-
     .firstCard {
         grid-area: a1;
         display: grid;
@@ -142,23 +99,29 @@
         grid-area: a5;
     }
 
-    .mozaik-text {
-        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
-        font-weight: bolder;
-        font-size: 3.5vw;
-        line-height: 0.9;
-        color: WhiteSmoke;
-    }
-
-    .mozaik-text-container {
-        text-align: center;
-    }
-
     p {
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-size: 1.7vw;
         color: #C6D7CD;
         padding-top: 10px;
+    }
+    .detailsButton {
+        border-radius: 25px;
+        border: 2px solid white;;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        width: 11vw;
+        background: none;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .detailsButton:hover {
+        background-color: black;
+        transition: 700ms;
+        transition-timing-function: linear;
     }
 }
 
@@ -265,20 +228,17 @@
     }
 
     .mozaik-text-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        text-align: center;
     }
 
-    .descOne {
+    .desc-backgr {
         position: relative;
         grid-area: e;
         background-color: black;
         opacity: 30%;
     }
 
-    .descOneText {
+    .desc-text {
         position: relative;
         grid-area: e;
         text-align: center;
@@ -311,7 +271,7 @@
     }
 
     .detailsButton:hover {
-        background-color: #C6D7CD;
+        background-color: black;
         transition: 1s;
         transition-timing-function: linear;
     }
@@ -342,7 +302,7 @@
     }
 
     .mozaik-up {
-        background-color: #b86b77;
+        background-color: #cd928d;
         background-size: cover;
         width: 100%;
         position: relative;
@@ -361,7 +321,7 @@
         height: 0;
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
-        border-bottom: 23px solid #b86b77;
+        border-bottom: 23px solid #cd928d;
         border-top: 15px solid transparent;
     }
 }

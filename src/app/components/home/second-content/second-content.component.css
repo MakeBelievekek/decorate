@@ -87,7 +87,12 @@
 .thirdCard:hover::before {
     transform: scale(1.1);
 }
-
+p {
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-size: 1.7vw;
+    color: #C6D7CD;
+    padding-top: 10px;
+}
 @media screen and (max-width: 999px) {
     .content {
         height: 90vh;
@@ -206,7 +211,7 @@
     }
 
     .mozaik-up {
-        background-color: #b86b77;
+        background-color: #cd928d;
         background-size: cover;
         width: 100%;
         position: relative;
@@ -225,8 +230,24 @@
         height: 0;
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
-        border-bottom: 23px solid #b86b77;
+        border-bottom: 23px solid #cd928d;
         border-top: 15px solid transparent;
         transform: rotate(-90deg);
+    }
+
+    .mozaik-text {
+        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+        font-weight: bolder;
+        color: white;
+        font-size: 6vw;
+        text-align: center;
+    }
+
+    p {
+        display: none;
+    }
+
+    .mozaik-text-container {
+        text-align: center;
     }
 }

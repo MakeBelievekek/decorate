@@ -39,7 +39,7 @@
 }
 
 .mozaik-up {
-    background-color: #b86b77;
+    background-color: #cd928d;
     background-size: cover;
     width: 100%;
     position: relative;
@@ -58,6 +58,40 @@
     height: 0;
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
-    border-bottom: 23px solid #b86b77;
+    border-bottom: 23px solid #cd928d;
     border-top: 15px solid transparent;
 }
+.mozaik-text {
+    font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 3.5vw;
+    line-height: 0.9;
+    color: WhiteSmoke;
+}
+
+.mozaik-text-container {
+    text-align: center;
+}
+.desc-backgr {
+    position: relative;
+    grid-area: e;
+    background-color: black;
+    opacity: 30%;
+}
+
+.desc-text {
+    position: relative;
+    grid-area: e;
+    text-align: center;
+}
+.text {
+    font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+    font-weight: normal;
+    font-size: 4vw;
+    line-height: 0.9;
+    color: white;
+    margin-top: 40px;
+}
+
+
+
