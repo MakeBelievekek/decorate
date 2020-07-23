@@ -7,20 +7,38 @@
         grid-template-areas: "a2 a1 a3" "a4 a1 a5";
         cursor: pointer;
     }
+
     .text {
         font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
         font-weight: normal;
         font-size: 5rem;
         line-height: 0.9;
         color: whitesmoke;
-        filter: brightness(100%);
+
+    }
+
+    .detailsButton {
+        border-radius: 25px;
+        border: 1px solid #C6D7CD;;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        margin-left: 20px;
+        width: 10vw;
+    }
+
+    .detailsButton:hover {
+        background-color: #C6D7CD;
     }
 
     .descOne {
         position: relative;
         grid-area: f;
         text-align: center;
+        filter: brightness(100%);
     }
+
     .firstCard {
         grid-area: a1;
         display: grid;
@@ -84,6 +102,7 @@
         overflow: hidden;
         transition: all .8s;
     }
+
     .thirdCard::before {
         content: "";
         position: absolute;
@@ -118,11 +137,10 @@
     .mozaik-text-container {
         text-align: center;
     }
+
     p {
-        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
-        font-weight: bolder;
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-size: 2vw;
-        line-height: 0.9;
         color: #C6D7CD;
         padding-top: 20px;
     }
@@ -170,7 +188,7 @@
 
     .mozaik-down {
         grid-area: b1;
-        background-color: #FFDEE3;
+        background-color: #b86b77;
         background-size: cover;
         width: 100%;
         position: relative;
@@ -186,12 +204,12 @@
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
         border-bottom: 15px solid transparent;
-        border-top: 23px solid #FFDEE3;
+        border-top: 23px solid #b86b77;
     }
 
     .mozaik-up {
         grid-area: c2;
-        background-color: #FFDEE3;
+        background-color:#cd928d;
         background-size: cover;
         width: 100%;
         position: relative;
@@ -207,20 +225,20 @@
         height: 0;
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
-        border-bottom: 23px solid #FFDEE3;
+        border-bottom: 23px solid #b86b77;
         border-top: 15px solid transparent;
     }
 
     .mozaik-text {
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
         font-weight: bolder;
         color: white;
+        font-size: 8vw;
+        text-align: center;
     }
-
     p {
         display: none;
     }
-
     .mozaik-text-container {
         display: flex;
         flex-direction: column;
@@ -229,7 +247,7 @@
     }
 
     .descOne {
-        display: flex;
+       
         justify-content: center;
         align-items: center;
         position: relative;
@@ -237,9 +255,22 @@
     }
 
     .text {
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
         font-size: 3rem;
         font-weight: bolder;
         color: white;
+    }
+    .detailsButton {
+        border-radius: 25px;
+        border: 1px solid #C6D7CD;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        margin-left: 20px;
+    }
+
+    .detailsButton:hover {
+        background-color: #C6D7CD;
     }
 }
