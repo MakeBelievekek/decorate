@@ -16,6 +16,12 @@
     background: url("src/assets/Textil Kiegészítők főoldal fotó.jpg") no-repeat center;
     background-size: cover;
 }
+p {
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-size: 1.9vw;
+    color: whitesmoke;
+    padding-top: 10px;
+}
 
 @media screen and (max-width: 999px) {
     .content {
@@ -37,6 +43,8 @@
         background: url("src/assets/Textil Kiegészítők főoldal fotó.jpg") no-repeat center;
         background-size: cover;
     }
-
+p{
+    display: none;
+}
 
 }

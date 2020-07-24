@@ -1,45 +1,56 @@
-.content {
-    height: 90vh;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 2fr;
-    grid-template-areas: "a1 a2 a3" "b1 b2 a3";
+@media screen and (min-width: 1000px) {
+    .content {
+        height: 90vh;
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 2fr;
+        grid-template-areas: "a1 a2 a3" "b1 b2 a3";
 
+    }
+
+    .grig-down {
+        grid-area: a2;
+    }
+
+    .grid-up {
+        grid-area: b1;
+    }
+
+    .firstCard {
+        grid-area: a1;
+        background: url("src/assets/Blacl out főoldal fotó.jpg") no-repeat center center;
+        background-size: cover;
+    }
+
+    .secondCard {
+        grid-area: b2;
+        background: url("src/assets/Gyerekfüggöny főoldal fotó.jpg") no-repeat center center;
+        background-size: cover;
+    }
+
+    .thirdCard {
+        grid-area: a3;
+        display: grid;
+        grid-template-columns: 1fr 1fr 0.3fr;
+        grid-template-rows: 0.5fr 1fr 0.5fr;
+        grid-template-areas: "a b ." "d e ." "i j .";
+        background: url("src/assets/Bútorszövet főoldal fotó.jpg") no-repeat center center;
+        background-size: cover;
+    }
+
+    p {
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-size: 1.9vw;
+        color: whitesmoke;
+        padding-top: 10px;
+    }
+
+    span {
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-size: 0.9vw;
+        color: white;
+    }
 }
-
-.grig-down {
-    grid-area: a2;
-}
-
-.grid-up {
-    grid-area: b1;
-}
-
-.firstCard {
-    grid-area: a1;
-    background: url("src/assets/Blacl out főoldal fotó.jpg") no-repeat center center;
-    background-size: cover;
-}
-
-.secondCard {
-    grid-area: b2;
-    background: url("src/assets/Gyerekfüggöny főoldal fotó.jpg") no-repeat center center;
-    background-size: cover;
-}
-
-.thirdCard {
-    grid-area: a3;
-    background: url("src/assets/Bútorszövet főoldal fotó.jpg") no-repeat center center;
-    background-size: cover;
-}
-
-p {
-    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-    font-size: 1.7vw;
-    color: #C6D7CD;
-    padding-top: 10px;
-}
-
 @media screen and (max-width: 999px) {
     .content {
         height: 90vh;
@@ -71,6 +82,10 @@ p {
 
     .thirdCard {
         grid-area: c1;
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: 0.5fr 1fr 0.5fr;
+        grid-template-areas: "a b c" "d e f" "i j k";
         background: url("src/assets/Bútorszövet főoldal fotó.jpg") no-repeat center center;
         background-size: cover;
     }
@@ -87,6 +102,11 @@ p {
 
     p {
         display: none;
+    }
+    span {
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-size: 3vw;
+        color: white;
     }
 
 }

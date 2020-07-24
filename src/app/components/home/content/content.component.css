@@ -17,9 +17,9 @@
     .firstCard {
         grid-area: a1;
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 0.3fr;
         grid-template-rows: 0.5fr 1fr 0.5fr;
-        grid-template-areas: "a b " "d e " "i j ";
+        grid-template-areas: "a b ." "d e ." "i j .";
         background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
         background-size: cover;
     }
@@ -46,8 +46,9 @@
 
     p {
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-        font-size: 1.7vw;
-        color: #C6D7CD;
+        font-size: 1.9vw;
+        font-weight: 900;
+        color: whitesmoke;
         padding-top: 10px;
     }
 }
