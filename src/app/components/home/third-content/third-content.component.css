@@ -1,6 +1,6 @@
 @media screen and (min-width: 1000px) {
     .content {
-        height: 50vh;
+        height: 32vw;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-areas: "a1 a2 ";

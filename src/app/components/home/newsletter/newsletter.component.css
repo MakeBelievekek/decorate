@@ -31,10 +31,11 @@
     justify-content: start;
   }
 
-  h4 {
-    font-family: "Nexa W01 Bold", sans-serif;
+  h2 {
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-weight: 900;
     color: #555555;
-    font-size: 2rem;
+    font-size: 2vw;
   }
 
   span {

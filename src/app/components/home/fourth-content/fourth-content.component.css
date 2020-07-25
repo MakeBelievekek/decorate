@@ -1,5 +1,5 @@
 .content {
-    height: 60vh;
+    height: 32vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas: "a1 a2 ";
