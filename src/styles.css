@@ -12,7 +12,7 @@
     url('src/assets/great-vibes-v7-latin-ext-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */ url('src/assets/great-vibes-v7-latin-ext-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 800px) {
     .card-direction {
         position: relative;
         overflow: hidden;
@@ -115,7 +115,7 @@
     padding-bottom: 9px;
     width: 11vw;
     background: none;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 
@@ -127,7 +127,7 @@
 
 }
 
-@media screen and (max-width: 999px) {
+@media screen and (max-width: 799px) {
     .card-direction {
         position: relative;
         overflow: hidden;
@@ -185,7 +185,6 @@
         padding-top: 5px;
         padding-bottom: 5px;
         background: none;
-        margin-top: 10px;
     }
 
     .detailsButton:hover {

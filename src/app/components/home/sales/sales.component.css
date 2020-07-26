@@ -4,7 +4,7 @@
         display: grid;
         grid-template-columns: 3fr 8fr;
         grid-template-areas: "a b ";
-        height: 17vw;
+        height: 15vw;
     }
 
     .sales-text {
@@ -19,7 +19,7 @@
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-weight: bolder;
         color: #555555;
-        font-size: 2.7vw;
+        font-size: 2vw;
     }
 
     .sales-cards {
@@ -41,8 +41,8 @@
 
     img {
         display: block;
-        width: 16vw;
-        height: 14vw;
+        width: 14vw;
+        height: 12vw;
         cursor: pointer;
         border-radius: 8px;
         box-shadow: 0 4px 8px 0 rgba(1, 1, 1, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.79);
@@ -54,8 +54,8 @@
         bottom: 0;
         left: 0;
         right: 0;
-        height: 14vw;
-        width: 16vw;
+        height: 12vw;
+        width: 14vw;
         opacity: 0;
         transition: .5s ease;
         background-color: black;
