@@ -1908,7 +1908,7 @@ class FilterComponent {
     constructor(modalService) {
         this.modalService = modalService;
         this.content = { order: ['lehetőség 1', 'lehetőség 2', 'lehetőség 3', 'lehetőség 4', "lehetőség 5", 'lehetőség 6'],
-            color: ['fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok'] };
+            colors: ['fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok'] };
         this.activeOrders = [];
     }
     ngOnInit() {
@@ -2607,7 +2607,7 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__["platformBrowser"]().boot
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\decorate\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! C:\Users\Pupu\IdeaProjects\decorate\src\main.ts */"./src/main.ts");
 
 
 /***/ })

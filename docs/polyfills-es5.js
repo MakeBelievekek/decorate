@@ -15284,7 +15284,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             borderTopWidth: "3px",
             bottom: "auto",
             clip: "rect(0px, 0px, 0px, 0px)",
-            color: "black",
+            colors: "black",
             fontSize: "100%",
             fontWeight: "400",
             height: "auto",
@@ -16101,7 +16101,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             var d = {
               inset: !1,
               lengths: [],
-              color: null
+              colors: null
             },
                 e = a.consumeRepeated(c, /^/, b);
             if (e && e[0].length) return [d, e[1]];
@@ -16150,7 +16150,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             function f(a) {
               return {
                 inset: a,
-                color: [0, 0, 0, 0],
+                colors: [0, 0, 0, 0],
                 lengths: [{
                   px: 0
                 }, {
@@ -21068,7 +21068,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
   /***/
   function _(module, exports, __webpack_require__) {
     __webpack_require__(
-    /*! C:\decorate\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\es5-polyfills.js */
+    /*! C:\Users\Pupu\IdeaProjects\decorate\node_modules\@angular-devkit\build-angular\src\angular-cli-files\models\es5-polyfills.js */
     "./node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/es5-polyfills.js");
 
     __webpack_require__(
@@ -21076,7 +21076,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     "./node_modules/zone.js/dist/zone-legacy.js");
 
     module.exports = __webpack_require__(
-    /*! C:\decorate\src\polyfills.ts */
+    /*! C:\Users\Pupu\IdeaProjects\decorate\src\polyfills.ts */
     "./src/polyfills.ts");
     /***/
   }

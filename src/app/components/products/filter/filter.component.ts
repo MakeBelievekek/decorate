@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ModalService} from "../../../services/modal.service";
 import {ModalControllerModel} from "../../../models/modalController.model";
+import {ScreenService} from "../../../services/screen.service";
+import {FilterService} from "../../../services/filter.service";
+import {FilterControlModel} from "../../../models/filterControl.model";
 
 @Component({
   selector: 'app-filter',
@@ -8,37 +11,56 @@ import {ModalControllerModel} from "../../../models/modalController.model";
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent implements OnInit {
-  content: any = {order: ['lehetőség 1', 'lehetőség 2', 'lehetőség 3', 'lehetőség 4', "lehetőség 5", 'lehetőség 6'],
-                  color: ['fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok']};
   modalControl: ModalControllerModel;
-  activeOrders: Array<string> = [];
+  filterControl: FilterControlModel;
+  top: number;
+  @Output() productContentScreenAttributes: EventEmitter<string>;
 
-  constructor(private modalService: ModalService) {
+  constructor(private modalService: ModalService,
+              private screenService: ScreenService,
+              private filterService: FilterService) {
+    this.productContentScreenAttributes = new EventEmitter<string>();
   }
 
   ngOnInit(): void {
     this.modalControl = this.modalService.modalControl;
+    this.filterControl = this.filterService.filterControl;
   }
 
-  toggleOrderModal() {
+  toggleOrderModal() :void{
     this.modalService.toggleModal('order');
-    console.log(this.modalControl);
   }
 
-  toggleColorModal() {
+  toggleColorModal() :void {
+    this.productContentScreenAttributes.emit("show");
+    this.top = this.screenService.getContentHeight() + 7;
     this.modalService.toggleModal('color');
   }
 
-  handleActiveOrders(order:string):void {
-    if (!this.activeOrders.includes(order)) {
-      this.activeOrders.push(order);
-    } else {
-      this.activeOrders = this.activeOrders.filter(activeOrder => activeOrder != order);
-    }
+  toggleDesignModal() :void{
+    this.productContentScreenAttributes.emit("show");
+    this.top = this.screenService.getContentHeight() + 7;
+    this.modalService.toggleModal('design');
   }
 
-  toggleDesignModal() {
-    this.modalService.toggleModal('design');
+  handleActiveOrders(order:string):void {
+    this.filterService.handleActiveOrders(order);
+  }
+
+  handleActiveColors(color:string):void {
+    this.filterService.handleActiveColors(color);
+  }
+
+  handleActiveDesigners(designer:string):void {
+    this.filterService.handleActiveDesigners(designer);
+  }
+
+  clearColorFilters():void {
+    this.filterService.clearColorFilters();
+  }
+
+  clearDesignerFilters():void {
+    this.filterService.clearDesignerFilters();
   }
 
 }
