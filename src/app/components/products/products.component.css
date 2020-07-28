@@ -1,6 +1,6 @@
 .products-container {
   display: grid;
-  grid-template-columns: minmax(1rem, 250px)  1fr minmax(1rem, 250px);
+  grid-template-columns: minmax(1rem, 250px)  73% minmax(1rem, 250px);
   grid-template-rows: 70px 1fr;
   grid-template-areas: ". . ."
                   ". content .";

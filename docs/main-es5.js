@@ -3973,7 +3973,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.modalService = modalService;
         this.content = {
           order: ['lehetőség 1', 'lehetőség 2', 'lehetőség 3', 'lehetőség 4', "lehetőség 5", 'lehetőség 6'],
-          color: ['fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok']
+          colors: ['fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok']
         };
         this.activeOrders = [];
       }
@@ -5396,7 +5396,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function _(module, exports, __webpack_require__) {
     module.exports = __webpack_require__(
-    /*! C:\decorate\src\main.ts */
+    /*! C:\Users\Pupu\IdeaProjects\decorate\src\main.ts */
     "./src/main.ts");
     /***/
   }

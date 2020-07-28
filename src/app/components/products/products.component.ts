@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {ScreenService} from "../../services/screen.service";
 
 @Component({
   selector: 'app-products',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  @ViewChild('productContent') productContent: ElementRef;
 
-  constructor() { }
+  constructor(private screenService: ScreenService) {
+  }
 
   ngOnInit(): void {
   }
 
+  setScreenAttributes() {
+    this.screenService.setContent(this.productContent);
+  }
 }

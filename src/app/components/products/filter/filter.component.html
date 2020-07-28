@@ -11,12 +11,14 @@
     >
       <ng-container *ngIf="this.modalControl.control === 'order' && this.modalControl.showModal">
 
-        <div *ngFor="let order of this.content.order">
-          <a (click)="handleActiveOrders(order)" *ngIf="!this.activeOrders.includes(order)" class="custom"><i class="fa fa-circle-thin"
-                                                                                               aria-hidden="true"></i>{{order}}
+        <div *ngFor="let order of this.filterControl.order">
+          <a (click)="handleActiveOrders(order)" *ngIf="!this.filterControl.activeOrder.includes(order)" class="custom"><i
+            class="fa fa-circle-thin"
+            aria-hidden="true"></i>{{order}}
           </a>
-          <a (click)="handleActiveOrders(order)" *ngIf="this.activeOrders.includes(order)" class="custom"><i class="fa fa-circle"
-                                                                                              aria-hidden="true"></i>{{order}}
+          <a (click)="handleActiveOrders(order)" *ngIf="this.filterControl.activeOrder.includes(order)" class="custom"><i
+            class="fa fa-circle"
+            aria-hidden="true"></i>{{order}}
           </a>
         </div>
       </ng-container>
@@ -27,28 +29,48 @@
 
   <div class="filter-element" (click)="toggleColorModal()">
     <a>Colour<i class="fa fa-chevron-down" aria-hidden="true"></i></a>
-    <div class="dropdown-content"
-         [ngClass]="{'show-color-dropdown': this.modalControl.control === 'color' && this.modalControl.showModal}"
-         (click)="$event.stopPropagation()"
-    >
-      <a>Link 1</a>
-      <a>Link 2</a>
-      <a>Link 3</a>
+
+  </div>
+  <div class="dropdown-content"
+       [ngClass]="{'show-large-dropdown': this.modalControl.control === 'color' && this.modalControl.showModal}"
+       [style.top.px]=this.top
+       (click)="$event.stopPropagation()"
+  >
+    <div *ngFor="let color of this.filterControl.colors">
+      <div class="color-dropdown-item" *ngIf="!this.filterControl.activeColors.includes(color)" (click)="handleActiveColors(color)"><i
+        class="fa fa-square-o" aria-hidden="true"></i><a>{{color}}</a></div>
+      <div class="color-dropdown-item" *ngIf="this.filterControl.activeColors.includes(color)" (click)="handleActiveColors(color)"><i
+        class="fa fa-check-square" aria-hidden="true"></i><a>{{color}}</a></div>
+    </div>
+    <div class="color-dropdown-control-area">
+      <div class="color-button" (click)="clearColorFilters()">clear</div>
+      <div class="color-button">filter</div>
     </div>
   </div>
-
   <!-- DESIGN BTN AND MODAL -->
 
-  <div class="filter-element" (click)="toggleDesignModal()"><a>Design Style<i class="fa fa-chevron-down" aria-hidden="true"></i></a>
-    <div class="dropdown-content"
-         [ngClass]="{'show-design-dropdown': this.modalControl.control === 'design' && this.modalControl.showModal}"
-         (click)="$event.stopPropagation()"
-    >
-      <a>Link 1</a>
-      <a>Link 2</a>
-      <a>Link 3</a>
+  <div class="filter-element" (click)="toggleDesignModal()"><a>Design Style<i class="fa fa-chevron-down"
+                                                                              aria-hidden="true"></i></a>
+
+  </div>
+
+  <div class="dropdown-content"
+       [ngClass]="{'show-large-dropdown': this.modalControl.control === 'design' && this.modalControl.showModal}"
+       (click)="$event.stopPropagation()"
+       [style.top.px]=this.top
+  >
+    <div *ngFor="let designer of this.filterControl.designers">
+      <div class="color-dropdown-item" *ngIf="!this.filterControl.activeDesigners.includes(designer)" (click)="handleActiveDesigners(designer)"><i
+        class="fa fa-square-o" aria-hidden="true"></i><a>{{designer}}</a></div>
+      <div class="color-dropdown-item" *ngIf="this.filterControl.activeDesigners.includes(designer)" (click)="handleActiveDesigners(designer)"><i
+        class="fa fa-check-square" aria-hidden="true"></i><a>{{designer}}</a></div>
+    </div>
+    <div class="color-dropdown-control-area">
+      <div class="color-button" (click)="this.clearDesignerFilters()">clear</div>
+      <div class="color-button">filter</div>
     </div>
   </div>
+
   <div class="push filter-element"><a>GridOne</a></div>
   <div class="filter-element"><a>GridTwo</a></div>
 </div>
