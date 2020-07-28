@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { CategoryListItem } from '../models/categoryListItem';
 import { ProductModel } from '../models/product-model';
 
-const PRODUCT_BASE_URL = 'http://localhost:8080';
+const PRODUCT_BASE_URL = 'https://localhost:8443';
 
 @Injectable({
     providedIn: 'root',
@@ -30,6 +30,7 @@ export class AdminService {
     }
 
     getAllCategories(): Observable<Array<CategoryListItem>> {
+
         return this.http.get<Array<CategoryListItem>>(PRODUCT_BASE_URL + '/admin/categories/getAll');
     }
 }

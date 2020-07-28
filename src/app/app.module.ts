@@ -32,6 +32,7 @@ import { NewsComponent } from './components/home/news/news.component';
 import { SalesComponent } from './components/home/sales/sales.component';
 import { ProductsModalComponent } from './components/products/products-modal/products-modal.component';
 import { NavbarModalComponent } from './components/navbar/navbar-modal/navbar-modal.component';
+import { BasketComponent } from './components/basket/basket.component';
 
 @NgModule({
     declarations: [
@@ -61,6 +62,7 @@ import { NavbarModalComponent } from './components/navbar/navbar-modal/navbar-mo
         SalesComponent,
         ProductsModalComponent,
         NavbarModalComponent,
+        BasketComponent,
     ],
     imports: [
         BrowserModule,
