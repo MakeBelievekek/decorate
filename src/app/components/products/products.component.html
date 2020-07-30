@@ -1,8 +1,8 @@
-<div class="products-container" #productContent>
-  <div class="products-content-wrapper">
+<div class="products-container" #productContainer>
+  <div class="products-content-wrapper" #productContent>
     <header>
       <app-products-header></app-products-header>
     </header>
-    <app-filter (productContentScreenAttributes)="setScreenAttributes()"></app-filter>
+    <app-products-filter (productContentScreenAttributes)="setScreenAttributes()"></app-products-filter>
   </div>
 </div>

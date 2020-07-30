@@ -1,5 +1,5 @@
 <nav class="fixed-top">
-  <div class="row" *ngIf="this.largeNavToShow">
+  <div class="row" *ngIf="this.screenControl.largeScreen">
     <div class="make-left">
       <a href="#">Home</a>
     </div>
@@ -33,7 +33,7 @@
       </div>
     </div>
   </div>
-  <div class="row" *ngIf="!this.largeNavToShow">
+  <div class="row" *ngIf="this.screenControl.smallScreen">
     <div>
       <a class="burger" (click)="toggleNavigationModal()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
     </div>

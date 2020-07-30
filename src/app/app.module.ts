@@ -21,7 +21,6 @@ import { HomeComponent } from './components/home/home.component';
 import { NewsletterComponent } from './components/home/newsletter/newsletter.component';
 import { SecondContentComponent } from './components/home/second-content/second-content.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FilterComponent } from './components/products/filter/filter.component';
 import { ProductsHeaderComponent } from './components/products/products-header/products-header.component';
 import { ProductComponent } from './components/products/products-list/product/product.component';
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
@@ -33,6 +32,7 @@ import { SalesComponent } from './components/home/sales/sales.component';
 import { ProductsModalComponent } from './components/products/products-modal/products-modal.component';
 import { NavbarModalComponent } from './components/navbar/navbar-modal/navbar-modal.component';
 import { BasketComponent } from './components/basket/basket.component';
+import { ProductsFilterComponent } from './components/products/products-filter/products-filter.component';
 import { BasketHeaderComponent } from './components/basket/basket-header/basket-header.component';
 import { BasketContentComponent } from './components/basket/basket-content/basket-content.component';
 import { BasketBottomComponent } from './components/basket/basket-bottom/basket-bottom.component';
@@ -55,7 +55,6 @@ import { BasketItemComponent } from './components/basket/basket-item/basket-item
         AdminSidebarComponent,
         AdminProductFormComponent,
         CategoryFormComponent,
-        FilterComponent,
         ProductsListComponent,
         ProductComponent,
         ProductsHeaderComponent,
@@ -71,6 +70,7 @@ import { BasketItemComponent } from './components/basket/basket-item/basket-item
         BasketContentComponent,
         BasketBottomComponent,
         BasketItemComponent,
+        ProductsFilterComponent,
     ],
     imports: [
         BrowserModule,

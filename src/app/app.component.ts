@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {ModalService} from "./services/modal.service";
-import {ModalControllerModel} from "./models/modalController.model";
+import {Component, HostListener, OnInit} from '@angular/core';
+import {ModalControllerModel} from './models/modalController.model';
+import {ModalService} from './services/modal.service';
+import {ScreenService} from './services/screen.service';
+import {ScreenControlModel} from './models/screenControl.model';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +12,24 @@ import {ModalControllerModel} from "./models/modalController.model";
 export class AppComponent implements OnInit {
   title = 'decorate';
   modalControl: ModalControllerModel;
+  screenControl: ScreenControlModel;
   bodyPressed: boolean;
 
-  constructor(private modalService: ModalService) {
+  constructor(private modalService: ModalService, private screenService: ScreenService) {
   }
 
   ngOnInit(): void {
     this.modalControl = this.modalService.modalControl;
+    this.screenControl = this.screenService.screenControl;
+    this.changeContentOnResize();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  changeContentOnResize() {
+    this.modalService.closeModal();
+    this.screenService.getScreenSize();
+    this.screenService.screenControlHandler();
+    this.screenService.smallDropDownHandler();
   }
 
   closeModal() {
