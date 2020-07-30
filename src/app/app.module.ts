@@ -33,6 +33,10 @@ import { SalesComponent } from './components/home/sales/sales.component';
 import { ProductsModalComponent } from './components/products/products-modal/products-modal.component';
 import { NavbarModalComponent } from './components/navbar/navbar-modal/navbar-modal.component';
 import { BasketComponent } from './components/basket/basket.component';
+import { BasketHeaderComponent } from './components/basket/basket-header/basket-header.component';
+import { BasketContentComponent } from './components/basket/basket-content/basket-content.component';
+import { BasketBottomComponent } from './components/basket/basket-bottom/basket-bottom.component';
+import { BasketItemComponent } from './components/basket/basket-item/basket-item.component';
 
 @NgModule({
     declarations: [
@@ -63,6 +67,10 @@ import { BasketComponent } from './components/basket/basket.component';
         ProductsModalComponent,
         NavbarModalComponent,
         BasketComponent,
+        BasketHeaderComponent,
+        BasketContentComponent,
+        BasketBottomComponent,
+        BasketItemComponent,
     ],
     imports: [
         BrowserModule,

@@ -1,3 +1,10 @@
 .basket-container {
-
+    display: grid;
+    grid-template-columns: .7fr 3fr .7fr;
+    grid-template-areas: 'a b c';
 }
+
+.basket-wrapper {
+    grid-column: 2/3;
+}
+
