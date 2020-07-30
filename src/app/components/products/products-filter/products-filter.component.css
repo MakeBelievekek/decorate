@@ -1,4 +1,3 @@
-
 .filter-container {
   display: flex;
   gap: 3rem;
@@ -36,8 +35,6 @@ i {
   display: flex;
   flex-direction: column;
   padding-top: 1rem;
-  justify-content: start;
-  align-items: start;
   width: 160px;
 }
 
@@ -51,7 +48,6 @@ i {
   grid-column-gap: 1vw;
   grid-row-gap: 1vh;
   background-color: #f1f1f1;
-  width: 73%;
   padding-left: 4vw;
   padding-right: 4vw;
   padding-top: 1.5vh;
@@ -102,3 +98,49 @@ i {
 .custom:hover {
   background: lightgrey;
 }
+
+/*                  small settings                 */
+.small-filter-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: #222222 solid 2px;
+}
+
+
+.small-filter-item {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  cursor: pointer;
+
+}
+
+.small-border-right {
+  border-right: solid black 2px;
+}
+
+
+.small-order-dropdown-container {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: #719ECE;
+  opacity: 0.5;
+  padding-left: 40vw;
+  width: 100vw;
+
+}
+
+
+.small-custom {
+  display: flex;
+  flex: 1 0 0;
+}
+
+
+
