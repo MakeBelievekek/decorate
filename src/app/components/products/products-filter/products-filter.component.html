@@ -7,7 +7,7 @@
       <a>Recommended<i class="fa fa-chevron-down"
                        aria-hidden="true"></i></a>
       <div class="dropdown-content"
-           [ngClass]="{'show-order-dropdown': this.modalControl.control === 'order' && this.modalControl.showModal}"
+           [ngClass]="{'show-order-dropdown': this.modalControl.control === 'order' && this.modalControl.showModal && !this.screenControl.smallDropdown}"
            (click)="$event.stopPropagation()"
       >
         <ng-container *ngIf="this.modalControl.control === 'order' && this.modalControl.showModal">
@@ -36,9 +36,9 @@
     </div>
     <div class="dropdown-content"
          [ngClass]="{'show-large-dropdown': this.modalControl.control === 'color' && this.modalControl.showModal}"
+         (click)="$event.stopPropagation()"
          [style.top.px]=this.dropDownMeasurements.top
          [style.width.px]=this.dropDownMeasurements.width
-         (click)="$event.stopPropagation()"
     >
       <div *ngFor="let color of this.filterControl.colors">
         <div class="color-dropdown-item" *ngIf="!this.filterControl.activeColors.includes(color)"
@@ -88,53 +88,44 @@
 
 <div *ngIf="this.screenControl.smallScreen">
   <div class="small-filter-container">
-    <div class="small-filter-item small-border-right" (click)="toggleDesignModal()">
+    <div class="small-filter-item small-border-right" (click)="toggleOrderModal()">
       hello 1
+    </div>
+    <div class="small-order-dropdown-container"
+         *ngIf="this.modalControl.control === 'order' && this.modalControl.showModal && this.screenControl.smallDropdown"
+          (click)="$event.stopPropagation()"
+          #smallOrderDropDownContainer
+    >
+      <div class="small-header-container">
+        <div class="small-header-text">
+          Rendezés
+        </div>
+        <div class="small-header-exit">
+          <i class="fa fa-times" aria-hidden="true" (click)="this.toggleOrderModal()"></i>
+        </div>
+      </div>
+      <div *ngFor="let order of this.filterControl.order" class="small-custom">
+        <div>
+          <p (click)="handleActiveOrders(order)" *ngIf="!this.filterControl.activeOrder.includes(order)"
+          ><i
+            class="fa fa-circle-thin"
+            aria-hidden="true"></i>{{order}}
+          </p>
+          <p (click)="handleActiveOrders(order)" *ngIf="this.filterControl.activeOrder.includes(order)"
+          ><i
+            class="fa fa-circle"
+            aria-hidden="true"></i>{{order}}
+          </p>
+        </div>
+      </div>
     </div>
     <div class="small-filter-item ">
       hello 2
     </div>
 
-    <div class="dropdown-content"
-         [ngClass]="{'show-large-dropdown': this.modalControl.control === 'design' && this.modalControl.showModal}"
-         (click)="$event.stopPropagation()"
-         [style.top.px]=this.dropDownMeasurements.top
-         [style.width.px]=this.dropDownMeasurements.width
-    >
-      <div *ngFor="let designer of this.filterControl.designers">
-        <div class="color-dropdown-item" *ngIf="!this.filterControl.activeDesigners.includes(designer)"
-             (click)="handleActiveDesigners(designer)"><i
-          class="fa fa-square-o" aria-hidden="true"></i><a>{{designer}}</a></div>
-        <div class="color-dropdown-item" *ngIf="this.filterControl.activeDesigners.includes(designer)"
-             (click)="handleActiveDesigners(designer)"><i
-          class="fa fa-check-square" aria-hidden="true"></i><a>{{designer}}</a></div>
-      </div>
-      <div class="color-dropdown-control-area">
-        <div class="color-button" (click)="this.clearDesignerFilters()">clear</div>
-        <div class="color-button">filter</div>
-      </div>
-    </div>
+
   </div>
 </div>
 
 
-<div class="small-order-dropdown-container" *ngIf="false">
-  <ng-container *ngIf="false">
 
-    <div *ngFor="let order of this.filterControl.order" class="small-custom">
-      <div >
-        <p (click)="handleActiveOrders(order)" *ngIf="!this.filterControl.activeOrder.includes(order)"
-        ><i
-          class="fa fa-circle-thin"
-          aria-hidden="true"></i>{{order}}
-        </p>
-        <p (click)="handleActiveOrders(order)" *ngIf="this.filterControl.activeOrder.includes(order)"
-        ><i
-          class="fa fa-circle"
-          aria-hidden="true"></i>{{order}}
-        </p>
-      </div>
-    </div>
-  </ng-container>
-
-</div>

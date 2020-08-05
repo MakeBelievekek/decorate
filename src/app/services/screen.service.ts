@@ -12,7 +12,7 @@ export class ScreenService {
 
   constructor() {
     this.screenControl = {largeScreen: false, smallScreen: false, smallDropdown: false};
-    this.content = {productContainer: ElementRef, productContent: ElementRef};
+    this.content = {productContainer: ElementRef, productContent: ElementRef, smallOrderDropDownContainer: ElementRef};
     this.screenSize = {height: 0, width: 0};
   }
 
@@ -46,7 +46,7 @@ export class ScreenService {
     });
   }
 
-  smallDropDownHandler() {
+  smallDropDownHandler(): void {
     if (this.screenSize.width < 751) {
       this.screenControl.smallDropdown = true;
     } else {
@@ -57,5 +57,13 @@ export class ScreenService {
   setContent(productContainer: ElementRef, productContent: ElementRef): void {
     this.content.productContainer = productContainer;
     this.content.productContent = productContent;
+  }
+
+  setSmallOrderDropDownContainer(smallOrderDropDownContainer: ElementRef): void {
+    this.content.smallOrderDropDownContainer = smallOrderDropDownContainer;
+  }
+
+  getSmallOrderDropDownContainerHeight(): number {
+    return this.content.smallOrderDropDownContainer.nativeElement.offsetHeight;
   }
 }

@@ -1,9 +1,15 @@
-nav{
+nav {
+  display: flex;
   background: #C6D7CD;
   height: 60px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 0px;
-  padding:0px;
+  padding: 0px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030
 }
 
 nav ul {
@@ -20,7 +26,7 @@ nav div a {
   display: block;
   font-family: Arial;
   color: #222;
-  font-size: 14px;
+  font-size: 1rem;
   padding: 19.5px 24px;
   text-decoration: none;
 }
@@ -32,11 +38,11 @@ nav div a:hover {
 }
 
 
-.make-left{
+.make-left {
   padding-left: 45px !important;
 }
 
-.make-right{
+.make-right {
   padding-right: 45px !important;
 }
 

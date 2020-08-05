@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {FilterControlModel} from "../models/filterControl.model";
+import {FilterControlModel} from '../models/filterControl.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,24 +9,24 @@ export class FilterService {
 
   constructor() {
     this.filterControl = {
-      order: ['lőség 1', 'lehetőség 2', 'lehetőség 3', 'lehetőség 4', "lehetőség 5", 'lehetőség 6'],
+      order: ['lőség 1', 'lehetőség 2', 'lehetőség 3', 'lehetőség 4', 'lehetőség 5', 'lehetőség 6', 'lehetőség 5', 'lehetőség 6'],
       colors: ['fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok', 'jazmin', 'fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok', 'jazmin'],
       designers: ['fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok', 'jazmin', 'fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok', 'jazmin'],
       activeOrder: [],
       activeColors: [],
       activeDesigners: []
-    }
+    };
   }
 
   handleActiveOrders(order: string): void {
     if (!this.filterControl.activeOrder.includes(order)) {
       this.filterControl.activeOrder.push(order);
       console.log('push');
-      console.log(this.filterControl.activeOrder)
+      console.log(this.filterControl.activeOrder);
     } else {
-      this.filterControl.activeOrder = this.filterControl.activeOrder.filter(activeOrder => activeOrder != order);
+      this.filterControl.activeOrder = this.filterControl.activeOrder.filter(activeOrder => activeOrder !== order);
       console.log('filter');
-      console.log(this.filterControl.activeOrder)
+      console.log(this.filterControl.activeOrder);
 
     }
   }
@@ -35,7 +35,7 @@ export class FilterService {
     if (!this.filterControl.activeColors.includes(color)) {
       this.filterControl.activeColors.push(color);
     } else {
-      this.filterControl.activeColors = this.filterControl.activeColors.filter(activeColor => activeColor != color);
+      this.filterControl.activeColors = this.filterControl.activeColors.filter(activeColor => activeColor !== color);
     }
   }
 
@@ -43,7 +43,7 @@ export class FilterService {
     if (!this.filterControl.activeDesigners.includes(designer)) {
       this.filterControl.activeDesigners.push(designer);
     } else {
-      this.filterControl.activeDesigners = this.filterControl.activeDesigners.filter(activeDesigner => activeDesigner != designer);
+      this.filterControl.activeDesigners = this.filterControl.activeDesigners.filter(activeDesigner => activeDesigner !== designer);
     }
   }
 
@@ -52,7 +52,7 @@ export class FilterService {
   }
 
   clearDesignerFilters(): void {
-    this.filterControl.activeDesigners.splice(0, this.filterControl.activeDesigners.length)
+    this.filterControl.activeDesigners.splice(0, this.filterControl.activeDesigners.length);
 
   }
 }

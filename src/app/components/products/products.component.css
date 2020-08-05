@@ -9,6 +9,7 @@
     grid-template-rows: 70px 1fr;
     grid-template-areas: ". . ."
     ". content .";
+    position: relative;
   }
 
   .products-content-wrapper {
@@ -19,6 +20,7 @@
 
 @media all and (min-width: 902px) and (max-width: 1600px) {
   .products-container {
+    position: relative;
     display: grid;
     width: 100%;
     grid-template-columns: minmax(1rem, 100px)  1fr minmax(1rem, 100px);
@@ -36,6 +38,7 @@
 
 @media  all and (max-width: 901px) {
   .products-container {
+    position: relative;
     display: grid;
     width: 100%;
     grid-template-columns: 3vw  1fr 3vw;

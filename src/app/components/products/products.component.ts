@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {ScreenService} from "../../services/screen.service";
+import {ScreenService} from '../../services/screen.service';
 
 @Component({
   selector: 'app-products',

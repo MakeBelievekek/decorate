@@ -114,6 +114,7 @@ i {
   justify-content: center;
   flex-grow: 1;
   cursor: pointer;
+  position: relative;
 
 }
 
@@ -126,21 +127,83 @@ i {
   display: flex;
   position: fixed;
   flex-direction: column;
-  top: 0;
-  left: 0;
   z-index: 100;
-  background: #719ECE;
-  opacity: 0.5;
-  padding-left: 40vw;
-  width: 100vw;
+  top: 20%;
+  background: white;
+  width: 75vw;
+  -webkit-box-shadow: 10px 10px 44px -13px rgba(0,0,0,0.63);
+  -moz-box-shadow: 10px 10px 44px -13px rgba(0,0,0,0.63);
+  box-shadow: 10px 10px 44px -13px rgba(0,0,0,0.63);
+  max-height: 80vh;
+  overflow: auto;
+}
 
+@media all and (min-width: 550px) and (max-width: 750px) {
+  .small-custom {
+    display: flex;
+    flex: 1 0 0;
+    padding-left: 30vw;
+    border-bottom: solid gray 0.1em;
+    padding-top: 2vh;
+  }
+
+  .small-custom:hover {
+    background: lightgray;
+  }
+
+  .small-header-container {
+    display: flex;
+    border-bottom: solid gray 0.1em;
+  }
+
+  .small-header-text {
+    display: flex;
+    flex: 1 0 0;
+    padding-left: 30vw;
+    font-size: 2rem;
+  }
+
+  .small-header-exit {
+    display: flex;
+    font-size: 2rem;
+    align-items: center;
+    padding-right: 0.5em;
+    cursor: pointer;
+
+  }
 }
 
 
-.small-custom {
-  display: flex;
-  flex: 1 0 0;
+@media all and (max-width: 549px) {
+  .small-custom {
+    display: flex;
+    flex: 1 0 0;
+    padding-left: 2vw;
+    border-bottom: solid gray 0.1em;
+    padding-top: 2vh;
+  }
+  .small-custom:hover {
+    background: lightgray;
+  }
+
+  .small-header-container {
+    display: flex;
+    border-bottom: solid gray 0.1em;
+  }
+
+  .small-header-text {
+    display: flex;
+    flex: 1 0 0;
+    padding-left: 2vw;
+    font-size: 2rem;
+  }
+
+  .small-header-exit {
+    display: flex;
+    font-size: 2rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
 }
-
-
-
