@@ -1,6 +1,15 @@
-<div class="basket-content-grid">
-    <div  *ngFor="let prod of this.parentProd">
-        <app-basket-item [product]="prod" ></app-basket-item>
+<div class="flex-container">
+    <div style="margin-bottom: 50px">
+        <div class="flex-header">
+            <h4 class="filler"></h4>
+            <h4 class="qty">Mennyiség</h4>
+            <h4 class="price">Ár</h4>
+            <h4 class="total-price">Teljes Ár</h4>
+        </div>
+        <div class="flex-item" *ngFor="let prod of this.parentProd">
+            <app-basket-item [product]="prod"></app-basket-item>
+        </div>
     </div>
 </div>
+
 

@@ -1,44 +1,14 @@
 .basket-header-title {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 80px 50px;
-    grid-template-areas: ' b1 ' ' d1 ';
-
+    grid-template-rows: 80px;
+    grid-template-areas: ' b1 ';
+    background-color: white;
 }
-
-.basket-header {
-    display: flex;
-}
-
-.basket-header > div {
-    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-    font-weight: bolder;
-    font-size: 1.5vw;
-}
-
-.image {
-    flex: 2;
-}
-
-.qty {
-    flex: 2;
-    text-align: center;
-}
-
-.price {
-    flex: 1;
-    text-align: center;
-}
-
-.total-price {
-    flex: 1;
-    text-align: center;
-}
-
 h2::before {
     display: inline-block;
     content: "";
-    border-top: .3rem solid black;
+    border-top: .3rem solid #505358;
     width: 20vw;
     margin-right: 5vw;
     transform: translateY(-.5rem);
@@ -47,15 +17,16 @@ h2::before {
 h2 {
     grid-area: b1;
     font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-    font-size: 3vw;
+    font-size: 2.5vw;
     text-align: center;
     margin: 0px;
+    color: #505358;
 }
 
 h2::after {
     display: inline-block;
     content: "";
-    border-top: .3rem solid black;
+    border-top: .3rem solid #505358;
     width: 20vw;
     margin-left: 5vw;
     transform: translateY(-.5rem);

@@ -13,6 +13,7 @@ export class BasketItemComponent implements OnInit {
     @Input() product: BasketProdModel;
 
     ngOnInit(): void {
+
     }
 
 }

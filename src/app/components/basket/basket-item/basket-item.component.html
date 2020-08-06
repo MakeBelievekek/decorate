@@ -1,13 +1,11 @@
 <div class="basket-item-grid">
     <div class="basket-img">
         <img [src]="product.img" alt="">
-        <p class="valami">valamivvvvvvvvvv vvvvvvfvvvvvv vvvvvvvvvvvvvvvvvv vvvvvvvv</p>
+        <p>valamivvvvvvvvvv vvvvvvfvvvvvv vvvvvvvvvvvvvvvvvv vvvvvvvv</p>
     </div>
-
-    <div class="input-group">
-        <input type="button" value="-" class="button-minus" data-field="quantity">
-        <input type="number" step="1" max="" value="1" name="quantity" class="quantity-field">
-        <input type="button" value="+" class="button-plus" data-field="quantity">
+    <div class="qty ">
+        <app-plus-minus-input [step]="1" [min]="0" [max]="100" [initialValue]="1" ariaLabelLess="Less 10"
+                              ariaLabelMore="Plus 10"></app-plus-minus-input>
     </div>
     <div class="price">
         {{product.price}}

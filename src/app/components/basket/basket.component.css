@@ -1,10 +1,13 @@
 .basket-container {
     display: grid;
-    grid-template-columns: .7fr 3fr .7fr;
+    grid-template-columns: .7fr 2.5fr .7fr;
     grid-template-areas: 'a b c';
+
+    margin-bottom: 50px;
 }
 
 .basket-wrapper {
     grid-column: 2/3;
+    background-color: white;
 }
 

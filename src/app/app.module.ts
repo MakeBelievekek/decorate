@@ -37,6 +37,7 @@ import { BasketHeaderComponent } from './components/basket/basket-header/basket-
 import { BasketContentComponent } from './components/basket/basket-content/basket-content.component';
 import { BasketBottomComponent } from './components/basket/basket-bottom/basket-bottom.component';
 import { BasketItemComponent } from './components/basket/basket-item/basket-item.component';
+import { PlusMinusInputComponent } from './components/basket/basket-item/plus-minus-input/plus-minus-input.component';
 
 @NgModule({
     declarations: [
@@ -71,6 +72,7 @@ import { BasketItemComponent } from './components/basket/basket-item/basket-item
         BasketContentComponent,
         BasketBottomComponent,
         BasketItemComponent,
+        PlusMinusInputComponent,
     ],
     imports: [
         BrowserModule,
