@@ -13,12 +13,13 @@ export class BasketComponent implements OnInit {
 
     response: PaymentResponseModel;
 
+
     ngOnInit(): void {
     }
 
     payment() {
-        this.paymentService.transaction().subscribe((data) => {this.response = data;},()=>{},()=>{console.log(this.response)});
-
-
+        this.paymentService.transaction().subscribe((data) => {this.response = data;}, () => {}, () => {console.log(this.response);});
     }
+
+
 }

@@ -1,41 +1,54 @@
 .basket-item-grid {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr minmax(140px,1fr) 2fr 1fr 1fr;
+    grid-template-areas: 'a b c d e';
     background-color: white;
-    width: 60vw;
+    margin-bottom: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
-
-.basket-img {
+.basket-details {
+    grid-area: b;
     display: flex;
-    flex: 2;
+    justify-content: center;
+    flex-direction: column;
 }
 
-.basket-img > p {
-    width: 8vw;
+.basket-details > p {
+    margin: 0px;
     overflow: hidden;
     white-space: initial;
-    text-align: center;
-    margin: 0px;
-    align-self: center;
     font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
     font-weight: bolder;
     font-size: 15px;
 }
 
-.price {
-    flex: 1;
+.price, .total-price {
     align-self: center;
     text-align: center;
+
 }
 
 img {
+    grid-area: a;
     width: 100px;
     height: 100px;
     margin: 20px;
 }
 
 .qty {
-    flex: 2;
+    grid-area: c;
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.qty > a {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-weight: bolder;
+    font-size: 18px;
+    color: black;
 }

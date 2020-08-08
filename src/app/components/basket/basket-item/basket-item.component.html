@@ -1,17 +1,21 @@
 <div class="basket-item-grid">
-    <div class="basket-img">
-        <img [src]="product.img" alt="">
-        <p>valamivvvvvvvvvv vvvvvvfvvvvvv vvvvvvvvvvvvvvvvvv vvvvvvvv</p>
+    <img [src]="product.img" alt="">
+    <div class="basket-details">
+        <p>{{product.description}}</p>
+        <p>Termék Kód: {{product.itemNo}}</p>
+        <p>Size: {{product.size}}</p>
     </div>
     <div class="qty ">
-        <app-plus-minus-input [step]="1" [min]="0" [max]="100" [initialValue]="1" ariaLabelLess="Less 10"
+        <app-plus-minus-input (counter)="countChange($event)" [step]="1" [min]="1" [max]="100" [initialValue]="1"
+                              ariaLabelLess="Less 10"
                               ariaLabelMore="Plus 10"></app-plus-minus-input>
+        <a href="">eltávolítás</a>
     </div>
     <div class="price">
         {{product.price}}
     </div>
-    <div class="price">
-        {{product.totalPrice}}
+    <div class="total-price">
+        {{this.totalPriceCounter}}
     </div>
 </div>
 

@@ -1,6 +1,6 @@
 .basket-container {
     display: grid;
-    grid-template-columns: .7fr 2.5fr .7fr;
+    grid-template-columns: minmax(auto, 1fr) minmax(800px, 3.5fr) minmax(auto, 1fr);
     grid-template-areas: 'a b c';
 
     margin-bottom: 50px;

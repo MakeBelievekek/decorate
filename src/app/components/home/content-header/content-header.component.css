@@ -4,7 +4,7 @@
         height: 210px;
         display: grid;
         grid-template-rows: 1fr 2fr;
-        grid-template-columns: 0.4fr 1fr 0.4fr;
+        grid-template-columns: minmax(360px,0.4fr) 1fr minmax(350px,0.4fr);
         grid-template-areas: "h1 h2 h3" "i1 i2 i3";
         padding-left: 32px;
         padding-right: 32px;
@@ -44,9 +44,8 @@
     }
 
     .telIcon {
-
         height: 50px;
-        width: 12vw;
+        width: 14rem;
         background-color: white;
         border-radius: 15px;
         border: 1px solid #CCCCCC;
@@ -61,7 +60,7 @@
 
     .telIcon > p {
         text-align: center;
-        font-size: 1vw;
+        font-size: 1rem;
     }
 
     .dot:hover {
@@ -77,36 +76,31 @@
     }
 
     #imgTel {
-        width: 2vw;
+        width: 2rem;
+        margin-right: 10px;
+    }
+
+    img {
+        width: 150px;
+        height: 150px;
+
+    }
+
+    .logo {
+        grid-area: i2;
+        display: flex;
+        justify-content: center;
     }
 }
 
-img {
-    width: 150px;
-    height: 150px;
-
-}
-
-.logo {
-    grid-area: i2;
-    display: flex;
-    justify-content: center;
-
-}
-
-.logoImg {
-    grid-area: c;
-    background: url("../../../../assets/2916902.jpg") no-repeat center center;
-    background-size: cover;
-    width: 100%;
-}
 
 @media screen and (max-width: 999px) {
     .content-header {
         background-color: #E5E5E5;
-        height: 210px;
-        display: grid;
-        grid-template-areas: "a";
+        height: 200px;
+        display: flex;
+        align-items: end;
+        justify-content: center;
     }
 
     .icons {
@@ -118,18 +112,11 @@ img {
     }
 
     .logo {
-        grid-area: a;
-        display: grid;
-        grid-template-rows: 1fr 2.4fr;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-areas: "a1 a2 a3" "c c c";
     }
 
-    .logoImg {
-        grid-area: c;
-        background: url("../../../../assets/2916902.jpg") no-repeat center center;
-        background-size: cover;
-        width: 100%;
+    img {
+        width: 145px;
+        height: 145px;
     }
 
 }

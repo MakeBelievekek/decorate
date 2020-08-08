@@ -6,10 +6,23 @@
             <h4 class="price">Ár</h4>
             <h4 class="total-price">Teljes Ár</h4>
         </div>
-        <div class="flex-item" *ngFor="let prod of this.parentProd">
-            <app-basket-item [product]="prod"></app-basket-item>
+        <div *ngFor="let prod of this.parentProd">
+            <app-basket-item [product]="prod" (totalPrice)="getAllTotalPrice($event)"></app-basket-item>
         </div>
     </div>
 </div>
-
+<div class="checkout-container">
+    <div class="prom-code">
+        <input class="discount-code-input" placeholder="kuponkód">
+        <button class="discount-code-btn">beváltás</button>
+    </div>
+    <div class="basket-total">
+        <h4>TELJES ÁR :</h4>
+        <h4>{{this.allTotal}} ft</h4>
+    </div>
+    <div class="checkout-action">
+        <button class="basket-continue-btn">Vásárlás folytatása</button>
+        <button class="basket-checkout-btn">Biztonságos fizetés</button>
+    </div>
+</div>
 
