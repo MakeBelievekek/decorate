@@ -3,6 +3,8 @@ import {BasketProdModel} from '../../../models/basket-prod-model';
 import {LocalStorageService} from "../../../services/localStorage.service";
 import {BasketService} from "../../../services/basket.service";
 import {log} from "util";
+import {ProductListItemForLocal} from "../../../models/productListItemForLocal";
+import {ProductService} from "../../../services/product.service";
 
 const CART_KEY = 'local_cartList';
 
@@ -15,13 +17,13 @@ export class BasketContentComponent implements OnInit {
 
   parentProd: BasketProdModel[];
   allTotal: number = 0;
+  productsFromLocalStorage: ProductListItemForLocal[];
 
 
-  constructor(private localStorageService: LocalStorageService) {
+  constructor(private localStorageService: LocalStorageService, private productService: ProductService) {
     this.parentProd = [
       {
         img: 'https://i.pinimg.com/originals/84/6d/be/846dbe31557588b055853eb45590248f.jpg',
-        qty: 1,
         price: 200,
         description: 'valami',
         itemNo: 11223,
@@ -29,7 +31,6 @@ export class BasketContentComponent implements OnInit {
       },
       {
         img: 'https://retaildesignblog.net/wp-content/uploads/2011/05/Pine-Art-Furnitures-03.jpg',
-        qty: 2,
         price: 300,
         description: 'valami2',
         itemNo: 33332,
@@ -37,7 +38,6 @@ export class BasketContentComponent implements OnInit {
       },
       {
         img: 'https://retaildesignblog.net/wp-content/uploads/2011/05/Pine-Art-Furnitures-05.jpg',
-        qty: 1,
         price: 100,
         description: 'valami3',
         itemNo: 22313,
@@ -45,7 +45,6 @@ export class BasketContentComponent implements OnInit {
       },
       {
         img: 'https://retaildesignblog.net/wp-content/uploads/2011/05/Pine-Art-Furnitures-04.jpg',
-        qty: 3,
         price: 350,
         description: 'valami4',
         itemNo: 56784,
@@ -56,6 +55,18 @@ export class BasketContentComponent implements OnInit {
 
   ngOnInit(): void {
     this.startingPrice();
+    if (this.localStorageService.getItemsFromLocalStorage(CART_KEY) != null) {
+      let productIds = [];
+      for (let prod of this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
+        productIds.push(prod.id)
+      }
+      productIds.map(String);
+      let prodString = productIds.toString();
+      this.productService.getProductsForLocalStorage(prodString).subscribe((data) => {
+        this.productsFromLocalStorage = data;
+      })
+      console.log(this.productsFromLocalStorage)
+    }
   }
 
   getAllTotalPrice(event) {

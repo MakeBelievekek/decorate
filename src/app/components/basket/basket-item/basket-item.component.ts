@@ -24,12 +24,13 @@ export class BasketItemComponent implements OnInit {
   };
   totalPriceCounter: number;
   localQty: number = 1;
+  valami: string;
 
   ngOnInit(): void {
     this.totalPriceCounter = this.product.price;
     if (this.localStorageService.getItemsFromLocalStorage(STORAGE_KEY) != null) {
       for (let prod of this.localStorageService.getItemsFromLocalStorage(STORAGE_KEY)) {
-        if (prod.id == this.product.itemNo) {
+        if (prod.id === this.product.itemNo) {
           this.localQty = prod.qty;
           this.totalPriceCounter = this.product.price * this.localQty;
         }
