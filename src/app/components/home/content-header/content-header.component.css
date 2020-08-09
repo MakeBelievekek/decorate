@@ -1,122 +1,122 @@
 @media screen and (min-width: 1000px) {
-    .content-header {
-        background-color: #E5E5E5;
-        height: 210px;
-        display: grid;
-        grid-template-rows: 1fr 2fr;
-        grid-template-columns: minmax(360px,0.4fr) 1fr minmax(350px,0.4fr);
-        grid-template-areas: "h1 h2 h3" "i1 i2 i3";
-        padding-left: 32px;
-        padding-right: 32px;
-        margin-top: 0;
-        padding-top: 0;
-    }
+  .content-header {
+    background-color: #e8e8e8;
+    height: 210px;
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    grid-template-columns: minmax(360px, 0.4fr) 1fr minmax(350px, 0.4fr);
+    grid-template-areas: "h1 h2 h3" "i1 i2 i3";
+    padding-left: 32px;
+    padding-right: 32px;
+    margin-top: 0;
+    padding-top: 0;
+  }
 
-    .dot {
-        grid-area: i1;
-        height: 50px;
-        width: 50px;
-        background-color: white;
-        border-radius: 50%;
-        border: 1px solid #CCCCCC;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: 10px;
-        cursor: pointer;
-        transition: 700ms;
-        transition-timing-function: linear;
-    }
+  .dot {
+    grid-area: i1;
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid #CCCCCC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: 700ms;
+    transition-timing-function: linear;
+  }
 
-    .icons {
-        grid-area: i1;
-        display: flex;
-        align-items: center;
-        justify-content: start;
+  .icons {
+    grid-area: i1;
+    display: flex;
+    align-items: center;
+    justify-content: start;
 
-    }
+  }
 
-    .phone {
-        grid-area: i3;
-        display: flex;
-        align-items: center;
-        justify-content: start;
-    }
+  .phone {
+    grid-area: i3;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
 
-    .telIcon {
-        height: 50px;
-        width: 14rem;
-        background-color: white;
-        border-radius: 15px;
-        border: 1px solid #CCCCCC;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: 10px;
-        cursor: pointer;
-        transition: 700ms;
-        transition-timing-function: linear;
-    }
+  .telIcon {
+    height: 50px;
+    width: 14rem;
+    background-color: white;
+    border-radius: 15px;
+    border: 1px solid #CCCCCC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: 700ms;
+    transition-timing-function: linear;
+  }
 
-    .telIcon > p {
-        text-align: center;
-        font-size: 1rem;
-    }
+  .telIcon > p {
+    margin: 0px;
+    font-size: 1rem;
+  }
 
-    .dot:hover {
-        background-color: #C5C5C5;
-    }
+  .dot:hover {
+    background-color: #C5C5C5;
+  }
 
-    .telIcon:hover {
-        background-color: #C5C5C5;
-    }
+  .telIcon:hover {
+    background-color: #C5C5C5;
+  }
 
-    #imgMail {
-        width: 30px;
-    }
+  #imgMail {
+    width: 30px;
+  }
 
-    #imgTel {
-        width: 2rem;
-        margin-right: 10px;
-    }
+  #imgTel {
+    width: 2rem;
+    margin-right: 10px;
+  }
 
-    img {
-        width: 150px;
-        height: 150px;
+  img {
+    width: 150px;
+    height: 150px;
 
-    }
+  }
 
-    .logo {
-        grid-area: i2;
-        display: flex;
-        justify-content: center;
-    }
+  .logo {
+    grid-area: i2;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 
 @media screen and (max-width: 999px) {
-    .content-header {
-        background-color: #E5E5E5;
-        height: 200px;
-        display: flex;
-        align-items: end;
-        justify-content: center;
-    }
+  .content-header {
+    background-color: #E5E5E5;
+    height: 200px;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+  }
 
-    .icons {
-        display: none;
-    }
+  .icons {
+    display: none;
+  }
 
-    .phone {
-        display: none;
-    }
+  .phone {
+    display: none;
+  }
 
-    .logo {
-    }
+  .logo {
+  }
 
-    img {
-        width: 145px;
-        height: 145px;
-    }
+  img {
+    width: 145px;
+    height: 145px;
+  }
 
 }

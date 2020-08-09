@@ -1,54 +1,63 @@
 .basket-item-grid {
-    display: grid;
-    grid-template-columns: 1fr minmax(140px,1fr) 2fr 1fr 1fr;
-    grid-template-areas: 'a b c d e';
-    background-color: white;
-    margin-bottom: 5px;
-    margin-left: 50px;
-    margin-right: 50px;
+  display: grid;
+  grid-template-columns: 1fr minmax(140px, 1fr) 2fr 1fr 1fr;
+  grid-template-areas: 'a b c d e';
+  background-color: white;
+  margin-bottom: 5px;
+  margin-left: 50px;
+  margin-right: 50px;
 }
+
 .basket-details {
-    grid-area: b;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  grid-area: b;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#remove-icon {
+  width: 20px;
+  height: 20px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  cursor: pointer;
 }
 
 .basket-details > p {
-    margin: 0px;
-    overflow: hidden;
-    white-space: initial;
-    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-    font-weight: bolder;
-    font-size: 15px;
+  margin: 0px;
+  overflow: hidden;
+  white-space: initial;
+  font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-weight: bolder;
+  font-size: 15px;
 }
 
 .price, .total-price {
-    align-self: center;
-    text-align: center;
+  align-self: center;
+  text-align: center;
 
 }
 
-img {
-    grid-area: a;
-    width: 100px;
-    height: 100px;
-    margin: 20px;
+.basket-item-grid > img {
+  grid-area: a;
+  width: 100px;
+  height: 100px;
+  margin: 20px;
 }
 
 .qty {
-    grid-area: c;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  grid-area: c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .qty > a {
-    margin-top: 20px;
-    margin-bottom: 0px;
-    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-    font-weight: bolder;
-    font-size: 18px;
-    color: black;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-weight: bolder;
+  font-size: 18px;
+  color: black;
 }
