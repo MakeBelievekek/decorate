@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {BasketProdModel} from '../../../models/basket-prod-model';
+import { ProductListItemForLocal } from '../../../models/productListItemForLocal';
 import {TotalPriceModel} from '../../../models/totalPriceModel';
 import {LocalStorageService} from "../../../services/localStorage.service";
 import {BasketService} from "../../../services/basket.service";
@@ -16,7 +17,7 @@ export class BasketItemComponent implements OnInit {
   constructor(private localStorageService: LocalStorageService, private basketService: BasketService) {
   }
 
-  @Input() product: BasketProdModel;
+  @Input() product: ProductListItemForLocal;
   @Output() totalPrice: EventEmitter<TotalPriceModel> = new EventEmitter<TotalPriceModel>();
   total: TotalPriceModel = new class implements TotalPriceModel {
     plusOrNot: boolean;
@@ -30,7 +31,7 @@ export class BasketItemComponent implements OnInit {
     this.totalPriceCounter = this.product.price;
     if (this.localStorageService.getItemsFromLocalStorage(STORAGE_KEY) != null) {
       for (let prod of this.localStorageService.getItemsFromLocalStorage(STORAGE_KEY)) {
-        if (prod.id === this.product.itemNo) {
+        if (prod.id === this.product.id) {
           this.localQty = prod.qty;
           this.totalPriceCounter = this.product.price * this.localQty;
         }

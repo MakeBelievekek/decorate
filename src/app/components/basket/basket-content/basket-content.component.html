@@ -6,7 +6,7 @@
             <h4 class="price">Ár</h4>
             <h4 class="total-price">Teljes Ár</h4>
         </div>
-        <div *ngFor="let prod of this.parentProd">
+        <div *ngFor="let prod of this.productsFromLocalStorage">
             <app-basket-item [product]="prod" (totalPrice)="getAllTotalPrice($event)"></app-basket-item>
         </div>
     </div>
