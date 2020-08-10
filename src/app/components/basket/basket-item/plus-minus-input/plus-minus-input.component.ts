@@ -3,6 +3,8 @@ import {TotalPriceModel} from '../../../../models/totalPriceModel';
 import {LocalStorageService} from "../../../../services/localStorage.service";
 import {LocalProductModel} from "../../../../models/localProductModel";
 
+const CART_KEY = 'local_cartList';
+
 @Component({
   selector: 'app-plus-minus-input',
   templateUrl: './plus-minus-input.component.html',
@@ -38,12 +40,12 @@ export class PlusMinusInputComponent implements OnInit {
     this.value = this.initialValue;
     this.renderedValue = this.value.toString();
     this.setProdToLocal();
-    if (this.localStorageService.getItemIdFromLocalStorage().length != 0) {
-      if (!this.localStorageService.getItemIdFromLocalStorage().includes(this.prodId)) {
-        this.localStorageService.storeOnLocalStorage(this.item)
+    if (this.localStorageService.getItemIdFromLocalStorage(CART_KEY) != null) {
+      if (!this.localStorageService.getItemIdFromLocalStorage(CART_KEY).includes(this.prodId)) {
+        this.localStorageService.storeOnLocalStorage(this.item, CART_KEY)
       }
     } else {
-      this.localStorageService.storeOnLocalStorage(this.item)
+      this.localStorageService.storeOnLocalStorage(this.item, CART_KEY)
     }
   }
 
@@ -54,7 +56,7 @@ export class PlusMinusInputComponent implements OnInit {
       this.total.value = this.value;
       this.total.plusOrNot = true;
       this.counter.emit(this.total);
-      this.localStorageService.updateItem(this.prodId, this.value);
+      this.localStorageService.updateItem(this.prodId, this.value, CART_KEY);
     }
   };
 
@@ -65,7 +67,7 @@ export class PlusMinusInputComponent implements OnInit {
       this.total.value = this.value;
       this.total.plusOrNot = false;
       this.counter.emit(this.total);
-      this.localStorageService.updateItem(this.prodId, this.value);
+      this.localStorageService.updateItem(this.prodId, this.value, CART_KEY);
     }
   };
 

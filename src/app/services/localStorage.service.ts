@@ -14,18 +14,18 @@ export class LocalStorageService {
   constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) {
   }
 
-  public storeOnLocalStorage(item: LocalProductModel): void {
-    const currentCartList = this.storage.get(STORAGE_KEY) || [];
+  public storeOnLocalStorage(item: LocalProductModel,key:string): void {
+    const currentCartList = this.storage.get(key) || [];
     currentCartList.push({
       id: item.prodId,
       qty: item.quantity
     });
-    this.storage.set(STORAGE_KEY, currentCartList);
+    this.storage.set(key, currentCartList);
   }
 
-  public getItemIdFromLocalStorage() {
+  public getItemIdFromLocalStorage( key:string) {
     let id: number [] = [];
-    for (let prod of this.storage.get(STORAGE_KEY) || []) {
+    for (let prod of this.storage.get(key) || []) {
       id.push(prod.id)
     }
     return id;
@@ -35,13 +35,13 @@ export class LocalStorageService {
     return this.storage.get(key) || [];
   }
 
-  updateItem(id: number, qty: number) {
-    let cart = this.getItemsFromLocalStorage(STORAGE_KEY);
+  updateItem(id: number, qty: number, key:string) {
+    let cart = this.getItemsFromLocalStorage(key);
     for (let prod of cart) {
       if (prod.id == id) {
         prod.qty = qty;
       }
     }
-    this.storage.set(STORAGE_KEY, cart)
+    this.storage.set(key, cart)
   }
 }
