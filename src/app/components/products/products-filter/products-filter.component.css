@@ -124,13 +124,14 @@ i {
 
 
 .small-order-dropdown-container {
+  flex: 1 0 auto;
   display: flex;
   position: fixed;
   flex-direction: column;
   z-index: 100;
   top: 20%;
   background: white;
-  width: 75vw;
+  width: 85vw;
   -webkit-box-shadow: 10px 10px 44px -13px rgba(0,0,0,0.63);
   -moz-box-shadow: 10px 10px 44px -13px rgba(0,0,0,0.63);
   box-shadow: 10px 10px 44px -13px rgba(0,0,0,0.63);
@@ -141,14 +142,18 @@ i {
 @media all and (min-width: 550px) and (max-width: 750px) {
   .small-custom {
     display: flex;
-    flex: 1 0 0;
-    padding-left: 30vw;
+    flex: 1 0 auto;
+    padding-left: 35vw;
     border-bottom: solid gray 0.1em;
-    padding-top: 2vh;
+    font-size: 1.25rem;
+    height: 3rem;
+    align-items: center;
   }
+
 
   .small-custom:hover {
     background: lightgray;
+    cursor: pointer;
   }
 
   .small-header-container {
@@ -159,7 +164,7 @@ i {
   .small-header-text {
     display: flex;
     flex: 1 0 0;
-    padding-left: 30vw;
+    padding-left: 35vw;
     font-size: 2rem;
   }
 
@@ -177,13 +182,16 @@ i {
 @media all and (max-width: 549px) {
   .small-custom {
     display: flex;
-    flex: 1 0 0;
+    flex: 1 0 auto;
     padding-left: 2vw;
     border-bottom: solid gray 0.1em;
-    padding-top: 2vh;
+    height: 3rem;
+    font-size: 1.25rem;
+    align-items: center;
   }
   .small-custom:hover {
     background: lightgray;
+    cursor: pointer;
   }
 
   .small-header-container {

@@ -18,8 +18,6 @@ export class ProductsFilterComponent implements OnInit {
   screenControl: ScreenControlModel;
   dropDownMeasurements: any = {top: 0, width: 0};
   @Output() productContentScreenAttributes: EventEmitter<string>;
-  @ViewChild('smallOrderDropDownContainer') smallOrderDropDownContainer: ElementRef;
-
 
   constructor(private modalService: ModalService,
               private screenService: ScreenService,
@@ -37,10 +35,7 @@ export class ProductsFilterComponent implements OnInit {
   toggleOrderModal(): void {
     this.modalService.toggleModal('order');
     if (this.modalControl.control === 'order' && this.modalControl.showModal && this.screenControl.smallDropdown) {
-      this.screenService.setSmallOrderDropDownContainer(this.smallOrderDropDownContainer);
-      console.log(this.screenService.getSmallOrderDropDownContainerHeight());
     }
-
   }
 
   toggleColorModal(): void {
@@ -55,6 +50,10 @@ export class ProductsFilterComponent implements OnInit {
     this.dropDownMeasurements = this.screenService.getContentMeasurements();
     this.dropDownMeasurements.top += 7;
     this.modalService.toggleModal('design');
+  }
+
+  toggleFilterModal(): void {
+    this.modalService.toggleModal('filter');
   }
 
   handleActiveOrders(order: string): void {
@@ -76,7 +75,6 @@ export class ProductsFilterComponent implements OnInit {
   clearDesignerFilters(): void {
     this.filterService.clearDesignerFilters();
   }
-
 
 
 }

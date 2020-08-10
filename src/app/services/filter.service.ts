@@ -21,13 +21,8 @@ export class FilterService {
   handleActiveOrders(order: string): void {
     if (!this.filterControl.activeOrder.includes(order)) {
       this.filterControl.activeOrder.push(order);
-      console.log('push');
-      console.log(this.filterControl.activeOrder);
     } else {
       this.filterControl.activeOrder = this.filterControl.activeOrder.filter(activeOrder => activeOrder !== order);
-      console.log('filter');
-      console.log(this.filterControl.activeOrder);
-
     }
   }
 
