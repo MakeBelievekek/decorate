@@ -5,7 +5,7 @@ import {TotalPriceModel} from '../../../models/totalPriceModel';
 import {LocalStorageService} from "../../../services/localStorage.service";
 import {BasketService} from "../../../services/basket.service";
 
-const STORAGE_KEY = 'local_cartList';
+const CART_KEY = 'local_cartList';
 
 @Component({
   selector: 'app-basket-item',
@@ -25,12 +25,11 @@ export class BasketItemComponent implements OnInit {
   };
   totalPriceCounter: number;
   localQty: number = 1;
-  valami: string;
 
   ngOnInit(): void {
     this.totalPriceCounter = this.product.price;
-    if (this.localStorageService.getItemsFromLocalStorage(STORAGE_KEY) != null) {
-      for (let prod of this.localStorageService.getItemsFromLocalStorage(STORAGE_KEY)) {
+    if (this.localStorageService.getItemsFromLocalStorage(CART_KEY) != null) {
+      for (let prod of this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
         if (prod.id === this.product.id) {
           this.localQty = prod.qty;
           this.totalPriceCounter = this.product.price * this.localQty;

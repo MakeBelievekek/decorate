@@ -10,14 +10,11 @@ import {BasketService} from "../../services/basket.service";
   styleUrls: ['./basket.component.css'],
 })
 export class BasketComponent implements OnInit {
-  totalArray: number[] = [];
   total: number = 0;
 
   constructor(private paymentService: PaymentService, private basketService: BasketService) {
   }
-
   response: PaymentResponseModel;
-
 
   ngOnInit(): void {
   }

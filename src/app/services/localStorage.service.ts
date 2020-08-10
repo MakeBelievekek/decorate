@@ -3,7 +3,7 @@ import {LOCAL_STORAGE, StorageService} from 'ngx-webstorage-service';
 import {LocalProductModel} from "../models/localProductModel";
 
 
-const STORAGE_KEY = 'local_cartList';
+
 
 @Injectable({
   providedIn: 'root'
