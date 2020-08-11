@@ -18,6 +18,7 @@ export class ProductsFilterComponent implements OnInit {
   screenControl: ScreenControlModel;
   dropDownMeasurements: any = {top: 0, width: 0};
   @Output() productContentScreenAttributes: EventEmitter<string>;
+  showSmallColorFilter: boolean;
 
   constructor(private modalService: ModalService,
               private screenService: ScreenService,
@@ -77,4 +78,8 @@ export class ProductsFilterComponent implements OnInit {
   }
 
 
+  toggleSmallColorFilter() {
+    this.showSmallColorFilter = !this.showSmallColorFilter;
+    console.log(this.showSmallColorFilter);
+  }
 }
