@@ -18,6 +18,9 @@ export class ProductsFilterComponent implements OnInit {
   screenControl: ScreenControlModel;
   dropDownMeasurements: any = {top: 0, width: 0};
   @Output() productContentScreenAttributes: EventEmitter<string>;
+  @ViewChild('filterControlContainer') filterControlContainer: ElementRef;
+  showSmallColorFilter: boolean;
+
 
   constructor(private modalService: ModalService,
               private screenService: ScreenService,
@@ -40,15 +43,15 @@ export class ProductsFilterComponent implements OnInit {
 
   toggleColorModal(): void {
     this.productContentScreenAttributes.emit('show');
-    this.dropDownMeasurements = this.screenService.getContentMeasurements();
-    this.dropDownMeasurements.top += 7;
+    this.dropDownMeasurements = this.getTopOfSetAndWidth();
+    this.dropDownMeasurements.top += 6;
     this.modalService.toggleModal('color');
   }
 
   toggleDesignModal(): void {
     this.productContentScreenAttributes.emit('show');
-    this.dropDownMeasurements = this.screenService.getContentMeasurements();
-    this.dropDownMeasurements.top += 7;
+    this.dropDownMeasurements = this.getTopOfSetAndWidth();
+    this.dropDownMeasurements.top += 6;
     this.modalService.toggleModal('design');
   }
 
@@ -77,4 +80,14 @@ export class ProductsFilterComponent implements OnInit {
   }
 
 
+  toggleSmallColorFilter() {
+    this.showSmallColorFilter = !this.showSmallColorFilter;
+    console.log(this.showSmallColorFilter);
+  }
+
+  getTopOfSetAndWidth(): any {
+    const topOffset = this.filterControlContainer.nativeElement.offsetTop + this.filterControlContainer.nativeElement.offsetHeight;
+    const contentWidth = this.filterControlContainer.nativeElement.offsetWidth;
+    return {top: topOffset, width: contentWidth};
+  }
 }

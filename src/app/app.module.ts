@@ -39,7 +39,8 @@ import {BasketBottomComponent} from './components/basket/basket-bottom/basket-bo
 import {BasketItemComponent} from './components/basket/basket-item/basket-item.component';
 import {PlusMinusInputComponent} from './components/basket/basket-item/plus-minus-input/plus-minus-input.component';
 import {StorageServiceModule} from 'ngx-webstorage-service';
-import {LocalStorageService} from "./services/localStorage.service";
+import {LocalStorageService} from './services/localStorage.service';
+import { ActiveFiltersComponent } from './components/products/active-filters/active-filters.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import {LocalStorageService} from "./services/localStorage.service";
     BasketItemComponent,
     ProductsFilterComponent,
     PlusMinusInputComponent,
+    ActiveFiltersComponent,
   ],
   imports: [
     BrowserModule,

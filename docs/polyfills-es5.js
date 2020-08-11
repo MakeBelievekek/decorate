@@ -15284,7 +15284,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             borderTopWidth: "3px",
             bottom: "auto",
             clip: "rect(0px, 0px, 0px, 0px)",
-            colors: "black",
+            color: "black",
             fontSize: "100%",
             fontWeight: "400",
             height: "auto",
@@ -16101,7 +16101,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             var d = {
               inset: !1,
               lengths: [],
-              colors: null
+              color: null
             },
                 e = a.consumeRepeated(c, /^/, b);
             if (e && e[0].length) return [d, e[1]];
@@ -16150,7 +16150,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             function f(a) {
               return {
                 inset: a,
-                colors: [0, 0, 0, 0],
+                color: [0, 0, 0, 0],
                 lengths: [{
                   px: 0
                 }, {
