@@ -3,6 +3,9 @@ import {PaymentResponseModel} from '../../models/paymentResponseModel';
 import {PaymentService} from '../../services/payment.service';
 import {LocalStorageService} from "../../services/localStorage.service";
 import {BasketService} from "../../services/basket.service";
+import {ActivatedRoute} from "@angular/router";
+import {ProductListItemForLocal} from "../../models/productListItemForLocal";
+import {ProductService} from "../../services/product.service";
 
 @Component({
   selector: 'app-basket',
@@ -11,12 +14,14 @@ import {BasketService} from "../../services/basket.service";
 })
 export class BasketComponent implements OnInit {
   total: number = 0;
-
-  constructor(private paymentService: PaymentService, private basketService: BasketService) {
-  }
+  productsFromLocalStorage: ProductListItemForLocal[];
   response: PaymentResponseModel;
 
+  constructor(private paymentService: PaymentService,private route: ActivatedRoute) {
+  }
+
   ngOnInit(): void {
+    this.productsFromLocalStorage = this.route.snapshot.data.basketItems;
   }
 
   payment() {

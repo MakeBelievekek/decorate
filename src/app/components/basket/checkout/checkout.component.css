@@ -1,0 +1,87 @@
+.checkout-container {
+  display: grid;
+  grid-template-columns: minmax(auto, 1fr) minmax(400px, 1.7fr) minmax(200px, 1fr) minmax(auto, 1fr);
+  grid-template-areas: 'a b c d ';
+  margin-bottom: 50px;
+}
+
+.check-content {
+  grid-area: b;
+}
+
+.check-content > h4 {
+  margin-top: 30px;
+  font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+.checkout-basket {
+  grid-area: c;
+}
+
+img {
+  grid-area: a;
+  width: 100px;
+  height: 100px;
+  margin: 20px 0px;
+}
+
+.chk-bsk {
+  margin-top: 30px;
+  width: 300px;
+  padding: 22px 18px 29px 17px;
+  border: 1px solid #b2b2b1;
+  box-sizing: border-box;
+  margin-bottom: 50px;
+}
+
+.check-basket-header {
+  display: flex;
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  background-color: #f3f3f4;
+  color: #000;
+  font-size: 18px;
+  height: 50px;
+  text-transform: uppercase;
+  align-items: center;
+  font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-weight: bolder;
+}
+
+.check-basket-details {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.checkout-table {
+  font-size: 1rem;
+  font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-weight: bolder;
+
+}
+
+.check-basket-details > p, .check-basket-recapitulative > p {
+  margin: 0px;
+  overflow: hidden;
+  white-space: initial;
+  font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  font-weight: bolder;
+  font-size: 1rem;
+  color: #1c1c1b;
+}
+
+.check-card {
+  display: flex;
+}
+
+.checkout-action {
+  border-top: 3px solid #f3f3f4;
+}
+.td-right{
+ text-align: right;
+}

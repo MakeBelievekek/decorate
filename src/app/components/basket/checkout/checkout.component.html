@@ -1,1 +1,40 @@
-<p>checkout works!</p>
+<div class="checkout-container">
+  <div class="check-content">
+    <h4>Biztonságos Kifizetés</h4>
+  </div>
+  <div class="checkout-basket">
+    <div class="chk-bsk">
+      <div class="check-basket-header">Rendelés Összesités</div>
+      <div *ngFor="let prod of product">
+        <div class="check-card">
+          <img [src]="prod.productImg" alt="">
+          <div class="check-basket-details">
+            <p>{{prod.productDesc}}</p>
+            <p>Termék Kód : {{prod.id}}</p>
+            <p>Size : roll</p>
+            <p>Ár : {{prod.price}} ft</p>
+          </div>
+        </div>
+        <div class="checkout-action">
+        </div>
+      </div>
+      <table class="checkout-table">
+        <tbody>
+        <tr>
+          <td>Termék árak:</td>
+          <td class="td-right">{{allTotal}} Ft</td>
+        </tr>
+        <tr>
+          <td>Szállitási dij:</td>
+          <td class="td-right">{{allTotal}} Ft</td>
+        </tr>
+        <tr>
+          <td>Adó (Szállitással):</td>
+          <td class="td-right">{{allTotal}} Ft</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

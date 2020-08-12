@@ -5,14 +5,25 @@ import {BasketComponent} from './components/basket/basket.component';
 import {HomeComponent} from './components/home/home.component';
 import {ProductsComponent} from "./components/products/products.component";
 import {CheckoutComponent} from "./components/basket/checkout/checkout.component";
+import {BasketContentResolver} from "./services/basket-content-resolver";
 
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'products', component: ProductsComponent},
-  {path: 'basket', component: BasketComponent},
-  {path: 'checkout', component: CheckoutComponent}
+  {
+    path: 'basket', component: BasketComponent,
+    resolve: {
+      basketItems: BasketContentResolver
+    }
+  },
+  {
+    path: 'checkout', component: CheckoutComponent,
+    resolve: {
+      basketItems: BasketContentResolver
+    }
+  }
 ];
 
 @NgModule({

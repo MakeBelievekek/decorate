@@ -42,6 +42,7 @@ import {StorageServiceModule} from 'ngx-webstorage-service';
 import {LocalStorageService} from "./services/localStorage.service";
 import { CheckoutComponent } from './components/basket/checkout/checkout.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,6 +78,7 @@ import { CheckoutComponent } from './components/basket/checkout/checkout.compone
     ProductsFilterComponent,
     PlusMinusInputComponent,
     CheckoutComponent,
+
   ],
   imports: [
     BrowserModule,

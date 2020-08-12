@@ -1,6 +1,6 @@
 export interface ProductListItemForLocal {
   id: number;
-  productDesc: string;
   price: number;
+  productDesc: string;
   productImg: string;
 }
