@@ -22,8 +22,8 @@ export class BasketContentComponent implements OnInit {
     }
 
     ngOnInit(): void {
-      if (this.localStorageService.getItemsFromLocalStorage(CART_KEY) != null) {
-            let productIds = [];
+      if (this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
+        let productIds = [];
             for (let prod of this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
                 productIds.push(prod.id);
             }
@@ -33,8 +33,6 @@ export class BasketContentComponent implements OnInit {
                 this.productsFromLocalStorage = data;
             },()=>{},()=>{this.startingPrice()});
         }
-
-      console.log(this.productsFromLocalStorage)
     }
 
     getAllTotalPrice(event) {

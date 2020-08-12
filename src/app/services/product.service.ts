@@ -16,6 +16,7 @@ export class ProductService {
 
 
   getProductsForLocalStorage(productsIds: string): Observable<ProductListItemForLocal[]> {
+    console.log(productsIds)
     let observable =this.http.get<ProductListItemForLocal[]>(PRODUCT_BASE_URL + productsIds);
     return observable;
   }

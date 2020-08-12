@@ -40,6 +40,7 @@ import {BasketItemComponent} from './components/basket/basket-item/basket-item.c
 import {PlusMinusInputComponent} from './components/basket/basket-item/plus-minus-input/plus-minus-input.component';
 import {StorageServiceModule} from 'ngx-webstorage-service';
 import {LocalStorageService} from "./services/localStorage.service";
+import { CheckoutComponent } from './components/basket/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import {LocalStorageService} from "./services/localStorage.service";
     BasketItemComponent,
     ProductsFilterComponent,
     PlusMinusInputComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
