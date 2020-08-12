@@ -89,12 +89,11 @@
 <div *ngIf="this.screenControl.smallScreen">
   <div class="small-filter-container">
     <div class="small-filter-item small-border-right" (click)="toggleOrderModal()">
-      hello 1
+      Sorrend
     </div>
     <div class="small-order-dropdown-container"
          *ngIf="this.modalControl.control === 'order' && this.modalControl.showModal && this.screenControl.smallDropdown"
-          (click)="$event.stopPropagation()"
-          #smallOrderDropDownContainer
+         (click)="$event.stopPropagation()"
     >
       <div class="small-header-container">
         <div class="small-header-text">
@@ -104,27 +103,96 @@
           <i class="fa fa-times" aria-hidden="true" (click)="this.toggleOrderModal()"></i>
         </div>
       </div>
-      <div *ngFor="let order of this.filterControl.order" class="small-custom">
+      <div *ngFor="let order of this.filterControl.order" class="small-custom" (click)="handleActiveOrders(order)">
         <div>
-          <p (click)="handleActiveOrders(order)" *ngIf="!this.filterControl.activeOrder.includes(order)"
+          <div *ngIf="!this.filterControl.activeOrder.includes(order)"
           ><i
             class="fa fa-circle-thin"
             aria-hidden="true"></i>{{order}}
-          </p>
-          <p (click)="handleActiveOrders(order)" *ngIf="this.filterControl.activeOrder.includes(order)"
+          </div>
+          <div (click)="handleActiveOrders(order)" *ngIf="this.filterControl.activeOrder.includes(order)"
           ><i
             class="fa fa-circle"
             aria-hidden="true"></i>{{order}}
-          </p>
+          </div>
         </div>
       </div>
     </div>
-    <div class="small-filter-item ">
-      hello 2
+    <!--  filter modal -->
+    <div class="small-filter-item " (click)="toggleFilterModal()">
+      Szürés
     </div>
+    <div class="small-filter-dropdown-container"
+         *ngIf="this.modalControl.control === 'filter' && this.modalControl.showModal && this.screenControl.smallDropdown"
+         (click)="$event.stopPropagation()"
+    >
+      <div class="small-header-container">
+        <div class="small-header-text">
+          Rendezés
+        </div>
+        <div class="small-header-exit">
+          <i class="fa fa-times" aria-hidden="true" (click)="this.toggleFilterModal()"></i>
+        </div>
+      </div>
+      <div class="small-color-picker" (click)="this.toggleSmallColorFilter()">Színek</div>
+
+      <ng-container *ngIf="this.showSmallColorFilter">
+        <div class="small-color-items-container">
+          <ng-container *ngFor="let color of this.filterControl.colors">
+            <div class="small-color-item">
+              <div *ngIf="!this.filterControl.activeColors.includes(color)" (click)="handleActiveColors(color)"
+              >
+                <svg id="Capa_1" enable-background="new 0 0 482.239 482.239" height="1.25rem"
+                     viewBox="0 0 482.239 482.239"
+                     width="1.25rem" xmlns="http://www.w3.org/2000/svg" style="padding-bottom: 0.25rem">
+                  <path
+                    d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z"/>
+                </svg>
+                {{color}}
+              </div>
+              <div *ngIf="this.filterControl.activeColors.includes(color)" (click)="handleActiveColors(color)"
+              >
+                <svg id="Capa_1" enable-background="new 0 0 451.111 451.111" height="1.25rem"
+                     viewBox="0 0 451.111 451.111"
+                     width="1.25rem" xmlns="http://www.w3.org/2000/svg" style="padding-bottom: 0.25rem">
+                  <path
+                    d="m361.116 183.893-45.564-45.564-122.219 122.218-57.774-57.774-45.564 45.564 103.338 103.338z"/>
+                  <path d="m0 0v451.111h451.111v-451.111zm386.667 386.667h-322.223v-322.223h322.222v322.223z"/>
+                </svg>
+                {{color}}
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+
+    <div class="small-color-picker">Designerek</div>
+    <!--<div class="small-header-container">
+      <div class="small-header-text">
+        Rendezés
+      </div>
+      <div class="small-header-exit">
+        <i class="fa fa-times" aria-hidden="true" (click)="this.toggleOrderModal()"></i>
+      </div>
+    </div>
+    <div *ngFor="let order of this.filterControl.order" class="small-custom" (click)="handleActiveOrders(order)">
+      <div>
+        <div  *ngIf="!this.filterControl.activeOrder.includes(order)"
+        >
+          <svg id="Capa_1" enable-background="new 0 0 482.239 482.239" height="1.25rem" viewBox="0 0 482.239 482.239" width="1.25rem" xmlns="http://www.w3.org/2000/svg" style="padding-bottom: 0.25rem"><path d="m465.016 0h-447.793c-9.52 0-17.223 7.703-17.223 17.223v447.793c0 9.52 7.703 17.223 17.223 17.223h447.793c9.52 0 17.223-7.703 17.223-17.223v-447.793c0-9.52-7.703-17.223-17.223-17.223zm-17.223 447.793h-413.347v-413.347h413.348v413.347z"/></svg>
+          {{order}}
+        </div>
+        <div  *ngIf="this.filterControl.activeOrder.includes(order)"
+        >
+          <svg id="Capa_1" enable-background="new 0 0 451.111 451.111" height="1.25rem" viewBox="0 0 451.111 451.111" width="1.25rem" xmlns="http://www.w3.org/2000/svg" style="padding-bottom: 0.25rem"><path d="m361.116 183.893-45.564-45.564-122.219 122.218-57.774-57.774-45.564 45.564 103.338 103.338z"/><path d="m0 0v451.111h451.111v-451.111zm386.667 386.667h-322.223v-322.223h322.222v322.223z"/></svg>
+          {{order}}
+        </div>
 
 
+      </div>
+    </div>-->
   </div>
+</div>
 </div>
 
 
