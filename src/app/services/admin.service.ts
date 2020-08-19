@@ -2,7 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {FormDataModel} from '../models/formDataModel';
-import {WallpaperModel} from '../models/wallpaper-model';
+import {ProductModel} from '../models/productModel';
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {AttributeListItemModel} from "../models/attributeListItemModel";
 import {AttributeData} from "../models/attributeData";
@@ -19,8 +19,8 @@ export class AdminService {
 
   toggleService = new Subject<boolean>();
 
-  createProduct(data: WallpaperModel): Observable<WallpaperModel> {
-    return this.http.post<WallpaperModel>(BASE_URL + '/admin', data);
+  createProduct(data: ProductModel, typeOfProduct): Observable<ProductModel> {
+    return this.http.post<ProductModel>(BASE_URL + '/' + typeOfProduct, data);
   }
 
   getAllAttribute(): Observable<FormDataModel> {
@@ -41,16 +41,20 @@ export class AdminService {
       (form.controls.productPatterns as FormArray).push(control);
     });
   }
-  createColorsArrayToSend(form:FormGroup,colors:AttributeData[]): string[] {
+
+  createColorsArrayToSend(form: FormGroup, colors: AttributeData[]): string[] {
     return form.value.productColors
       .map((color, index) => color ? colors[index] : null)
       .filter(color => color !== null);
-  }createPatternsArrayToSend(form:FormGroup,patterns:AttributeData[]): string[] {
+  }
+
+  createPatternsArrayToSend(form: FormGroup, patterns: AttributeData[]): string[] {
     return form.value.productPatterns
       .map((pattern, index) => pattern ? patterns[index] : null)
       .filter(pattern => pattern !== null);
   }
-  createStylesArrayToSend(form:FormGroup,styles:AttributeData[]): string[] {
+
+  createStylesArrayToSend(form: FormGroup, styles: AttributeData[]): string[] {
     return form.value.productStyles
       .map((style, index) => style ? styles[index] : null)
       .filter(style => style !== null);

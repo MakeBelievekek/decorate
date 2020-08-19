@@ -5,7 +5,7 @@ import {AttributeData} from '../../../models/attributeData';
 import {AttributeListItemModel} from '../../../models/attributeListItemModel';
 import {FormDataModel} from '../../../models/formDataModel';
 import {ImageModel} from '../../../models/imageModel';
-import {WallpaperModel} from '../../../models/wallpaper-model';
+import {ProductModel} from '../../../models/productModel';
 import {AdminService} from '../../../services/admin.service';
 
 
@@ -23,7 +23,31 @@ export class AdminProductFormComponent implements OnInit {
   colors: AttributeData[] = [];
   patterns: AttributeData[] = [];
   styles: AttributeData[] = [];
-  types: string[] = ['Wallpaper', 'Curtain']
+  types: string[] = ['Wallpaper', 'Curtain'];
+  primary: ImageModel = new class implements ImageModel {
+    imageType: string;
+    imgUrl: string;
+  };
+  second: ImageModel = new class implements ImageModel {
+    imageType: string;
+    imgUrl: string;
+  };
+  attributeId: AttributeListItemModel[] = [];
+  productModel: ProductModel = new class implements ProductModel {
+    annotation: string;
+    attributeListItemData: AttributeListItemModel[];
+    composition: string;
+    imageList: ImageModel[] = [];
+    itemNumber: number;
+    name: string;
+    patternRep: number;
+    price: number;
+    productDesc: string;
+    productFamily: string;
+    productType: string;
+    recommendedGlue: string;
+    width: number;
+  };
 
   constructor(private adminService: AdminService, private http: HttpClient) {
     this.productForm = new FormGroup({
@@ -66,34 +90,46 @@ export class AdminProductFormComponent implements OnInit {
     });
   }
 
+  getAttributesId(data: any) {
+    for (let at of data.productColors) {
+      this.attributeId.push(at.id)
+    }
+    for (let at of data.productPatterns) {
+      this.attributeId.push(at.id)
+    }
+    for (let at of data.productStyles) {
+      this.attributeId.push(at.id)
+    }
+  }
+
   saveProduct() {
     const data = {...this.productForm.value};
     data.productColors = this.adminService.createColorsArrayToSend(this.productForm, this.colors);
     data.productPatterns = this.adminService.createPatternsArrayToSend(this.productForm, this.patterns);
     data.productStyles = this.adminService.createStylesArrayToSend(this.productForm, this.styles);
-    console.log(data);
+    this.getAttributesId(data);
+    this.productModel.attributeListItemData = this.attributeId;
+    this.productModel.productType = data.productType;
+    this.productModel.productDesc = data.productDesc;
+    this.productModel.name = data.productName;
+    this.productModel.itemNumber = data.productItemNumber;
+    this.productModel.width = data.productWidth;
+    this.productModel.patternRep = data.productPatternRep;
+    this.productModel.price = data.productPrice;
+    this.productModel.composition = data.productComposition;
+    this.productModel.productFamily = data.productFamily;
+    this.productModel.annotation = data.productAnnotation;
+    this.productModel.recommendedGlue = data.productGlue;
+    this.primary.imageType = 'PRIMARY_KEY';
+    this.primary.imgUrl = data.primaryImg;
+    this.second.imageType = 'SECONDARY_KEY';
+    this.second.imgUrl = data.secondaryImg;
+    this.productModel.imageList.push(this.primary);
+    this.productModel.imageList.push(this.second);
+    console.log(this.productModel)
+    this.adminService.createProduct(this.productModel, this.productModel.productType.toLowerCase()).subscribe(() => {
+    })
   }
 
-  getValuesFromForm(): WallpaperModel {
-    const data: WallpaperModel = new class implements WallpaperModel {
-      annotation: string;
-      attributes: AttributeListItemModel[];
-      composition: string;
-      images: ImageModel[];
-      itemNumber: number;
-      name: string;
-      patternRep: number;
-      price: number;
-      productDesc: string;
-      productFamily: string;
-      productType: string;
-      recommendedGlue: string;
-      width: number;
-    };
-    data.name = this.productForm.controls['productName'].value;
-    data.productDesc = this.productForm.controls['productDesc'].value;
-
-    return data;
-  }
 
 }

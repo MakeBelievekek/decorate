@@ -21,6 +21,7 @@ export class BasketContentResolver implements Resolve<ProductListItemForLocal[]>
       let productIds = [];
       for (let prod of this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
         productIds.push(prod.id);
+
       }
       productIds.map(String);
       let prodString = productIds.toString();

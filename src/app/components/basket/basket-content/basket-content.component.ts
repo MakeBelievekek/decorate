@@ -15,7 +15,7 @@ const CART_KEY = 'local_cartList';
 export class BasketContentComponent implements OnInit {
 
   allTotal: number = 0;
-  @Input() productsFromLocalStorage: ProductListItemForLocal[];
+  @Input() productsFromLocalStorage: ProductListItemForLocal[] = [];
 
   constructor(private localStorageService: LocalStorageService, private productService: ProductService) {
 

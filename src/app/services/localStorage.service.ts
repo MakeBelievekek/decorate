@@ -3,8 +3,6 @@ import {LOCAL_STORAGE, StorageService} from 'ngx-webstorage-service';
 import {LocalProductModel} from "../models/localProductModel";
 
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +12,7 @@ export class LocalStorageService {
   constructor(@Inject(LOCAL_STORAGE) private storage: StorageService) {
   }
 
-  public storeOnLocalStorage(item: LocalProductModel,key:string): void {
+  public storeOnLocalStorage(item: LocalProductModel, key: string): void {
     const currentCartList = this.storage.get(key) || [];
     currentCartList.push({
       id: item.prodId,
@@ -23,7 +21,7 @@ export class LocalStorageService {
     this.storage.set(key, currentCartList);
   }
 
-  public getItemIdFromLocalStorage( key:string) {
+  public getItemIdFromLocalStorage(key: string) {
     let id: number [] = [];
     for (let prod of this.storage.get(key) || []) {
       id.push(prod.id)
@@ -31,11 +29,12 @@ export class LocalStorageService {
     return id;
   }
 
-  public getItemsFromLocalStorage(key:string) {
+  public getItemsFromLocalStorage(key: string) {
+    console.log(this.storage.get(key) || [])
     return this.storage.get(key) || [];
   }
 
-  updateItem(id: number, qty: number, key:string) {
+  updateItem(id: number, qty: number, key: string) {
     let cart = this.getItemsFromLocalStorage(key);
     for (let prod of cart) {
       if (prod.id == id) {
