@@ -7,16 +7,33 @@
         <label for="description">Product description</label>
         <textarea class="form-control" id="description" rows="3" style="" formControlName="productDesc"></textarea>
     </div>
-
     <div class="form-group">
-        <label for="categories"  >Categories</label>
-        <select class="form-control" id="categories" formControlName="productCategory" >
-            <option *ngFor="let category of categories">{{category.name}}</option>
+        <label for="patterns">Patterns</label>
+        <select class="form-control" id="patterns" formControlName="productPatterns">
+            <option *ngFor="let pattern of this.patterns">{{pattern.description}}</option>
         </select>
     </div>
+    <div class="form-group flex-form">
+        <label class="form-control-label">
+            Colors :
+        </label>
+        <div formArrayName="productColors" *ngFor="let color of this.colors; let i = index">
+            <div [formGroupName]="i">
+                <label>
+                    <input class="checkbox" type="checkbox">
+                    {{color.description}}
+                    {{i}}
+                </label>
+            </div>
+        </div>
+    </div>
     <div class="form-group">
-        <label for="img">Image</label>
-        <input type="text" class="form-control" id="img" formControlName="productImg">
+        <label for="primary">Primary Image</label>
+        <input type="text" class="form-control" id="primary" formControlName="primaryImg">
+    </div>
+    <div class="form-group">
+        <label for="second">Secondary Image</label>
+        <input type="text" class="form-control" id="second" formControlName="secondaryImg">
     </div>
     <a class="btn btn-primary" (click)="saveProduct()">Save</a>
 </form>

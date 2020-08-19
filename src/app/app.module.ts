@@ -13,7 +13,6 @@ import {AdminProductFormComponent} from './components/admin/admin-product-form/a
 import {AdminSidebarComponent} from './components/admin/admin-sidebar/admin-sidebar.component';
 import {AdminComponent} from './components/admin/admin.component';
 import {CategoryFormComponent} from './components/admin/category-form/category-form.component';
-import {DiagramsComponent} from './components/admin/diagrams/diagrams.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {ContentHeaderComponent} from './components/home/content-header/content-header.component';
 import {ContentComponent} from './components/home/content/content.component';
@@ -63,7 +62,6 @@ import { CheckoutComponent } from './components/basket/checkout/checkout.compone
     ProductsListComponent,
     ProductComponent,
     ProductsHeaderComponent,
-    DiagramsComponent,
     ThirdContentComponent,
     FourthContentComponent,
     NewsComponent,

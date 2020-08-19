@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { CategoryListItem } from '../models/categoryListItem';
-import { ProductModel } from '../models/product-model';
+import { FormDataModel } from '../models/formDataModel';
+import { WallpaperModel } from '../models/wallpaper-model';
 
-const PRODUCT_BASE_URL = 'https://localhost:8443';
+const BASE_URL = 'https://localhost:8443';
 
 @Injectable({
     providedIn: 'root',
@@ -15,22 +15,11 @@ export class AdminService {
 
     toggleService = new Subject<boolean>();
 
-    findCategoryId(categoryListItem: CategoryListItem[], categoryName: string) {
-        let id: number;
-        for (let category of categoryListItem) {
-            if (category.name === categoryName) {
-                id = category.id;
-            }
-        }
-        return id;
+    createProduct(data: WallpaperModel): Observable<WallpaperModel> {
+        return this.http.post<WallpaperModel>(BASE_URL + '/admin', data);
     }
 
-    createProduct(data: ProductModel): Observable<ProductModel> {
-        return this.http.post<ProductModel>(PRODUCT_BASE_URL + '/admin', data);
-    }
-
-    getAllCategories(): Observable<Array<CategoryListItem>> {
-
-        return this.http.get<Array<CategoryListItem>>(PRODUCT_BASE_URL + '/admin/categories/getAll');
+    getAllAttribute(): Observable<FormDataModel> {
+        return this.http.get<FormDataModel>(BASE_URL + '/admin/formData');
     }
 }

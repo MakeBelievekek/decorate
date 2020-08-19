@@ -1,9 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { CategoryListItem } from '../../../models/categoryListItem';
-import { ProductModel } from '../../../models/product-model';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { AttributeData } from '../../../models/attributeData';
+import { AttributeListItemModel } from '../../../models/attributeListItemModel';
+import { FormDataModel } from '../../../models/formDataModel';
+import { ImageModel } from '../../../models/imageModel';
+import { WallpaperModel } from '../../../models/wallpaper-model';
 import { AdminService } from '../../../services/admin.service';
+
 
 @Component({
     selector: 'app-admin-product-form',
@@ -13,44 +17,75 @@ import { AdminService } from '../../../services/admin.service';
 export class AdminProductFormComponent implements OnInit {
 
     productForm: FormGroup;
-    categories: CategoryListItem[];
+    attributeList: FormDataModel = new class implements FormDataModel {
+        attributes: AttributeData[];
+    };
+    colors: AttributeData[] = [];
+    patterns: AttributeData[] = [];
+    styles: AttributeData[] = [];
 
-    constructor(private adminService: AdminService, private formBuilder: FormBuilder, private http: HttpClient) {
-        this.productForm = this.formBuilder.group({
-            productName: [''],
-            productDesc: [''],
-            productCategory: [''],
-            productImg: [''],
+    constructor(private adminService: AdminService, private http: HttpClient) {
+        this.productForm = new FormGroup({
+            'productName': new FormControl(''),
+            'productDesc': new FormControl(null),
+            'productPatterns': new FormControl(''),
+            'productColors': new FormArray([]),
+            'primaryImg': new FormControl([]),
+            'secondaryImg': new FormControl([]),
         });
     }
 
     ngOnInit(): void {
-        this.adminService.getAllCategories().subscribe(
-            (data) => {this.categories = data;},
-            () => {},
-            () => {},
-        );
+        this.adminService.getAllAttribute().subscribe((data) => {
+            this.attributeList.attributes = data.attributes;
+        }, () => {}, () => {
+            for (let attr of this.attributeList.attributes) {
+                if (attr.type === 'Color') {
+                    this.colors.push(attr);
+                }
+                if (attr.type === 'Patter') {
+                    this.patterns.push(attr);
+                }
+                if (attr.type === 'Style') {
+                    this.styles.push(attr);
+                }
+            }
+            this.createCheckboxControls(); });
 
     }
 
+    private createCheckboxControls() {
+        this.colors.forEach(() => {
+            const control = new FormControl(false);
+            (this.productForm.controls.productColors as FormArray).push(control);
+        });
+    }
 
     saveProduct() {
+        const data = {...this.productForm.value};
+        console.log(data);
         this.adminService.createProduct(this.getValuesFromForm()).subscribe(() => {});
     }
 
-    getValuesFromForm(): ProductModel {
-        const data: ProductModel = {
-            productName: null,
-            productDesc: null,
-            categoryId: null,
-            productCategory: null,
-            productImg: null,
+    getValuesFromForm(): WallpaperModel {
+        const data: WallpaperModel = new class implements WallpaperModel {
+            annotation: string;
+            attributes: AttributeListItemModel[];
+            composition: string;
+            images: ImageModel[];
+            itemNumber: number;
+            name: string;
+            patternRep: number;
+            price: number;
+            productDesc: string;
+            productFamily: string;
+            productType: string;
+            recommendedGlue: string;
+            width: number;
         };
-        data.productName = this.productForm.controls['productName'].value;
+        data.name = this.productForm.controls['productName'].value;
         data.productDesc = this.productForm.controls['productDesc'].value;
-        data.productCategory = this.productForm.controls['productCategory'].value;
-        data.productImg = this.productForm.controls['productImg'].value;
-        data.categoryId = this.adminService.findCategoryId(this.categories, data.productCategory);
+
         return data;
     }
 
