@@ -31,8 +31,9 @@ export class PlusMinusInputComponent implements OnInit {
   };
   item: LocalProductModel = new class implements LocalProductModel {
     prodId: number;
+    productType: string;
     quantity: number;
-  };
+  }
   renderedValue: string;
   value: number = 0;
 
