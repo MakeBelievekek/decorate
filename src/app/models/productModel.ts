@@ -8,12 +8,15 @@ export interface ProductModel {
   productDesc: string;
   itemNumber: number;
   width: number;
+  height: number;
+  curtainType: string;
   patternRep: number;
   price: number;
   composition: string;
   productFamily: string
   annotation: string;
   recommendedGlue: string;
+  cleaningInst: string;
   imageList: ImageModel[];
   attributeListItemData: AttributeListItemModel[]
 

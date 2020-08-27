@@ -20,10 +20,12 @@ export class AdminProductFormComponent implements OnInit {
   attributeList: FormDataModel = new class implements FormDataModel {
     attributes: AttributeData[];
   };
+  productType: string;
   colors: AttributeData[] = [];
   patterns: AttributeData[] = [];
   styles: AttributeData[] = [];
-  types: string[] = ['Wallpaper', 'Curtain'];
+  productTypes: string[] = ['', 'Wallpaper', 'Curtain'];
+  curtainTypes: string[] = ['', 'Blackout', 'Children', 'Translucent', 'Darkener'];
   primary: ImageModel = new class implements ImageModel {
     imageType: string;
     imgUrl: string;
@@ -47,11 +49,15 @@ export class AdminProductFormComponent implements OnInit {
     productType: string;
     recommendedGlue: string;
     width: number;
+    height: number;
+    cleaningInst: string;
+    curtainType: string;
   };
 
   constructor(private adminService: AdminService, private http: HttpClient) {
     this.productForm = new FormGroup({
       'productType': new FormControl(''),
+      'curtainType': new FormControl(''),
       'productName': new FormControl(''),
       'productDesc': new FormControl(''),
       'productItemNumber': new FormControl(''),
@@ -67,6 +73,8 @@ export class AdminProductFormComponent implements OnInit {
       'productFamily': new FormControl(''),
       'productAnnotation': new FormControl(''),
       'productGlue': new FormControl(''),
+      'productHeight': new FormControl(''),
+      'cleaningInst': new FormControl('')
     });
   }
 
@@ -102,6 +110,11 @@ export class AdminProductFormComponent implements OnInit {
     }
   }
 
+  getType() {
+    const data = {...this.productForm.value};
+    this.productType = data.productType;
+  }
+
   saveProduct() {
     const data = {...this.productForm.value};
     data.productColors = this.adminService.createColorsArrayToSend(this.productForm, this.colors);
@@ -110,10 +123,13 @@ export class AdminProductFormComponent implements OnInit {
     this.getAttributesId(data);
     this.productModel.attributeListItemData = this.attributeId;
     this.productModel.productType = data.productType;
+    this.productModel.curtainType = data.curtainType;
     this.productModel.productDesc = data.productDesc;
     this.productModel.name = data.productName;
     this.productModel.itemNumber = data.productItemNumber;
     this.productModel.width = data.productWidth;
+    this.productModel.height = data.productHeight;
+    this.productModel.cleaningInst = data.cleaningInst;
     this.productModel.patternRep = data.productPatternRep;
     this.productModel.price = data.productPrice;
     this.productModel.composition = data.productComposition;
