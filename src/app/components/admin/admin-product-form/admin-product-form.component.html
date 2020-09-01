@@ -22,7 +22,7 @@
     </div>
     <div class="form-group">
       <label for="itemNum">Product ItemNumber</label>
-      <input type="number" class="form-control" id="itemNum" formControlName="productItemNumber">
+      <input type="text" class="form-control" id="itemNum" formControlName="productItemNumber">
     </div>
     <div class="form-group" *ngIf="productType == 'Wallpaper'">
       <label for="width">Product Width</label>
@@ -46,7 +46,7 @@
     </div>
     <div class="form-group" *ngIf="productType == 'Curtain'">
       <label for="cleaningInst">Product Cleaning Instruction</label>
-      <input type="text" class="form-control" id="cleaningInst" formControlName="cleaningInst">
+      <textarea type="text" class="form-control" id="cleaningInst" formControlName="cleaningInst"></textarea>
     </div>
     <div class="form-group">
       <label for="family">Product Family</label>

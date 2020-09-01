@@ -6,6 +6,7 @@ import {ProductModel} from '../models/productModel';
 import {FormArray, FormBuilder, FormControl, FormGroup} from "@angular/forms";
 import {AttributeListItemModel} from "../models/attributeListItemModel";
 import {AttributeData} from "../models/attributeData";
+import {AttributeModel} from "../models/attributeModel";
 
 const BASE_URL = 'https://localhost:8443';
 
@@ -58,5 +59,9 @@ export class AdminService {
     return form.value.productStyles
       .map((style, index) => style ? styles[index] : null)
       .filter(style => style !== null);
+  }
+
+  saveAttribute(attribute: AttributeModel) {
+    return this.http.post(BASE_URL + '/attribute', attribute)
   }
 }

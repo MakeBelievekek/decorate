@@ -1,6 +1,6 @@
 .checkout-container {
   display: grid;
-  grid-template-columns: minmax(auto, 1fr) minmax(400px, 1.7fr) minmax(200px, 1fr) minmax(auto, 1fr);
+  grid-template-columns: minmax(auto, 1fr) minmax(500px, 1.7fr) minmax(300px, 1fr) minmax(auto, 1fr);
   grid-template-areas: 'a b c d ';
   margin-bottom: 50px;
 }
@@ -43,12 +43,17 @@ img {
   box-sizing: border-box;
   background-color: #f3f3f4;
   color: #000;
-  font-size: 18px;
   height: 50px;
+  font-size: 1.1rem;
   text-transform: uppercase;
   align-items: center;
   font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
   font-weight: bolder;
+}
+
+.check-basket-header > span {
+  font-size: .7rem;
+  margin-left: auto;
 }
 
 .check-basket-details {
@@ -82,6 +87,18 @@ img {
 .checkout-action {
   border-top: 3px solid #f3f3f4;
 }
-.td-right{
- text-align: right;
+
+.td-right {
+  text-align: right;
+}
+
+.check-form {
+  width: 400px;
+  margin-top: 30px;
+}
+.check-basket-form > a {
+  display:block;
+  margin-top: 20px;
+  font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  color: #1c1c1b;
 }

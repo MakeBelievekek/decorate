@@ -1,13 +1,24 @@
 <div class="checkout-container">
   <div class="check-content">
     <h4>Biztonságos Kifizetés</h4>
+    <div class="check-form">
+      <div class="check-basket-header">
+        <p *ngIf="!isLoggedIn">1) Kosarad</p> <span *ngIf="!isLoggedIn">*kötelező</span>
+      </div>
+      <div class="check-basket-form" *ngIf="!isLoggedIn">
+        <a href="">Előzőleg már regisztráltál ? Jelentkezz be itt</a>
+        <form [formGroup]="shippingForm" method="post">
+          <input formControlName="firstName">
+        </form>
+      </div>
+    </div>
   </div>
   <div class="checkout-basket">
     <div class="chk-bsk">
-      <div class="check-basket-header">Rendelés Összesités</div>
+      <div class="check-basket-header"><p>Rendelés Összesités</p></div>
       <div *ngFor="let prod of product">
         <div class="check-card">
-          <img [src]="prod.productImg" alt="">
+          <img [src]="prod.image" alt="">
           <div class="check-basket-details">
             <p>{{prod.productDesc}}</p>
             <p>Termék Kód : {{prod.id}}</p>

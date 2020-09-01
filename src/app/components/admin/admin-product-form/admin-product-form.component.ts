@@ -40,7 +40,7 @@ export class AdminProductFormComponent implements OnInit {
     attributeListItemData: AttributeListItemModel[];
     composition: string;
     imageList: ImageModel[] = [];
-    itemNumber: number;
+    itemNumber: string;
     name: string;
     patternRep: number;
     price: number;
@@ -142,7 +142,7 @@ export class AdminProductFormComponent implements OnInit {
     this.second.imgUrl = data.secondaryImg;
     this.productModel.imageList.push(this.primary);
     this.productModel.imageList.push(this.second);
-    console.log(this.productModel)
+    console.log(this.productModel);
     this.adminService.createProduct(this.productModel, this.productModel.productType.toLowerCase()).subscribe(() => {
     })
   }

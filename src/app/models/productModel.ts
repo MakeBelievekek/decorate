@@ -6,7 +6,7 @@ export interface ProductModel {
   name: string;
   productType: string;
   productDesc: string;
-  itemNumber: number;
+  itemNumber: string;
   width: number;
   height: number;
   curtainType: string;
