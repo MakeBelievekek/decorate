@@ -1,104 +1,219 @@
 .checkout-container {
-  display: grid;
-  grid-template-columns: minmax(auto, 1fr) minmax(500px, 1.7fr) minmax(300px, 1fr) minmax(auto, 1fr);
-  grid-template-areas: 'a b c d ';
-  margin-bottom: 50px;
+    display: grid;
+    grid-template-columns: minmax(auto, 1fr) minmax(500px, 1.7fr) minmax(300px, 1fr) minmax(auto, 1fr);
+    grid-template-areas: 'a b c d ';
+    margin-bottom: 50px;
 }
 
 .check-content {
-  grid-area: b;
+    grid-area: b;
 }
 
 .check-content > h4 {
-  margin-top: 30px;
-  font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  font-weight: bolder;
-  font-size: 2rem;
+    margin-top: 30px;
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-weight: bolder;
+    font-size: 2rem;
 }
 
 .checkout-basket {
-  grid-area: c;
+    grid-area: c;
 }
 
 img {
-  grid-area: a;
-  width: 100px;
-  height: 100px;
-  margin: 20px 0px;
+    grid-area: a;
+    width: 100px;
+    height: 100px;
+    margin: 20px 0px;
 }
 
 .chk-bsk {
-  margin-top: 30px;
-  width: 300px;
-  padding: 22px 18px 29px 17px;
-  border: 1px solid #b2b2b1;
-  box-sizing: border-box;
-  margin-bottom: 50px;
+    margin-top: 30px;
+    width: 300px;
+    padding: 22px 18px 29px 17px;
+    border: 1px solid #b2b2b1;
+    box-sizing: border-box;
+    margin-bottom: 50px;
 }
 
 .check-basket-header {
-  display: flex;
-  width: 100%;
-  padding: 0 20px;
-  box-sizing: border-box;
-  background-color: #f3f3f4;
-  color: #000;
-  height: 50px;
-  font-size: 1.1rem;
-  text-transform: uppercase;
-  align-items: center;
-  font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  font-weight: bolder;
+    display: flex;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+    background-color: #f3f3f4;
+    color: #000;
+    height: 50px;
+    text-transform: uppercase;
+    align-items: center;
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-weight: bolder;
 }
 
 .check-basket-header > span {
-  font-size: .7rem;
-  margin-left: auto;
+    font-size: .7rem;
+    margin-left: auto;
+}
+
+label {
+    font-weight: bold;
+    margin-left: 10px;
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+}
+
+label > span {
+    color: red;
+}
+
+.form-group {
+    margin-top: 20px;
+}
+
+.underline {
+    margin: 32px 0 0 0;
+    padding: 32px 0 0 0;
+    border-top: 2px solid #D7D7D7;
+    width: 350px;
+}
+
+.address-dropdown {
+    border-radius: 25px;
+    border: 1px solid #C5C5C5;
+    padding: 20px;
+    width: 300px;
+    height: 15px;
+}
+
+select {
+    max-height: 3em;
+}
+
+.form-control {
+    border-radius: 25px;
+    border: 1px solid #C5C5C5;
+    padding: 20px;
+    width: 350px;
+}
+
+.basket-continue-btn {
+    margin-top: 20px;
+    background: #C6D7CD;
+    width: 300px;
+    border-radius: 25px;
+    border: 1px solid #C6D7CD;
+    padding: 7px;
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+#header-title, #header-title2, #header-delivery {
+    font-size: 1.1rem;
+    margin: 0px;
+}
+
+.editLink {
+    cursor: pointer;
+    color: dodgerblue;
 }
 
 .check-basket-details {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 20px;
 }
 
 .checkout-table {
-  font-size: 1rem;
-  font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  font-weight: bolder;
+    font-size: 1rem;
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-weight: bolder;
 
 }
 
 .check-basket-details > p, .check-basket-recapitulative > p {
-  margin: 0px;
-  overflow: hidden;
-  white-space: initial;
-  font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  font-weight: bolder;
-  font-size: 1rem;
-  color: #1c1c1b;
+    margin: 0px;
+    overflow: hidden;
+    white-space: initial;
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-weight: bolder;
+    font-size: 1rem;
+    color: #1c1c1b;
 }
 
 .check-card {
-  display: flex;
+    display: flex;
 }
 
 .checkout-action {
-  border-top: 3px solid #f3f3f4;
+    border-top: 3px solid #f3f3f4;
 }
 
 .td-right {
-  text-align: right;
+    text-align: right;
 }
 
 .check-form {
-  width: 400px;
-  margin-top: 30px;
+    width: 400px;
+    margin-top: 30px;
 }
-.check-basket-form > a {
-  display:block;
-  margin-top: 20px;
-  font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-  color: #1c1c1b;
+
+.check-basket-form > a, p {
+    display: block;
+    margin-top: 20px;
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-weight: bold;
+    color: #1c1c1b;
+}
+
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-top: 20px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 50%;
+}
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+.container input:checked ~ .checkmark {
+    background-color: #C6D7CD;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+.container .checkmark:after {
+    top: 7px;
+    left: 7px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: black;
 }
