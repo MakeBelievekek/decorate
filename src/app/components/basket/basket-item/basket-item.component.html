@@ -1,5 +1,5 @@
 <div class="basket-item-grid">
-  <img [src]="product.productImg" alt="">
+  <img [src]="product.image" alt="">
   <div class="basket-details">
     <p>{{product.productDesc}}</p>
     <p>Termék Kód: {{product.id}}</p>
@@ -11,7 +11,6 @@
                           [prodId]="product.id"
                           ariaLabelLess="Less 10"
                           ariaLabelMore="Plus 10"></app-plus-minus-input>
-    <a href="">eltávolítás</a>
   </div>
   <div class="price">
     {{product.price}}

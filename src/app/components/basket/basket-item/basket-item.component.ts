@@ -1,9 +1,10 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {BasketProdModel} from '../../../models/basket-prod-model';
-import { ProductListItemForLocal } from '../../../models/productListItemForLocal';
+import {ProductListItemForLocal} from '../../../models/productListItemForLocal';
 import {TotalPriceModel} from '../../../models/totalPriceModel';
 import {LocalStorageService} from "../../../services/localStorage.service";
 import {BasketService} from "../../../services/basket.service";
+import {ImageModel} from "../../../models/imageModel";
 
 const CART_KEY = 'local_cartList';
 
@@ -28,7 +29,7 @@ export class BasketItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.totalPriceCounter = this.product.price;
-    if (this.localStorageService.getItemsFromLocalStorage(CART_KEY) != null) {
+    if (this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
       for (let prod of this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
         if (prod.id === this.product.id) {
           this.localQty = prod.qty;

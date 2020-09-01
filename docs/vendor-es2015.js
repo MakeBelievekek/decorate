@@ -17359,9 +17359,9 @@ function isBlob(value) {
     return typeof Blob !== 'undefined' && value instanceof Blob;
 }
 /**
- * Safely assert whether the given value is a FormData instance.
+ * Safely assert whether the given value is a FormDataModel instance.
  *
- * In some execution environments FormData is not defined.
+ * In some execution environments FormDataModel is not defined.
  * @param {?} value
  * @return {?}
  */
@@ -17521,7 +17521,7 @@ class HttpRequest {
         if (this.body === null) {
             return null;
         }
-        // FormData bodies rely on the browser's content type assignment.
+        // FormDataModel bodies rely on the browser's content type assignment.
         if (isFormData(this.body)) {
             return null;
         }

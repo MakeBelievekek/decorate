@@ -13,7 +13,6 @@ import {AdminProductFormComponent} from './components/admin/admin-product-form/a
 import {AdminSidebarComponent} from './components/admin/admin-sidebar/admin-sidebar.component';
 import {AdminComponent} from './components/admin/admin.component';
 import {CategoryFormComponent} from './components/admin/category-form/category-form.component';
-import {DiagramsComponent} from './components/admin/diagrams/diagrams.component';
 import {FooterComponent} from './components/footer/footer.component';
 import {ContentHeaderComponent} from './components/home/content-header/content-header.component';
 import {ContentComponent} from './components/home/content/content.component';
@@ -40,7 +39,8 @@ import {BasketItemComponent} from './components/basket/basket-item/basket-item.c
 import {PlusMinusInputComponent} from './components/basket/basket-item/plus-minus-input/plus-minus-input.component';
 import {StorageServiceModule} from 'ngx-webstorage-service';
 import {LocalStorageService} from './services/localStorage.service';
-import { ActiveFiltersComponent } from './components/products/active-filters/active-filters.component';
+import {CheckoutComponent} from './components/basket/checkout/checkout.component';
+import {ActiveFiltersComponent} from './components/products/active-filters/active-filters.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +62,6 @@ import { ActiveFiltersComponent } from './components/products/active-filters/act
     ProductsListComponent,
     ProductComponent,
     ProductsHeaderComponent,
-    DiagramsComponent,
     ThirdContentComponent,
     FourthContentComponent,
     NewsComponent,
@@ -76,6 +75,8 @@ import { ActiveFiltersComponent } from './components/products/active-filters/act
     BasketItemComponent,
     ProductsFilterComponent,
     PlusMinusInputComponent,
+    CheckoutComponent,
+
     ActiveFiltersComponent,
   ],
   imports: [

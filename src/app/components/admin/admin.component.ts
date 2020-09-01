@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SwitchModel } from '../../models/switchModel';
+import { AdminService } from '../../services/admin.service';
 
 @Component({
     selector: 'app-admin',
@@ -8,11 +8,12 @@ import { SwitchModel } from '../../models/switchModel';
 })
 export class AdminComponent implements OnInit {
 
-    constructor() { }
+    constructor(private adminService: AdminService) { }
 
 
 
     ngOnInit(): void {
+
     }
 
 

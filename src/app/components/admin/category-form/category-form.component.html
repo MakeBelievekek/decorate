@@ -1,13 +1,15 @@
 <div class="admin-category">
-    <form [formGroup]="categoryForm" method="post">
-        <div class="form-group">
-            <label for="category">Category Name</label>
-            <input type="text" class="form-control" id="category" formControlName="categoryName">
-        </div>
-        <div class="form-group">
-            <label for="type">Category Type</label>
-            <input type="text" class="form-control" id="type" formControlName="categoryType">
-        </div>
-        <a class="btn btn-primary" (click)="saveCategory()">Save</a>
-    </form>
+  <form [formGroup]="categoryForm" method="post">
+    <div class="form-group">
+      <label for="type">Attribute Type</label>
+      <select type="text" class="form-control" id="type" formControlName="attributeType">
+        <option *ngFor="let type of this.attributeTypes">{{type}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="category">Attribute Name</label>
+      <input type="text" class="form-control" id="category" formControlName="attributeName">
+    </div>
+    <a class="btn btn-primary" (click)="saveCategory()">Save</a>
+  </form>
 </div>

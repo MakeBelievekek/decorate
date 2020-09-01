@@ -31,8 +31,9 @@ export class PlusMinusInputComponent implements OnInit {
   };
   item: LocalProductModel = new class implements LocalProductModel {
     prodId: number;
+    productType: string;
     quantity: number;
-  };
+  }
   renderedValue: string;
   value: number = 0;
 
@@ -40,7 +41,7 @@ export class PlusMinusInputComponent implements OnInit {
     this.value = this.initialValue;
     this.renderedValue = this.value.toString();
     this.setProdToLocal();
-    if (this.localStorageService.getItemIdFromLocalStorage(CART_KEY) != null) {
+    if (this.localStorageService.getItemIdFromLocalStorage(CART_KEY)) {
       if (!this.localStorageService.getItemIdFromLocalStorage(CART_KEY).includes(this.prodId)) {
         this.localStorageService.storeOnLocalStorage(this.item, CART_KEY)
       }
