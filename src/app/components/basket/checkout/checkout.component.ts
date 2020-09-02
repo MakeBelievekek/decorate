@@ -83,4 +83,8 @@ export class CheckoutComponent implements OnInit {
   setDeliveryAddress() {
     this.isDifferentAddress = !this.isDifferentAddress;
   }
+
+  continueToPayment() {
+    this.isFilledAddress = !this.isFilledAddress
+  }
 }

@@ -72,7 +72,7 @@ label > span {
 .underline {
     margin: 32px 0 0 0;
     padding: 32px 0 0 0;
-    border-top: 2px solid #D7D7D7;
+    border-top: 3px solid #f3f3f4;
     width: 350px;
 }
 

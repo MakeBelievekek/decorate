@@ -28,10 +28,10 @@
         </button>
       </div>
       <div class="check-basket-header" style="margin-top: 30px">
-        <span id="header-delivery">2) Számlázási cím</span> <span *ngIf="!isFilledAddress">*kötelező</span>
-        <span class="editLink" *ngIf="isFilledAddress"> szerkesztés</span>
+        <span id="header-delivery">2) Számlázási adatok</span> <span *ngIf="!isFilledAddress">*kötelező</span>
+        <span class="editLink" *ngIf="isFilledAddress" (click)="continueToPayment()"> szerkesztés</span>
       </div>
-      <form [formGroup]="billingAddressForm" method="post" *ngIf="isLoggedIn">
+      <form [formGroup]="billingAddressForm" method="post" *ngIf="isLoggedIn && !isFilledAddress">
         <div class="form-group">
           <label for="company">Cégnév (nem kötelező)</label>
           <input class="form-control" id="company" formControlName="company"
@@ -62,7 +62,6 @@
           <select class="form-control" id="province" formControlName="province">
             <option value="{{prov}}" *ngFor="let prov of this.provinces">{{prov}}</option>
           </select>
-
         </div>
         <div class="form-group">
           <label for="zip">Irányítószám <span>*</span></label>
@@ -73,14 +72,14 @@
           <input class="form-control" id="phone" formControlName="phone" placeholder="">
         </div>
       </form>
-      <div class="underline" *ngIf="isLoggedIn">
+      <div class="underline" *ngIf="isLoggedIn && !isFilledAddress">
         <label class="container">Szállítási másik címre?
           <input type="checkbox" (click)="setDeliveryAddress()">
           <span class="checkmark"></span>
         </label>
       </div>
-      <form [formGroup]="shippingAddressForm" method="post" >
-        <div class="form-group" *ngIf="isDifferentAddress">
+      <form [formGroup]="shippingAddressForm" method="post">
+        <div class="form-group" *ngIf="isDifferentAddress && isLoggedIn && !isFilledAddress">
           <label for="shipCompany">Cégnév (nem kötelező)</label>
           <input class="form-control" id="shipCompany" formControlName="shipCompany"
                  placeholder="">
@@ -102,13 +101,13 @@
           <label for="shipZip">Irányítószám <span>*</span></label>
           <input class="form-control" id="shipZip" formControlName="shipZip" placeholder="">
         </div>
-        <div class="form-group" *ngIf="isLoggedIn">
+        <div class="form-group" *ngIf="isLoggedIn && !isFilledAddress">
           <label for="info">Rendelés jegyzetek (nem kötelező)</label>
           <textarea class="form-control" id="info" formControlName="info"
                     placeholder="Megjegyzések a rendeléssel, szállítással kapcsolatban."></textarea>
         </div>
       </form>
-      <button class="basket-continue-btn" *ngIf="isLoggedIn">Tovább a fizetéshez
+      <button class="basket-continue-btn" *ngIf="isLoggedIn" (click)="continueToPayment()">Tovább a fizetéshez
       </button>
     </div>
   </div>
