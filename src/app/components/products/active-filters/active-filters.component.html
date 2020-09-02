@@ -1,20 +1,26 @@
-<div class="active-product-filter-container">
-  <div class="active-product-filter-message" *ngIf="true">
+<div class="active-product-filter-container" #activeColorFilter>
+  <div class="active-product-filter-message" *ngIf="!this.activeFilterExists">
     Nincsen szürő!
   </div>
-  <div class="active-product-filter-message" *ngIf="false">
+  <div class="active-product-filter-message" *ngIf="this.activeFilterExists">
     Aktív szürők:
   </div>
   <div class="active-product-filter-items-container">
-    <div class="active-product-filter-item">
-      feket
-    </div>
-    <div class="active-product-filter-item">
-      <div class="color">
-        fehér
+    <ng-container *ngFor="let  color of this.filterControl.activeColors">
+      <div class="active-product-filter-item"
+           (click)="this.handleActiveColors(color)"
+           >
+        <div class="active-product-filter-item-text">
+          {{color}}
+        </div>
+        <div class="active-product-filter-item-icon">
+          <svg id="Capa_1" enable-background="new 0 0 386.667 386.667" height="0.65rem" width="0.65rem"
+               viewBox="0 0 386.667 386.667" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="m386.667 45.564-45.564-45.564-147.77 147.769-147.769-147.769-45.564 45.564 147.769 147.769-147.769 147.77 45.564 45.564 147.769-147.769 147.769 147.769 45.564-45.564-147.768-147.77z"/>
+          </svg>
+        </div>
       </div>
-      <div class="kep"></div>
-      <svg id="Capa_1" enable-background="new 0 0 386.667 386.667" height="0.65rem" width="0.65rem" viewBox="0 0 386.667 386.667" xmlns="http://www.w3.org/2000/svg"><path d="m386.667 45.564-45.564-45.564-147.77 147.769-147.769-147.769-45.564 45.564 147.769 147.769-147.769 147.77 45.564 45.564 147.769-147.769 147.769 147.769 45.564-45.564-147.768-147.77z"/></svg>
-    </div>
+    </ng-container>
   </div>
 </div>
