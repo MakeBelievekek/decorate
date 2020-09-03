@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {LocalDetailsModel} from '../../../models/localDetailsModel';
 import {ProductListItemForLocal} from '../../../models/productListItemForLocal';
@@ -25,7 +25,7 @@ export class CheckoutComponent implements OnInit {
       email: new FormControl(),
     });
     this.billingAddressForm = new FormGroup({
-      company: new FormControl(),
+      company: new FormControl('', [Validators.required, Validators.minLength(4)]),
       country: new FormControl(),
       address: new FormControl(),
       address2: new FormControl(),
@@ -89,6 +89,7 @@ export class CheckoutComponent implements OnInit {
       }
     }
   }
+
 
   continueToAddress() {
     this.isLoggedIn = !this.isLoggedIn;
@@ -177,8 +178,5 @@ export class CheckoutComponent implements OnInit {
       zip: number = shippingInfo.shipZip;
     };
     console.log(this.shippingDetails)
-
   }
-
-
 }

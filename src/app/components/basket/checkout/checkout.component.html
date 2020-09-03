@@ -37,6 +37,16 @@
           <input class="form-control" id="company" formControlName="company"
                  placeholder="">
         </div>
+        <div
+          *ngIf="billingAddressForm.get('company').invalid && (billingAddressForm.get('company').dirty || billingAddressForm.get('company').touched)"
+          class="alert alert-danger">
+          <div *ngIf="billingAddressForm.get('company').errors.required">
+            Name is required.
+          </div>
+          <div *ngIf="billingAddressForm.get('company').errors.minlength">
+            Name cannot be more than 4 characters long.
+          </div>
+        </div>
         <div class="form-group">
           <label for="country">Ország <span>*</span></label>
           <select class="form-control" id="country" formControlName="country">
@@ -59,7 +69,7 @@
         <div class="form-group">
           <label for="province">Megye <span>*</span></label>
           <select class="form-control" id="province" formControlName="province">
-            <option value="{{prov}}" *ngFor="let prov of this.provinces">{{prov}}</option>
+            <option *ngFor="let prov of this.provinces">{{prov}}</option>
           </select>
         </div>
         <div class="form-group">
