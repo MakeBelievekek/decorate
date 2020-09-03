@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 import {LocalDetailsModel} from '../../../models/localDetailsModel';
 import {ProductListItemForLocal} from '../../../models/productListItemForLocal';
@@ -20,7 +20,7 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private localStorageService: LocalStorageService) {
     this.personalDetailsForm = new FormGroup({
-      lastname: new FormControl(),
+      lastname: new FormControl('',[Validators.required,Validators.minLength(3)]),
       firstname: new FormControl(),
       email: new FormControl(),
     });

@@ -1,179 +1,188 @@
 <div class="checkout-container">
-  <div class="check-content">
-    <h4>Biztonságos Fizetés</h4>
-    <div class="check-form">
-      <div class="check-basket-header">
-        <span id="header-title">1) Adataid</span> <span *ngIf="!isLoggedIn">*kötelező</span>
-        <span class="editLink" *ngIf="isLoggedIn" (click)="continueToAddress()"> szerkesztés</span>
-      </div>
-      <div class="check-basket-form" *ngIf="!isLoggedIn">
-        <a href="">Előzőleg már regisztráltál ? Jelentkezz be itt</a>
-        <p>Kérlek add meg a vezetékneved, keresztneved és az email címed</p>
-        <form [formGroup]="personalDetailsForm" method="post">
-          <div class="form-group">
-            <label for="lastname">Vezetéknév <span>*</span></label>
-            <input class="form-control" id="lastname" formControlName="lastname" placeholder="">
-          </div>
-          <div class="form-group">
-            <label for="firstname">Keresztnév <span>*</span></label>
-            <input class="form-control" id="firstname" formControlName="firstname"
-                   placeholder="">
-          </div>
-          <div class="form-group">
-            <label for="email">Email <span>*</span></label>
-            <input class="form-control" id="email" formControlName="email" placeholder="">
-          </div>
-        </form>
-        <button class="basket-continue-btn" (click)="saveDetails()">Tovább a címhez
-        </button>
-      </div>
-      <div class="check-basket-header">
-        <span id="header-delivery">2) Számlázási adatok</span>
-        <span class="editLink" *ngIf="isFilledAddress" (click)="editDeliveryAddress()"> szerkesztés</span>
-      </div>
-      <form [formGroup]="billingAddressForm" method="post" *ngIf="isLoggedIn && !isFilledAddress">
-        <div class="form-group">
-          <label for="company">Cégnév (nem kötelező)</label>
-          <input class="form-control" id="company" formControlName="company"
-                 placeholder="">
-        </div>
-        <div class="form-group">
-          <label for="country">Ország <span>*</span></label>
-          <select class="form-control" id="country" formControlName="country">
-            <option></option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="address">Utca, Házszám <span>*</span></label>
-          <input class="form-control" id="address" formControlName="address" placeholder="Utcanév, házszám">
-        </div>
-        <div class="form-group">
-          <label for="address2"></label>
-          <input class="form-control" id="address2" formControlName="address2"
-                 placeholder="Emelet, lépcsőház, lakás, stb. (nem kötelező)">
-        </div>
-        <div class="form-group">
-          <label for="city">Város <span>*</span></label>
-          <input class="form-control" id="city" formControlName="city" placeholder="">
-        </div>
-        <div class="form-group">
-          <label for="province">Megye <span>*</span></label>
-          <select class="form-control" id="province" formControlName="province">
-            <option value="{{prov}}" *ngFor="let prov of this.provinces">{{prov}}</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="zip">Irányítószám <span>*</span></label>
-          <input class="form-control" id="zip" formControlName="zip" placeholder="">
-        </div>
-        <div class="form-group">
-          <label for="phone">Telefonszám <span>*</span></label>
-          <input class="form-control" id="phone" formControlName="phone" placeholder="">
-        </div>
-      </form>
-      <div class="underline" *ngIf="isLoggedIn && !isFilledAddress">
-        <label class="container">Szállítási másik címre?
-          <input type="checkbox" (click)="setDeliveryAddress()">
-          <span class="checkmark"></span>
-        </label>
-      </div>
-      <form [formGroup]="shippingAddressForm" method="post">
-        <div class="form-group" *ngIf="isDifferentAddress && isLoggedIn && !isFilledAddress">
-          <label for="shipCompany">Cégnév (nem kötelező)</label>
-          <input class="form-control" id="shipCompany" formControlName="shipCompany"
-                 placeholder="">
-          <label for="shipCountry">Ország <span>*</span></label>
-          <select class="form-control" id="shipCountry" formControlName="shipCountry">
-            <option></option>
-          </select>
-          <label for="shipAddress">Utca, Házszám <span>*</span></label>
-          <input class="form-control" id="shipAddress" formControlName="shipAddress" placeholder="Utcanév, házszám">
-          <label for="shipAddress2"></label>
-          <input class="form-control" id="shipAddress2" formControlName="shipAddress2"
-                 placeholder="Emelet, lépcsőház, lakás, stb. (nem kötelező)">
-          <label for="shipCity">Város <span>*</span></label>
-          <input class="form-control" id="shipCity" formControlName="shipCity" placeholder="">
-          <label for="shipProvince">Megye <span>*</span></label>
-          <select class="form-control" id="shipProvince" formControlName="shipProvince">
-            <option *ngFor="let prov of this.provinces">{{prov}}</option>
-          </select>
-          <label for="shipZip">Irányítószám <span>*</span></label>
-          <input class="form-control" id="shipZip" formControlName="shipZip" placeholder="">
-        </div>
-        <div class="form-group" *ngIf="isLoggedIn && !isFilledAddress">
-          <label for="info">Rendelés jegyzetek (nem kötelező)</label>
-          <textarea class="form-control" id="info" formControlName="shipInfo"
-                    placeholder="Megjegyzések a rendeléssel, szállítással kapcsolatban."></textarea>
-        </div>
-      </form>
-      <button class="basket-continue-btn" *ngIf="isLoggedIn && !isPayment"
-              (click)="continueToPayment();saveBillingInfo()">
-        Tovább a
-        fizetéshez
-      </button>
-      <div class="check-basket-header">
-        <span id="header-payment">3) Fizetési opciók</span>
-      </div>
-      <form [formGroup]="paymentForm" method="post" class="payment" *ngIf="isPayment">
-        <div id="card-group">
-          <div class="form-group">
-            <img
-              class="paymentOptions"
-              src="https://tapetakorzo.hu/wp-content/plugins/pay-via-barion-for-woocommerce/assets/barion-card-payment-mark-2017-300px.png"
-              alt="">
-            <br>
-            <label for="cardNumber">Kártyaszám <span>*</span></label>
-            <input class="form-control" id="cardNumber" formControlName="cardNumber"
-                   placeholder="">
-            <label for="expires1">Lejárati dátum <span>*</span></label>
-            <input class="form-control" id="expires1" formControlName="expiresDate" placeholder="MM/YY">
-            <label for="nameOnCard">Kártya tulajdonos neve <span>*</span></label>
-            <input class="form-control" id="nameOnCard" formControlName="nameOnCard"
-                   placeholder="">
-            <label for="CVV2">CVV2 <span>*</span></label>
-            <div class="cvv-flex">
-              <input class="form-control" id="CVV2" formControlName="cvv" placeholder="">
-              <img id="cvv2-image" src="assets/cvv.png" alt="">
+    <div class="check-content">
+        <h4>Biztonságos Fizetés</h4>
+        <div class="check-form">
+            <div class="check-basket-header">
+                <span id="header-title">1) Adataid</span> <span *ngIf="!isLoggedIn">*kötelező</span>
+                <span class="editLink" *ngIf="isLoggedIn" (click)="continueToAddress()"> szerkesztés</span>
             </div>
-          </div>
+            <div class="check-basket-form" *ngIf="!isLoggedIn">
+                <a href="">Előzőleg már regisztráltál ? Jelentkezz be itt</a>
+                <p>Kérlek add meg a vezetékneved, keresztneved és az email címed</p>
+                <form [formGroup]="personalDetailsForm" method="post">
+                    <div class="form-group">
+                        <label for="lastname">Vezetéknév <span>*</span></label>
+                        <input class="form-control" id="lastname" formControlName="lastname" placeholder="" [ngClass]="{
+                        'is-invalid': personalDetailsForm.get('lastname').invalid && personalDetailsForm.get('lastname').touched
+                    }"/>
+                    </div>
+                    <small
+                        *ngIf=" personalDetailsForm.get('lastname').invalid
+                        && personalDetailsForm.get('lastname').touched
+                       " class="text-danger">
+                        Please enter an name
+                    </small>
+                    <div class="form-group">
+                        <label for="firstname">Keresztnév <span>*</span></label>
+                        <input class="form-control" id="firstname" formControlName="firstname"
+                               placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email <span>*</span></label>
+                        <input class="form-control" id="email" formControlName="email" placeholder="">
+                    </div>
+                </form>
+                <button class="basket-continue-btn" (click)="saveDetails()">Tovább a címhez
+                </button>
+            </div>
+            <div class="check-basket-header">
+                <span id="header-delivery">2) Számlázási adatok</span>
+                <span class="editLink" *ngIf="isFilledAddress" (click)="editDeliveryAddress()"> szerkesztés</span>
+            </div>
+            <form [formGroup]="billingAddressForm" method="post" *ngIf="isLoggedIn && !isFilledAddress">
+                <div class="form-group">
+                    <label for="company">Cégnév (nem kötelező)</label>
+                    <input class="form-control" id="company" formControlName="company"
+                           placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="country">Ország <span>*</span></label>
+                    <select class="form-control" id="country" formControlName="country">
+                        <option></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="address">Utca, Házszám <span>*</span></label>
+                    <input class="form-control" id="address" formControlName="address" placeholder="Utcanév, házszám">
+                </div>
+                <div class="form-group">
+                    <label for="address2"></label>
+                    <input class="form-control" id="address2" formControlName="address2"
+                           placeholder="Emelet, lépcsőház, lakás, stb. (nem kötelező)">
+                </div>
+                <div class="form-group">
+                    <label for="city">Város <span>*</span></label>
+                    <input class="form-control" id="city" formControlName="city" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="province">Megye <span>*</span></label>
+                    <select class="form-control" id="province" formControlName="province">
+                        <option value="{{prov}}" *ngFor="let prov of this.provinces">{{prov}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="zip">Irányítószám <span>*</span></label>
+                    <input class="form-control" id="zip" formControlName="zip" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefonszám <span>*</span></label>
+                    <input class="form-control" id="phone" formControlName="phone" placeholder="">
+                </div>
+            </form>
+            <div class="underline" *ngIf="isLoggedIn && !isFilledAddress">
+                <label class="container">Szállítási másik címre?
+                    <input type="checkbox" (click)="setDeliveryAddress()">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <form [formGroup]="shippingAddressForm" method="post">
+                <div class="form-group" *ngIf="isDifferentAddress && isLoggedIn && !isFilledAddress">
+                    <label for="shipCompany">Cégnév (nem kötelező)</label>
+                    <input class="form-control" id="shipCompany" formControlName="shipCompany"
+                           placeholder="">
+                    <label for="shipCountry">Ország <span>*</span></label>
+                    <select class="form-control" id="shipCountry" formControlName="shipCountry">
+                        <option></option>
+                    </select>
+                    <label for="shipAddress">Utca, Házszám <span>*</span></label>
+                    <input class="form-control" id="shipAddress" formControlName="shipAddress"
+                           placeholder="Utcanév, házszám">
+                    <label for="shipAddress2"></label>
+                    <input class="form-control" id="shipAddress2" formControlName="shipAddress2"
+                           placeholder="Emelet, lépcsőház, lakás, stb. (nem kötelező)">
+                    <label for="shipCity">Város <span>*</span></label>
+                    <input class="form-control" id="shipCity" formControlName="shipCity" placeholder="">
+                    <label for="shipProvince">Megye <span>*</span></label>
+                    <select class="form-control" id="shipProvince" formControlName="shipProvince">
+                        <option *ngFor="let prov of this.provinces">{{prov}}</option>
+                    </select>
+                    <label for="shipZip">Irányítószám <span>*</span></label>
+                    <input class="form-control" id="shipZip" formControlName="shipZip" placeholder="">
+                </div>
+                <div class="form-group" *ngIf="isLoggedIn && !isFilledAddress">
+                    <label for="info">Rendelés jegyzetek (nem kötelező)</label>
+                    <textarea class="form-control" id="info" formControlName="shipInfo"
+                              placeholder="Megjegyzések a rendeléssel, szállítással kapcsolatban."></textarea>
+                </div>
+            </form>
+            <button class="basket-continue-btn" *ngIf="isLoggedIn && !isPayment"
+                    (click)="continueToPayment();saveBillingInfo()">
+                Tovább a
+                fizetéshez
+            </button>
+            <div class="check-basket-header">
+                <span id="header-payment">3) Fizetési opciók</span>
+            </div>
+            <form [formGroup]="paymentForm" method="post" class="payment" *ngIf="isPayment">
+                <div id="card-group">
+                    <div class="form-group">
+                        <img
+                            class="paymentOptions"
+                            src="https://tapetakorzo.hu/wp-content/plugins/pay-via-barion-for-woocommerce/assets/barion-card-payment-mark-2017-300px.png"
+                            alt="">
+                        <br>
+                        <label for="cardNumber">Kártyaszám <span>*</span></label>
+                        <input class="form-control" id="cardNumber" formControlName="cardNumber"
+                               placeholder="">
+                        <label for="expires1">Lejárati dátum <span>*</span></label>
+                        <input class="form-control" id="expires1" formControlName="expiresDate" placeholder="MM/YY">
+                        <label for="nameOnCard">Kártya tulajdonos neve <span>*</span></label>
+                        <input class="form-control" id="nameOnCard" formControlName="nameOnCard"
+                               placeholder="">
+                        <label for="CVV2">CVV2 <span>*</span></label>
+                        <div class="cvv-flex">
+                            <input class="form-control" id="CVV2" formControlName="cvv" placeholder="">
+                            <img id="cvv2-image" src="assets/cvv.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-      </form>
     </div>
-  </div>
-  <div class="checkout-basket">
-    <div class="chk-bsk">
-      <div class="check-basket-header"><span id="header-title2">Rendelés Összesités</span></div>
-      <div *ngFor="let prod of product">
-        <div class="check-card">
-          <img [src]="prod.image" alt="">
-          <div class="check-basket-details">
-            <p>{{prod.productDesc}}</p>
-            <p>Termék Kód : {{prod.id}}</p>
-            <p>Size : roll</p>
-            <p>Mennyiség : {{prod.qty}}</p>
-            <p>Ár : {{prod.price * prod.qty}} ft</p>
-          </div>
+    <div class="checkout-basket">
+        <div class="chk-bsk">
+            <div class="check-basket-header"><span id="header-title2">Rendelés Összesités</span></div>
+            <div *ngFor="let prod of product">
+                <div class="check-card">
+                    <img [src]="prod.image" alt="">
+                    <div class="check-basket-details">
+                        <p>{{prod.productDesc}}</p>
+                        <p>Termék Kód : {{prod.id}}</p>
+                        <p>Size : roll</p>
+                        <p>Mennyiség : {{prod.qty}}</p>
+                        <p>Ár : {{prod.price * prod.qty}} ft</p>
+                    </div>
+                </div>
+                <div class="checkout-action">
+                </div>
+            </div>
+            <table class="checkout-table">
+                <tbody>
+                    <tr>
+                        <td>Termék árak:</td>
+                        <td class="td-right">{{allTotal}} Ft</td>
+                    </tr>
+                    <tr>
+                        <td>Szállitási dij:</td>
+                        <td class="td-right">{{allTotal}} Ft</td>
+                    </tr>
+                    <tr>
+                        <td>Adó (Szállitással):</td>
+                        <td class="td-right">{{allTotal}} Ft</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <div class="checkout-action">
-        </div>
-      </div>
-      <table class="checkout-table">
-        <tbody>
-        <tr>
-          <td>Termék árak:</td>
-          <td class="td-right">{{allTotal}} Ft</td>
-        </tr>
-        <tr>
-          <td>Szállitási dij:</td>
-          <td class="td-right">{{allTotal}} Ft</td>
-        </tr>
-        <tr>
-          <td>Adó (Szállitással):</td>
-          <td class="td-right">{{allTotal}} Ft</td>
-        </tr>
-        </tbody>
-      </table>
     </div>
-  </div>
 </div>
 
