@@ -1,6 +1,6 @@
 <div class="checkout-container">
   <div class="check-content">
-    <h4>Biztonságos Kifizetés</h4>
+    <h4>Biztonságos Fizetés</h4>
     <div class="check-form">
       <div class="check-basket-header">
         <span id="header-title">1) Adataid</span> <span *ngIf="!isLoggedIn">*kötelező</span>
@@ -27,9 +27,9 @@
         <button class="basket-continue-btn" (click)="saveDetails()">Tovább a címhez
         </button>
       </div>
-      <div class="check-basket-header" style="margin-top: 30px">
-        <span id="header-delivery">2) Számlázási adatok</span> <span *ngIf="!isFilledAddress">*kötelező</span>
-        <span class="editLink" *ngIf="isFilledAddress" (click)="continueToPayment()"> szerkesztés</span>
+      <div class="check-basket-header">
+        <span id="header-delivery">2) Számlázási adatok</span>
+        <span class="editLink" *ngIf="isFilledAddress" (click)="editDeliveryAddress()"> szerkesztés</span>
       </div>
       <form [formGroup]="billingAddressForm" method="post" *ngIf="isLoggedIn && !isFilledAddress">
         <div class="form-group">
@@ -42,7 +42,6 @@
           <select class="form-control" id="country" formControlName="country">
             <option></option>
           </select>
-
         </div>
         <div class="form-group">
           <label for="address">Utca, Házszám <span>*</span></label>
@@ -96,19 +95,49 @@
           <input class="form-control" id="shipCity" formControlName="shipCity" placeholder="">
           <label for="shipProvince">Megye <span>*</span></label>
           <select class="form-control" id="shipProvince" formControlName="shipProvince">
-            <option value="{{prov}}" *ngFor="let prov of this.provinces">{{prov}}</option>
+            <option *ngFor="let prov of this.provinces">{{prov}}</option>
           </select>
           <label for="shipZip">Irányítószám <span>*</span></label>
           <input class="form-control" id="shipZip" formControlName="shipZip" placeholder="">
         </div>
         <div class="form-group" *ngIf="isLoggedIn && !isFilledAddress">
           <label for="info">Rendelés jegyzetek (nem kötelező)</label>
-          <textarea class="form-control" id="info" formControlName="info"
+          <textarea class="form-control" id="info" formControlName="shipInfo"
                     placeholder="Megjegyzések a rendeléssel, szállítással kapcsolatban."></textarea>
         </div>
       </form>
-      <button class="basket-continue-btn" *ngIf="isLoggedIn" (click)="continueToPayment()">Tovább a fizetéshez
+      <button class="basket-continue-btn" *ngIf="isLoggedIn && !isPayment"
+              (click)="continueToPayment();saveBillingInfo()">
+        Tovább a
+        fizetéshez
       </button>
+      <div class="check-basket-header">
+        <span id="header-payment">3) Fizetési opciók</span>
+      </div>
+      <form [formGroup]="paymentForm" method="post" class="payment" *ngIf="isPayment">
+        <div id="card-group">
+          <div class="form-group">
+            <img
+              class="paymentOptions"
+              src="https://tapetakorzo.hu/wp-content/plugins/pay-via-barion-for-woocommerce/assets/barion-card-payment-mark-2017-300px.png"
+              alt="">
+            <br>
+            <label for="cardNumber">Kártyaszám <span>*</span></label>
+            <input class="form-control" id="cardNumber" formControlName="cardNumber"
+                   placeholder="">
+            <label for="expires1">Lejárati dátum <span>*</span></label>
+            <input class="form-control" id="expires1" formControlName="expiresDate" placeholder="MM/YY">
+            <label for="nameOnCard">Kártya tulajdonos neve <span>*</span></label>
+            <input class="form-control" id="nameOnCard" formControlName="nameOnCard"
+                   placeholder="">
+            <label for="CVV2">CVV2 <span>*</span></label>
+            <div class="cvv-flex">
+              <input class="form-control" id="CVV2" formControlName="cvv" placeholder="">
+              <img id="cvv2-image" src="assets/cvv.png" alt="">
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
   <div class="checkout-basket">
@@ -121,7 +150,8 @@
             <p>{{prod.productDesc}}</p>
             <p>Termék Kód : {{prod.id}}</p>
             <p>Size : roll</p>
-            <p>Ár : {{prod.price}} ft</p>
+            <p>Mennyiség : {{prod.qty}}</p>
+            <p>Ár : {{prod.price * prod.qty}} ft</p>
           </div>
         </div>
         <div class="checkout-action">

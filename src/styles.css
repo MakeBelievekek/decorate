@@ -3,7 +3,8 @@
 *, *::before, *::after {
     box-sizing: border-box;
 }
-p{margin: 0px}
+p{margin: 0px;
+  color: #1c1c1b;}
 @font-face {
     font-family: 'Great Vibes';
     font-style: normal;
@@ -124,9 +125,7 @@ p{margin: 0px}
     transition: 700ms;
     transition-timing-function: linear;
 }
-p{
-  color: #1c1c1b;
-}
+
 }
 
 @media screen and (max-width: 799px) {

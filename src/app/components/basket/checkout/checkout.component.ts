@@ -4,6 +4,9 @@ import {ActivatedRoute} from '@angular/router';
 import {LocalDetailsModel} from '../../../models/localDetailsModel';
 import {ProductListItemForLocal} from '../../../models/productListItemForLocal';
 import {LocalStorageService} from '../../../services/localStorage.service';
+import {UserModel} from "../../../models/userModel";
+import {ShippingModel} from "../../../models/shippingModel";
+import {BillingModel} from "../../../models/billingModel";
 
 const CART_KEY = 'local_cartList';
 const DETAILS_KEY = 'local_detailsList';
@@ -31,7 +34,22 @@ export class CheckoutComponent implements OnInit {
       zip: new FormControl(),
       phone: new FormControl(),
     });
-    this.shippingAddressForm = new FormGroup({})
+    this.shippingAddressForm = new FormGroup({
+      shipCompany: new FormControl(),
+      shipCountry: new FormControl(),
+      shipAddress: new FormControl(),
+      shipAddress2: new FormControl(),
+      shipCity: new FormControl(),
+      shipProvince: new FormControl(),
+      shipZip: new FormControl(),
+      shipInfo: new FormControl(),
+    });
+    this.paymentForm = new FormGroup({
+      cardNumber: new FormControl(),
+      expiresDate: new FormControl(),
+      nameOnCard: new FormControl(),
+      cvv: new FormControl(),
+    })
   }
 
   details: LocalDetailsModel = new class implements LocalDetailsModel {
@@ -39,14 +57,19 @@ export class CheckoutComponent implements OnInit {
     firstname: string;
     lastname: string;
   };
-  @Input() product: ProductListItemForLocal[];
+  product: ProductListItemForLocal[];
   allTotal: number = 0;
   isLoggedIn: boolean;
   isFilledAddress: boolean;
   isDifferentAddress: boolean;
+  isPayment: boolean;
   personalDetailsForm: FormGroup;
   billingAddressForm: FormGroup;
   shippingAddressForm: FormGroup;
+  paymentForm: FormGroup;
+  personalDetails: UserModel;
+  shippingDetails: ShippingModel;
+  billingDetails: BillingModel;
   provinces: string [] = ['Bács-Kiskun', 'Baranya', 'Békés', 'Borsod-Abaúj-Zemplén', 'Csongrád',
     'Fejér', 'Győr-Moson-Sopron', 'Hajdú-Bihar', 'Heves', 'Jász-Nagykun-Szolnok', 'Komárom-Esztergom',
     'Nógrád', 'Pest', 'Somogy', 'Szabolcs-Szatmár-Bereg', 'Tolna', 'Vas', 'Veszprém', 'Zala'];
@@ -59,8 +82,10 @@ export class CheckoutComponent implements OnInit {
   startingPrice() {
     for (let par of this.product) {
       for (let loc of this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
-        if (par.id === loc.id)
+        if (par.id === loc.id) {
+          par.qty = loc.qty;
           this.allTotal += (par.price * loc.qty);
+        }
       }
     }
   }
@@ -72,6 +97,7 @@ export class CheckoutComponent implements OnInit {
   saveDetails() {
     if (this.localStorageService.getItemsFromLocalStorage(DETAILS_KEY).length != 0) {
       this.localStorageService.deleteItem(DETAILS_KEY);
+      this.savePersonalInfo();
     }
     this.continueToAddress();
     this.details.lastname = this.personalDetailsForm.controls['lastname'].value;
@@ -81,10 +107,78 @@ export class CheckoutComponent implements OnInit {
   }
 
   setDeliveryAddress() {
-    this.isDifferentAddress = !this.isDifferentAddress;
+    this.isDifferentAddress = true;
+  }
+
+  editDeliveryAddress() {
+    this.isFilledAddress = !this.isFilledAddress;
+    this.isPayment = !this.isPayment;
+    this.isDifferentAddress = false;
   }
 
   continueToPayment() {
-    this.isFilledAddress = !this.isFilledAddress
+    this.isFilledAddress = !this.isFilledAddress;
+    this.isPayment = !this.isPayment;
   }
+
+  savePersonalInfo() {
+    const personalDetails = {...this.personalDetailsForm.value};
+    this.personalDetails = new class implements UserModel {
+      email: string = personalDetails.email;
+      firstname: string = personalDetails.firstname;
+      lastname: string = personalDetails.lastname;
+    };
+    console.log(this.personalDetails)
+  }
+
+  saveBillingInfo() {
+    console.log(this.isDifferentAddress)
+    const billingInfo = {...this.billingAddressForm.value};
+    this.billingDetails = new class implements BillingModel {
+      address: string = billingInfo.address;
+      address2: string = billingInfo.address2;
+      city: string = billingInfo.city;
+      company: string = billingInfo.company;
+      country: string = billingInfo.country;
+      phone: string = billingInfo.phone;
+      province: string = billingInfo.province;
+      zip: number = billingInfo.zip;
+    }
+    console.log(this.billingDetails)
+    if (this.isDifferentAddress) {
+
+      this.saveShipping()
+    } else {
+      const shippingInfo = {...this.shippingAddressForm.value};
+      this.shippingDetails = new class implements ShippingModel {
+        address: string = billingInfo.address;
+        address2: string = billingInfo.address2;
+        city: string = billingInfo.city;
+        company: string = billingInfo.company;
+        country: string = billingInfo.country;
+        shipInfo: string = shippingInfo.shipInfo;
+        province: string = billingInfo.province;
+        zip: number = billingInfo.zip;
+      };
+      console.log(this.shippingDetails)
+    }
+  }
+
+  saveShipping() {
+    const shippingInfo = {...this.shippingAddressForm.value};
+    this.shippingDetails = new class implements ShippingModel {
+      address: string = shippingInfo.shipAddress;
+      address2: string = shippingInfo.shipAddress2;
+      city: string = shippingInfo.shipCity;
+      company: string = shippingInfo.shipCompany;
+      country: string = shippingInfo.shipCountry;
+      shipInfo: string = shippingInfo.shipInfo;
+      province: string = shippingInfo.shipProvince;
+      zip: number = shippingInfo.shipZip;
+    };
+    console.log(this.shippingDetails)
+
+  }
+
+
 }
