@@ -20,7 +20,7 @@ export class CheckoutComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private localStorageService: LocalStorageService) {
     this.personalDetailsForm = new FormGroup({
-      lastname: new FormControl(),
+      lastname: new FormControl('',[Validators.required,Validators.minLength(3)]),
       firstname: new FormControl(),
       email: new FormControl(),
     });
