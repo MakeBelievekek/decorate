@@ -32,8 +32,9 @@
 
     .thirdCard {
         grid-area: a3;
-        background: url("src/assets/JOURNEY BEYOND CAM 4.jpg") no-repeat center center;
+        background: url("https://photos.google.com/album/AF1QipN86tUsUseHIsPR6sxvllwgHQmIOPIL8hXjjSDV/photo/AF1QipNOH-yDnFRQDdp-Iqbqqoq4_yylHcUkyFtOEwCI") no-repeat center center;
         background-size: cover;
+
     }
 
     .grig-down {
