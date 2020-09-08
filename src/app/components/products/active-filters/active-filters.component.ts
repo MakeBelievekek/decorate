@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {FilterService} from '../../../services/filter.service';
 import {FilterControlModel} from '../../../models/filterControl.model';
 
@@ -10,6 +10,7 @@ import {FilterControlModel} from '../../../models/filterControl.model';
 export class ActiveFiltersComponent implements OnInit, OnChanges {
   filterControl: FilterControlModel;
   activeFilterExists: boolean;
+  @Input() number: number;
   @ViewChild('activeColorFilter') activeColorFilter: ElementRef;
 
   constructor(private filterService: FilterService) {
@@ -31,11 +32,14 @@ export class ActiveFiltersComponent implements OnInit, OnChanges {
   }
 
   setActiveFilterExists() {
-    console.log(this.filterControl.activeColors.length);
     if (this.filterControl.activeColors.length < 1) {
       this.activeFilterExists = false;
     } else {
       this.activeFilterExists = true;
     }
+  }
+
+  trackFilters() {
+    this.setActiveFilterExists();
   }
 }

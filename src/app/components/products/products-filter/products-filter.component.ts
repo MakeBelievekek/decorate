@@ -32,6 +32,7 @@ export class ProductsFilterComponent implements OnInit {
     this.modalControl = this.modalService.modalControl;
     this.filterControl = this.filterService.filterControl;
     this.screenControl = this.screenService.screenControl;
+    this.filterControl.activeOrder = this.filterService.filterControl.order[0];
   }
 
   // TODO be le kell rakni egy plusz feltételt amikor pici dropdown van akkor más mutason
@@ -57,10 +58,15 @@ export class ProductsFilterComponent implements OnInit {
 
   toggleFilterModal(): void {
     this.modalService.toggleModal('filter');
+    if (this.filterService.isActiveColorFiltersEmpty()) {
+      this.showSmallColorFilter = false;
+    } else {
+      this.showSmallColorFilter = true;
+    }
   }
 
   handleActiveOrders(order: string): void {
-    this.filterService.handleActiveOrders(order);
+    this.filterService.handleActiveOrder(order);
   }
 
   handleActiveColors(color: string): void {
@@ -79,10 +85,8 @@ export class ProductsFilterComponent implements OnInit {
     this.filterService.clearDesignerFilters();
   }
 
-
   toggleSmallColorFilter() {
     this.showSmallColorFilter = !this.showSmallColorFilter;
-    console.log(this.showSmallColorFilter);
   }
 
   getTopOfSetAndWidth(): any {

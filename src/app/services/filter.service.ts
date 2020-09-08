@@ -12,18 +12,14 @@ export class FilterService {
       order: ['lőség 1', 'lehetőség 2', 'lehetőség 3', 'lehetőség 4', 'lehetőség 5', 'lehetőség 6', 'lehetőség 5', 'lehetőség 6'],
       colors: ['fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok', 'jazmin', 'fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok', 'jazmin'],
       designers: ['fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok', 'jazmin', 'fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok', 'jazmin'],
-      activeOrder: [],
+      activeOrder: undefined,
       activeColors: [],
       activeDesigners: []
     };
   }
 
-  handleActiveOrders(order: string): void {
-    if (!this.filterControl.activeOrder.includes(order)) {
-      this.filterControl.activeOrder.push(order);
-    } else {
-      this.filterControl.activeOrder = this.filterControl.activeOrder.filter(activeOrder => activeOrder !== order);
-    }
+  handleActiveOrder(order: string): void {
+    this.filterControl.activeOrder = order;
   }
 
   handleActiveColors(color: string): void {
@@ -31,6 +27,14 @@ export class FilterService {
       this.filterControl.activeColors.push(color);
     } else {
       this.filterControl.activeColors = this.filterControl.activeColors.filter(activeColor => activeColor !== color);
+    }
+  }
+
+  isActiveColorFiltersEmpty(): boolean {
+    if (this.filterControl.activeColors.length > 0) {
+      return false;
+    } else {
+      return true;
     }
   }
 

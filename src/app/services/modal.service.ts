@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Subject} from "rxjs";
-import {ModalControllerModel} from "../models/modalController.model";
+import {Subject} from 'rxjs';
+import {ModalControllerModel} from '../models/modalController.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class ModalService {
 
 
   constructor() {
-    this.modalControl = {control: '', showModal: false, keepShowingModal: false}
+    this.modalControl = {control: '', showModal: false, keepShowingModal: false};
   }
 
   closeModal() {
@@ -33,6 +33,10 @@ export class ModalService {
       this.openModals = this.filterFromOpenModals(control);
     }
     this.modalControl.keepShowingModal = true;
+  }
+
+  isModalOpen(modalName: string): boolean {
+    return this.openModals.includes(modalName);
   }
 
   keepModalOnScreen() {
