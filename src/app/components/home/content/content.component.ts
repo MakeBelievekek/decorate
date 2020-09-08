@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+
 @Component({
     selector: 'app-content',
     templateUrl: './content.component.html',
@@ -10,10 +11,12 @@ export class ContentComponent implements OnInit {
     constructor() { }
 
 
-    @Input() darkener: string ='https://photos.google.com/album/AF1QipN86tUsUseHIsPR6sxvllwgHQmIOPIL8hXjjSDV/photo/AF1QipNOH-yDnFRQDdp-Iqbqqoq4_yylHcUkyFtOEwCI';
+    @Input() darkener: string;
     color:string = 'red';
 
     ngOnInit(): void {
+      document.documentElement.style
+        .setProperty('--url', 'url('+this.darkener+')');
         console.log(this.darkener);
     }
 

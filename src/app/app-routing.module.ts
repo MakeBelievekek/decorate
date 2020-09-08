@@ -6,10 +6,15 @@ import {HomeComponent} from './components/home/home.component';
 import {ProductsComponent} from "./components/products/products.component";
 import {CheckoutComponent} from "./components/basket/checkout/checkout.component";
 import {BasketContentResolver} from "./services/basket-content-resolver";
+import {HomeResolver} from "./services/home-resolver";
 
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {
+    path: '', component: HomeComponent, resolve: {
+      images: HomeResolver
+    }
+  },
   {path: 'admin', component: AdminComponent},
   {path: 'products', component: ProductsComponent},
   {

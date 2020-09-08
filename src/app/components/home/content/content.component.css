@@ -1,98 +1,99 @@
+
 @media screen and (min-width: 800px) {
-    .content {
-        height: 50vw;
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        grid-template-columns: 1fr 2fr 1fr;
-        grid-template-areas: "a2 a1 a3" "a4 a1 a5";
-        cursor: pointer;
-    }
+  .content {
+    height: 50vw;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: "a2 a1 a3" "a4 a1 a5";
+    cursor: pointer;
+  }
 
-    span {
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-        font-size: 0.9vw;
-        color: white;
-    }
+  span {
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-size: 0.9vw;
+    color: white;
+  }
 
-    .firstCard {
-        grid-area: a1;
-        display: grid;
-        grid-template-columns: 1fr 1fr 0.3fr;
-        grid-template-rows: 0.5fr 1fr 0.5fr;
-        grid-template-areas: "a b ." "d e ." "i j .";
-        background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
-        background-size: cover;
-    }
+  .firstCard {
+    grid-area: a1;
+    display: grid;
+    grid-template-columns: 1fr 1fr 0.3fr;
+    grid-template-rows: 0.5fr 1fr 0.5fr;
+    grid-template-areas: "a b ." "d e ." "i j .";
+    background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
+    background-size: cover;
+  }
 
-    .secondCard {
-        grid-area: a4;
-        background: url("src/assets/Fényáteresztő főoldal fotó.jpg") no-repeat center center;
-        background-size: cover;
-    }
+  .secondCard {
+    grid-area: a4;
+    background: url("src/assets/Fényáteresztő főoldal fotó.jpg") no-repeat center center;
+    background-size: cover;
+  }
 
-    .thirdCard {
-        grid-area: a3;
-        background: url("https://photos.google.com/album/AF1QipN86tUsUseHIsPR6sxvllwgHQmIOPIL8hXjjSDV/photo/AF1QipNOH-yDnFRQDdp-Iqbqqoq4_yylHcUkyFtOEwCI") no-repeat center center;
-        background-size: cover;
+  .thirdCard {
+    grid-area: a3;
+    background-image: var(--url);
+    background-size: cover;
+  }
 
-    }
+  .grig-down {
+    grid-area: a2;
+  }
 
-    .grig-down {
-        grid-area: a2;
-    }
+  .grid-up {
+    grid-area: a5;
+  }
 
-    .grid-up {
-        grid-area: a5;
-    }
-
-    p {
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-        font-size: 1.9vw;
-        font-weight: 900;
-        color: whitesmoke;
-        padding-top: 10px;
-    }
+  p {
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-size: 1.9vw;
+    font-weight: 900;
+    color: whitesmoke;
+    padding-top: 10px;
+  }
 }
 
 @media screen and (max-width: 799px) {
-    .content {
-        height: 100vw;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 2fr 1fr 1fr;
-        grid-template-areas: "a a" "b1 c1" "b2 c2";
-    }
-    .firstCard {
-        background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
-        background-size: cover;
-        grid-area: a;
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        grid-template-rows: 0.5fr 1fr 0.5fr;
-        grid-template-areas: "a b c" "d e f" "i j k";
-    }
+  .content {
+    height: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 2fr 1fr 1fr;
+    grid-template-areas: "a a" "b1 c1" "b2 c2";
+  }
 
-    .secondCard {
-        background: url("src/assets/Fényáteresztő főoldal fotó.jpg") no-repeat center center;
-        grid-area: b2;
-        background-size: cover;
-    }
+  .firstCard {
+    background: url("src/assets/JOURNEY BEYOND CAM 11.jpg") no-repeat center center;
+    background-size: cover;
+    grid-area: a;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: 0.5fr 1fr 0.5fr;
+    grid-template-areas: "a b c" "d e f" "i j k";
+  }
 
-    .thirdCard {
-        background: url("src/assets/JOURNEY BEYOND CAM 4.jpg") no-repeat center center;
-        background-size: cover;
-        grid-area: c1;
-    }
+  .secondCard {
+    background: url("src/assets/Fényáteresztő főoldal fotó.jpg") no-repeat center center;
+    grid-area: b2;
+    background-size: cover;
+  }
 
-    p {
-        display: none;
-    }
+  .thirdCard {
+    background: url("src/assets/JOURNEY BEYOND CAM 4.jpg") no-repeat center center;
+    background-size: cover;
+    grid-area: c1;
+  }
 
-    span {
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-        font-size: 3vw;
-        color: white;
-    }
+  p {
+    display: none;
+  }
+
+  span {
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-size: 3vw;
+    color: white;
+  }
 
 
 }
