@@ -4,7 +4,14 @@
   box-sizing: border-box;
 }
 :root {
-  --url: url(https://www.textilpont.hu/img/63398/SZ031800003-1/feher-voile-fuggony-180.jpg);
+  --translucentUrl: url(https://www.textilpont.hu/img/63398/SZ031800003-1/feher-voile-fuggony-180.jpg);
+  --darkenerUrl: url(https://www.textilpont.hu/img/63398/SZ031800003-1/feher-voile-fuggony-180.jpg);
+  --blackoutUrl: url(https://www.textilpont.hu/img/63398/SZ031800003-1/feher-voile-fuggony-180.jpg);
+  --wallpaperUrl: url(https://www.textilpont.hu/img/63398/SZ031800003-1/feher-voile-fuggony-180.jpg);
+  --childrenUrl: url(https://www.textilpont.hu/img/63398/SZ031800003-1/feher-voile-fuggony-180.jpg);
+  --decorationUrl: url(https://www.textilpont.hu/img/63398/SZ031800003-1/feher-voile-fuggony-180.jpg);
+  --pillowUrl: url(https://www.textilpont.hu/img/63398/SZ031800003-1/feher-voile-fuggony-180.jpg);
+  --furnitureFabricUrl: url(https://www.textilpont.hu/img/63398/SZ031800003-1/feher-voile-fuggony-180.jpg);
 }
 p {
   margin: 0px;

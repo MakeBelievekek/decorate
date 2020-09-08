@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-second-content',
@@ -9,7 +9,18 @@ export class SecondContentComponent implements OnInit {
 
   constructor() { }
 
+  @Input() children: string;
+  @Input() blackout: string;
+  @Input() furniture: string;
+
   ngOnInit(): void {
+    document.documentElement.style
+      .setProperty('--childrenUrl', 'url('+this.children+')');
+    document.documentElement.style
+      .setProperty('--blackoutUrl', 'url('+this.blackout+')');
+    document.documentElement.style
+      .setProperty('--furnitureFabricUrl', 'url('+this.furniture+')');
+
   }
 
 }

@@ -12,12 +12,17 @@ export class ContentComponent implements OnInit {
 
 
     @Input() darkener: string;
+    @Input() translucent: string;
+    @Input() pillow: string;
     color:string = 'red';
 
     ngOnInit(): void {
       document.documentElement.style
-        .setProperty('--url', 'url('+this.darkener+')');
-        console.log(this.darkener);
+        .setProperty('--darkenerUrl', 'url('+this.darkener+')');
+      document.documentElement.style
+        .setProperty('--translucentUrl', 'url('+this.translucent+')');
+      document.documentElement.style
+        .setProperty('--pillowUrl', 'url('+this.pillow+')');
     }
 
 }

@@ -19,7 +19,7 @@
         grid-template-columns: 1fr 1fr 0.2fr;
         grid-template-rows: 0.5fr 1fr 0.5fr;
         grid-template-areas: "a b ." "d e ." "i j .";
-        background: url("src/assets/Tapéta főoldal fotó.jpg") no-repeat center center;
+        background: var(--wallpaperUrl) no-repeat center center;
         background-size: cover;
         filter: brightness(80%);
     }
@@ -30,7 +30,7 @@
         grid-template-columns: 1fr 1fr 0.2fr;
         grid-template-rows: 0.5fr 1fr 0.5fr;
         grid-template-areas: "a b ." "d e ." "i j .";
-        background: url("src/assets/Lakástextil kiegészítők főoldal fotó.jpg") no-repeat center center;
+        background: var(--decorationUrl) no-repeat center center;
         background-size: cover;
         filter: brightness(80%);
     }
@@ -57,7 +57,7 @@
         grid-auto-columns: 0.1fr 1fr 0.1fr;
         grid-template-columns: 0.7fr 2fr 0.7fr;
         grid-template-areas: ". . . " ". e . " ". . . ";
-        background: url("src/assets/Tapéta főoldal fotó.jpg") no-repeat center center;
+        background:  var(--wallpaperUrl) no-repeat center center;
         background-size: cover;
     }
 
@@ -67,7 +67,7 @@
         grid-auto-columns: 0.2fr 1fr 0.2fr;
         grid-template-columns: 0.7fr 2fr 0.7fr;
         grid-template-areas: ". . . " ". e . " ". . . ";
-        background: url("src/assets/Lakástextil kiegészítők főoldal fotó.jpg") no-repeat center center;
+        background: var(--decorationUrl) no-repeat center center;
         background-size: cover;
     }
 

@@ -15,14 +15,44 @@ export class HomeComponent implements OnInit {
   }
 
   images: HomeModel[] = [];
-  darkImg: string;
+  darkenerImg: string;
+  translucentImg: string;
+  blackoutImg: string;
+  childrenImg: string;
+  decorationImg: string;
+  pillowImg: string;
+  wallpaperImg: string;
+  furnitureFabricImg: string;
 
   ngOnInit(): void {
     this.images = this.route.snapshot.data.images;
     console.log(this.images)
     for (let im of this.images) {
       if (im.type == 'Darkener') {
-        this.darkImg = im.imgUrl
+        this.darkenerImg = im.imgUrl
+      }
+      if (im.type == 'Blackout') {
+        this.blackoutImg = im.imgUrl
+      }
+      if (im.type == 'Wallpaper') {
+        this.wallpaperImg = im.imgUrl
+      }
+      if (im.type == 'Translucent') {
+        this.translucentImg = im.imgUrl
+      }
+      if (im.type == 'Pillow') {
+        this.pillowImg = im.imgUrl
+        console.log(this.pillowImg)
+      }
+      if (im.type == 'Children') {
+        this.childrenImg = im.imgUrl
+        console.log(this.childrenImg)
+      }
+      if (im.type == 'Decoration') {
+        this.decorationImg = im.imgUrl
+      }
+      if (im.type == 'FurnitureFabric') {
+        this.furnitureFabricImg = im.imgUrl
       }
     }
   }

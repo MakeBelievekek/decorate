@@ -17,13 +17,13 @@
 
     .firstCard {
         grid-area: a1;
-        background: url("src/assets/Blacl out főoldal fotó.jpg") no-repeat center center;
+        background: var(--blackoutUrl) no-repeat center center;
         background-size: cover;
     }
 
     .secondCard {
         grid-area: b2;
-        background: url("src/assets/Gyerekfüggöny főoldal fotó.jpg") no-repeat center center;
+        background: var(--childrenUrl) no-repeat center center;
         background-size: cover;
     }
 
@@ -33,7 +33,7 @@
         grid-template-columns: 1fr 1fr 0.3fr;
         grid-template-rows: 0.5fr 1fr 0.5fr;
         grid-template-areas: "a b ." "d e ." "i j .";
-        background: url("src/assets/Bútorszövet főoldal fotó.jpg") no-repeat center center;
+        background: var(--furnitureFabricUrl) no-repeat center center;
         background-size: cover;
     }
 
@@ -69,13 +69,13 @@
 
     .firstCard {
         grid-area: a1;
-        background: url("src/assets/Blacl out főoldal fotó.jpg") no-repeat center center;
+        background: var(--blackoutUrl) no-repeat center center;
         background-size: cover;
     }
 
     .secondCard {
         grid-area: b2;
-        background: url("src/assets/Gyerekfüggöny főoldal fotó.jpg") no-repeat center center;
+        background: var(--childrenUrl) no-repeat center center;
         background-size: cover;
     }
 
@@ -85,7 +85,7 @@
         grid-template-columns: 1fr 2fr 1fr;
         grid-template-rows: 0.5fr 1fr 0.5fr;
         grid-template-areas: "a b c" "d e f" "i j k";
-        background: url("src/assets/Bútorszövet főoldal fotó.jpg") no-repeat center center;
+        background: var(--furnitureFabricUrl) no-repeat center center;
         background-size: cover;
     }
     .mozaik-down:before {
