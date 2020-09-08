@@ -5,8 +5,7 @@
 
 .active-product-filter-message {
   display: flex;
-  flex: 0 0 200px;
-  justify-content: center;
+  flex: 0 0 125px;
   align-items: center;
 }
 

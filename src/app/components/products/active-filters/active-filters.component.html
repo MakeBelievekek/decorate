@@ -6,7 +6,7 @@
     Aktív szürők:
   </div>
   <div class="active-product-filter-items-container">
-    <ng-container *ngFor="let  color of this.filterControl.activeColors">
+    <ng-container *ngFor="let  color of this.filterControl.activeColors; index as i; trackBy: trackFilters()" >
       <div class="active-product-filter-item"
            (click)="this.handleActiveColors(color)"
            >
