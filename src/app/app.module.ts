@@ -44,6 +44,7 @@ import {ActiveFiltersComponent} from './components/products/active-filters/activ
 import { CardShadowDirective } from './directives/card-shadow.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { BackgroundImgDirective } from './directives/background-img.directive';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,8 @@ import { environment } from '../environments/environment';
     ActiveFiltersComponent,
 
     CardShadowDirective,
+
+    BackgroundImgDirective,
   ],
   imports: [
     BrowserModule,

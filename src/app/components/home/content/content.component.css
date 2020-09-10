@@ -20,20 +20,14 @@
     grid-template-columns: 1fr 1fr 0.3fr;
     grid-template-rows: 0.5fr 1fr 0.5fr;
     grid-template-areas: "a b ." "d e ." "i j .";
-    background: var(--pillowUrl) no-repeat center center;
-    background-size: cover;
   }
 
   .secondCard {
     grid-area: a4;
-    background: var(--translucentUrl) no-repeat center center;
-    background-size: cover;
   }
 
   .thirdCard {
     grid-area: a3;
-    background: var(--darkenerUrl) no-repeat center center;
-    background-size: cover;
   }
 
   .grig-down {
