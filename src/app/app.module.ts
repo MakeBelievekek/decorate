@@ -41,6 +41,7 @@ import {StorageServiceModule} from 'ngx-webstorage-service';
 import {LocalStorageService} from './services/localStorage.service';
 import {CheckoutComponent} from './components/basket/checkout/checkout.component';
 import {ActiveFiltersComponent} from './components/products/active-filters/active-filters.component';
+import { CardShadowDirective } from './directives/card-shadow.directive';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,8 @@ import {ActiveFiltersComponent} from './components/products/active-filters/activ
     CheckoutComponent,
 
     ActiveFiltersComponent,
+
+    CardShadowDirective,
   ],
   imports: [
     BrowserModule,
