@@ -1,10 +1,10 @@
-import {Component, ElementRef, EventEmitter, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
-import {ModalControllerModel} from '../../../models/modalController.model';
-import {FilterControlModel} from '../../../models/filterControl.model';
-import {ModalService} from '../../../services/modal.service';
-import {ScreenService} from '../../../services/screen.service';
-import {FilterService} from '../../../services/filter.service';
-import {ScreenControlModel} from '../../../models/screenControl.model';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { FilterControlModel } from '../../../models/filterControl.model';
+import { ModalControllerModel } from '../../../models/modalController.model';
+import { ScreenControlModel } from '../../../models/screenControl.model';
+import { FilterService } from '../../../services/filter.service';
+import { ModalService } from '../../../services/modal.service';
+import { ScreenService } from '../../../services/screen.service';
 
 
 @Component({

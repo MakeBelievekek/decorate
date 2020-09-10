@@ -1,9 +1,9 @@
-import {Injectable} from "@angular/core";
-import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from "@angular/router";
-import {ProductListItemForLocal} from "../models/productListItemForLocal";
-import {Observable} from "rxjs";
-import {LocalStorageService} from "./localStorage.service";
-import {ProductService} from "./product.service";
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ProductListItemForLocal } from '../models/productListItemForLocal';
+import { LocalStorageService } from './localStorage.service';
+import { ProductService } from './product.service';
 
 const CART_KEY = 'local_cartList';
 

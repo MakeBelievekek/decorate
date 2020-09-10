@@ -1,12 +1,11 @@
-import {HttpClient} from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
-import {FormArray, FormControl, FormGroup} from '@angular/forms';
-import {AttributeData} from '../../../models/attributeData';
-import {AttributeListItemModel} from '../../../models/attributeListItemModel';
-import {FormDataModel} from '../../../models/formDataModel';
-import {ImageModel} from '../../../models/imageModel';
-import {ProductModel} from '../../../models/productModel';
-import {AdminService} from '../../../services/admin.service';
+import { Component, OnInit } from '@angular/core';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { AttributeData } from '../../../models/attributeData';
+import { AttributeListItemModel } from '../../../models/attributeListItemModel';
+import { FormDataModel } from '../../../models/formDataModel';
+import { ImageModel } from '../../../models/imageModel';
+import { ProductModel } from '../../../models/productModel';
+import { AdminService } from '../../../services/admin.service';
 
 
 @Component({
@@ -54,7 +53,7 @@ export class AdminProductFormComponent implements OnInit {
     curtainType: string;
   };
 
-  constructor(private adminService: AdminService, private http: HttpClient) {
+  constructor(private adminService: AdminService) {
     this.productForm = new FormGroup({
       'productType': new FormControl(''),
       'curtainType': new FormControl(''),

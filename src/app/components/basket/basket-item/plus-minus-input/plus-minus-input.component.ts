@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {TotalPriceModel} from '../../../../models/totalPriceModel';
-import {LocalStorageService} from "../../../../services/localStorage.service";
-import {LocalProductModel} from "../../../../models/localProductModel";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { LocalProductModel } from '../../../../models/localProductModel';
+import { TotalPriceModel } from '../../../../models/totalPriceModel';
+import { LocalStorageService } from '../../../../services/localStorage.service';
 
 const CART_KEY = 'local_cartList';
 

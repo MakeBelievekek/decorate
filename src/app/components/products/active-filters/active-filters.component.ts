@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
-import {FilterService} from '../../../services/filter.service';
-import {FilterControlModel} from '../../../models/filterControl.model';
+import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { FilterControlModel } from '../../../models/filterControl.model';
+import { FilterService } from '../../../services/filter.service';
 
 @Component({
   selector: 'app-active-filters',

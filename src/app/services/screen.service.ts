@@ -1,6 +1,6 @@
-import {ElementRef, Injectable} from '@angular/core';
-import {ScreenControlModel} from '../models/screenControl.model';
-import {ScreenSizeModel} from '../models/ScreenSize.model';
+import { ElementRef, Injectable } from '@angular/core';
+import { ScreenControlModel } from '../models/screenControl.model';
+import { ScreenSizeModel } from '../models/ScreenSize.model';
 
 @Injectable({
   providedIn: 'root'

@@ -1,8 +1,7 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {ScreenService} from '../../../services/screen.service';
-import {ScreenSizeModel} from '../../../models/ScreenSize.model';
-import {ModalService} from '../../../services/modal.service';
-import {ScreenControlModel} from '../../../models/screenControl.model';
+import { Component, OnInit } from '@angular/core';
+import { ScreenControlModel } from '../../../models/screenControl.model';
+import { ModalService } from '../../../services/modal.service';
+import { ScreenService } from '../../../services/screen.service';
 
 @Component({
   selector: 'app-products-header',

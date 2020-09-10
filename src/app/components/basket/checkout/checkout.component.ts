@@ -1,12 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
-import {LocalDetailsModel} from '../../../models/localDetailsModel';
-import {ProductListItemForLocal} from '../../../models/productListItemForLocal';
-import {LocalStorageService} from '../../../services/localStorage.service';
-import {UserModel} from "../../../models/userModel";
-import {ShippingModel} from "../../../models/shippingModel";
-import {BillingModel} from "../../../models/billingModel";
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { BillingModel } from '../../../models/billingModel';
+import { LocalDetailsModel } from '../../../models/localDetailsModel';
+import { ProductListItemForLocal } from '../../../models/productListItemForLocal';
+import { ShippingModel } from '../../../models/shippingModel';
+import { UserModel } from '../../../models/userModel';
+import { LocalStorageService } from '../../../services/localStorage.service';
 
 const CART_KEY = 'local_cartList';
 const DETAILS_KEY = 'local_detailsList';

@@ -1,10 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {BasketProdModel} from '../../../models/basket-prod-model';
-import {ProductListItemForLocal} from '../../../models/productListItemForLocal';
-import {TotalPriceModel} from '../../../models/totalPriceModel';
-import {LocalStorageService} from "../../../services/localStorage.service";
-import {BasketService} from "../../../services/basket.service";
-import {ImageModel} from "../../../models/imageModel";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ProductListItemForLocal } from '../../../models/productListItemForLocal';
+import { TotalPriceModel } from '../../../models/totalPriceModel';
+import { LocalStorageService } from '../../../services/localStorage.service';
 
 const CART_KEY = 'local_cartList';
 
@@ -15,7 +12,7 @@ const CART_KEY = 'local_cartList';
 })
 export class BasketItemComponent implements OnInit {
 
-  constructor(private localStorageService: LocalStorageService, private basketService: BasketService) {
+  constructor(private localStorageService: LocalStorageService) {
   }
 
   @Input() product: ProductListItemForLocal;

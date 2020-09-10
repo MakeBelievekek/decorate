@@ -1,9 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ProductListItemForLocal} from '../../../models/productListItemForLocal';
-import {LocalStorageService} from '../../../services/localStorage.service';
-import {ProductService} from '../../../services/product.service';
-import {ActivatedRoute, Data} from "@angular/router";
-import {PaymentService} from "../../../services/payment.service";
+import { Component, Input, OnInit } from '@angular/core';
+import { ProductListItemForLocal } from '../../../models/productListItemForLocal';
+import { LocalStorageService } from '../../../services/localStorage.service';
 
 const CART_KEY = 'local_cartList';
 
@@ -17,7 +14,7 @@ export class BasketContentComponent implements OnInit {
   allTotal: number = 0;
   @Input() productsFromLocalStorage: ProductListItemForLocal[] = [];
 
-  constructor(private localStorageService: LocalStorageService, private productService: ProductService) {
+  constructor(private localStorageService: LocalStorageService) {
 
   }
 

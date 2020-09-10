@@ -41,6 +41,8 @@ import {StorageServiceModule} from 'ngx-webstorage-service';
 import {LocalStorageService} from './services/localStorage.service';
 import {CheckoutComponent} from './components/basket/checkout/checkout.component';
 import {ActiveFiltersComponent} from './components/products/active-filters/active-filters.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -88,6 +90,7 @@ import {ActiveFiltersComponent} from './components/products/active-filters/activ
     FontAwesomeModule,
     BrowserAnimationsModule,
     StorageServiceModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [LocalStorageService],
   bootstrap: [AppComponent],

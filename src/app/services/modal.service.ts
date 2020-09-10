@@ -1,6 +1,5 @@
-import {Injectable} from '@angular/core';
-import {Subject} from 'rxjs';
-import {ModalControllerModel} from '../models/modalController.model';
+import { Injectable } from '@angular/core';
+import { ModalControllerModel } from '../models/modalController.model';
 
 @Injectable({
   providedIn: 'root'

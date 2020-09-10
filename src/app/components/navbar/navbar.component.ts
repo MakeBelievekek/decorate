@@ -1,12 +1,8 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {animate, keyframes, style, transition, trigger} from '@angular/animations';
-import {ModalService} from '../../services/modal.service';
-import * as kf from '../../utils/keyframes';
-import {ModalControllerModel} from '../../models/modalController.model';
-import {ScreenService} from '../../services/screen.service';
-import {ScreenSizeModel} from '../../models/ScreenSize.model';
-import {ScreenControlModel} from '../../models/screenControl.model';
-import {LocalStorageService} from "../../services/localStorage.service";
+import { Component, OnInit } from '@angular/core';
+import { ScreenControlModel } from '../../models/screenControl.model';
+import { LocalStorageService } from '../../services/localStorage.service';
+import { ModalService } from '../../services/modal.service';
+import { ScreenService } from '../../services/screen.service';
 
 const CART_KEY = 'local_cartList';
 

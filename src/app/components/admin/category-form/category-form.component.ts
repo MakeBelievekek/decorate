@@ -1,8 +1,7 @@
-import {HttpClient} from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
-import {AdminService} from '../../../services/admin.service';
-import {AttributeModel} from "../../../models/attributeModel";
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { AttributeModel } from '../../../models/attributeModel';
+import { AdminService } from '../../../services/admin.service';
 
 @Component({
   selector: 'app-category-form',
@@ -18,7 +17,7 @@ export class CategoryFormComponent implements OnInit {
   };
   attributeTypes: string[] = ['', 'Color', 'Pattern', 'Style', 'Composition'];
 
-  constructor(private adminService: AdminService, private http: HttpClient) {
+  constructor(private adminService: AdminService) {
     this.categoryForm = new FormGroup({
       'attributeName': new FormControl(''),
       'attributeType': new FormControl(''),

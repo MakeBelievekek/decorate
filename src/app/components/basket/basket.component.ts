@@ -1,11 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {PaymentResponseModel} from '../../models/paymentResponseModel';
-import {PaymentService} from '../../services/payment.service';
-import {LocalStorageService} from "../../services/localStorage.service";
-import {BasketService} from "../../services/basket.service";
-import {ActivatedRoute} from "@angular/router";
-import {ProductListItemForLocal} from "../../models/productListItemForLocal";
-import {ProductService} from "../../services/product.service";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { PaymentResponseModel } from '../../models/paymentResponseModel';
+import { ProductListItemForLocal } from '../../models/productListItemForLocal';
+import { PaymentService } from '../../services/payment.service';
 
 @Component({
   selector: 'app-basket',
