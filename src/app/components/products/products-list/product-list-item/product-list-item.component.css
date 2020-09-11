@@ -1,0 +1,27 @@
+.product-list-card-container {
+  display: grid;
+  height: 22vw;
+  min-height: 375px;
+  grid-template-rows: 275px 1fr;
+  grid-row-gap: 5px;
+  background-color: #719ECE;
+}
+
+.product-list-card-container:hover {
+  box-shadow: 0 0 5px 5px grey;
+}
+
+.product-list-card-img {
+  display: grid;
+  grid-row: 1 / 2;
+  max-height: 300px;
+}
+
+.product-list-card-text {
+  display: grid;
+  grid-row: 2 / 3;
+  justify-content: center;
+  align-items: center;
+  background-color: beige;
+  min-height: 75px;
+}

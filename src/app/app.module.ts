@@ -46,6 +46,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { BackgroundImgDirective } from './directives/background-img.directive';
 import { ReloadOnNgForNewElementDirective } from './directives/reload-on-ng-for-new-element.directive';
+import { ProductListItemComponent } from './components/products/products-list/product-list-item/product-list-item.component';
 
 @NgModule({
   declarations: [
@@ -89,6 +90,8 @@ import { ReloadOnNgForNewElementDirective } from './directives/reload-on-ng-for-
     BackgroundImgDirective,
 
     ReloadOnNgForNewElementDirective,
+
+    ProductListItemComponent,
   ],
   imports: [
     BrowserModule,
