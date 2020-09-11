@@ -1,13 +1,13 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
-import { FilterControlModel } from '../../../models/filterControl.model';
-import { FilterService } from '../../../services/filter.service';
+import {Component, ElementRef, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
+import {FilterControlModel} from '../../../models/filterControl.model';
+import {FilterService} from '../../../services/filter.service';
 
 @Component({
   selector: 'app-active-filters',
   templateUrl: './active-filters.component.html',
   styleUrls: ['./active-filters.component.css']
 })
-export class ActiveFiltersComponent implements OnInit, OnChanges {
+export class ActiveFiltersComponent implements OnInit {
   filterControl: FilterControlModel;
   activeFilterExists: boolean;
   @Input() number: number;
@@ -18,11 +18,6 @@ export class ActiveFiltersComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.filterControl = this.filterService.filterControl;
-    this.setActiveFilterExists();
-  }
-
-  ngOnChanges(changes: any) {
-    console.log('change');
     this.setActiveFilterExists();
   }
 

@@ -45,6 +45,7 @@ import { CardShadowDirective } from './directives/card-shadow.directive';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { BackgroundImgDirective } from './directives/background-img.directive';
+import { ReloadOnNgForNewElementDirective } from './directives/reload-on-ng-for-new-element.directive';
 
 @NgModule({
   declarations: [
@@ -86,6 +87,8 @@ import { BackgroundImgDirective } from './directives/background-img.directive';
     CardShadowDirective,
 
     BackgroundImgDirective,
+
+    ReloadOnNgForNewElementDirective,
   ],
   imports: [
     BrowserModule,
