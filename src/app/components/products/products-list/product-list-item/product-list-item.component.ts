@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'app-product-list-item',
@@ -6,6 +6,8 @@ import {Component, HostListener, OnInit} from '@angular/core';
   styleUrls: ['./product-list-item.component.css']
 })
 export class ProductListItemComponent implements OnInit {
+  showControl: boolean;
+  likeHover: boolean;
 
   constructor() {
   }
@@ -13,8 +15,18 @@ export class ProductListItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @HostListener('mouseenter')
-  showControl() {
-    console.log('hello world!');
+  toggleLikeHover() {
+    this.likeHover = !this.likeHover;
   }
+
+  @HostListener('mouseenter')
+  setShowControl() {
+    this.showControl = true;
+  }
+
+  @HostListener('mouseleave')
+  setHideControl() {
+    this.showControl = false;
+  }
+
 }
