@@ -13,10 +13,11 @@
           </g>
         </svg>
       </div>
-      <div [ngClass]="{'product-list-card-control-like-white-background':!this.likeHover,
-                       'product-list-card-control-like-grey-background':this.likeHover}">
-      </div>
       <div class="product-list-card-control-like" (mouseenter)="toggleLikeHover()" (mouseleave)="toggleLikeHover()">
+       <div style="position: relative; z-index: 1"></div>
+        <div [ngClass]="{'product-list-card-control-like-white-background':!this.likeHover,
+                       'product-list-card-control-like-grey-background':this.likeHover}">
+        </div>
 
         <svg *ngIf="true"
              id="Capa_1"
