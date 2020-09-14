@@ -50,6 +50,8 @@ import { environment } from '../environments/environment';
 import { BackgroundImgDirective } from './directives/background-img.directive';
 import { ReloadOnNgForNewElementDirective } from './directives/reload-on-ng-for-new-element.directive';
 import { ProductListItemComponent } from './components/products/products-list/product-list-item/product-list-item.component';
+import { NameShortenerPipe } from './pipes/name-shortener.pipe';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -95,6 +97,8 @@ import { ProductListItemComponent } from './components/products/products-list/pr
     ReloadOnNgForNewElementDirective,
 
     ProductListItemComponent,
+
+    NameShortenerPipe,
   ],
   imports: [
     MatBadgeModule,
@@ -108,6 +112,7 @@ import { ProductListItemComponent } from './components/products/products-list/pr
     StorageServiceModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
     MatIconModule,
+    MatTooltipModule,
   ],
   providers: [LocalStorageService],
   bootstrap: [AppComponent],

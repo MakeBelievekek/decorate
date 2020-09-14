@@ -8,6 +8,8 @@ import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/c
 export class ProductListItemComponent implements OnInit {
   showControl: boolean;
   likeHover: boolean;
+  dummyProduct: any = {productName: 'Vaalmmi hosszu és érdeks'};
+  showTooltip: boolean;
 
   constructor() {
   }
@@ -15,18 +17,22 @@ export class ProductListItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  toggleLikeHover() {
+  toggleLikeHover(): void {
     this.likeHover = !this.likeHover;
   }
 
   @HostListener('mouseenter')
-  setShowControl() {
+  setShowControl(): void {
     this.showControl = true;
   }
 
   @HostListener('mouseleave')
-  setHideControl() {
+  setHideControl(): void {
     this.showControl = false;
   }
 
+  toggleTooltip(event): void {
+    console.log(event);
+    this.showTooltip = !this.showTooltip;
+  }
 }

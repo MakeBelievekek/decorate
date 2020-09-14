@@ -6,6 +6,7 @@
   grid-template-rows: 275px 1fr;
   grid-row-gap: 5px;
   z-index: 1;
+  cursor: pointer;
 }
 
 .product-list-card-container:hover {
@@ -26,13 +27,27 @@
   align-items: center;
   background-color: beige;
   min-height: 75px;
+
 }
+
+.product-list-card-text-flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.product-list-card-text-flex-container div {
+  margin-top: 5px;
+}
+
 
 .product-list-card-control-like {
   position: absolute;
   margin-left: 10px;
-  left: 50%;
   top: 83%;
+  left: 52%;
   border-radius: 45%;
 
   z-index: 99;
