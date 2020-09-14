@@ -6,29 +6,34 @@ import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 })
 export class BackgroundImgDirective implements OnInit {
   @HostBinding('style.background') background: SafeStyle;
-  @Input() image: string;
+  @Input() mainBackgroundImage: string;
+  @Input() secondaryBackgroundImage: string;
 
   constructor(private sanitizer: DomSanitizer) {
   }
 
   ngOnInit(): void {
     this.background = this.sanitizer.bypassSecurityTrustStyle(
-      'url(' + this.image + ') center center \/ cover no-repeat'
+      'url(' + this.mainBackgroundImage + ') center center \/ cover no-repeat'
     );
   }
 
   @HostListener('mouseleave')
   defaultImage() {
-    this.background = this.sanitizer.bypassSecurityTrustStyle(
-      'url(' + this.image + ') center center \/ cover no-repeat'
-    );
+    if (this.secondaryBackgroundImage) {
+      this.background = this.sanitizer.bypassSecurityTrustStyle(
+        'url(' + this.mainBackgroundImage + ') center center \/ cover no-repeat'
+      );
+    }
   }
 
   @HostListener('mouseenter')
   activateHoverImage() {
-    this.background = this.sanitizer.bypassSecurityTrustStyle(
-      'url(' + 'https://i.imgur.com/1nyTupT.jpg' + ') center center \/ cover no-repeat'
-    );
+    if (this.secondaryBackgroundImage) {
+      this.background = this.sanitizer.bypassSecurityTrustStyle(
+        'url(' + this.secondaryBackgroundImage + ') center center \/ cover no-repeat'
+      );
+    }
   }
 
 }

@@ -77,10 +77,6 @@
   background-color: lightgray;
 }
 
-svg {
-
-}
-
 @media all and (max-width: 599px) {
   .product-list-card-container {
     display: grid;
