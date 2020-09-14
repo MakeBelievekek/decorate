@@ -4,6 +4,7 @@ import { LocalStorageService } from '../../services/localStorage.service';
 import { ModalService } from '../../services/modal.service';
 import { ScreenService } from '../../services/screen.service';
 
+
 const CART_KEY = 'local_cartList';
 
 @Component({

@@ -1,6 +1,9 @@
 import {HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
 import {ReactiveFormsModule} from '@angular/forms';
+
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
@@ -94,6 +97,7 @@ import { ProductListItemComponent } from './components/products/products-list/pr
     ProductListItemComponent,
   ],
   imports: [
+    MatBadgeModule,
     BrowserModule,
     RouterModule,
     AppRoutingModule,
@@ -102,7 +106,8 @@ import { ProductListItemComponent } from './components/products/products-list/pr
     FontAwesomeModule,
     BrowserAnimationsModule,
     StorageServiceModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    MatIconModule,
   ],
   providers: [LocalStorageService],
   bootstrap: [AppComponent],
