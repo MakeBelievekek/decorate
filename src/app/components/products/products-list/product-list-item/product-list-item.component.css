@@ -20,6 +20,8 @@
   max-height: 300px;
 }
 
+@keyframes fadeInMake{0%{opacity:0}to{opacity:1}}.animate__fadeInMake{-webkit-animation-name:fadeInMake;animation-name:fadeInMake}
+
 .product-list-card-text {
   display: grid;
   grid-row: 2 / 3;

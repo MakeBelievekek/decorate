@@ -1,8 +1,12 @@
 <div class="product-list-card-container">
-  <div class="product-list-card-img"
+  <div class="product-list-card-img animate__animated animate__fadeIn"
        appBackgroundImg
        mainBackgroundImage="https://i.imgur.com/9Vn98K4.jpg"
-       secondaryBackgroundImage="https://i.imgur.com/1nyTupT.jpg">
+       secondaryBackgroundImage="https://i.imgur.com/1nyTupT.jpg"
+       >
+      <!-- [ngClass]="{animate__animated: this.placeholder === 'enter',
+       animate__fadeInRight: this.placeholder === 'enter'}"-->
+
     <div class="product-list-card-control" *ngIf="this.showControl">
       <div class="product-list-card-control-basket">
         <svg id="Capa_3"
@@ -53,16 +57,16 @@
   </div>
   <div class="product-list-card-text">
     <div class="product-list-card-text-flex-container">
-    <div
-      [matTooltip]="this.dummyProduct.productName"
-      matTooltipPosition="below"
-      matTooltipShowDelay="500"
-    >
-      {{this.dummyProduct.productName | nameShortener:20 }}
-    </div>
-    <div>
-      1500 Ft
-    </div>
+      <div
+        [matTooltip]="this.dummyProduct.productName"
+        matTooltipPosition="below"
+        matTooltipShowDelay="500"
+      >
+        {{this.dummyProduct.productName | nameShortener:20 }}
+      </div>
+      <div>
+        1500 Ft
+      </div>
     </div>
   </div>
 </div>

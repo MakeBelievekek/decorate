@@ -1,4 +1,4 @@
-import {Directive, HostBinding, HostListener, Input, OnInit} from '@angular/core';
+import {Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output, Renderer2} from '@angular/core';
 import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 
 @Directive({
@@ -6,10 +6,20 @@ import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 })
 export class BackgroundImgDirective implements OnInit {
   @HostBinding('style.background') background: SafeStyle;
+
+  @HostBinding('class.animate__fadeIn') get enter() {
+    return 'enter' === this.mousePosition;
+  }
+
+  @HostBinding('class.animate__fadeInMake') get leave() {
+    return 'leave' === this.mousePosition;
+  }
+
   @Input() mainBackgroundImage: string;
   @Input() secondaryBackgroundImage: string;
+  mousePosition: string;
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(private sanitizer: DomSanitizer, private renderer2: Renderer2, private elRef: ElementRef) {
   }
 
   ngOnInit(): void {
@@ -25,6 +35,7 @@ export class BackgroundImgDirective implements OnInit {
         'url(' + this.mainBackgroundImage + ') center center \/ cover no-repeat'
       );
     }
+    this.mousePosition = 'leave';
   }
 
   @HostListener('mouseenter')
@@ -34,6 +45,8 @@ export class BackgroundImgDirective implements OnInit {
         'url(' + this.secondaryBackgroundImage + ') center center \/ cover no-repeat'
       );
     }
+    this.mousePosition = 'enter';
+
   }
 
 }

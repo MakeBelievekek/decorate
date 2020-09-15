@@ -10,6 +10,8 @@ export class ProductListItemComponent implements OnInit {
   likeHover: boolean;
   dummyProduct: any = {productName: 'Vaalmmi hosszu és érdeks'};
   showTooltip: boolean;
+  placeholder: string;
+
 
   constructor() {
   }
@@ -33,6 +35,7 @@ export class ProductListItemComponent implements OnInit {
 
   toggleTooltip(event): void {
     console.log(event);
+    this.placeholder = event;
     this.showTooltip = !this.showTooltip;
   }
 }
