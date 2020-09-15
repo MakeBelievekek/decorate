@@ -27,7 +27,7 @@
 
 @keyframes fadeInMake {
   0% {
-    opacity: 25%
+    opacity: 40%
   }
   to {
     opacity: 1
@@ -41,7 +41,7 @@
 
 @keyframes fadeInTo {
   0% {
-    opacity: 25%
+    opacity: 40%
   }
   to {
     opacity: 1
