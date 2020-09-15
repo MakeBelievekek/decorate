@@ -18,16 +18,17 @@
   display: grid;
   grid-row: 1 / 2;
   max-height: 300px;
+  background-color: #555555;
 }
 
 .animate__fadeInCustom {
   -webkit-animation-name: fadeInMake;
-  animation-name: fadeInMake
+  animation: 300ms ease-out fadeInMake;
 }
 
 @keyframes fadeInMake {
   0% {
-    opacity: 40%
+    opacity: 60%
   }
   to {
     opacity: 1
@@ -36,18 +37,17 @@
 
 .animate__fadeInTo {
   -webkit-animation-name: fadeInTo;
-  animation-name: fadeInTo
+  animation: 300ms ease-out fadeInTo;
 }
 
 @keyframes fadeInTo {
   0% {
-    opacity: 40%
+    opacity: 60%
   }
   to {
     opacity: 1
   }
 }
-
 
 
 .product-list-card-text {
