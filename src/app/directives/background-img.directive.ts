@@ -11,7 +11,7 @@ export class BackgroundImgDirective implements OnInit {
     return 'enter' === this.mousePosition;
   }
 
-  @HostBinding('class.animate__fadeInMake') get leave() {
+  @HostBinding('class.animate__fadeInCustom') get leave() {
     return 'leave' === this.mousePosition;
   }
 
@@ -34,8 +34,8 @@ export class BackgroundImgDirective implements OnInit {
       this.background = this.sanitizer.bypassSecurityTrustStyle(
         'url(' + this.mainBackgroundImage + ') center center \/ cover no-repeat'
       );
+      this.mousePosition = 'leave';
     }
-    this.mousePosition = 'leave';
   }
 
   @HostListener('mouseenter')
@@ -44,9 +44,8 @@ export class BackgroundImgDirective implements OnInit {
       this.background = this.sanitizer.bypassSecurityTrustStyle(
         'url(' + this.secondaryBackgroundImage + ') center center \/ cover no-repeat'
       );
+      this.mousePosition = 'enter';
     }
-    this.mousePosition = 'enter';
-
   }
 
 }
