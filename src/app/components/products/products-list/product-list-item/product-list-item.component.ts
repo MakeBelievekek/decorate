@@ -23,15 +23,10 @@ export class ProductListItemComponent implements OnInit {
     this.likeHover = !this.likeHover;
   }
 
-  @HostListener('mouseenter')
-  setShowControl(): void {
-    this.showControl = true;
+  toggleControl(): void {
+    this.showControl = !this.showControl;
   }
 
-  @HostListener('mouseleave')
-  setHideControl(): void {
-    this.showControl = false;
-  }
 
   toggleTooltip(event): void {
     console.log(event);

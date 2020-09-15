@@ -3,6 +3,8 @@
        appBackgroundImg
        mainBackgroundImage="https://i.imgur.com/9Vn98K4.jpg"
        secondaryBackgroundImage="https://i.imgur.com/1nyTupT.jpg"
+       (mouseenter)="toggleControl()"
+       (mouseleave)="toggleControl()"
        >
       <!-- [ngClass]="{animate__animated: this.placeholder === 'enter',
        animate__fadeInRight: this.placeholder === 'enter'}"-->
