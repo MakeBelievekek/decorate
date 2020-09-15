@@ -7,7 +7,7 @@ import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
 export class BackgroundImgDirective implements OnInit {
   @HostBinding('style.background') background: SafeStyle;
 
-  @HostBinding('class.animate__fadeIn') get enter() {
+  @HostBinding('class.animate__fadeInTo') get enter() {
     return 'enter' === this.mousePosition;
   }
 
@@ -46,6 +46,7 @@ export class BackgroundImgDirective implements OnInit {
       );
       this.mousePosition = 'enter';
     }
+
   }
 
 }

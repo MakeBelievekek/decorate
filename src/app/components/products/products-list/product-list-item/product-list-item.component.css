@@ -27,12 +27,28 @@
 
 @keyframes fadeInMake {
   0% {
-    opacity: 0
+    opacity: 25%
   }
   to {
     opacity: 1
   }
 }
+
+.animate__fadeInTo {
+  -webkit-animation-name: fadeInTo;
+  animation-name: fadeInTo
+}
+
+@keyframes fadeInTo {
+  0% {
+    opacity: 25%
+  }
+  to {
+    opacity: 1
+  }
+}
+
+
 
 .product-list-card-text {
   display: grid;
