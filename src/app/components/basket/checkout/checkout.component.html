@@ -105,6 +105,19 @@
                     <textarea class="form-control" id="info" formControlName="shipInfo"
                               placeholder="Megjegyzések a rendeléssel, szállítással kapcsolatban."></textarea>
                 </div>
+                <div class="underline" *ngIf="isLoggedIn && !isFilledAddress">
+                    <div class="form-group">
+                        <label>Szállítási opciók <span>*</span></label>
+                        <div *ngFor="let op of this.shippingOptions, let i = index">
+                            <label class="container">{{op.name}}: {{op.price}}
+                                <input class="form-control" type="radio" formControlName="shipMethod"
+                                       [checked]="currentlyChecked === op.type" (click)="selectCheckBox(op.type)"
+                                       value="{{op.type}}">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
             </form>
             <button class="basket-continue-btn" *ngIf="isLoggedIn && !isPayment"
                     (click)="continueToPayment();saveBillingInfo()">

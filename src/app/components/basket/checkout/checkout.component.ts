@@ -5,8 +5,11 @@ import { BillingModel } from '../../../models/billingModel';
 import { LocalDetailsModel } from '../../../models/localDetailsModel';
 import { ProductListItemForLocal } from '../../../models/productListItemForLocal';
 import { ShippingModel } from '../../../models/shippingModel';
+import { ShippingOptions } from '../../../models/shippingOptions';
 import { UserModel } from '../../../models/userModel';
 import { LocalStorageService } from '../../../services/localStorage.service';
+import { ProductService } from '../../../services/product.service';
+
 
 const CART_KEY = 'local_cartList';
 const DETAILS_KEY = 'local_detailsList';
@@ -18,7 +21,7 @@ const DETAILS_KEY = 'local_detailsList';
 })
 export class CheckoutComponent implements OnInit {
 
-    constructor(private route: ActivatedRoute, private localStorageService: LocalStorageService) {
+    constructor(private route: ActivatedRoute, private localStorageService: LocalStorageService, private productService: ProductService) {
         this.personalDetailsForm = new FormGroup({
             lastname: new FormControl('', [Validators.required, Validators.minLength(3)]),
             firstname: new FormControl(),
@@ -42,6 +45,7 @@ export class CheckoutComponent implements OnInit {
             shipProvince: new FormControl(),
             shipZip: new FormControl(),
             shipInfo: new FormControl(),
+            shipMethod: new FormControl(),
         });
         this.paymentForm = new FormGroup({
             cardNumber: new FormControl(),
@@ -74,10 +78,16 @@ export class CheckoutComponent implements OnInit {
         'Fejér', 'Győr-Moson-Sopron', 'Hajdú-Bihar', 'Heves', 'Jász-Nagykun-Szolnok', 'Komárom-Esztergom',
         'Nógrád', 'Pest', 'Somogy', 'Szabolcs-Szatmár-Bereg', 'Tolna', 'Vas', 'Veszprém', 'Zala'];
     country: string = 'Magyarország';
+    currentlyChecked: string;
+    shippingOptions: ShippingOptions[] = [];
 
     ngOnInit(): void {
         this.product = this.route.snapshot.data.basketItems;
         this.startingPrice();
+        this.productService.getShippingOptions().subscribe((data) => {
+            this.shippingOptions = data;
+            console.log(this.shippingOptions)
+        });
     }
 
     startingPrice() {
@@ -165,9 +175,11 @@ export class CheckoutComponent implements OnInit {
                 company: string = billingInfo.company;
                 country: string = 'Magyarország';
                 shipInfo: string = shippingInfo.shipInfo;
+                shipMethod: string = shippingInfo.shipMethod;
                 province: string = billingInfo.province;
                 zip: number = billingInfo.zip;
             };
+            console.log(shippingInfo);
         }
     }
 
@@ -180,8 +192,18 @@ export class CheckoutComponent implements OnInit {
             company: string = shippingInfo.shipCompany;
             country: string = 'Magyarország';
             shipInfo: string = shippingInfo.shipInfo;
+            shipMethod: string = shippingInfo.shipMethod;
             province: string = shippingInfo.shipProvince;
             zip: number = shippingInfo.shipZip;
         };
+    }
+
+
+    selectCheckBox(targetType: string) {
+        if (this.currentlyChecked === targetType) {
+            this.currentlyChecked = 'NONE';
+            return;
+        }
+        this.currentlyChecked = targetType;
     }
 }
