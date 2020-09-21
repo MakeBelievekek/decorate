@@ -1,13 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AtpListItem } from '../../../models/atpListItem';
 import { BillingModel } from '../../../models/billingModel';
 import { LocalDetailsModel } from '../../../models/localDetailsModel';
+import { LocalProductModel } from '../../../models/localProductModel';
+import { OrderModel } from '../../../models/orderModel';
+import { PaymentDetailsModel } from '../../../models/paymentDetailsModel';
 import { ProductListItemForLocal } from '../../../models/productListItemForLocal';
+import { ResponseTransaction } from '../../../models/responseTransaction';
 import { ShippingModel } from '../../../models/shippingModel';
 import { ShippingOptions } from '../../../models/shippingOptions';
+import { TransactionsModel } from '../../../models/transactionsModel';
 import { UserModel } from '../../../models/userModel';
+import { BasketService } from '../../../services/basket.service';
 import { LocalStorageService } from '../../../services/localStorage.service';
+import { PaymentService } from '../../../services/payment.service';
 import { ProductService } from '../../../services/product.service';
 
 
@@ -21,7 +29,8 @@ const DETAILS_KEY = 'local_detailsList';
 })
 export class CheckoutComponent implements OnInit {
 
-    constructor(private route: ActivatedRoute, private localStorageService: LocalStorageService, private productService: ProductService) {
+    constructor(private route: ActivatedRoute, private localStorageService: LocalStorageService, private productService: ProductService,
+                private basketService: BasketService, private paymentService: PaymentService, private router: Router) {
         this.personalDetailsForm = new FormGroup({
             lastname: new FormControl('', [Validators.required, Validators.minLength(3)]),
             firstname: new FormControl(),
@@ -46,12 +55,14 @@ export class CheckoutComponent implements OnInit {
             shipZip: new FormControl(),
             shipInfo: new FormControl(),
             shipMethod: new FormControl(),
+            foxpost: new FormControl(),
         });
         this.paymentForm = new FormGroup({
             cardNumber: new FormControl(),
             expiresDate: new FormControl(),
             nameOnCard: new FormControl(),
             cvv: new FormControl(),
+            paymentType: new FormControl(),
         });
 
     }
@@ -73,34 +84,56 @@ export class CheckoutComponent implements OnInit {
     paymentForm: FormGroup;
     personalDetails: UserModel;
     shippingDetails: ShippingModel;
+    paymentDetails: PaymentDetailsModel;
     billingDetails: BillingModel;
     provinces: string [] = ['Bács-Kiskun', 'Baranya', 'Békés', 'Borsod-Abaúj-Zemplén', 'Csongrád',
         'Fejér', 'Győr-Moson-Sopron', 'Hajdú-Bihar', 'Heves', 'Jász-Nagykun-Szolnok', 'Komárom-Esztergom',
         'Nógrád', 'Pest', 'Somogy', 'Szabolcs-Szatmár-Bereg', 'Tolna', 'Vas', 'Veszprém', 'Zala'];
     country: string = 'Magyarország';
-    currentlyChecked: string;
+    currentlyCheckedShippingOption: string;
+    currentlyCheckedPayingOption: string;
     shippingOptions: ShippingOptions[] = [];
+    actualDeliveryPrice: number = 0;
+    atpList: AtpListItem[] = [];
+    paymentOptions: string[] = [];
+    order: OrderModel;
+    response: ResponseTransaction = new class implements ResponseTransaction {
+        CallbackUrl: string;
+        Errors: string[];
+        GatewayUrl: string;
+        PaymentId: string;
+        PaymentRequestId: string;
+        QRUrl: string;
+        RecurrenceResult: string;
+        RedirectUrl: string;
+        Status: string;
+        Transactions: TransactionsModel[];
+    };
 
     ngOnInit(): void {
         this.product = this.route.snapshot.data.basketItems;
         this.startingPrice();
         this.productService.getShippingOptions().subscribe((data) => {
             this.shippingOptions = data;
-            console.log(this.shippingOptions)
         });
+        this.basketService.getAtpList().subscribe((data) => {
+                this.atpList = data;
+            }, () => {}, () => {this.atpList.sort((a, b) => a.city.localeCompare(b.city));},
+        );
+
     }
 
     startingPrice() {
         for (let par of this.product) {
+            console.log(this.product);
             for (let loc of this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
                 if (par.id === loc.id) {
                     par.qty = loc.qty;
-                    this.allTotal += (par.price * loc.qty);
+                    this.allTotal += (par.price * par.qty);
                 }
             }
         }
     }
-
 
     saveDetails() {
         if (this.localStorageService.getItemsFromLocalStorage(DETAILS_KEY).length != 0) {
@@ -115,7 +148,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     setDeliveryAddress() {
-        this.isDifferentAddress = !this.isDifferentAddress;
+        this.isDifferentAddress = true;
     }
 
     continueToAddress() {
@@ -138,6 +171,7 @@ export class CheckoutComponent implements OnInit {
     continueToPayment() {
         this.isFilledAddress = !this.isFilledAddress;
         this.isPayment = !this.isPayment;
+        this.currentlyCheckedPayingOption = 'Barion bankkártyás fizetés';
     }
 
     savePersonalInfo() {
@@ -163,7 +197,6 @@ export class CheckoutComponent implements OnInit {
             province: string = billingInfo.province;
             zip: number = billingInfo.zip;
         };
-        console.log(this.billingDetails);
         if (this.isDifferentAddress) {
             this.saveShipping();
         } else {
@@ -176,10 +209,11 @@ export class CheckoutComponent implements OnInit {
                 country: string = 'Magyarország';
                 shipInfo: string = shippingInfo.shipInfo;
                 shipMethod: string = shippingInfo.shipMethod;
+                foxpost: string = shippingInfo.foxpost;
                 province: string = billingInfo.province;
                 zip: number = billingInfo.zip;
             };
-            console.log(shippingInfo);
+            console.log(this.shippingDetails);
         }
     }
 
@@ -193,17 +227,79 @@ export class CheckoutComponent implements OnInit {
             country: string = 'Magyarország';
             shipInfo: string = shippingInfo.shipInfo;
             shipMethod: string = shippingInfo.shipMethod;
+            foxpost: string = shippingInfo.foxpost;
             province: string = shippingInfo.shipProvince;
             zip: number = shippingInfo.shipZip;
         };
+        console.log(this.shippingDetails);
+    }
+
+    savePaymentInfo() {
+        const paymentInfo = {...this.paymentForm.value};
+        const paymentTypeInfo = this.currentlyCheckedPayingOption;
+        this.paymentDetails = new class implements PaymentDetailsModel {
+            paymentType: string = paymentTypeInfo;
+            cardNumber: string = paymentInfo.cardNumber;
+            cvv: string = paymentInfo.cvv;
+            expiresDate: string = paymentInfo.expiresDate;
+            nameOnCard: string = paymentInfo.nameOnCard;
+        };
+        console.log(this.paymentDetails);
     }
 
 
-    selectCheckBox(targetType: string) {
-        if (this.currentlyChecked === targetType) {
-            this.currentlyChecked = 'NONE';
+    selectShippingOption(targetType: string) {
+        if (this.currentlyCheckedShippingOption === targetType) {
+            this.currentlyCheckedShippingOption = 'NONE';
             return;
         }
-        this.currentlyChecked = targetType;
+        this.getShippingPrice(targetType);
+        this.currentlyCheckedShippingOption = targetType;
+        for (let pay of this.shippingOptions) {
+            if (pay.typeOfDelivery === targetType) {
+                this.paymentOptions = pay.paymentOptions;
+                this.paymentOptions.sort((a, b) => a < b ? -1 : 1);
+                console.log(this.paymentOptions);
+            }
+        }
+    }
+
+    selectPayingOption(targetType: string) {
+        if (this.currentlyCheckedPayingOption === targetType) {
+            this.currentlyCheckedPayingOption = 'NONE';
+            return;
+        }
+        this.currentlyCheckedPayingOption = targetType;
+    }
+
+    getShippingPrice(option: string) {
+        for (let opt of this.shippingOptions) {
+            if (option === opt.typeOfDelivery) {
+                this.actualDeliveryPrice = opt.price;
+            }
+        }
+    }
+
+    createOrderRequest() {
+        this.order = new class implements OrderModel {
+            billing: BillingModel;
+            itemId: LocalProductModel[];
+            paymentOption: string;
+            shipping: ShippingModel;
+            user: UserModel;
+        };
+        this.order.user = this.personalDetails;
+        this.order.itemId = this.localStorageService.getItemsFromLocalStorage(CART_KEY);
+        this.order.billing = this.billingDetails;
+        this.order.shipping = this.shippingDetails;
+        this.order.paymentOption = this.currentlyCheckedPayingOption;
+        console.log(this.order);
+        this.sendingRequest(this.order);
+    }
+
+    sendingRequest(order: OrderModel) {
+        this.paymentService.sendingOrder(order).subscribe((data) => {
+
+        });
     }
 }

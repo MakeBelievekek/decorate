@@ -6,7 +6,7 @@ import { ShippingOptions } from '../models/shippingOptions';
 
 const PRODUCT_BASE_URL = 'https://localhost:8443/product';
 const CART_KEY = 'local_cartList';
-const header = new HttpHeaders().set('Cache-Control', 'max-age=604800');
+
 
 @Injectable({
     providedIn: 'root',
@@ -18,7 +18,7 @@ export class ProductService {
 
     getProductsForLocalStorage(productsIds: string): Observable<ProductListItemForLocal[]> {
         console.log(productsIds);
-        return this.http.get<any>(PRODUCT_BASE_URL + '/local/' + productsIds, {headers: header});
+        return this.http.get<any>(PRODUCT_BASE_URL + '/local/' + productsIds);
     }
 
     getShippingOptions(): Observable<ShippingOptions[]> {

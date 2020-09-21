@@ -8,4 +8,5 @@ export interface ShippingModel {
     zip: number;
     shipInfo: string;
     shipMethod: string;
+    foxpost: string;
 }

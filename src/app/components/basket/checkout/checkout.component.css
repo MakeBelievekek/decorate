@@ -1,12 +1,20 @@
 .checkout-container {
     display: grid;
-    grid-template-columns: minmax(auto, 1fr) minmax(500px, 1.7fr) minmax(300px, 1fr) minmax(auto, 1fr);
+    grid-template-columns: minmax(auto, 1fr) minmax(500px, 1.5fr) minmax(300px, 1fr) minmax(auto, 1fr);
     grid-template-areas: 'a b c d ';
     margin-bottom: 50px;
 }
 
 .check-content {
     grid-area: b;
+}
+
+h4 {
+    display: block;
+    margin-top: 20px;
+    font-size: 1rem;
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+
 }
 
 .check-content > h4 {
@@ -18,6 +26,9 @@
 
 .checkout-basket {
     grid-area: c;
+    align-self: start;
+    position: sticky;
+    top: 70px;
 }
 
 img {
@@ -29,7 +40,7 @@ img {
 
 .chk-bsk {
     margin-top: 30px;
-    width: 300px;
+    width: 350px;
     padding: 22px 18px 29px 17px;
     border: 1px solid #b2b2b1;
     box-sizing: border-box;
@@ -92,8 +103,7 @@ select {
 .form-control {
     border-radius: 25px;
     border: 1px solid #C5C5C5;
-    padding: 20px;
-    width: 350px;
+
 }
 
 .basket-continue-btn {
@@ -234,8 +244,8 @@ select {
     margin-top: 20px;
 }
 
-#card-group {
-    padding-left: 20px;
+.card-group {
+   padding: 20px;
 }
 
 #CVV2 {

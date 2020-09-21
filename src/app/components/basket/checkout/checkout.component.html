@@ -77,28 +77,41 @@
                 </label>
             </div>
             <form [formGroup]="shippingAddressForm" method="post">
-                <div class="form-group" *ngIf="isDifferentAddress && isLoggedIn && !isFilledAddress">
-                    <label for="shipCompany">Cégnév (nem kötelező)</label>
-                    <input class="form-control" id="shipCompany" formControlName="shipCompany"
-                           placeholder="">
-                    <label for="shipCountry">Ország</label>
-                    <input class="form-control" id="shipCountry"
-                           value="Magyarország" disabled>
-
-                    <label for="shipAddress">Utca, Házszám <span>*</span></label>
-                    <input class="form-control" id="shipAddress" formControlName="shipAddress"
-                           placeholder="Utcanév, házszám">
-                    <label for="shipAddress2"></label>
-                    <input class="form-control" id="shipAddress2" formControlName="shipAddress2"
-                           placeholder="Emelet, lépcsőház, lakás, stb. (nem kötelező)">
-                    <label for="shipCity">Város <span>*</span></label>
-                    <input class="form-control" id="shipCity" formControlName="shipCity" placeholder="">
-                    <label for="shipProvince">Megye <span>*</span></label>
-                    <select class="form-control" id="shipProvince" formControlName="shipProvince">
-                        <option *ngFor="let prov of this.provinces">{{prov}}</option>
-                    </select>
-                    <label for="shipZip">Irányítószám <span>*</span></label>
-                    <input class="form-control" id="shipZip" formControlName="shipZip" placeholder="">
+                <div *ngIf="isDifferentAddress && isLoggedIn && !isFilledAddress">
+                    <div class="form-group">
+                        <label for="shipCompany">Cégnév (nem kötelező)</label>
+                        <input class="form-control" id="shipCompany" formControlName="shipCompany"
+                               placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipCountry">Ország</label>
+                        <input class="form-control" id="shipCountry"
+                               value="Magyarország" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="shipAddress">Utca, Házszám <span>*</span></label>
+                        <input class="form-control" id="shipAddress" formControlName="shipAddress"
+                               placeholder="Utcanév, házszám">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipAddress2"></label>
+                        <input class="form-control" id="shipAddress2" formControlName="shipAddress2"
+                               placeholder="Emelet, lépcsőház, lakás, stb. (nem kötelező)">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipCity">Város <span>*</span></label>
+                        <input class="form-control" id="shipCity" formControlName="shipCity" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="shipProvince">Megye <span>*</span></label>
+                        <select class="form-control" id="shipProvince" formControlName="shipProvince">
+                            <option *ngFor="let prov of this.provinces">{{prov}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="shipZip">Irányítószám <span>*</span></label>
+                        <input class="form-control" id="shipZip" formControlName="shipZip" placeholder="">
+                    </div>
                 </div>
                 <div class="form-group" *ngIf="isLoggedIn && !isFilledAddress">
                     <label for="info">Rendelés jegyzetek (nem kötelező)</label>
@@ -109,14 +122,32 @@
                     <div class="form-group">
                         <label>Szállítási opciók <span>*</span></label>
                         <div *ngFor="let op of this.shippingOptions, let i = index">
-                            <label class="container">{{op.name}}: {{op.price}}
+                            <label class="container" *ngIf="op.price !== 0 ; else ingyenes">{{op.name}}: {{op.price}} Ft
                                 <input class="form-control" type="radio" formControlName="shipMethod"
-                                       [checked]="currentlyChecked === op.type" (click)="selectCheckBox(op.type)"
-                                       value="{{op.type}}">
+                                       [checked]="currentlyCheckedShippingOption === op.typeOfDelivery"
+                                       (click)="selectShippingOption(op.typeOfDelivery)"
+                                       value="{{op.typeOfDelivery}}">
                                 <span class="checkmark"></span>
                             </label>
+                            <ng-template #ingyenes>
+                                <label class="container">{{op.name}} : (ingyenes)
+                                    <input class="form-control" type="radio" formControlName="shipMethod"
+                                           [checked]="currentlyCheckedShippingOption === op.typeOfDelivery"
+                                           (click)="selectShippingOption(op.typeOfDelivery)"
+                                           value="{{op.typeOfDelivery}}">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </ng-template>
                         </div>
                     </div>
+                </div>
+                <div class="underline" *ngIf="currentlyCheckedShippingOption === 'FOX' && !isPayment">
+                    <label for="fox">Válasszon csomagautomatát <span>*</span></label>
+                    <select class="form-control" id="fox" formControlName="foxpost">
+                        <optgroup *ngFor="let atp of this.atpList" label="{{atp.city}}">
+                            <option *ngFor="let a of atp.names" value="{{a}}">{{a}}</option>
+                        </optgroup>
+                    </select>
                 </div>
             </form>
             <button class="basket-continue-btn" *ngIf="isLoggedIn && !isPayment"
@@ -127,8 +158,34 @@
             <div class="check-basket-header">
                 <span id="header-payment">3) Fizetési opciók</span>
             </div>
-            <form [formGroup]="paymentForm" method="post" class="payment" *ngIf="isPayment && isLoggedIn">
-                <div id="card-group">
+            <div *ngFor="let opt of this.paymentOptions">
+                <label class="container" *ngIf="isPayment && isLoggedIn">{{opt}}
+                    <input class="form-control" type="radio"
+                           [checked]="currentlyCheckedPayingOption === opt"
+                           (click)="selectPayingOption(opt)"
+                           value="">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <div *ngIf="isPayment && isLoggedIn">
+                <h4 *ngIf=" this.currentlyCheckedPayingOption==='Előre utalás'" class="payment card-group"
+                >
+                    Fizetés közvetlenül a bankszámlánkra. A megjegyzés rovatban tüntessük fel a számlasorszámot. A
+                    kiszállítás az összeg beérkezését követően történik.
+                </h4>
+                <h4 *ngIf="this.currentlyCheckedPayingOption==='Készpénzes fizetés'" class="payment card-group"
+                >
+                    Fizetés a boltban személyes átvételkor.
+                </h4>
+                <h4 *ngIf="this.currentlyCheckedPayingOption==='Utánvétes fizetés'" class="payment card-group"
+                >
+                    Fizetés átvételkor automatánál vagy futárnak.
+                </h4>
+            </div>
+            <form [formGroup]="paymentForm" method="post" *ngIf="isPayment && isLoggedIn">
+
+                <div class="card-group payment"
+                     *ngIf="this.currentlyCheckedPayingOption==='Barion bankkártyás fizetés'">
                     <div class="form-group">
                         <img
                             class="paymentOptions"
@@ -151,6 +208,10 @@
                     </div>
                 </div>
             </form>
+            <button class="basket-continue-btn" (click)="savePaymentInfo(); createOrderRequest()"
+                    *ngIf="isLoggedIn && isPayment">
+                Megrendelés elküldése
+            </button>
         </div>
     </div>
     <div class="checkout-basket">
@@ -161,9 +222,8 @@
                     <img [src]="prod.image" alt="">
                     <div class="check-basket-details">
                         <p>{{prod.productDesc}}</p>
-                        <p>Termék Kód : {{prod.id}}</p>
-                        <p>Size : roll</p>
-                        <p>Mennyiség : {{prod.qty}}</p>
+                        <p>Termék Kód : {{prod.itemNumber}}</p>
+                        <p>Mennyiség : {{prod.qty}} {{prod.typeOfSize}}</p>
                         <p>Ár : {{prod.price * prod.qty}} ft</p>
                     </div>
                 </div>
@@ -178,11 +238,11 @@
                     </tr>
                     <tr>
                         <td>Szállitási dij:</td>
-                        <td class="td-right">{{allTotal}} Ft</td>
+                        <td class="td-right">{{actualDeliveryPrice}} Ft</td>
                     </tr>
                     <tr>
                         <td>Adó (Szállitással):</td>
-                        <td class="td-right">{{allTotal}} Ft</td>
+                        <td class="td-right">{{allTotal + actualDeliveryPrice}} Ft</td>
                     </tr>
                 </tbody>
             </table>

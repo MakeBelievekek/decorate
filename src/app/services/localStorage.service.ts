@@ -16,8 +16,8 @@ export class LocalStorageService {
     public storeOnLocalStorage(item: LocalProductModel, key: string): void {
         const currentCartList = this.storage.get(key) || [];
         currentCartList.push({
-            id: item.prodId,
-            qty: item.quantity,
+            id: item.id,
+            qty: item.qty,
         });
         this.storage.set(key, currentCartList);
     }

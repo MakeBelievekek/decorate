@@ -1,5 +1,6 @@
 export interface ShippingOptions {
     name: string;
-    type: string;
-    price: string;
+    typeOfDelivery: string;
+    price: number;
+    paymentOptions: string[];
 }
