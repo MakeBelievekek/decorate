@@ -1,0 +1,10 @@
+{
+  "/checkout": {
+    "target": "https://secure.test.barion.com/",
+    "secure": true,
+    "pathRewrite": {
+      "^/checkout": ""
+    },
+    "changeOrigin": true
+  }
+}

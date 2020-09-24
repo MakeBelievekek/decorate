@@ -1,9 +1,10 @@
-import {ImageModel} from "./imageModel";
-
 export interface ProductListItemForLocal {
-  id: number;
-  price: number;
-  qty: number;
-  productDesc: string;
-  image: string;
+    id: number;
+    price: number;
+    typeOfSize: string;
+    qty: number;
+    itemNumber: string;
+    productDesc: string;
+    image: string;
+    name: string;
 }

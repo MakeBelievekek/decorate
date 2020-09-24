@@ -21,7 +21,7 @@ export class BasketContentComponent implements OnInit {
   ngOnInit(): void {
 
     this.startingPrice()
-
+console.log(this.productsFromLocalStorage)
   }
 
   getAllTotalPrice(event) {

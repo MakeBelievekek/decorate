@@ -1,6 +1,5 @@
 export interface LocalProductModel {
+  id: number;
+  qty: number;
 
-  prodId: number;
-  quantity: number;
-  productType: string;
 }

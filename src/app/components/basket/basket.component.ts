@@ -19,6 +19,7 @@ export class BasketComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsFromLocalStorage = this.route.snapshot.data.basketItems;
+    console.log(this.productsFromLocalStorage)
   }
 
   payment() {
