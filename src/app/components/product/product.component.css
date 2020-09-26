@@ -1,0 +1,20 @@
+.products-container {
+  display: grid;
+  grid-template-columns: minmax(1rem, 175px) 1fr minmax(1rem, 175px);
+  grid-template-areas: ". content .";
+}
+
+.product-detail {
+  grid-area: content;
+  background-color: #64B385;
+}
+
+@media all and (max-width: 1400px) and (min-width: 800px){
+  .products-container {
+    display: grid;
+    grid-template-columns: minmax(1rem, 50px) 1fr minmax(1rem, 50px);
+    grid-template-areas: ". content .";
+  }
+
+
+}

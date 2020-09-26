@@ -247,4 +247,35 @@ p {
   }
 }
 
+/* ANIMATIONS */
+
+.animate__fadeInCustom {
+  -webkit-animation-name: fadeInMake;
+  animation: 300ms ease-out fadeInMake;
+}
+
+@keyframes fadeInMake {
+  0% {
+    opacity: 85%
+  }
+  to {
+    opacity: 1
+  }
+}
+
+.animate__fadeInTo {
+  -webkit-animation-name: fadeInTo;
+  animation: 300ms ease-out fadeInTo;
+}
+
+@keyframes fadeInTo {
+  0% {
+    opacity: 85%
+  }
+  to {
+    opacity: 1
+  }
+}
+
+
 

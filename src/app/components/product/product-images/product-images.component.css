@@ -1,0 +1,15 @@
+.big-image {
+  height: 50vw;
+  width: 50vw;
+  background: #719ECE;
+}
+
+@media all and (min-width: 1400px) {
+  .big-image {
+    height: 33vw;
+    width: 33vw;
+    background: #719ECE;
+  }
+}
+
+

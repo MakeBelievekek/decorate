@@ -24,7 +24,6 @@ import {NewsletterComponent} from './components/home/newsletter/newsletter.compo
 import {SecondContentComponent} from './components/home/second-content/second-content.component';
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {ProductsHeaderComponent} from './components/products/products-header/products-header.component';
-import {ProductComponent} from './components/products/products-list/product/product.component';
 import {ProductsListComponent} from './components/products/products-list/products-list.component';
 import {ProductsComponent} from './components/products/products.component';
 import {ThirdContentComponent} from './components/home/third-content/third-content.component';
@@ -52,6 +51,8 @@ import { ReloadOnNgForNewElementDirective } from './directives/reload-on-ng-for-
 import { ProductListItemComponent } from './components/products/products-list/product-list-item/product-list-item.component';
 import { NameShortenerPipe } from './pipes/name-shortener.pipe';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { ProductComponent } from './components/product/product.component';
+import { ProductImagesComponent } from './components/product/product-images/product-images.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     AdminProductFormComponent,
     CategoryFormComponent,
     ProductsListComponent,
-    ProductComponent,
     ProductsHeaderComponent,
     ThirdContentComponent,
     FourthContentComponent,
@@ -87,7 +87,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     ProductsFilterComponent,
     PlusMinusInputComponent,
     CheckoutComponent,
-
+    ProductComponent,
+    ProductListItemComponent,
     ActiveFiltersComponent,
 
     CardShadowDirective,
@@ -96,9 +97,11 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 
     ReloadOnNgForNewElementDirective,
 
-    ProductListItemComponent,
-
     NameShortenerPipe,
+
+    ProductImagesComponent,
+
+
   ],
   imports: [
     MatBadgeModule,
