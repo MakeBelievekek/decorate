@@ -1,6 +1,6 @@
 .big-image {
-  height: 50vw;
-  width: 50vw;
+  height: 39vw;
+  width: 39vw;
   background: #719ECE;
 }
 
@@ -11,5 +11,22 @@
     background: #719ECE;
   }
 }
+
+
+@media all and (max-width: 900px) {
+  .big-image {
+    background: #719ECE;
+    height: 85vw;
+    width: 85vw;
+
+  }
+
+  .container-make {
+    display: grid;
+    justify-content: center;
+
+  }
+}
+
 
 
