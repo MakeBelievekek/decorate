@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { HomeService } from '../../services/home.service';
+import { PaymentService } from '../../services/payment.service';
 import { ProductService } from '../../services/product.service';
 
 const CASH_KEY = 'valami';
@@ -12,7 +14,8 @@ const CASH_KEY = 'valami';
 })
 export class HomeComponent implements OnInit {
 
-    constructor(private productService: ProductService, private home: HomeService, private route: ActivatedRoute) {
+    constructor(private productService: ProductService, private home: HomeService, private route: ActivatedRoute,
+                private paymentService: PaymentService, private toastr: ToastrService) {
     }
 
     images;
@@ -24,10 +27,19 @@ export class HomeComponent implements OnInit {
     pillowImg: string;
     wallpaperImg: string;
     furnitureFabricImg: string;
+    paymentId: string;
 
     ngOnInit(): void {
         this.images = this.route.snapshot.data.images;
-
+        this.route.queryParams.subscribe(params => {
+            this.paymentId = params['paymentId'];
+            if (this.paymentId) {
+                this.paymentService.completePayment(this.paymentId).subscribe(() => {});
+                this.showSuccessPayment();
+            }
+            console.log(this.paymentId);
+        }, () => {}, () => {
+        });
         console.log(this.images);
         for (let im of this.images) {
             if (im.type == 'Darkener') {
@@ -57,6 +69,10 @@ export class HomeComponent implements OnInit {
                 this.furnitureFabricImg = im.imgUrl;
             }
         }
+    }
+
+    showSuccessPayment() {
+        this.toastr.success('Sikeres Fizetés');
     }
 
 }

@@ -159,56 +159,38 @@
                 <span id="header-payment">3) Fizetési opciók</span>
             </div>
             <div *ngFor="let opt of this.paymentOptions">
-                <label class="container" *ngIf="isPayment && isLoggedIn">{{opt}}
+                <label class="container" *ngIf="isPayment && isLoggedIn">{{opt.type}} <span
+                    *ngIf="opt.price !=0"> (+{{opt.price}} Ft)</span>
                     <input class="form-control" type="radio"
-                           [checked]="currentlyCheckedPayingOption === opt"
+                           [checked]="currentlyCheckedPayingOption === opt.type"
                            (click)="selectPayingOption(opt)"
                            value="">
                     <span class="checkmark"></span>
                 </label>
             </div>
             <div *ngIf="isPayment && isLoggedIn">
-                <h4 *ngIf=" this.currentlyCheckedPayingOption==='Előre utalás'" class="payment card-group"
-                >
+                <h4 *ngIf=" this.currentlyCheckedPayingOption==='Előre utalás'" class="payment card-group">
                     Fizetés közvetlenül a bankszámlánkra. A megjegyzés rovatban tüntessük fel a számlasorszámot. A
                     kiszállítás az összeg beérkezését követően történik.
                 </h4>
-                <h4 *ngIf="this.currentlyCheckedPayingOption==='Készpénzes fizetés'" class="payment card-group"
-                >
+                <h4 *ngIf="this.currentlyCheckedPayingOption==='Készpénzes fizetés'" class="payment card-group">
                     Fizetés a boltban személyes átvételkor.
                 </h4>
-                <h4 *ngIf="this.currentlyCheckedPayingOption==='Utánvétes fizetés'" class="payment card-group"
-                >
+                <h4 *ngIf="this.currentlyCheckedPayingOption==='Utánvétes fizetés'" class="payment card-group">
                     Fizetés átvételkor automatánál vagy futárnak.
                 </h4>
             </div>
-            <form [formGroup]="paymentForm" method="post" *ngIf="isPayment && isLoggedIn">
-
+            <div *ngIf="isPayment && isLoggedIn">
                 <div class="card-group payment"
                      *ngIf="this.currentlyCheckedPayingOption==='Barion bankkártyás fizetés'">
-                    <div class="form-group">
-                        <img
-                            class="paymentOptions"
-                            src="https://tapetakorzo.hu/wp-content/plugins/pay-via-barion-for-woocommerce/assets/barion-card-payment-mark-2017-300px.png"
-                            alt="">
-                        <br>
-                        <label for="cardNumber">Kártyaszám <span>*</span></label>
-                        <input class="form-control" id="cardNumber" formControlName="cardNumber"
-                               placeholder="">
-                        <label for="expires1">Lejárati dátum <span>*</span></label>
-                        <input class="form-control" id="expires1" formControlName="expiresDate" placeholder="MM/YY">
-                        <label for="nameOnCard">Kártya tulajdonos neve <span>*</span></label>
-                        <input class="form-control" id="nameOnCard" formControlName="nameOnCard"
-                               placeholder="">
-                        <label for="CVV2">CVV2 <span>*</span></label>
-                        <div class="cvv-flex">
-                            <input class="form-control" id="CVV2" formControlName="cvv" placeholder="">
-                            <img id="cvv2-image" src="assets/cvv.png" alt="">
-                        </div>
-                    </div>
+                    <img
+                        class="paymentOptions"
+                        src="https://tapetakorzo.hu/wp-content/plugins/pay-via-barion-for-woocommerce/assets/barion-card-payment-mark-2017-300px.png"
+                        alt="barion bankkártyás fizetés">
+                    <h4>Fizess Barionon keresztül. Fizess bankkártyával, nem kötelező regisztrálni!</h4>
                 </div>
-            </form>
-            <button class="basket-continue-btn" (click)="savePaymentInfo(); createOrderRequest()"
+            </div>
+            <button class="basket-continue-btn" (click)="createOrderRequest()"
                     *ngIf="isLoggedIn && isPayment">
                 Megrendelés elküldése
             </button>
@@ -242,7 +224,7 @@
                     </tr>
                     <tr>
                         <td>Adó (Szállitással):</td>
-                        <td class="td-right">{{allTotal + actualDeliveryPrice}} Ft</td>
+                        <td class="td-right">{{allTotal + actualDeliveryPrice + selectedPayingOption?.price }} Ft</td>
                     </tr>
                 </tbody>
             </table>

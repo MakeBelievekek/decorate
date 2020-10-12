@@ -9,22 +9,22 @@ export class SwitchService {
     switchMod: SwitchModel = new class implements SwitchModel {
         category: boolean;
         product: boolean;
-        diagram: boolean;
+        payment: boolean;
     };
 
     switch(type: string) {
         if (type === 'category') {
-            this.switchMod.diagram = false;
+            this.switchMod.payment = false;
             this.switchMod.category = true;
             this.switchMod.product = false;
         }
-        if (type === 'diagrams') {
+        if (type === 'payment') {
             this.switchMod.category = false;
             this.switchMod.product = false;
-            this.switchMod.diagram = true;
+            this.switchMod.payment = true;
         }
         if (type === 'product') {
-            this.switchMod.diagram = false;
+            this.switchMod.payment = false;
             this.switchMod.category = false;
             this.switchMod.product = true;
         }

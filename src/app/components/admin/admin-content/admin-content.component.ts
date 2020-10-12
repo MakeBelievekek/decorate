@@ -13,7 +13,7 @@ export class AdminContentComponent implements OnInit {
     parentToggle: SwitchModel = new class implements SwitchModel {
         category: boolean;
         product: boolean;
-        diagram: boolean;
+        payment: boolean;
     };
 
     ngOnInit(): void {

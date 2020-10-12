@@ -14,7 +14,7 @@ export class AdminMainComponent implements OnInit {
     @Input() inputToggle: SwitchModel = new class implements SwitchModel {
         category: boolean;
         product: boolean;
-        diagram: boolean;
+        payment: boolean;
     };
 
 
