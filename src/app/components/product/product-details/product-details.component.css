@@ -1,0 +1,78 @@
+.product-details-container {
+  display: flex;
+  flex-direction: column;
+  font-family: Pluto Sans W01 Light, fantasy !important;
+  font-size: 1rem;
+
+}
+
+.product-title {
+  font-size: 1.5rem;
+}
+
+.product-price {
+  font-size: 1.5rem;
+}
+
+.product-add-to-basket-button {
+  cursor: pointer;
+  background-color: rgb(111, 138, 57);
+  display: flex;
+  flex: 0 0 33px;
+  width: 100%;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  font-size: 1rem;
+  color: white;
+}
+
+.product-add-to-basket-button:hover {
+  background-color: rgb(54, 75, 13);
+}
+
+.product-desc-container {
+  background-color: rgb(246, 246, 246);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 5px;
+  margin-top: 25px;
+}
+
+.product-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  position: relative;
+  width: 95%;
+  justify-content: center;
+  border-bottom: solid grey 1px;
+}
+
+.product-desc-toggle {
+  display: flex;
+  height: 33px;
+  justify-content: center;
+  align-items: center;
+}
+
+.valami {
+  position: absolute;
+  right: 5%;
+  top: 17%;
+}
+
+.product-shipping-details {
+  display: flex;
+  height: 33px;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-details {
+  display: flex;
+  height: 33px;
+  justify-content: center;
+  align-items: center;
+}

@@ -52,6 +52,8 @@ import { NameShortenerPipe } from './pipes/name-shortener.pipe';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { ProductComponent } from './components/product/product.component';
 import { ProductImagesComponent } from './components/product/product-images/product-images.component';
+import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
+import { SmallIgmagesComponent } from './components/product/product-images/small-igmages/small-igmages.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +101,11 @@ import { ProductImagesComponent } from './components/product/product-images/prod
     NameShortenerPipe,
 
     ProductImagesComponent,
+
+    ProductDetailsComponent,
+
+    SmallIgmagesComponent,
+
 
 
   ],

@@ -1,5 +1,5 @@
 export interface LocalDetailsModel {
-    lastname: string;
-    firstname: string;
+    lastName: string;
+    firstName: string;
     email: string;
 }

@@ -4072,8 +4072,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
 
           this.continueToAddress();
-          this.details.lastname = this.personalDetailsForm.controls['lastname'].value;
-          this.details.firstname = this.personalDetailsForm.controls['firstname'].value;
+          this.details.lastName = this.personalDetailsForm.controls['lastname'].value;
+          this.details.firstName = this.personalDetailsForm.controls['firstname'].value;
           this.details.email = this.personalDetailsForm.controls['email'].value;
           this.localStorageService.storeDetailsOnLocalStorage(this.details, DETAILS_KEY);
         }
@@ -4104,8 +4104,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               _classCallCheck(this, _class12);
 
               this.email = personalDetails.email;
-              this.firstname = personalDetails.firstname;
-              this.lastname = personalDetails.lastname;
+              this.firstName = personalDetails.firstname;
+              this.lastName = personalDetails.lastname;
             }
 
             return _class12;

@@ -1,5 +1,6 @@
-import { AttributeData } from './attributeData';
+import {AttributeData} from './attributeData';
 
 export interface FormDataModel {
-    attributes: AttributeData[]
+  attributes: AttributeData[];
 }
+

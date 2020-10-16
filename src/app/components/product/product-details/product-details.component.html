@@ -1,0 +1,26 @@
+<div class="product-details-container"
+     [ngStyle]="{'width.px': this.productDetailsDimension?.width}">
+  <div class="product-title">{{this.dummyProduct.name.toUpperCase()}}</div>
+  <div class="product-price">{{this.dummyProduct.price}} Ft</div>
+  <div class="product-quantity-control-container">quantity control todo</div>
+  <div class="product-add-to-basket-button">HOZZÁAD A KOSÁRHOZ</div>
+ <!-- <div>todo további hasonló termékek</div>-->
+  <div class="product-desc-container">
+    <div class="product-toggle">
+      <div class="product-desc-toggle">RÉSZLETES LEÍRÁS</div>
+      <div class="valami">a</div>
+    </div>
+    <div class="product-desc-long" *ngIf="true">{{this.dummyProduct.productDesc}}</div>
+    <div class="product-toggle">
+      <div class="product-details">TERMÉK JELLEMZŐK</div>
+    </div>
+    <div *ngIf="false">lista to do</div>
+    <div class="product-toggle">
+      <div class="product-shipping-details">SZÁLLÍTÁSI INFORMÁCIÓ</div>
+    </div>
+    <div *ngIf="false">list to do</div>
+  </div>
+
+</div>
+
+

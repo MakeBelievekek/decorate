@@ -13,7 +13,8 @@ export class HomeResolver implements Resolve<HomeModel[]> {
   }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<HomeModel[]> {
-    return this.homeService.getHomeImages()
+    return this.homeService.getHomeImages();
   }
 
 }
+
