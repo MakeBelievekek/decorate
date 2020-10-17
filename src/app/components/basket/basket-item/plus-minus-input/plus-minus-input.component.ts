@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { LocalProductModel } from '../../../../models/localProductModel';
-import { TotalPriceModel } from '../../../../models/totalPriceModel';
-import { LocalStorageService } from '../../../../services/localStorage.service';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {LocalProductModel} from '../../../../models/localProductModel';
+import {TotalPriceModel} from '../../../../models/totalPriceModel';
+import {LocalStorageService} from '../../../../services/localStorage.service';
 
 const CART_KEY = 'local_cartList';
 
@@ -17,9 +17,9 @@ export class PlusMinusInputComponent implements OnInit {
   }
 
   @Input() initialValue;
-  @Input() step: number = 0;
-  @Input() min: number = 0;
-  @Input() max: number = 0;
+  @Input() step = 0;
+  @Input() min = 0;
+  @Input() max = 0;
   @Input() symbol: string;
   @Input() ariaLabelLess: string;
   @Input() ariaLabelMore: string;
@@ -33,20 +33,23 @@ export class PlusMinusInputComponent implements OnInit {
     id: number;
     productType: string;
     qty: number;
-  }
+  };
   renderedValue: string;
-  value: number = 0;
+  value = 0;
 
   ngOnInit() {
-    this.value = this.initialValue;
+    this.value = 0;
+    if (this.initialValue) {
+      this.value = this.initialValue;
+    }
     this.renderedValue = this.value.toString();
     this.setProdToLocal();
     if (this.localStorageService.getItemIdFromLocalStorage(CART_KEY)) {
       if (!this.localStorageService.getItemIdFromLocalStorage(CART_KEY).includes(this.prodId)) {
-        this.localStorageService.storeOnLocalStorage(this.item, CART_KEY)
+        this.localStorageService.storeOnLocalStorage(this.item, CART_KEY);
       }
     } else {
-      this.localStorageService.storeOnLocalStorage(this.item, CART_KEY)
+      this.localStorageService.storeOnLocalStorage(this.item, CART_KEY);
     }
   }
 
@@ -74,6 +77,6 @@ export class PlusMinusInputComponent implements OnInit {
 
   setProdToLocal() {
     this.item.qty = this.value;
-    this.item.id = this.prodId
+    this.item.id = this.prodId;
   }
 }

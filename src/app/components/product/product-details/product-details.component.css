@@ -25,6 +25,7 @@
   align-items: center;
   font-size: 1rem;
   color: white;
+  margin-top: 10px;
 }
 
 .product-add-to-basket-button:hover {
@@ -48,6 +49,7 @@
   width: 95%;
   justify-content: center;
   border-bottom: solid grey 1px;
+  cursor: pointer;
 }
 
 .product-desc-toggle {
@@ -57,10 +59,10 @@
   align-items: center;
 }
 
-.valami {
+.signs {
   position: absolute;
   right: 5%;
-  top: 17%;
+  top: 11%;
 }
 
 .product-shipping-details {
@@ -75,4 +77,16 @@
   height: 33px;
   justify-content: center;
   align-items: center;
+}
+
+.product-quantity-control-container {
+ margin-top: 5px;
+}
+
+.product-desc-long {
+  display: flex;
+  background-color: white;
+  width: 100%;
+  padding: 10px 5%;
+  font-size: 1.2rem;
 }

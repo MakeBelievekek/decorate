@@ -54,6 +54,10 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductImagesComponent } from './components/product/product-images/product-images.component';
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
 import { SmallIgmagesComponent } from './components/product/product-images/small-igmages/small-igmages.component';
+import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
+import {PaymentHistoryComponent} from './components/admin/payment-history/payment-history.component';
+
 
 @NgModule({
   declarations: [
@@ -105,6 +109,7 @@ import { SmallIgmagesComponent } from './components/product/product-images/small
     ProductDetailsComponent,
 
     SmallIgmagesComponent,
+    PaymentHistoryComponent
 
 
 
