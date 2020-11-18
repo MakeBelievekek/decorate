@@ -64,8 +64,8 @@ export class CheckoutComponent implements OnInit {
 
     details: LocalDetailsModel = new class implements LocalDetailsModel {
         email: string;
-        firstname: string;
-        lastname: string;
+        firstName: string;
+        lastName: string;
     };
     product: ProductListItemForLocal[];
     allTotal: number = 0;
@@ -135,8 +135,8 @@ export class CheckoutComponent implements OnInit {
             this.savePersonalInfo();
         }
         this.continueToAddress();
-        this.details.lastname = this.personalDetailsForm.controls['lastname'].value;
-        this.details.firstname = this.personalDetailsForm.controls['firstname'].value;
+        this.details.lastName = this.personalDetailsForm.controls['lastname'].value;
+        this.details.firstName = this.personalDetailsForm.controls['firstname'].value;
         this.details.email = this.personalDetailsForm.controls['email'].value;
         this.localStorageService.storeDetailsOnLocalStorage(this.details, DETAILS_KEY);
     }
@@ -172,8 +172,8 @@ export class CheckoutComponent implements OnInit {
         const personalDetails = {...this.personalDetailsForm.value};
         this.personalDetails = new class implements UserModel {
             email: string = personalDetails.email;
-            firstname: string = personalDetails.firstname;
-            lastname: string = personalDetails.lastname;
+            firstName: string = personalDetails.firstname;
+            lastName: string = personalDetails.lastname;
         };
     }
 

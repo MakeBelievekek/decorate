@@ -17,9 +17,10 @@ export class ScreenService {
   }
 
 
-  getScreenSize(event?): void {
+  getScreenSize(): ScreenSizeModel {
     this.screenSize.height = window.innerHeight;
     this.screenSize.width = window.innerWidth;
+    return this.screenSize;
   }
 
   getContentMeasurements(): any {

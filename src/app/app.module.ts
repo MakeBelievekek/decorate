@@ -57,104 +57,88 @@ import { BackgroundImgDirective } from './directives/background-img.directive';
 import { CardShadowDirective } from './directives/card-shadow.directive';
 import { ReloadOnNgForNewElementDirective } from './directives/reload-on-ng-for-new-element.directive';
 import { NameShortenerPipe } from './pipes/name-shortener.pipe';
-import { LocalStorageService } from './services/localStorage.service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import { ProductComponent } from './components/product/product.component';
+import { ProductImagesComponent } from './components/product/product-images/product-images.component';
+import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
+import { SmallIgmagesComponent } from './components/product/product-images/small-igmages/small-igmages.component';
+import {HttpClientModule} from '@angular/common/http';
+import {ToastrModule} from 'ngx-toastr';
+import {PaymentHistoryComponent} from './components/admin/payment-history/payment-history.component';
 
-const cookieConfig: NgcCookieConsentConfig = {
-    'cookie': {
-        'domain': 'http://localhost:4200/'
-    },
-    'position': 'bottom-right',
-    'theme': 'block',
-    'palette': {
-        'popup': {
-            'background': '#000000',
-            'text': '#ffffff',
-            'link': '#ffffff',
-        },
-        'button': {
-            'background': '#f1d600',
-            'text': '#000000',
-            'border': 'transparent',
-        },
-    },
-    'type': 'info',
-    'content': {
-        'message': 'This website uses cookies to ensure you get the best experience on our website.',
-        'dismiss': 'Got it!',
-        'deny': 'Refuse cookies',
-        'link': 'Learn more',
-        'href': 'https://cookiesandyou.com',
-        'policy': 'Cookie Policy',
-    },
-};
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        ContentComponent,
-        FooterComponent,
-        NavbarComponent,
-        HomeComponent,
-        ContentHeaderComponent,
-        NewsletterComponent,
-        SecondContentComponent,
-        AdminComponent,
-        ProductsComponent,
-        AdminContentComponent,
-        AdminMainComponent,
-        AdminSidebarComponent,
-        AdminProductFormComponent,
-        CategoryFormComponent,
-        ProductsListComponent,
-        ProductsHeaderComponent,
-        ThirdContentComponent,
-        FourthContentComponent,
-        NewsComponent,
-        SalesComponent,
-        ProductsModalComponent,
-        NavbarModalComponent,
-        BasketComponent,
-        BasketHeaderComponent,
-        BasketContentComponent,
-        BasketBottomComponent,
-        BasketItemComponent,
-        ProductsFilterComponent,
-        PlusMinusInputComponent,
-        CheckoutComponent,
-        ProductComponent,
-        ProductListItemComponent,
-        ActiveFiltersComponent,
+  declarations: [
+    AppComponent,
+    ContentComponent,
+    FooterComponent,
+    NavbarComponent,
+    HomeComponent,
+    ContentHeaderComponent,
+    NewsletterComponent,
+    SecondContentComponent,
+    AdminComponent,
+    ProductsComponent,
+    AdminContentComponent,
+    AdminMainComponent,
+    AdminSidebarComponent,
+    AdminProductFormComponent,
+    CategoryFormComponent,
+    ProductsListComponent,
+    ProductsHeaderComponent,
+    ThirdContentComponent,
+    FourthContentComponent,
+    NewsComponent,
+    SalesComponent,
+    ProductsModalComponent,
+    NavbarModalComponent,
+    BasketComponent,
+    BasketHeaderComponent,
+    BasketContentComponent,
+    BasketBottomComponent,
+    BasketItemComponent,
+    ProductsFilterComponent,
+    PlusMinusInputComponent,
+    CheckoutComponent,
+    ProductComponent,
+    ProductListItemComponent,
+    ActiveFiltersComponent,
 
-        CardShadowDirective,
+    CardShadowDirective,
 
-        BackgroundImgDirective,
+    BackgroundImgDirective,
 
-        ReloadOnNgForNewElementDirective,
+    ReloadOnNgForNewElementDirective,
 
-        NameShortenerPipe,
+    NameShortenerPipe,
 
         ProductImagesComponent,
         PaymentHistoryComponent,
 
+    ProductDetailsComponent,
 
-    ],
-    imports: [
-        NgcCookieConsentModule.forRoot(cookieConfig),
-        MatBadgeModule,
-        BrowserModule,
-        RouterModule,
-        AppRoutingModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        FontAwesomeModule,
-        BrowserAnimationsModule,
-        StorageServiceModule,
-        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-        MatIconModule,
-        MatTooltipModule,
-        ToastrModule.forRoot({
-            timeOut: 10000,
+    SmallIgmagesComponent,
+    PaymentHistoryComponent
+
+
+
+  ],
+  imports: [
+    NgcCookieConsentModule.forRoot(cookieConfig),
+    MatBadgeModule,
+    BrowserModule,
+    RouterModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    StorageServiceModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    MatIconModule,
+    MatTooltipModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
 
         }),
         NgbModule,

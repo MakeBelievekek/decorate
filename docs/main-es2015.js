@@ -2031,8 +2031,8 @@ class CheckoutComponent {
             this.savePersonalInfo();
         }
         this.continueToAddress();
-        this.details.lastname = this.personalDetailsForm.controls['lastname'].value;
-        this.details.firstname = this.personalDetailsForm.controls['firstname'].value;
+        this.details.lastName = this.personalDetailsForm.controls['lastname'].value;
+        this.details.firstName = this.personalDetailsForm.controls['firstname'].value;
         this.details.email = this.personalDetailsForm.controls['email'].value;
         this.localStorageService.storeDetailsOnLocalStorage(this.details, DETAILS_KEY);
     }
@@ -2053,8 +2053,8 @@ class CheckoutComponent {
         this.personalDetails = new class {
             constructor() {
                 this.email = personalDetails.email;
-                this.firstname = personalDetails.firstname;
-                this.lastname = personalDetails.lastname;
+                this.firstName = personalDetails.firstname;
+                this.lastName = personalDetails.lastname;
             }
         };
         console.log(this.personalDetails);

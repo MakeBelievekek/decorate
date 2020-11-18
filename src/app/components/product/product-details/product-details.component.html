@@ -1,0 +1,79 @@
+<div class="product-details-container"
+     [ngStyle]="{'width.px': this.productDetailsDimension?.width}">
+  <div class="product-title">{{this.dummyProduct.name.toUpperCase()}}</div>
+  <div class="product-price">{{this.dummyProduct.price}} Ft</div>
+  <div class="product-quantity-control-container">
+    <app-plus-minus-input></app-plus-minus-input>
+  </div>
+  <div class="product-add-to-basket-button">HOZZÁAD A KOSÁRHOZ</div>
+  <!-- <div>todo további hasonló termékek</div>-->
+  <div class="product-desc-container">
+    <div class="product-toggle">
+      <div class="product-desc-toggle" (click)="this.handelDesc('longDesc')">RÉSZLETES LEÍRÁS</div>
+      <div class="signs">
+        <!-- PLUS SIGN -->
+        <svg height="10pt" width="10pt" viewBox="0 0 426.66667 426.66667"
+             xmlns="http://www.w3.org/2000/svg"
+             *ngIf="!this.openDesc.includes('longDesc')">
+          <path d="m410.667969 229.332031h-394.667969c-8.832031
+                0-16-7.167969-16-16s7.167969-16 16-16h394.667969c8.832031 0 16
+                7.167969 16 16s-7.167969 16-16 16zm0 0"/>
+          <path d="m213.332031 426.667969c-8.832031
+                0-16-7.167969-16-16v-394.667969c0-8.832031
+                7.167969-16 16-16s16 7.167969 16 16v394.667969c0
+                8.832031-7.167969 16-16 16zm0 0"/>
+        </svg>
+        <!-- MINUS SIGN -->
+        <svg
+          *ngIf="this.openDesc.includes('longDesc')"
+          version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px" y="0px"
+          viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+          <g>
+            <g>
+              <rect y="236" width="512" height="40"/>
+            </g>
+          </g>
+          </svg>
+      </div>
+    </div>
+    <div class="product-desc-long" *ngIf="this.openDesc.includes('longDesc')">{{this.dummyProduct.productDesc}}</div>
+    <div class="product-toggle" (click)="this.handelDesc('productDetails')">
+      <div class="product-details">TERMÉK JELLEMZŐK</div>
+      <div class="signs">
+        <!-- PLUS SIGN -->
+        <svg height="10pt" width="10pt" viewBox="0 0 426.66667 426.66667"
+             xmlns="http://www.w3.org/2000/svg"
+             *ngIf="!this.openDesc.includes('productDetails')">
+          <path d="m410.667969 229.332031h-394.667969c-8.832031
+                0-16-7.167969-16-16s7.167969-16 16-16h394.667969c8.832031 0 16
+                7.167969 16 16s-7.167969 16-16 16zm0 0"/>
+          <path d="m213.332031 426.667969c-8.832031
+                0-16-7.167969-16-16v-394.667969c0-8.832031
+                7.167969-16 16-16s16 7.167969 16 16v394.667969c0
+                8.832031-7.167969 16-16 16zm0 0"/>
+        </svg>
+        <!-- MINUS SIGN -->
+        <svg
+          *ngIf="this.openDesc.includes('productDetails')"
+          version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px" y="0px"
+          viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+          <g>
+            <g>
+              <rect y="236" width="512" height="40"/>
+            </g>
+          </g>
+          </svg>
+      </div>
+    </div>
+    <div *ngIf="false">lista to do</div>
+    <div class="product-toggle">
+      <div class="product-shipping-details">SZÁLLÍTÁSI INFORMÁCIÓ</div>
+    </div>
+    <div *ngIf="false">list to do</div>
+  </div>
+
+</div>
+
+

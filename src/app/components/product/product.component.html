@@ -1,8 +1,8 @@
 <div class="products-container">
   <div class="product-images">
-    <app-product-images></app-product-images>
+    <app-product-images [imageDimension]=this.imagesDimensions></app-product-images>
   </div>
-  <div class="product-detail">
-    Hello world
+  <div class="product-details" #productDetails>
+    <app-product-details [productDetailsDimension]="this.productDetailsDimensions"></app-product-details>
   </div>
 </div>

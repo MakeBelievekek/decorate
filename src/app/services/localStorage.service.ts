@@ -25,8 +25,8 @@ export class LocalStorageService {
     storeDetailsOnLocalStorage(data: LocalDetailsModel, key: string) {
         const details = this.storage.get(key) || [];
         details.push({
-            lastname: data.lastname,
-            firstname: data.firstname,
+            lastname: data.lastName,
+            firstname: data.firstName,
             email: data.email,
         });
         this.storage.set(key, details);
