@@ -11,7 +11,7 @@
   .newsletter-content {
     grid-area: b2;
     display: grid;
-    grid-template-columns:  minmax(350px, auto) minmax(50px, auto) minmax(430px, auto);
+    grid-template-columns:  minmax(350px, auto) minmax(430px, auto) minmax(50px, auto);
     grid-template-areas: "a b c";
   }
 
@@ -35,7 +35,7 @@
     font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
     font-weight: 900;
     color: var(--primaryLetterBlack);
-    font-size: 2.7vw;
+    font-size: 2vw;
   }
 
   span {
@@ -43,11 +43,11 @@
   }
 
   p {
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 
   .newsletter-input {
-    grid-area: c;
+    grid-area: b;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
 import { ToastrModule } from 'ngx-toastr';
 import { StorageServiceModule } from 'ngx-webstorage-service';
@@ -160,6 +161,7 @@ const cookieConfig: NgcCookieConsentConfig = {
             timeOut: 10000,
 
         }),
+        NgbTooltipModule,
     ],
     providers: [LocalStorageService],
     bootstrap: [AppComponent],
