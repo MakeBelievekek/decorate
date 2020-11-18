@@ -1,6 +1,6 @@
 @media screen and (min-width: 700px) {
     .sales-container {
-        background-color: #E5E5E5;
+        background-color: var(--primaryGray);
         display: grid;
         grid-template-columns: 3fr 8fr;
         grid-template-areas: "a b ";
@@ -18,7 +18,7 @@
     H4 {
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-weight: bolder;
-        color: #555555;
+        color: var(--primaryLetterBlack);
         font-size: 2vw;
     }
 
@@ -58,7 +58,7 @@
         width: 14vw;
         opacity: 0;
         transition: .5s ease;
-        background-color: black;
+        background-color: var(--primaryLetterBlack);
         border-radius: 8px;
     }
 
@@ -82,9 +82,10 @@
         -ms-transform: translate(-50%, -50%);
     }
 }
+
 @media screen and (max-width: 699px) {
     .sales-container {
-        background-color: #E5E5E5;
+        background-color: var(--primaryGray);
         display: grid;
         grid-template-rows: 0.5fr 2fr;
         grid-template-columns: 1fr;
@@ -168,7 +169,7 @@
     H2 {
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-weight: 900;
-        color: #555555;
+        color: var(--primaryLetterBlack);
         font-size: 6vw;
     }
 }

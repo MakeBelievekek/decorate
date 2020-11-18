@@ -11,20 +11,73 @@
                 <p>Kérlek add meg a vezetékneved, keresztneved és az email címed</p>
                 <form [formGroup]="personalDetailsForm" method="post">
                     <div class="form-group">
-                        <label for="lastname">Vezetéknév <span>*</span></label>
-                        <input class="form-control" id="lastname" formControlName="lastname" placeholder="">
+                        <label for="lastname"
+                        >Vezetéknév <span>*</span></label>
+                        <input class="form-control" id="lastname" formControlName="lastname" placeholder=""
+                               [ngClass]="{
+                    'is-invalid': personalDetailsForm.get('lastname').invalid &&
+                    (personalDetailsForm.get('lastname').touched || personalDetailsForm.get('lastname').dirty),'is-valid': personalDetailsForm.get('lastname').valid &&
+                    (personalDetailsForm.get('lastname').touched || personalDetailsForm.get('lastname').dirty) }">
+                        <div *ngIf=" personalDetailsForm.get('lastname').invalid &&
+                    (personalDetailsForm.get('lastname').touched || personalDetailsForm.get('lastname').dirty)"
+                             class="invalid-feedback">
+                            <div *ngIf="personalDetailsForm.get('lastname').errors.required">Kérlek adj meg egy
+                                vezetéknév
+                            </div>
+                            <div *ngIf="personalDetailsForm.get('lastname').errors.maxlength">Vezetéknév nem lehet
+                                hosszabb 15
+                                karakternél
+                            </div>
+                            <div *ngIf="personalDetailsForm.get('lastname').errors.minlength">Vezetéknév nem lehet
+                                rövidebb 3
+                                karakternél
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="firstname">Keresztnév <span>*</span></label>
-                        <input class="form-control" id="firstname" formControlName="firstname"
-                               placeholder="">
+                        <input class="form-control"
+                               id="firstname"
+                               formControlName="firstname"
+                               placeholder="" [ngClass]="{'is-invalid': personalDetailsForm.get('firstname').invalid &&
+                    (personalDetailsForm.get('firstname').touched || personalDetailsForm.get('firstname').dirty || personalDetailsForm.get('firstname').errors.serverError),
+                    'is-valid': personalDetailsForm.get('firstname').valid &&
+                    (personalDetailsForm.get('firstname').touched || personalDetailsForm.get('firstname').dirty) }">
+                        <div *ngIf=" personalDetailsForm.get('firstname').invalid &&
+                    (personalDetailsForm.get('firstname').touched || personalDetailsForm.get('firstname').dirty || personalDetailsForm.get('firstname').errors.serverError)"
+                             class="invalid-feedback">
+                            <div *ngIf="personalDetailsForm.get('firstname').errors.required">Kérlek adj meg egy
+                                keresztnevet
+                            </div>
+                            <div *ngIf="personalDetailsForm.get('firstname').errors.maxlength">Keresztnév nem lehet
+                                hosszabb 15
+                                karakternél
+                            </div>
+                            <div *ngIf="personalDetailsForm.get('firstname').errors.minlength">Keresztnév nem lehet
+                                rövidebb 3
+                                karakternél
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="email">Email <span>*</span></label>
-                        <input class="form-control" id="email" formControlName="email" placeholder="">
+                        <input class="form-control" id="email" formControlName="email" placeholder="" [ngClass]="{
+                    'is-invalid': personalDetailsForm.get('email').invalid &&
+                    (personalDetailsForm.get('email').touched || personalDetailsForm.get('email').dirty),'is-valid': personalDetailsForm.get('email').valid &&
+                    (personalDetailsForm.get('email').touched || personalDetailsForm.get('email').dirty) }">
+                        <div *ngIf=" personalDetailsForm.get('email').invalid &&
+                    (personalDetailsForm.get('email').touched || personalDetailsForm.get('email').dirty)"
+                             class="invalid-feedback">
+                            <div *ngIf="personalDetailsForm.get('email').errors.required">Kérlek adj meg egy
+                                email címet
+                            </div>
+                            <div *ngIf="personalDetailsForm.get('email').errors.email">Nem megfelelő email cím
+                            </div>
+                        </div>
                     </div>
                 </form>
-                <button class="basket-continue-btn" (click)="saveDetails()">Tovább a címhez
+                <button class="basket-continue-btn" [disabled]="!personalDetailsForm.valid" (click)="saveDetails()">
+                    Tovább a címhez
                 </button>
             </div>
             <div class="check-basket-header">

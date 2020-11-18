@@ -1,6 +1,6 @@
 @media screen and (min-width: 800px) {
     .content {
-        height: 50vw;
+        height: 42vw;
         display: grid;
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr 1fr 2fr;
@@ -17,14 +17,10 @@
 
     .firstCard {
         grid-area: a1;
-        background: var(--blackoutUrl) no-repeat center center;
-        background-size: cover;
     }
 
     .secondCard {
         grid-area: b2;
-        background: var(--childrenUrl) no-repeat center center;
-        background-size: cover;
     }
 
     .thirdCard {
@@ -33,8 +29,6 @@
         grid-template-columns: 1fr 1fr 0.3fr;
         grid-template-rows: 0.5fr 1fr 0.5fr;
         grid-template-areas: "a b ." "d e ." "i j .";
-        background: var(--furnitureFabricUrl) no-repeat center center;
-        background-size: cover;
     }
 
     p {
@@ -69,14 +63,10 @@
 
     .firstCard {
         grid-area: a1;
-        background: var(--blackoutUrl) no-repeat center center;
-        background-size: cover;
     }
 
     .secondCard {
         grid-area: b2;
-        background: var(--childrenUrl) no-repeat center center;
-        background-size: cover;
     }
 
     .thirdCard {
@@ -85,8 +75,6 @@
         grid-template-columns: 1fr 2fr 1fr;
         grid-template-rows: 0.5fr 1fr 0.5fr;
         grid-template-areas: "a b c" "d e f" "i j k";
-        background: var(--furnitureFabricUrl) no-repeat center center;
-        background-size: cover;
     }
     .mozaik-down:before {
         left: 99.5%;

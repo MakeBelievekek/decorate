@@ -14,7 +14,7 @@
     min-width: 800px;
     flex-direction: column;
     flex-wrap: wrap;
-    background-color: #E5E5E5;
+    background-color: var(--primaryGray);
 
 }
 
@@ -24,7 +24,7 @@ div > h4 {
     font-size: 1.5rem;
     text-align: center;
     align-self: flex-end;
-    color: #505358;
+    color: var(--primaryLetterBlack);
     margin: 0px;
 }
 
@@ -36,7 +36,7 @@ div > h4 {
 .checkout-action {
     margin: 32px 0 0 0;
     padding: 32px 0 0 0;
-    border-top: 4px solid #D7D7D7;
+    border-top: 4px solid var(--primaryGray);
     text-align: center;
     display: flex;
     justify-content: end;
@@ -53,12 +53,12 @@ div > h4 {
     height: 38px;
     width: 150px;
     border-radius: 20px;
-    border: 1px solid #CCCCCC;
+    border: 1px solid var(--primaryGray);
 }
 
 .discount-code-btn {
     width: 80px;
-    background: #C6D7CD;
+    background: var(--primaryGreen);
 }
 
 .discount-code-input {
@@ -68,7 +68,7 @@ div > h4 {
 }
 
 .basket-continue-btn, .basket-checkout-btn {
-    background: #C6D7CD;
+    background: var(--primaryGreen);
     width: 200px;
 }
 

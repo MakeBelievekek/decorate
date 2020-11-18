@@ -59,4 +59,7 @@ export class LocalStorageService {
         this.storage.remove(key);
     }
 
+    saveCookiePolicy(key: string, value: boolean) {
+        this.storage.set(key,value);
+    }
 }

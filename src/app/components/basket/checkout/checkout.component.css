@@ -54,7 +54,7 @@ img {
     margin-top: 30px;
     box-sizing: border-box;
     background-color: #f3f3f4;
-    color: #000;
+    color: var(--primaryLetterBlack);
     height: 50px;
     text-transform: uppercase;
     align-items: center;
@@ -65,6 +65,10 @@ img {
 .check-basket-header > span {
     font-size: .7rem;
     margin-left: auto;
+}
+
+.invalid-feedback {
+    margin-left: 10px;
 }
 
 label {
@@ -78,7 +82,7 @@ label > span {
 }
 
 .container > span {
-    color: black;
+    color: var(--primaryLetterBlack);
 }
 
 .form-group {
@@ -94,7 +98,7 @@ label > span {
 
 .address-dropdown {
     border-radius: 25px;
-    border: 1px solid #C5C5C5;
+    border: 1px solid var(--primaryGray);
     padding: 20px;
     width: 300px;
     height: 15px;
@@ -106,16 +110,14 @@ select {
 
 .form-control {
     border-radius: 25px;
-    border: 1px solid #C5C5C5;
-
 }
 
 .basket-continue-btn {
     margin-top: 20px;
-    background: #C6D7CD;
+    background: var(--primaryGreen);
     width: 300px;
     border-radius: 25px;
-    border: 1px solid #C6D7CD;
+    border: 1px solid var(--primaryGreen);
     padding: 7px;
     font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
     font-size: 1.2rem;
@@ -154,7 +156,7 @@ select {
     font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
     font-weight: bolder;
     font-size: 1rem;
-    color: #1c1c1b;
+    color: var(--primaryLetterBlack);
 }
 
 .check-card {
@@ -211,11 +213,11 @@ select {
 }
 
 .container:hover input ~ .checkmark {
-    background-color: #ccc;
+    background-color: var(--primaryGray);
 }
 
 .container input:checked ~ .checkmark {
-    background-color: #C6D7CD;
+    background-color: var(--primaryGreen);
 }
 
 .checkmark:after {
@@ -244,7 +246,7 @@ select {
 }
 
 .payment {
-    border: 1px solid #b2b2b1;
+    border: 1px solid var(--primaryGray);
     margin-top: 20px;
 }
 

@@ -71,6 +71,7 @@ export class HomeComponent implements OnInit {
         }
     }
 
+
     showSuccessPayment() {
         this.toastr.success('Sikeres Fizetés');
     }

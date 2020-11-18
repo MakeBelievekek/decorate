@@ -1,127 +1,166 @@
-import {NgModule} from '@angular/core';
-import {ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
-import {BrowserModule} from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {RouterModule} from '@angular/router';
-import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {AdminContentComponent} from './components/admin/admin-content/admin-content.component';
-import {AdminMainComponent} from './components/admin/admin-main/admin-main.component';
-import {AdminProductFormComponent} from './components/admin/admin-product-form/admin-product-form.component';
-import {AdminSidebarComponent} from './components/admin/admin-sidebar/admin-sidebar.component';
-import {AdminComponent} from './components/admin/admin.component';
-import {CategoryFormComponent} from './components/admin/category-form/category-form.component';
-import {FooterComponent} from './components/footer/footer.component';
-import {ContentHeaderComponent} from './components/home/content-header/content-header.component';
-import {ContentComponent} from './components/home/content/content.component';
-import {HomeComponent} from './components/home/home.component';
-import {NewsletterComponent} from './components/home/newsletter/newsletter.component';
-import {SecondContentComponent} from './components/home/second-content/second-content.component';
-import {NavbarComponent} from './components/navbar/navbar.component';
-import {ProductsHeaderComponent} from './components/products/products-header/products-header.component';
-import {ProductsListComponent} from './components/products/products-list/products-list.component';
-import {ProductsComponent} from './components/products/products.component';
-import {ThirdContentComponent} from './components/home/third-content/third-content.component';
-import {FourthContentComponent} from './components/home/fourth-content/fourth-content.component';
-import {NewsComponent} from './components/home/news/news.component';
-import {SalesComponent} from './components/home/sales/sales.component';
-import {ProductsModalComponent} from './components/products/products-modal/products-modal.component';
-import {NavbarModalComponent} from './components/navbar/navbar-modal/navbar-modal.component';
-import {BasketComponent} from './components/basket/basket.component';
-import {ProductsFilterComponent} from './components/products/products-filter/products-filter.component';
-import {BasketHeaderComponent} from './components/basket/basket-header/basket-header.component';
-import {BasketContentComponent} from './components/basket/basket-content/basket-content.component';
-import {BasketBottomComponent} from './components/basket/basket-bottom/basket-bottom.component';
-import {BasketItemComponent} from './components/basket/basket-item/basket-item.component';
-import {PlusMinusInputComponent} from './components/basket/basket-item/plus-minus-input/plus-minus-input.component';
-import {StorageServiceModule} from 'ngx-webstorage-service';
-import {LocalStorageService} from './services/localStorage.service';
-import {CheckoutComponent} from './components/basket/checkout/checkout.component';
-import {ActiveFiltersComponent} from './components/products/active-filters/active-filters.component';
-import { CardShadowDirective } from './directives/card-shadow.directive';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
+
+import { ToastrModule } from 'ngx-toastr';
+import { StorageServiceModule } from 'ngx-webstorage-service';
 import { environment } from '../environments/environment';
-import { BackgroundImgDirective } from './directives/background-img.directive';
-import { ReloadOnNgForNewElementDirective } from './directives/reload-on-ng-for-new-element.directive';
-import { ProductListItemComponent } from './components/products/products-list/product-list-item/product-list-item.component';
-import { NameShortenerPipe } from './pipes/name-shortener.pipe';
-import {MatTooltipModule} from '@angular/material/tooltip';
-import { ProductComponent } from './components/product/product.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { AdminContentComponent } from './components/admin/admin-content/admin-content.component';
+import { AdminMainComponent } from './components/admin/admin-main/admin-main.component';
+import { AdminProductFormComponent } from './components/admin/admin-product-form/admin-product-form.component';
+import { AdminSidebarComponent } from './components/admin/admin-sidebar/admin-sidebar.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { CategoryFormComponent } from './components/admin/category-form/category-form.component';
+import { PaymentHistoryComponent } from './components/admin/payment-history/payment-history.component';
+import { BasketBottomComponent } from './components/basket/basket-bottom/basket-bottom.component';
+import { BasketContentComponent } from './components/basket/basket-content/basket-content.component';
+import { BasketHeaderComponent } from './components/basket/basket-header/basket-header.component';
+import { BasketItemComponent } from './components/basket/basket-item/basket-item.component';
+import { PlusMinusInputComponent } from './components/basket/basket-item/plus-minus-input/plus-minus-input.component';
+import { BasketComponent } from './components/basket/basket.component';
+import { CheckoutComponent } from './components/basket/checkout/checkout.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ContentHeaderComponent } from './components/home/content-header/content-header.component';
+import { ContentComponent } from './components/home/content/content.component';
+import { FourthContentComponent } from './components/home/fourth-content/fourth-content.component';
+import { HomeComponent } from './components/home/home.component';
+import { NewsComponent } from './components/home/news/news.component';
+import { NewsletterComponent } from './components/home/newsletter/newsletter.component';
+import { SalesComponent } from './components/home/sales/sales.component';
+import { SecondContentComponent } from './components/home/second-content/second-content.component';
+import { ThirdContentComponent } from './components/home/third-content/third-content.component';
+import { NavbarModalComponent } from './components/navbar/navbar-modal/navbar-modal.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductImagesComponent } from './components/product/product-images/product-images.component';
+import { ProductComponent } from './components/product/product.component';
+import { ActiveFiltersComponent } from './components/products/active-filters/active-filters.component';
+import { ProductsFilterComponent } from './components/products/products-filter/products-filter.component';
+import { ProductsHeaderComponent } from './components/products/products-header/products-header.component';
+import { ProductListItemComponent } from './components/products/products-list/product-list-item/product-list-item.component';
+import { ProductsListComponent } from './components/products/products-list/products-list.component';
+import { ProductsModalComponent } from './components/products/products-modal/products-modal.component';
+import { ProductsComponent } from './components/products/products.component';
+import { BackgroundImgDirective } from './directives/background-img.directive';
+import { CardShadowDirective } from './directives/card-shadow.directive';
+import { ReloadOnNgForNewElementDirective } from './directives/reload-on-ng-for-new-element.directive';
+import { NameShortenerPipe } from './pipes/name-shortener.pipe';
+import { LocalStorageService } from './services/localStorage.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+const cookieConfig: NgcCookieConsentConfig = {
+    'cookie': {
+        'domain': 'http://localhost:4200/'
+    },
+    'position': 'bottom-right',
+    'theme': 'block',
+    'palette': {
+        'popup': {
+            'background': '#000000',
+            'text': '#ffffff',
+            'link': '#ffffff',
+        },
+        'button': {
+            'background': '#f1d600',
+            'text': '#000000',
+            'border': 'transparent',
+        },
+    },
+    'type': 'info',
+    'content': {
+        'message': 'This website uses cookies to ensure you get the best experience on our website.',
+        'dismiss': 'Got it!',
+        'deny': 'Refuse cookies',
+        'link': 'Learn more',
+        'href': 'https://cookiesandyou.com',
+        'policy': 'Cookie Policy',
+    },
+};
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ContentComponent,
-    FooterComponent,
-    NavbarComponent,
-    HomeComponent,
-    ContentHeaderComponent,
-    NewsletterComponent,
-    SecondContentComponent,
-    AdminComponent,
-    ProductsComponent,
-    AdminContentComponent,
-    AdminMainComponent,
-    AdminSidebarComponent,
-    AdminProductFormComponent,
-    CategoryFormComponent,
-    ProductsListComponent,
-    ProductsHeaderComponent,
-    ThirdContentComponent,
-    FourthContentComponent,
-    NewsComponent,
-    SalesComponent,
-    ProductsModalComponent,
-    NavbarModalComponent,
-    BasketComponent,
-    BasketHeaderComponent,
-    BasketContentComponent,
-    BasketBottomComponent,
-    BasketItemComponent,
-    ProductsFilterComponent,
-    PlusMinusInputComponent,
-    CheckoutComponent,
-    ProductComponent,
-    ProductListItemComponent,
-    ActiveFiltersComponent,
+    declarations: [
+        AppComponent,
+        ContentComponent,
+        FooterComponent,
+        NavbarComponent,
+        HomeComponent,
+        ContentHeaderComponent,
+        NewsletterComponent,
+        SecondContentComponent,
+        AdminComponent,
+        ProductsComponent,
+        AdminContentComponent,
+        AdminMainComponent,
+        AdminSidebarComponent,
+        AdminProductFormComponent,
+        CategoryFormComponent,
+        ProductsListComponent,
+        ProductsHeaderComponent,
+        ThirdContentComponent,
+        FourthContentComponent,
+        NewsComponent,
+        SalesComponent,
+        ProductsModalComponent,
+        NavbarModalComponent,
+        BasketComponent,
+        BasketHeaderComponent,
+        BasketContentComponent,
+        BasketBottomComponent,
+        BasketItemComponent,
+        ProductsFilterComponent,
+        PlusMinusInputComponent,
+        CheckoutComponent,
+        ProductComponent,
+        ProductListItemComponent,
+        ActiveFiltersComponent,
 
-    CardShadowDirective,
+        CardShadowDirective,
 
-    BackgroundImgDirective,
+        BackgroundImgDirective,
 
-    ReloadOnNgForNewElementDirective,
+        ReloadOnNgForNewElementDirective,
 
-    NameShortenerPipe,
+        NameShortenerPipe,
 
-    ProductImagesComponent,
+        ProductImagesComponent,
+        PaymentHistoryComponent,
 
 
-  ],
-  imports: [
-    MatBadgeModule,
-    BrowserModule,
-    RouterModule,
-    AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FontAwesomeModule,
-    BrowserAnimationsModule,
-    StorageServiceModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-    MatIconModule,
-    MatTooltipModule,
-    ToastrModule.forRoot({
-      timeOut: 10000,
+    ],
+    imports: [
+        NgcCookieConsentModule.forRoot(cookieConfig),
+        MatBadgeModule,
+        BrowserModule,
+        RouterModule,
+        AppRoutingModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FontAwesomeModule,
+        BrowserAnimationsModule,
+        StorageServiceModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+        MatIconModule,
+        MatTooltipModule,
+        ToastrModule.forRoot({
+            timeOut: 10000,
 
-    }),
-  ],
-  providers: [LocalStorageService],
-  bootstrap: [AppComponent],
+        }),
+        NgbModule,
+    ],
+    providers: [LocalStorageService],
+    bootstrap: [AppComponent],
 })
 export class AppModule {
 }

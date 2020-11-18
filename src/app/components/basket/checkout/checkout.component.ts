@@ -18,6 +18,7 @@ import { BasketService } from '../../../services/basket.service';
 import { LocalStorageService } from '../../../services/localStorage.service';
 import { PaymentService } from '../../../services/payment.service';
 import { ProductService } from '../../../services/product.service';
+import { handleValidationErrors } from '../../../validation/validation';
 
 
 const CART_KEY = 'local_cartList';
@@ -30,15 +31,16 @@ const DETAILS_KEY = 'local_detailsList';
 })
 export class CheckoutComponent implements OnInit {
 
-    constructor(private route: ActivatedRoute, private localStorageService: LocalStorageService, private productService: ProductService,
-                private basketService: BasketService, private paymentService: PaymentService, private router: Router, @Inject(DOCUMENT) private document: Document) {
+    constructor(private route: ActivatedRoute, private localStorageService: LocalStorageService,
+                private productService: ProductService, private basketService: BasketService,
+                private paymentService: PaymentService, private router: Router, @Inject(DOCUMENT) private document: Document) {
         this.personalDetailsForm = new FormGroup({
-            lastname: new FormControl('', [Validators.required, Validators.minLength(3)]),
-            firstname: new FormControl(),
-            email: new FormControl(),
+            lastname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+            firstname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+            email: new FormControl('', [Validators.required, Validators.email]),
         });
         this.billingAddressForm = new FormGroup({
-            company: new FormControl('', [Validators.required, Validators.minLength(4)]),
+            company: new FormControl(''),
             country: new FormControl(),
             address: new FormControl(),
             address2: new FormControl(),
@@ -140,7 +142,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     setDeliveryAddress() {
-        this.isDifferentAddress = true;
+        this.isDifferentAddress = !this.isDifferentAddress;
     }
 
     continueToAddress() {
@@ -278,7 +280,7 @@ export class CheckoutComponent implements OnInit {
                 this.goToUrl(response.GatewayUrl);
             });
         } else {
-            this.paymentService.sendingOrder(order).subscribe(() => {});
+            this.paymentService.sendingOrder(order).subscribe(() => {}, error => handleValidationErrors(error, this.personalDetailsForm));
         }
     }
 

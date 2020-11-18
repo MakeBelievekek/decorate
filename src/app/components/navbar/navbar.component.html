@@ -1,7 +1,7 @@
 <nav class="fixed-top">
   <div class="row" *ngIf="this.screenControl.largeScreen">
     <div class="make-left">
-      <a href="#">Home</a>
+      <a  routerLink="/">Home</a>
     </div>
     <div>
       <a (click)="toggleProductsModal()">Products<i class="fa fa-chevron-down pl-1 pb-1" aria-hidden="true"></i></a>
@@ -28,7 +28,7 @@
           <a href="#">Search<i class="fa fa-search pl-2" aria-hidden="true"></i></a>
         </div>
         <div class="make-right">
-          <a href="#" routerLink="/basket">Kosár<i class="fa fa-shopping-basket pl-2" aria-hidden="true"></i><span  matBadge="{{numberOfItemsInBasket}}" matBadgeOverlap="false"></span></a>
+          <a  routerLink="/basket">Kosár<i class="fa fa-shopping-basket pl-2" aria-hidden="true"></i><span  matBadge="{{numberOfItemsInBasket}}" matBadgeOverlap="false"></span></a>
 
         </div>
 

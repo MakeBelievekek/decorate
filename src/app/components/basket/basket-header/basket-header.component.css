@@ -7,7 +7,7 @@
 }
 h2::before {
     content: "";
-    border-top: .3rem solid #505358;
+    border-top: .3rem solid var(--primaryLetterBlack);
     width: 10rem;
     margin-right: 5rem;
     margin-left: 5rem;
@@ -22,12 +22,12 @@ h2 {
     font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
     font-size: 3rem;
     margin: 0px;
-    color: #505358;
+    color: var(--primaryLetterBlack);
 }
 
 h2::after {
     content: "";
-    border-top: .3rem solid #505358;
+    border-top: .3rem solid var(--primaryLetterBlack);
     width: 10rem;
     margin-left: 5rem;
     margin-right:5rem ;

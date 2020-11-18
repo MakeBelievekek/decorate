@@ -1,4 +1,4 @@
-  {
+{
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
@@ -25,6 +25,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "node_modules/cookieconsent/build/cookieconsent.min.css",
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/font-awesome/css/font-awesome.css",
@@ -32,6 +33,7 @@
               "src/styles.css"
             ],
             "scripts": [
+              "node_modules/cookieconsent/build/cookieconsent.min.js",
               "node_modules/jquery/dist/jquery.slim.min.js",
               "node_modules/popper.js/dist/umd/popper.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js"
