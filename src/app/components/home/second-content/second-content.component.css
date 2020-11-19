@@ -46,7 +46,7 @@
 }
 @media screen and (max-width: 799px) {
     .content {
-        height: 100vw;
+        height: 150vw;
         display: grid;
         grid-template-rows: 1fr 1fr 2fr;
         grid-template-columns: 1fr 1fr;

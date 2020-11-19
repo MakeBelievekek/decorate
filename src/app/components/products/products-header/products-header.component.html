@@ -1,11 +1,5 @@
 <div class="nav-container" *ngIf="this.screenControl.largeScreen">
-  <div><a href="">Home</a></div>
-  <div><span>/</span></div>
-  <div><a href="">Wallpaper</a></div>
-  <div><span>/</span></div>
-  <div><a href="">ByValami</a></div>
-  <div><span>/</span></div>
-  <div><a href="">Blue</a></div>
+  <p-breadcrumb [model]="items" [home]="home" ></p-breadcrumb>
 </div>
 <div class="desc-container">
   <div class="grid-container">

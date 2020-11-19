@@ -1,165 +1,166 @@
 @media screen and (min-width: 1000px) {
-  .newsletter-container {
-    background-color: var(--primaryGray);
-    display: grid;
-    grid-template-rows: 1fr 2fr 1fr;
-    grid-template-columns:0.4fr 2.4fr minmax(auto, 125px);
-    grid-template-areas: "a1 a2 a3" "b1 b2 b3" "c1 c2 c3";
-    height: 10vw;
-  }
+    .newsletter-container {
+        background-color: var(--primaryGray);
+        display: grid;
+        grid-template-rows: 1fr 2fr 1fr;
+        grid-template-columns: 0.4fr 2.4fr minmax(auto, 125px);
+        grid-template-areas: "a1 a2 a3" "b1 b2 b3" "c1 c2 c3";
+        height: 10vw;
+    }
 
-  .newsletter-content {
-    grid-area: b2;
-    display: grid;
-    grid-template-columns:  minmax(350px, auto) minmax(430px, auto) minmax(50px, auto);
-    grid-template-areas: "a b c";
-  }
+    .newsletter-content {
+        grid-area: b2;
+        display: grid;
+        grid-template-columns: minmax(350px, auto) minmax(430px, auto) minmax(50px, auto);
+        grid-template-areas: "a b c";
+    }
 
-  .newsletter-title {
-    grid-area: a;
-  }
+    .newsletter-title {
+        grid-area: a;
+    }
 
-  .newsletter-desc {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-  }
+    .newsletter-desc {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
 
-  .newsletter {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-  }
+    .newsletter {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
 
-  h2 {
-    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-    font-weight: 900;
-    color: var(--primaryLetterBlack);
-    font-size: 2vw;
-  }
+    h2 {
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-weight: 900;
+        color: var(--primaryLetterBlack);
+        font-size: 2vw;
+    }
 
-  span {
-    font-family: "NexaRustScriptL-00", sans-serif;
-  }
+    span {
+        font-family: "NexaRustScriptL-00", sans-serif;
+    }
 
-  p {
-    font-size: 1rem;
-  }
+    p {
+        font-size: 1rem;
+    }
 
-  .newsletter-input {
-    grid-area: b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .newsletter-input {
+        grid-area: b;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-  }
+    }
 
-  .custom-email {
-    border-radius: 25px;
-    border: 1px solid var(--primaryGray);
-    padding: 20px;
-    width: 300px;
-    height: 15px;
+    .custom-email {
+        border-radius: 25px;
+        border: 1px solid var(--primaryGray);
+        padding: 20px;
+        width: 300px;
+        height: 15px;
 
-  }
+    }
 
-  .signButton {
-    border-radius: 25px;
-    border: 1px solid var(--primaryGray);
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 9px;
-    padding-bottom: 9px;
-    margin-left: 20px;
-  }
+    .signButton {
+        border-radius: 25px;
+        border: 1px solid var(--primaryGreen);
+        background-color: var(--primaryGreen);
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        margin-left: 20px;
+    }
 
-  input:focus {
-    outline: none !important;
-    border-color: #719ECE;
-    box-shadow: 0 0 10px #719ECE;
-  }
+    input:focus {
+        outline: none !important;
+        border-color: #719ECE;
+        box-shadow: 0 0 10px #719ECE;
+    }
 
-  button:focus {
-    outline: none !important;
-    border-color: #719ECE;
-    box-shadow: 0 0 10px #719ECE;
-  }
+    button:focus {
+        outline: none !important;
+        border-color: #719ECE;
+        box-shadow: 0 0 10px #719ECE;
+    }
 
 }
 
 @media screen and (max-width: 999px) {
-  .newsletter-content {
-    background-color: ghostwhite;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: "a " "b ";
-    min-height: 160px;
+    .newsletter-content {
+        background-color: var(--primaryGray);
+        display: grid;
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-areas: "a" "b" "c";
+        min-height: 120px;
+    }
 
-  }
+    .newsletter-title {
+        grid-area: a;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-  .newsletter-title {
-    grid-area: a;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    .newsletter-input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-  .newsletter-input {
-    grid-area: b;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .newsletter > h2 {
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        color: var(--primaryLetterBlack);
+    }
 
-  }
+    .custom-email {
+        grid-area: b;
+        border-radius: 25px;
+        border: 1px solid var(--primaryGray);
+        width: 300px;
+        height: 15px;
+    }
 
-  .custom-email {
-    border-radius: 25px;
-    border: 1px solid var(--primaryGray);
-    padding: 20px;
-    width: 300px;
-    height: 15px;
-  }
+    input:focus {
+        outline: none !important;
+        border-color: #719ECE;
+        box-shadow: 0 0 10px #719ECE;
+    }
 
-  input:focus {
-    outline: none !important;
-    border-color: #719ECE;
-    box-shadow: 0 0 10px #719ECE;
-  }
+    .signButton {
+        display: grid;
+        grid-area: c;
+        border-radius: 25px;
+        border: 1px solid var(--primaryGreen);
+        background-color: var(--primaryGreen);
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        margin-left: 20px;
+    }
 
-  .signButton {
-    border-radius: 25px;
-    border: 1px solid var(--primaryGray);
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 9px;
-    padding-bottom: 9px;
-    margin-left: 20px;
-  }
+    span {
+        font-family: "NexaRustScriptL-00", sans-serif;
+    }
 
-  h4 {
-    font-family: "Nexa W01 Bold", sans-serif;
-    color: var(--primaryLetterBlack);
-  }
+    p {
+        display: none;
+    }
 
-  span {
-    font-family: "NexaRustScriptL-00", sans-serif;
-  }
+    button:focus {
+        outline: none !important;
+        border-color: #719ECE;
+        box-shadow: 0 0 10px #719ECE;
+    }
 
-  p {
-    display: none;
-  }
-
-  button:focus {
-    outline: none !important;
-    border-color: #719ECE;
-    box-shadow: 0 0 10px #719ECE;
-  }
-  .custom-email {
-    border-radius: 25px;
-    border: 1px solid var(--primaryGray);
-    padding: 20px;
-    width: 200px;
-    height: 15px;
-
-  }
+    .custom-email {
+        border-radius: 25px;
+        border: 1px solid var(--primaryGray);
+        padding: 20px;
+        width: 50vw;
+        height: 10px;
+    }
 }

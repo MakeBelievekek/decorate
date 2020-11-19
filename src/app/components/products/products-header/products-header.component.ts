@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 import { ScreenControlModel } from '../../../models/screenControl.model';
 import { ModalService } from '../../../services/modal.service';
 import { ScreenService } from '../../../services/screen.service';
@@ -10,7 +11,8 @@ import { ScreenService } from '../../../services/screen.service';
 })
 export class ProductsHeaderComponent implements OnInit {
   screenControl: ScreenControlModel;
-
+  items: MenuItem[];
+  home: MenuItem;
   constructor(private screenService: ScreenService, private modalService: ModalService) {
   }
 
@@ -21,6 +23,15 @@ export class ProductsHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.screenControl = this.screenService.screenControl;
+    this.items = [
+      {label: 'Computer'},
+      {label: 'Notebook'},
+      {label: 'Accessories'},
+      {label: 'Backpacks'},
+      {label: 'Item'}
+    ];
+
+    this.home = {icon: 'pi pi-home'};
   }
 
 }

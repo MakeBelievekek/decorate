@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { ProductListItemForLocal } from '../../../models/productListItemForLocal';
+import { TotalPriceModel } from '../../../models/totalPriceModel';
 import { LocalStorageService } from '../../../services/localStorage.service';
 
 const CART_KEY = 'local_cartList';

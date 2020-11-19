@@ -14,6 +14,14 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
 import { ToastrModule } from 'ngx-toastr';
 import { StorageServiceModule } from 'ngx-webstorage-service';
+import { AccordionModule } from 'primeng/accordion';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
+import { MessagesModule } from 'primeng/messages';
+import { RatingModule } from 'primeng/rating';
+import { TableModule } from 'primeng/table';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,32 +70,32 @@ import { LocalStorageService } from './services/localStorage.service';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
-  "cookie": {
-    "domain": "localhost"
-  },
-  "position": "bottom-right",
-  "theme": "classic",
-  "palette": {
-    "popup": {
-      "background": "#000000",
-      "text": "#ffffff",
-      "link": "#ffffff"
+    'cookie': {
+        'domain': 'localhost',
     },
-    "button": {
-      "background": "#f1d600",
-      "text": "#000000",
-      "border": "transparent"
-    }
-  },
-  "type": "info",
-  "content": {
-    "message": "This website uses cookies to ensure you get the best experience on our website.",
-    "dismiss": "Got it!",
-    "deny": "Refuse cookies",
-    "link": "Learn more",
-    "href": "https://cookiesandyou.com",
-    "policy": "Cookie Policy"
-  }
+    'position': 'bottom-right',
+    'theme': 'classic',
+    'palette': {
+        'popup': {
+            'background': '#000000',
+            'text': '#ffffff',
+            'link': '#ffffff',
+        },
+        'button': {
+            'background': '#f1d600',
+            'text': '#000000',
+            'border': 'transparent',
+        },
+    },
+    'type': 'info',
+    'content': {
+        'message': 'This website uses cookies to ensure you get the best experience on our website.',
+        'dismiss': 'Got it!',
+        'deny': 'Refuse cookies',
+        'link': 'Learn more',
+        'href': 'https://cookiesandyou.com',
+        'policy': 'Cookie Policy',
+    },
 };
 
 @NgModule({
@@ -144,6 +152,7 @@ const cookieConfig: NgcCookieConsentConfig = {
     ],
 
     imports: [
+        AccordionModule,
         NgcCookieConsentModule.forRoot(cookieConfig),
         MatBadgeModule,
         BrowserModule,
@@ -162,8 +171,14 @@ const cookieConfig: NgcCookieConsentConfig = {
 
         }),
         NgbTooltipModule,
+        BreadcrumbModule,
+        ConfirmDialogModule,
+        ConfirmPopupModule,
+        MessagesModule,
+        RatingModule,
+        TableModule,
     ],
-    providers: [LocalStorageService],
+    providers: [LocalStorageService, ConfirmationService,MessageService],
     bootstrap: [AppComponent],
 })
 export class AppModule {

@@ -1,23 +1,31 @@
+
 <div class="basket-item-grid">
-  <img [src]="product.image" alt="">
-  <div class="basket-details">
-    <p>{{product.productDesc}}</p>
-    <p>Termék Kód: {{product.id}}</p>
-    <p>Size: roll</p>
-  </div>
-  <div class="qty ">
-    <app-plus-minus-input (counter)="countChange($event)" [step]="1" [min]="1" [max]="100"
-                          [initialValue]="this.localQty"
-                          [prodId]="product.id"
-                          ariaLabelLess="Less 10"
-                          ariaLabelMore="Plus 10"></app-plus-minus-input>
-  </div>
-  <div class="price">
-    {{product.price}}
-  </div>
-  <div class="total-price">
-    {{this.totalPriceCounter}}
-    <img id="remove-icon" src="assets/remove-icon-png-7124.png" alt="">
-  </div>
+
+    <img [src]="product.image" alt="">
+    <div class="basket-details">
+        <p>{{product.productDesc}}</p>
+        <p>Termék Kód: {{product.id}}</p>
+        <p>Size: roll</p>
+    </div>
+    <div class="qty ">
+        <app-plus-minus-input (counter)="countChange($event)" [step]="1" [min]="1" [max]="100"
+                              [initialValue]="this.localQty"
+                              [prodId]="product.id"
+                              ariaLabelLess="Less 10"
+                              ariaLabelMore="Plus 10"></app-plus-minus-input>
+    </div>
+    <div class="price">
+        {{product.price}}
+    </div>
+    <div class="total-price">
+        {{this.totalPriceCounter}}
+        <img id="remove-icon" src="assets/remove-icon-png-7124.png" alt="" (click)="confirm($event)">
+        <p-confirmPopup [style]="{width: '30vw'}"></p-confirmPopup>
+
+    </div>
 </div>
+
+
+
+
 
