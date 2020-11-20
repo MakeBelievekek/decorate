@@ -39,7 +39,7 @@ div > h4 {
     border-top: 4px solid var(--primaryGray);
     text-align: center;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
 
 .prom-code {
