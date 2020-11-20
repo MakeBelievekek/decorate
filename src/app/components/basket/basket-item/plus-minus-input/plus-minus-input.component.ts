@@ -38,10 +38,7 @@ export class PlusMinusInputComponent implements OnInit {
     value: number = 0;
 
   ngOnInit() {
-    this.value = 0;
-    if (this.initialValue) {
-      this.value = this.initialValue;
-    }
+    this.value = this.initialValue ? this.value = this.initialValue : 0;
     this.renderedValue = this.value.toString();
     this.setProdToLocal();
     if (this.localStorageService.getItemIdFromLocalStorage(CART_KEY)) {

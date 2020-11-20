@@ -3,14 +3,13 @@ import {ScreenSizeModel} from '../../../models/ScreenSize.model';
 import {DummyProductModel} from '../../../models/dummyProductModel';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  selector: 'app-product-details-new',
+  templateUrl: './product-details-new.component.html',
+  styleUrls: ['./product-details-new.component.css']
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsNewComponent implements OnInit {
   @Input() productDetailsDimension: ScreenSizeModel;
   @Input() dummyProduct: DummyProductModel;
-  openDesc: string;
 
   constructor() {
   }
@@ -19,11 +18,4 @@ export class ProductDetailsComponent implements OnInit {
     this.dummyProduct = new DummyProductModel();
   }
 
-  handelDesc(descType: string): void {
-    if (this.openDesc === descType) {
-      this.openDesc = undefined;
-    } else {
-      this.openDesc = descType;
-    }
-  }
 }

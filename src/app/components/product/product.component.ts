@@ -1,6 +1,5 @@
-import {AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {ScreenService} from '../../services/screen.service';
-import {ScrollingModule} from '@angular/cdk/scrolling';
 import {ScreenSizeModel} from '../../models/ScreenSize.model';
 
 @Component({
