@@ -35,5 +35,7 @@ export class NavbarComponent implements OnInit {
   toggleProductsModal() {
     this.modalService.toggleModal('products');
   }
-
+  toggleBasketModal() {
+    this.modalService.toggleModal('basket');
+  }
 }

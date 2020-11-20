@@ -1,59 +1,56 @@
 <nav class="fixed-top">
-  <div class="row" *ngIf="this.screenControl.largeScreen">
-    <div class="make-left">
-      <a  routerLink="/">Home</a>
-    </div>
-    <div>
-      <a (click)="toggleProductsModal()">Products<i class="fa fa-chevron-down pl-1 pb-1" aria-hidden="true"></i></a>
-    </div>
-    <div>
-      <a href="#">Designer</a>
-    </div>
-    <div>
-      <a href="#">About Us</a>
-    </div>
-    <div>
-      <a href="#">Contact</a>
-    </div>
-    <div>
-      <a href="#">Wish list</a>
-    </div>
-
-    <div class="col p-0">
-      <div class="row justify-content-end">
-        <div>
-          <a href="#">Login</a>
+    <div class="row" *ngIf="this.screenControl.largeScreen">
+        <div class="make-left">
+            <a routerLink="/">Home</a>
         </div>
         <div>
-          <a href="#">Search<i class="fa fa-search pl-2" aria-hidden="true"></i></a>
+            <a (click)="toggleProductsModal()">Products<i class="fa fa-chevron-down pl-1 pb-1"
+                                                          aria-hidden="true"></i></a>
         </div>
-        <div class="make-right">
-          <a  routerLink="/basket">Kosár<i class="fa fa-shopping-basket pl-2" aria-hidden="true"></i><span  matBadge="{{numberOfItemsInBasket}}" matBadgeOverlap="false"></span></a>
-
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-
-
-
-  <div class="row" *ngIf="this.screenControl.smallScreen">
-    <div>
-      <a class="burger" (click)="toggleNavigationModal()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
-    </div>
-    <div class="col">
-      <div class="row justify-content-end">
         <div>
-          <a href="#">Search<i class="fa fa-search pl-2" aria-hidden="true"></i></a>
+            <a href="#">Designer</a>
         </div>
-        <div class="make-right">
-          <a href="#">Basket<i class="fa fa-shopping-basket pl-2" aria-hidden="true"></i></a>
+        <div>
+            <a href="#">About Us</a>
         </div>
-      </div>
+        <div>
+            <a href="#">Contact</a>
+        </div>
+        <div>
+            <a href="#">Wish list</a>
+        </div>
+
+        <div class="col p-0">
+            <div class="row justify-content-end">
+                <div>
+                    <a href="#">Login</a>
+                </div>
+                <div>
+                    <a href="#">Search<i class="fa fa-search pl-2" aria-hidden="true"></i></a>
+                </div>
+                <div class="make-right">
+                    <a routerLink="/basket" >Kosár<i class="fa fa-shopping-basket pl-2" aria-hidden="true"></i><span
+                        matBadge="{{numberOfItemsInBasket}}" matBadgeOverlap="false"></span></a>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+
+    <div class="row" *ngIf="this.screenControl.smallScreen">
+        <div>
+            <a class="burger" (click)="toggleNavigationModal()"><i class="fa fa-bars fa-2x" aria-hidden="true"></i></a>
+        </div>
+        <div class="col">
+            <div class="row justify-content-end">
+                <div>
+                    <a href="#">Search<i class="fa fa-search pl-2" aria-hidden="true"></i></a>
+                </div>
+                <div class="make-right">
+                    <a href="#">Basket<i class="fa fa-shopping-basket pl-2" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </nav>

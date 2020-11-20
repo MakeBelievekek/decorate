@@ -17,10 +17,13 @@ import { StorageServiceModule } from 'ngx-webstorage-service';
 import { AccordionModule } from 'primeng/accordion';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { CarouselModule } from 'primeng/carousel';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 import { MessagesModule } from 'primeng/messages';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { RatingModule } from 'primeng/rating';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { TableModule } from 'primeng/table';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
@@ -49,6 +52,7 @@ import { NewsletterComponent } from './components/home/newsletter/newsletter.com
 import { SalesComponent } from './components/home/sales/sales.component';
 import { SecondContentComponent } from './components/home/second-content/second-content.component';
 import { ThirdContentComponent } from './components/home/third-content/third-content.component';
+
 import { NavbarModalComponent } from './components/navbar/navbar-modal/navbar-modal.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductDetailsComponent } from './components/product/product-details/product-details.component';
@@ -147,8 +151,6 @@ const cookieConfig: NgcCookieConsentConfig = {
         NameShortenerPipe,
 
         ProductImagesComponent,
-
-
     ],
 
     imports: [
@@ -177,6 +179,9 @@ const cookieConfig: NgcCookieConsentConfig = {
         MessagesModule,
         RatingModule,
         TableModule,
+        OverlayPanelModule,
+        ScrollPanelModule,
+        CarouselModule,
     ],
     providers: [LocalStorageService, ConfirmationService,MessageService],
     bootstrap: [AppComponent],

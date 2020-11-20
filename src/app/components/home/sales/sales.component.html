@@ -2,48 +2,61 @@
     <div class="sales-text">
         <h4>AKCIÓS <br> TERMÉKEINK</h4>
     </div>
-    <div class="cards-pos">
-        <div class="sales-cards">
-            <div class="image">
-                <div class="img-container">
-                    <img class="card-img-top first" src="https://i.imgur.com/nUl3UuP.jpg" alt="Card image cap">
-                    <div class="overlay">
-                        <div class="img-text">
-                            tapéták
-                        </div>
+    <p-carousel [value]="images"   dotsContainerClass="p-carousel-dots-container" styleClass="custom-carousel" [circular]="false" [numVisible]="7 "
+                [responsiveOptions]="responsiveOptions">
+        <ng-template let-product pTemplate="item">
+            <div class="product-item">
+                <div class="product-item-content">
+                    <div class="p-mb-3">
+                        <img src="{{product.image}}" [alt]="product.name"
+                             class="product-image"/>
+                    </div>
+                    <div>
+                        <p class="p-mb-1">{{product.name}}</p>
+                        <p class="p-mt-0 p-mb-3">${{product.price}}</p>
                     </div>
                 </div>
             </div>
-            <div class="image">
-                <div class="img-container">
-                    <img class="card-img-top" src="https://i.imgur.com/84fyNyj.jpg" alt="Card image cap">
-                    <div class="overlay">
-                        <div class="img-text">
-                            függönyök
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="image">
-                <div class="img-container">
-                    <img class="card-img-top" src="https://i.imgur.com/HtBoVro.jpg" alt="Card image cap">
-                    <div class="overlay">
-                        <div class="img-text">
-                            textilek
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="image">
-                <div class="img-container">
-                    <img class="card-img-top" src="https://i.imgur.com/Ez06ItC.jpg" alt="Card image cap">
-                    <div class="overlay">
-                        <div class="img-text">
-                            kiegészítők
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        </ng-template>
+    </p-carousel>
+    <!--   <div class="image">
+           <div class="img-container">
+               <img class="card-img-top first" src="https://i.imgur.com/nUl3UuP.jpg" alt="Card image cap">
+               <div class="overlay">
+                   <div class="img-text">
+                       tapéták
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div class="image">
+           <div class="img-container">
+               <img class="card-img-top" src="https://i.imgur.com/84fyNyj.jpg" alt="Card image cap">
+               <div class="overlay">
+                   <div class="img-text">
+                       függönyök
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div class="image">
+           <div class="img-container">
+               <img class="card-img-top" src="https://i.imgur.com/HtBoVro.jpg" alt="Card image cap">
+               <div class="overlay">
+                   <div class="img-text">
+                       textilek
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div class="image">
+           <div class="img-container">
+               <img class="card-img-top" src="https://i.imgur.com/Ez06ItC.jpg" alt="Card image cap">
+               <div class="overlay">
+                   <div class="img-text">
+                       kiegészítők
+                   </div>
+               </div>
+           </div>
+       </div>  -->
 </div>

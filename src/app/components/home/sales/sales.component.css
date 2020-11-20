@@ -2,9 +2,27 @@
     .sales-container {
         background-color: var(--primaryGray);
         display: grid;
-        grid-template-columns: 2fr 8fr;
-        grid-template-areas: "a b";
-        height: 10vw;
+        grid-template-columns: 17vw 1fr;
+        grid-template-areas: "a b ";
+        grid-column-gap: 8vw;
+        height: 230px;
+        justify-content: center;
+        align-items: center;
+    }
+    .p-carousel-dots-container{
+        display:none;
+    }
+    .product-item .product-item-content {
+        border: 1px solid var(--surface-d);
+        border-radius: 3px;
+        margin: 0.1rem;
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    .product-item .product-image {
+        width: 50%;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     }
 
     .sales-text {
@@ -13,6 +31,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
+        margin-left: 50px;
     }
 
     H4 {
@@ -22,47 +41,30 @@
         font-size: 2vw;
     }
 
-    .sales-cards {
-        grid-area: cards;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        grid-template-areas: "img1 img2 img3 img4";
-        grid-gap: 2vw;
-        margin: 20px 0px;
+    /*
+        img {
+            display: block;
+            width: 8vw;
+            height: 7vw;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px 0 rgba(1, 1, 1, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.79);
+        }
 
-    }
-
-    .cards-pos {
-        grid-area: b;
-        display: grid;
-        grid-template-columns: 1fr 5fr 1fr;
-        grid-template-areas: ". cards .";
-    }
-
-    img {
-        display: block;
-        width: 7vw;
-        height: 6vw;
-        cursor: pointer;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px 0 rgba(1, 1, 1, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.79);
-    }
-
-    .overlay {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 6vw;
-        width: 7vw;
-        opacity: 0;
-        transition: .5s ease;
-        background-color: var(--primaryLetterBlack);
-        border-radius: 8px;
-
-    }
-
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 7vw;
+            width: 8vw;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: var(--primaryLetterBlack);
+            border-radius: 8px;
+        }
+    */
     .image {
         display: flex;
         align-items: center;
@@ -71,7 +73,6 @@
 
     .img-container {
         position: relative;
-
     }
 
     .img-container:hover .overlay {
