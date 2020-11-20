@@ -1,28 +1,13 @@
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 900px) {
     .sales-container {
         background-color: var(--primaryGray);
         display: grid;
         grid-template-columns: 17vw 1fr;
         grid-template-areas: "a b ";
         grid-column-gap: 8vw;
-        height: 230px;
+        height: 180px;
         justify-content: center;
         align-items: center;
-    }
-    .p-carousel-dots-container{
-        display:none;
-    }
-    .product-item .product-item-content {
-        border: 1px solid var(--surface-d);
-        border-radius: 3px;
-        margin: 0.1rem;
-        text-align: center;
-        padding: 2rem 0;
-    }
-
-    .product-item .product-image {
-        width: 50%;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     }
 
     .sales-text {
@@ -40,6 +25,19 @@
         color: var(--primaryLetterBlack);
         font-size: 2vw;
     }
+
+    .product-item .product-item-content {
+        border-radius: 3px;
+        margin: 0.1rem;
+        text-align: center;
+        padding: 1rem 0 1rem 0;
+    }
+
+    .product-item .product-image {
+        width: 50%;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    }
+
 
     /*
         img {
@@ -64,20 +62,18 @@
             background-color: var(--primaryLetterBlack);
             border-radius: 8px;
         }
-    */
-    .image {
+            .img-container:hover .overlay {
+        opacity: 50%;
+    }
+ .image {
         display: flex;
         align-items: center;
         justify-content: center;
     }
-
     .img-container {
         position: relative;
     }
 
-    .img-container:hover .overlay {
-        opacity: 50%;
-    }
 
     .img-text {
         color: white;
@@ -90,95 +86,110 @@
         transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
     }
+    */
+
+
 }
 
-@media screen and (max-width: 699px) {
+@media screen and (max-width: 899px) {
+
     .sales-container {
         background-color: var(--primaryGray);
         display: grid;
-        grid-template-rows: 0.5fr 2fr;
-        grid-template-columns: 1fr;
-        grid-template-areas: "title" "images";
+        grid-auto-rows: 1fr 1fr;
+        grid-template-areas: "a" "b";
+        height: 230px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .product-item .product-item-content {
+        border-radius: 3px;
+        margin: 0.1rem;
+        text-align: center;
+        padding: 1rem 0 1rem 0;
 
     }
 
-    br {
-        display: none;
+    .product-image {
+        width: 50%;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
     }
 
     .sales-text {
-        grid-area: title;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        grid-area: a;
         text-align: center;
+        margin: 10px 0 0 0;
     }
 
-    .cards-pos {
-        grid-area: images;
-        display: grid;
-        grid-template-columns: 0.5fr 1fr 0.5fr;
-        grid-template-areas: ". cards .";
-    }
-
-    .sales-cards {
-        grid-area: cards;
-        display: grid;
-        grid-template-rows: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
-        grid-template-areas: "image1 image2" "image3 image4";
-        grid-gap: 4vw;
-        margin: 20px 0px;
-
-    }
-
-    img {
-        display: block;
-        width: 30vw;
-        height: 28vw;
-        cursor: pointer;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px 0 rgba(1, 1, 1, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.79);
-    }
-
-    .overlay {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 28vw;
-        width: 30vw;
-        opacity: 0;
-        transition: .5s ease;
-        background-color: black;
-        border-radius: 8px;
-    }
-
-    .img-container {
-        position: relative;
-    }
-
-    .img-container:hover .overlay {
-        opacity: 50%;
-    }
-
-    .img-text {
-        color: white;
+    H4 {
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-        font-size: 5vw;
         font-weight: bolder;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
+        color: var(--primaryLetterBlack);
+        margin: 0;
     }
 
-    H2 {
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-        font-weight: 900;
-        color: var(--primaryLetterBlack);
-        font-size: 6vw;
-    }
+    /*
+        .cards-pos {
+            grid-area: images;
+            display: grid;
+            grid-template-columns: 0.5fr 1fr 0.5fr;
+            grid-template-areas: ". cards .";
+        }
+
+        .sales-cards {
+            grid-area: cards;
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: "image1 image2" "image3 image4";
+            grid-gap: 4vw;
+            margin: 20px 0px;
+
+        }
+
+        img {
+            display: block;
+            width: 30vw;
+            height: 28vw;
+            cursor: pointer;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px 0 rgba(1, 1, 1, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.79);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 28vw;
+            width: 30vw;
+            opacity: 0;
+            transition: .5s ease;
+            background-color: black;
+            border-radius: 8px;
+        }
+
+        .img-container {
+            position: relative;
+        }
+
+        .img-container:hover .overlay {
+            opacity: 50%;
+        }
+
+        .img-text {
+            color: white;
+            font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+            font-size: 5vw;
+            font-weight: bolder;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+        }
+
+         */
 }

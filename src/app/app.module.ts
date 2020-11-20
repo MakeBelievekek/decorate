@@ -66,6 +66,7 @@ import { ProductListItemComponent } from './components/products/products-list/pr
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { ProductsModalComponent } from './components/products/products-modal/products-modal.component';
 import { ProductsComponent } from './components/products/products.component';
+
 import { BackgroundImgDirective } from './directives/background-img.directive';
 import { CardShadowDirective } from './directives/card-shadow.directive';
 import { ReloadOnNgForNewElementDirective } from './directives/reload-on-ng-for-new-element.directive';
@@ -151,6 +152,7 @@ const cookieConfig: NgcCookieConsentConfig = {
         NameShortenerPipe,
 
         ProductImagesComponent,
+
     ],
 
     imports: [
@@ -183,7 +185,7 @@ const cookieConfig: NgcCookieConsentConfig = {
         ScrollPanelModule,
         CarouselModule,
     ],
-    providers: [LocalStorageService, ConfirmationService,MessageService],
+    providers: [LocalStorageService, ConfirmationService, MessageService],
     bootstrap: [AppComponent],
 })
 export class AppModule {

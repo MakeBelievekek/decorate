@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ScreenSizeModel } from '../../models/ScreenSize.model';
 import { HomeService } from '../../services/home.service';
 import { PaymentService } from '../../services/payment.service';
 import { ProductService } from '../../services/product.service';
+import { ScreenService } from '../../services/screen.service';
 
 const CASH_KEY = 'valami';
 
@@ -15,9 +17,13 @@ const CASH_KEY = 'valami';
 export class HomeComponent implements OnInit {
 
     constructor(private productService: ProductService, private home: HomeService, private route: ActivatedRoute,
-                private paymentService: PaymentService, private toastr: ToastrService) {
+                private paymentService: PaymentService, private toastr: ToastrService, private screenService: ScreenService) {
     }
 
+    screenSize: ScreenSizeModel = new class implements ScreenSizeModel {
+        height: number;
+        width: number;
+    };
     images;
     darkenerImg: string;
     translucentImg: string;
@@ -76,4 +82,8 @@ export class HomeComponent implements OnInit {
         this.toastr.success('Sikeres Fizetés');
     }
 
+    @HostListener('window:resize', ['$event'])
+    changeContentOnResize() {
+        this.screenSize = this.screenService.getScreenSize();
+    }
 }

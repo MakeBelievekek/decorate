@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ProductListItemForLocal } from '../../../models/productListItemForLocal';
+import { ScreenSizeModel } from '../../../models/ScreenSize.model';
+import { ScreenService } from '../../../services/screen.service';
 
 @Component({
     selector: 'app-sales',
@@ -9,6 +11,7 @@ import { ProductListItemForLocal } from '../../../models/productListItemForLocal
 export class SalesComponent implements OnInit {
     images: ProductListItemForLocal [] = [];
     responsiveOptions;
+
     a: ProductListItemForLocal = new class implements ProductListItemForLocal {
         id: number;
         image: string = 'https://i.imgur.com/wjoNXAQ.jpg';
@@ -79,15 +82,20 @@ export class SalesComponent implements OnInit {
         qty: number;
         typeOfSize: string;
     };
+    screenSize: ScreenSizeModel = new class implements ScreenSizeModel {
+        height: number;
+        width: number;
+    };
 
-    constructor() {
+
+    constructor(private screenService: ScreenService) {
+
         this.responsiveOptions = [
-
             {
                 breakpoint: '1500px',
                 numVisible: 5,
                 numScroll: 3,
-            },   {
+            }, {
                 breakpoint: '1250px',
                 numVisible: 4,
                 numScroll: 3,
@@ -98,20 +106,38 @@ export class SalesComponent implements OnInit {
                 numScroll: 3,
             },
             {
-                breakpoint: '768px',
-                numVisible: 2,
+                breakpoint: '899px',
+                numVisible: 5,
                 numScroll: 2,
             },
             {
-                breakpoint: '560px',
-                numVisible: 1,
+                breakpoint: '799px',
+                numVisible: 4,
                 numScroll: 1,
             },
+            {
+                breakpoint: '699px',
+                numVisible: 3,
+                numScroll: 1,
+            },
+            {
+                breakpoint: '599px',
+                numVisible: 3,
+                numScroll: 1,
+            }
         ];
+
         this.images = [this.a, this.b, this.c, this.d, this.e, this.f, this.g];
     }
 
+
     ngOnInit(): void {
+
+    }
+
+    @HostListener('window:resize', ['$event'])
+    changeContentOnResize() {
+        this.screenSize = this.screenService.getScreenSize();
     }
 
 }

@@ -134,10 +134,13 @@ p {
         padding-right: 20px;
         padding-top: 9px;
         padding-bottom: 9px;
-        width: 11vw;
+        width: 12vw;
         background: none;
         margin-top: 10px;
         margin-bottom: 10px;
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-size: 1.2vw;
+        color: white;
     }
 
     .detailsButton:hover {
@@ -177,21 +180,23 @@ p {
     }
 
     .desc-backgr {
-        position: relative;
-        grid-area: e;
+        grid-column: 1/-1;
+        grid-row: 1/-1;
+        opacity: 25%;
         background-color: black;
-        opacity: 30%;
     }
+
 
     .desc-text {
         position: relative;
         grid-area: e;
         text-align: center;
+
     }
 
     .text {
         font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
-        font-size: 10vw;
+        font-size: 9vw;
         font-weight: bolder;
         color: white;
         margin-bottom: 20px;
@@ -199,13 +204,18 @@ p {
     }
 
     .detailsButton {
+        position: relative;
         border-radius: 25px;
         border: 2px solid white;
         padding-left: 15px;
         padding-right: 15px;
         padding-top: 5px;
         padding-bottom: 5px;
+        width: 30vw;
         background: none;
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-size: 3vw;
+        color: white;
     }
 
     .detailsButton:hover {

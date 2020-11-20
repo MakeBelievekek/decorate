@@ -1,26 +1,25 @@
 <div class="content">
-    <div class="card-direction firstCard"  appBackgroundImg [mainBackgroundImage]="this.wallpaper">
+    <div class="card-direction firstCard" appBackgroundImg [mainBackgroundImage]="this.wallpaper">
         <div class="desc-backgr">
         </div>
         <div class="desc-text">
-            <h3 class="text">Tapéta
-            </h3>
+            <h4 class="text">Tapéták széles <br> választéka
+            </h4>
             <p>Luxus tapéták Angliából és Olaszországból</p>
-            <button type="button" class="detailsButton ">
-                <span> VÁLASZTÉK</span>
+            <button type="button" class="detailsButton " *ngIf="this.screenSize.width > 899"> Kínálatunk
             </button>
         </div>
     </div>
-    <div class="card-direction secondCard"  appBackgroundImg [mainBackgroundImage]="this.decoration ">
-        <div class="desc-backgr">
+    <div class="card-direction secondCard " appBackgroundImg [mainBackgroundImage]="this.decoration ">
+        <div class="desc-backgr ">
         </div>
         <div class="desc-text">
-            <h3 class="text">Lakásdekorációs <br>kiegészítők
-            </h3>
+            <h4 class="text">Lakásdekorációs <br>kiegészítők
+            </h4>
             <p>Faliképek a tökéletes harmónia megteremtéséért</p>
-            <button type="button" class="detailsButton ">
-                <span> VÁLASZTÉK</span>
+            <button type="button" class="detailsButton " *ngIf="this.screenSize.width > 899">Kínálatunk
             </button>
         </div>
+
     </div>
 </div>

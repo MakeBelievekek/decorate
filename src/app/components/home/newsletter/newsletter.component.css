@@ -1,18 +1,18 @@
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 800px) {
     .newsletter-container {
         background-color: var(--primaryGray);
         display: grid;
         grid-template-rows: 1fr 2fr 1fr;
         grid-template-columns: 0.4fr 2.4fr minmax(auto, 125px);
         grid-template-areas: "a1 a2 a3" "b1 b2 b3" "c1 c2 c3";
-        height: 10vw;
+        height: 150px;
     }
 
     .newsletter-content {
         grid-area: b2;
         display: grid;
-        grid-template-columns: minmax(350px, auto) minmax(430px, auto) minmax(50px, auto);
-        grid-template-areas: "a b c";
+        grid-template-columns: 50px minmax(300px, auto) 300px 120px auto;
+        grid-template-areas: "e a b c d";
     }
 
     .newsletter-title {
@@ -29,6 +29,14 @@
         display: flex;
         align-items: center;
         justify-content: start;
+
+    }
+
+    .newsletter-button {
+        grid-area: c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     h2 {
@@ -36,6 +44,7 @@
         font-weight: 900;
         color: var(--primaryLetterBlack);
         font-size: 2vw;
+        margin: 0px;
     }
 
     span {
@@ -71,7 +80,6 @@
         padding-right: 20px;
         padding-top: 9px;
         padding-bottom: 9px;
-        margin-left: 20px;
     }
 
     input:focus {
@@ -88,7 +96,7 @@
 
 }
 
-@media screen and (max-width: 999px) {
+@media screen and (max-width: 799px) {
     .newsletter-content {
         background-color: var(--primaryGray);
         display: grid;
@@ -129,17 +137,23 @@
         box-shadow: 0 0 10px #719ECE;
     }
 
-    .signButton {
-        display: grid;
+    .newsletter-button {
         grid-area: c;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .signButton {
+        width: 22vw;
         border-radius: 25px;
         border: 1px solid var(--primaryGreen);
         background-color: var(--primaryGreen);
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
         padding-top: 9px;
         padding-bottom: 9px;
-        margin-left: 20px;
+        margin: 10px 0;
     }
 
     span {
@@ -149,7 +163,12 @@
     p {
         display: none;
     }
-
+    h2 {
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-weight: 900;
+        color: var(--primaryLetterBlack);
+        margin: 0px;
+    }
     button:focus {
         outline: none !important;
         border-color: #719ECE;
@@ -160,7 +179,7 @@
         border-radius: 25px;
         border: 1px solid var(--primaryGray);
         padding: 20px;
-        width: 50vw;
+        width: 330px;
         height: 10px;
     }
 }

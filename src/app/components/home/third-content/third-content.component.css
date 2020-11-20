@@ -19,7 +19,6 @@
         grid-template-columns: 1fr 1fr 0.2fr;
         grid-template-rows: 0.5fr 1fr 0.5fr;
         grid-template-areas: "a b ." "d e ." "i j .";
-        filter: brightness(80%);
     }
 
     .secondCard {
@@ -28,19 +27,12 @@
         grid-template-columns: 1fr 1fr 0.2fr;
         grid-template-rows: 0.5fr 1fr 0.5fr;
         grid-template-areas: "a b ." "d e ." "i j .";
-        filter: brightness(80%);
-    }
-
-    span {
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-        font-size: 0.9vw;
-        color: white;
     }
 }
 
 @media screen and (max-width: 899px) {
     .content {
-        height: 80vw;
+        height: 125vw;
         display: grid;
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
@@ -50,26 +42,23 @@
     .firstCard {
         grid-area: a1;
         display: grid;
-        grid-auto-columns: 0.1fr 1fr 0.1fr;
-        grid-template-columns: 0.7fr 2fr 0.7fr;
+        grid-template-columns: 1fr 2fr 1fr;
         grid-template-areas: ". . . " ". e . " ". . . ";
+
     }
 
     .secondCard {
         grid-area: b1;
         display: grid;
-        grid-auto-columns: 0.2fr 1fr 0.2fr;
-        grid-template-columns: 0.7fr 2fr 0.7fr;
+        grid-template-columns: 1fr 2fr 1fr;
         grid-template-areas: ". . . " ". e . " ". . . ";
     }
 
     p {
-        display: none;
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-size: 3.5vw;
+        color: whitesmoke;
+        padding-top: 10px;
     }
 
-    span {
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-        font-size: 3vw;
-        color: white;
-    }
 }

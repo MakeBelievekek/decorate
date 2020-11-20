@@ -1,7 +1,7 @@
 <div class="content-margin">
 
     <app-content [darkener]="darkenerImg" [pillow]="pillowImg" [translucent]="translucentImg"></app-content>
-    <app-sales></app-sales>
+    <app-sales *ngIf="this.screenSize.width > 499"></app-sales>
     <app-third-content [wallpaper]="wallpaperImg" [decoration]="decorationImg"></app-third-content>
     <app-news></app-news>
     <app-second-content [blackout]="blackoutImg" [children]="childrenImg"
