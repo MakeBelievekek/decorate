@@ -1,26 +1,29 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { AtpListItem } from '../models/atpListItem';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable, Subject} from 'rxjs';
+import {AtpListItem} from '../models/atpListItem';
+import {environment} from '../../environments/environment';
 
+const BASE_URL = environment.apiUrl;
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class BasketService {
-    private total = new Subject<number>();
+  private total = new Subject<number>();
 
-    constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+  }
 
-    sendTotalPrice(qty: number) {
-        this.total.next(qty);
-    }
+  sendTotalPrice(qty: number) {
+    this.total.next(qty);
+  }
 
-    getTotalPrice(): Observable<number> {
-        return this.total.asObservable();
-    }
+  getTotalPrice(): Observable<number> {
+    return this.total.asObservable();
+  }
 
-    getAtpList(): Observable<AtpListItem[]> {
-        return this.http.get<AtpListItem[]>('https://localhost:8443/payment/atp');
-    }
+  getAtpList(): Observable<AtpListItem[]> {
+    return this.http.get<AtpListItem[]>(BASE_URL + 'payment/atp');
+  }
 }

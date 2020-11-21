@@ -12,6 +12,7 @@ export class ProductComponent implements OnInit {
   screenModel: ScreenSizeModel;
   imagesDimensions: ScreenSizeModel;
   productDetailsDimensions: ScreenSizeModel;
+  pushed: boolean;
 
   constructor(private screenService: ScreenService) {
   }
@@ -22,6 +23,7 @@ export class ProductComponent implements OnInit {
     this.screenModel = this.screenService.getScreenSize();
     this.setImagesWidth();
     this.setProductDetailsWidth();
+    // this.disableScrolling();
   }
 
   @HostListener('window:resize', ['$event'])
@@ -38,7 +40,6 @@ export class ProductComponent implements OnInit {
     } else {
       this.productDetailsDimensions.width = this.screenModel.width * 0.9;
     }
-    console.log('details: ', this.imagesDimensions.width);
   }
 
   setImagesWidth(): void {
@@ -49,6 +50,23 @@ export class ProductComponent implements OnInit {
     } else {
       this.imagesDimensions.width = this.screenModel.width * 0.9;
     }
-    console.log('images: ', this.imagesDimensions.width);
+  }
+
+  pushPush() {
+    this.pushed = !this.pushed;
+    this.pushed ? this.disableScrolling() : this.enableScrolling();
+  }
+
+  disableScrolling() {
+    const x = window.scrollX;
+    const y = window.scrollY;
+    window.onscroll = () => {
+      window.scrollTo(x, y);
+    };
+  }
+
+  enableScrolling() {
+    window.onscroll = () => {
+    };
   }
 }

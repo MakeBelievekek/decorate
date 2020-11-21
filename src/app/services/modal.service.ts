@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { ModalControllerModel } from '../models/modalController.model';
+import {Injectable} from '@angular/core';
+import {ModalControllerModel} from '../models/modalController.model';
 
 @Injectable({
   providedIn: 'root'

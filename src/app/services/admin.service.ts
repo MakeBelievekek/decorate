@@ -8,8 +8,9 @@ import { AttributeModel } from '../models/attributeModel';
 import { FormDataModel } from '../models/formDataModel';
 import { ProductModel } from '../models/productModel';
 import { ApiErrorHandler } from './apiErrorHandler';
+import {environment} from '../../environments/environment';
 
-const BASE_URL = 'https://localhost:8443';
+const BASE_URL = environment.apiUrl;
 
 @Injectable({
     providedIn: 'root',

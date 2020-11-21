@@ -1,0 +1,32 @@
+<div class="decorate-modal-container">
+  <div class="fixed-modal-background">
+  </div>
+  <div class="decorate-modal"
+       appCssAnimationState
+       (click)="clickClack()"
+       s>
+    <div style="position: relative; width: 100%; height: 100%">
+      <div
+        style="width: 10px; height: 200px; background-color: #64B385; overflow: hidden; position: absolute; left: 0; top: 0; z-index: 999999"
+        (click)="moveLeft()"></div>
+
+      <div style="display: flex; position: relative; left: 0; padding-left: 10px"
+           #key
+           [@slide]="{value: this.state, params: { start: this.start, finish: this.finish}}"
+           (@slide.done)="animEnd($event)"
+      >
+        <ng-container *ngFor="let color of colors">
+          <div style="height: 200px; min-width: 200px; position: relative"
+               [ngStyle]="{'background': color.color}"></div>
+        </ng-container>
+      </div>
+      <ng-content></ng-content>
+      <div
+        style="width: 10px; height: 200px; position: absolute; z-index: 999999; right: 0; top:0; background-color: purple;"
+        (click)="moveRight()"></div>
+    </div>
+  </div>
+</div>
+<!--
+[class.fade-in-top]="this.show"
+[class.fade-out-top]="!this.show"-->

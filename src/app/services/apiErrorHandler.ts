@@ -1,25 +1,24 @@
-import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
-import { throwError } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {throwError} from 'rxjs';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class ApiErrorHandler {
 
 
-    constructor() {
+  constructor() {
+  }
+
+  handleError(error) {
+    let errorMessage = '';
+    if (error.error instanceof ErrorEvent) {
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
 
-    handleError(error) {
-        let errorMessage = '';
-        if (error.error instanceof ErrorEvent) {
-            errorMessage = `Error: ${error.error.message}`;
-        } else {
-            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-        }
-
-        return throwError(errorMessage);
-    }
+    return throwError(errorMessage);
+  }
 
 }

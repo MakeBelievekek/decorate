@@ -75,6 +75,9 @@ import {NavigationHeaderComponent} from './components/shared/navigation-header/n
 import {ProductImageCardComponent} from './components/product/product-image-card/product-image-card.component';
 import {ProductDetailsNewComponent} from './components/product/product-details-new/product-details-new.component';
 import { DecorateCarouselComponent } from './components/shared/decorate-carousel/decorate-carousel.component';
+import { ProductModalComponent } from './components/product/product-modal/product-modal.component';
+import { DecorateModalComponent } from './components/shared/decorate-modal/decorate-modal.component';
+import { CssAnimationStateDirective } from './directives/css-animation-state.directive';
 
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -154,6 +157,9 @@ const cookieConfig: NgcCookieConsentConfig = {
     ProductImageCardComponent,
     ProductDetailsNewComponent,
     DecorateCarouselComponent,
+    ProductModalComponent,
+    DecorateModalComponent,
+    CssAnimationStateDirective,
   ],
 
   imports: [
