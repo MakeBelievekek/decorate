@@ -1,106 +1,129 @@
 <form [formGroup]="productForm" method="post">
-  <div class="form-group">
-    <label for="productType">Product Type</label>
-    <select class="form-control" id="productType" (change)="getType()" formControlName="productType">
-      <option *ngFor="let type of this.productTypes">{{type}}</option>
-    </select>
-  </div>
-  <div *ngIf="productType != null">
-    <div class="form-group" *ngIf="productType == 'Curtain'">
-      <label for="  curtainType">Curtain Type</label>
-      <select class="form-control" id="  curtainType" formControlName="curtainType">
-        <option *ngFor="let type of this.curtainTypes">{{type}}</option>
-      </select>
-    </div>
     <div class="form-group">
-      <label for="product">Product Name</label>
-      <input type="text" class="form-control" id="product" formControlName="productName">
+        <label for="productType">Product Type</label>
+        <select class="form-control" id="productType" (change)="getType()" formControlName="productType">
+            <option *ngFor="let type of this.productTypes">{{type}}</option>
+        </select>
     </div>
-    <div class="form-group">
-      <label for="description">Product description</label>
-      <textarea class="form-control" id="description" rows="3" style="" formControlName="productDesc"></textarea>
+    <div *ngIf="productType != null">
+        <div class="form-group" *ngIf="productType == 'Curtain'">
+            <label for="  curtainType">Curtain Type</label>
+            <select class="form-control" id="  curtainType" formControlName="curtainType">
+                <option *ngFor="let type of this.curtainTypes">{{type}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="product">Product Name</label>
+            <input type="text" class="form-control" id="product" formControlName="productName">
+        </div>
+        <div class="form-group">
+            <label for="description">Product description</label>
+            <textarea class="form-control" id="description" rows="3" style="" formControlName="productDesc"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="itemNum">Product ItemNumber</label>
+            <input type="text" class="form-control" id="itemNum" formControlName="productItemNumber">
+        </div>
+        <div class="form-group" *ngIf="productType == 'Wallpaper'">
+            <label for="width">Product Width</label>
+            <input type="number" class="form-control" id="width" formControlName="productWidth">
+        </div>
+        <div class="form-group" *ngIf="productType == 'Curtain'">
+            <label for="height">Product Height</label>
+            <input type="number" class="form-control" id="height" formControlName="productHeight">
+        </div>
+        <div class="form-group">
+            <label for="patternRep">Product Pattern Repetition</label>
+            <input type="number" class="form-control" id="patternRep" formControlName="productPatternRep">
+        </div>
+        <div class="form-group">
+            <label for="price">Product Price</label>
+            <input type="number" class="form-control" id="price" formControlName="productPrice">
+        </div>
+        <div class="form-group">
+            <label for="composition">Product Composition</label>
+            <input type="text" class="form-control" id="composition" formControlName="productComposition">
+        </div>
+        <div class="form-group" *ngIf="productType == 'Curtain'">
+            <label for="cleaningInst">Product Cleaning Instruction</label>
+            <textarea type="text" class="form-control" id="cleaningInst" formControlName="cleaningInst"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="family">Product Family</label>
+            <input type="text" class="form-control" id="family" formControlName="productFamily">
+        </div>
+        <div class="form-group" *ngIf="productType == 'Wallpaper'">
+            <label for="annotation">Product Annotation</label>
+            <input type="text" class="form-control" id="annotation" formControlName="productAnnotation">
+        </div>
+        <div class="form-group" *ngIf="productType == 'Wallpaper'">
+            <label for="glue">Product Recommended Glue</label>
+            <input type="text" class="form-control" id="glue" formControlName="productGlue">
+        </div>
+        <div class="form-group flex-form">
+            <label class="form-control-label">
+                Colors :
+            </label>
+            <div formArrayName="productColors" *ngFor="let color of this.colors; let i = index">
+                <label>
+                    <input class="checkbox" type="checkbox" [formControlName]="i">
+                    {{color.description}}
+                </label>
+            </div>
+        </div>
+        <div class="form-group flex-form">
+            <label class="form-control-label">
+                Styles :
+            </label>
+            <div formArrayName="productStyles" *ngFor="let style of this.styles; let i = index">
+                <label>
+                    <input class="checkbox" type="checkbox" [formControlName]="i">
+                    {{style.description}}
+                </label>
+            </div>
+        </div>
+        <div class="form-group flex-form">
+            <label class="form-control-label">
+                Patterns :
+            </label>
+            <div formArrayName="productPatterns" *ngFor="let pattern of this.patterns; let i = index">
+                <label>
+                    <input class="checkbox" type="checkbox" [formControlName]="i">
+                    {{pattern.description}}
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="primary">Primary Image</label>
+            <input type="text" class="form-control" id="primary" formControlName="primaryImg">
+        </div>
+        <div class="form-group">
+            <label for="second">Secondary Image</label>
+            <input type="text" class="form-control" id="second" formControlName="secondaryImg">
+        </div>
     </div>
-    <div class="form-group">
-      <label for="itemNum">Product ItemNumber</label>
-      <input type="text" class="form-control" id="itemNum" formControlName="productItemNumber">
-    </div>
-    <div class="form-group" *ngIf="productType == 'Wallpaper'">
-      <label for="width">Product Width</label>
-      <input type="number" class="form-control" id="width" formControlName="productWidth">
-    </div>
-    <div class="form-group" *ngIf="productType == 'Curtain'">
-      <label for="height">Product Height</label>
-      <input type="number" class="form-control" id="height" formControlName="productHeight">
-    </div>
-    <div class="form-group">
-      <label for="patternRep">Product Pattern Repetition</label>
-      <input type="number" class="form-control" id="patternRep" formControlName="productPatternRep">
-    </div>
-    <div class="form-group">
-      <label for="price">Product Price</label>
-      <input type="number" class="form-control" id="price" formControlName="productPrice">
-    </div>
-    <div class="form-group">
-      <label for="composition">Product Composition</label>
-      <input type="text" class="form-control" id="composition" formControlName="productComposition">
-    </div>
-    <div class="form-group" *ngIf="productType == 'Curtain'">
-      <label for="cleaningInst">Product Cleaning Instruction</label>
-      <textarea type="text" class="form-control" id="cleaningInst" formControlName="cleaningInst"></textarea>
-    </div>
-    <div class="form-group">
-      <label for="family">Product Family</label>
-      <input type="text" class="form-control" id="family" formControlName="productFamily">
-    </div>
-    <div class="form-group" *ngIf="productType == 'Wallpaper'">
-      <label for="annotation">Product Annotation</label>
-      <input type="text" class="form-control" id="annotation" formControlName="productAnnotation">
-    </div>
-    <div class="form-group" *ngIf="productType == 'Wallpaper'">
-      <label for="glue">Product Recommended Glue</label>
-      <input type="text" class="form-control" id="glue" formControlName="productGlue">
-    </div>
-    <div class="form-group flex-form">
-      <label class="form-control-label">
-        Colors :
-      </label>
-      <div formArrayName="productColors" *ngFor="let color of this.colors; let i = index">
-        <label>
-          <input class="checkbox" type="checkbox" [formControlName]="i">
-          {{color.description}}
-        </label>
-      </div>
-    </div>
-    <div class="form-group flex-form">
-      <label class="form-control-label">
-        Styles :
-      </label>
-      <div formArrayName="productStyles" *ngFor="let style of this.styles; let i = index">
-        <label>
-          <input class="checkbox" type="checkbox" [formControlName]="i">
-          {{style.description}}
-        </label>
-      </div>
-    </div>
-    <div class="form-group flex-form">
-      <label class="form-control-label">
-        Patterns :
-      </label>
-      <div formArrayName="productPatterns" *ngFor="let pattern of this.patterns; let i = index">
-        <label>
-          <input class="checkbox" type="checkbox" [formControlName]="i">
-          {{pattern.description}}
-        </label>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="primary">Primary Image</label>
-      <input type="text" class="form-control" id="primary" formControlName="primaryImg">
-    </div>
-    <div class="form-group">
-      <label for="second">Secondary Image</label>
-      <input type="text" class="form-control" id="second" formControlName="secondaryImg">
-    </div>
-  </div>
-  <a class="btn btn-primary" (click)="saveProduct()">Save</a>
+    <a class="btn btn-primary" (click)="saveProduct()">Save</a>
+
 </form>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div>
+            <h6 class="head-title margin-top-8"><span>Upload from excel</span></h6>
+        </div>
+    </div>
+
+    <div class="col-sm-6 text-center">
+
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFile" name="myfile"
+                   (change)="onFileChange($event)">
+            <label class="custom-file-label" for="customFile">{{fileInputLabel || 'Choose File'}}</label>
+        </div>
+
+    </div>
+    <div class="col-sm-6 text-center">
+        <button class="btn btn-primary" (click)="saveExcel()">save</button>
+    </div>
+</div>
+

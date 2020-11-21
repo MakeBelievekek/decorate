@@ -1,15 +1,35 @@
 <div class="admin-category">
-  <form [formGroup]="categoryForm" method="post">
-    <div class="form-group">
-      <label for="type">Attribute Type</label>
-      <select type="text" class="form-control" id="type" formControlName="attributeType">
-        <option *ngFor="let type of this.attributeTypes">{{type}}</option>
-      </select>
+    <form [formGroup]="categoryForm" method="post">
+        <div class="form-group">
+            <label for="type">Attribute Type</label>
+            <select type="text" class="form-control" id="type" formControlName="attributeType">
+                <option *ngFor="let type of this.attributeTypes">{{type}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="category">Attribute Name</label>
+            <input type="text" class="form-control" id="category" formControlName="attributeName">
+        </div>
+        <a class="btn btn-primary" (click)="saveCategory()">Save</a>
+    </form>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div>
+            <h6 class="head-title margin-top-8"><span>Upload from excel</span></h6>
+        </div>
     </div>
-    <div class="form-group">
-      <label for="category">Attribute Name</label>
-      <input type="text" class="form-control" id="category" formControlName="attributeName">
+
+    <div class="col-sm-6 text-center">
+
+        <div class="custom-file">
+            <input type="file" class="custom-file-input" id="customFile" name="myfile"
+                   (change)="onFileChange($event)">
+            <label class="custom-file-label" for="customFile">{{fileInputLabel || 'Choose File'}}</label>
+        </div>
+
     </div>
-    <a class="btn btn-primary" (click)="saveCategory()">Save</a>
-  </form>
+    <div class="col-sm-6 text-center">
+        <button class="btn btn-primary" (click)="saveExcel()">save</button>
+    </div>
 </div>

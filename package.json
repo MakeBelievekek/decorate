@@ -45,7 +45,8 @@
     "save": "^2.4.0",
     "tslib": "^1.14.1",
     "web-animations-js": "^2.3.2",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "xlsx": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.0",
