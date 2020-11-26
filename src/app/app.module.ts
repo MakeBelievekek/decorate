@@ -76,6 +76,7 @@ import { CssAnimationStateDirective } from './directives/css-animation-state.dir
 import { ReloadOnNgForNewElementDirective } from './directives/reload-on-ng-for-new-element.directive';
 import { NameShortenerPipe } from './pipes/name-shortener.pipe';
 import { LocalStorageService } from './services/localStorage.service';
+import { EmptyBasketComponent } from './components/basket/empty-basket/empty-basket.component';
 
 const cookieConfig: NgcCookieConsentConfig = {
     'cookie': {
@@ -157,6 +158,7 @@ const cookieConfig: NgcCookieConsentConfig = {
         ProductModalComponent,
         DecorateModalComponent,
         CssAnimationStateDirective,
+        EmptyBasketComponent,
     ],
 
     imports: [

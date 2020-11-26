@@ -130,7 +130,7 @@ i {
   flex-direction: column;
   z-index: 100;
   top: 20%;
-  background: white;
+  background: var(--primaryWhite);
   width: 85vw;
   -webkit-box-shadow: 10px 10px 44px -13px rgba(0, 0, 0, 0.63);
   -moz-box-shadow: 10px 10px 44px -13px rgba(0, 0, 0, 0.63);
@@ -225,7 +225,7 @@ i {
   flex: 1 0 auto;
   z-index: 100;
   top: 20%;
-  background: white;
+  background: var(--primaryWhite);
   min-height: 75vh;
   max-height: 75vh;
   width: 85vw;

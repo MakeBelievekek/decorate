@@ -138,20 +138,20 @@
       </div>
     </div>
     <div *ngIf="this.openDesc === 'productDetails'" class="product-details-table">
-      <div class="product-details-table-item-left" style="background-color: whitesmoke">Szín</div>
+      <div class="product-details-table-item-left" style="background-color: var(--primaryWhite)">Szín</div>
       <div class="product-details-table-item-right"
-           style="background-color: whitesmoke">{{this.dummyProduct.patternRep}}</div>
+           style="background-color: var(--primaryWhite)">{{this.dummyProduct.patternRep}}</div>
       <div class="product-details-table-item-left">Anyagösszetétel</div>
       <div class="product-details-table-item-right">{{this.dummyProduct.composition}}</div>
-      <div class="product-details-table-item-left" style="background-color: whitesmoke">Minta</div>
+      <div class="product-details-table-item-left" style="background-color: var(--primaryWhite)">Minta</div>
       <div class="product-details-table-item-right"
-           style="background-color: whitesmoke">{{this.dummyProduct.annotation}}, meg ez meg az meg még
+           style="background-color: var(--primaryWhite)">{{this.dummyProduct.annotation}}, meg ez meg az meg még
       </div>
       <div class="product-details-table-item-left">Stílus</div>
       <div class="product-details-table-item-right">{{this.dummyProduct.curtainType}}</div>
-      <div class="product-details-table-item-left" style="background-color: whitesmoke">Mintaismétlődés</div>
+      <div class="product-details-table-item-left" style="background-color: var(--primaryWhite)">Mintaismétlődés</div>
       <div class="product-details-table-item-right"
-           style="background-color: whitesmoke">{{this.dummyProduct.patternRep}}</div>
+           style="background-color: var(--primaryWhite)">{{this.dummyProduct.patternRep}}</div>
     </div>
     <div class="product-toggle" (click)="this.handelDesc('shipping')">
       <div class="product-shipping-details">SZÁLLÍTÁSI INFORMÁCIÓ</div>

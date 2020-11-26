@@ -62,7 +62,7 @@
     }
 
     .img-text {
-        color: white;
+        color: var(--primaryWhite);
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-size: 2vw;
         font-weight: bolder;
@@ -132,7 +132,7 @@
     }
 
     .img-text {
-        color: white;
+        color: var(--primaryWhite);
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-size: 5vw;
         font-weight: bolder;
@@ -216,7 +216,7 @@
     }
 
     .img-text {
-        color: white;
+        color: var(--primaryWhite);
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-size: 5vw;
         font-weight: bolder;

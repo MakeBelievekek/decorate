@@ -1,32 +1,40 @@
-import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
-import {Observable} from 'rxjs';
-import {ProductListItemForLocal} from '../models/productListItemForLocal';
-import {LocalStorageService} from './localStorage.service';
-import {ProductService} from './product.service';
+import { Injectable } from '@angular/core';
+import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { Observable } from 'rxjs';
+import { ProductListItemForLocal } from '../models/productListItemForLocal';
+import { LocalStorageService } from './localStorage.service';
+import { ProductService } from './product.service';
 
 const CART_KEY = 'local_cartList';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class BasketContentResolver implements Resolve<ProductListItemForLocal[]> {
 
-  constructor(private localStorageService: LocalStorageService, private productService: ProductService) {
-  }
+    isEmpty: boolean = false;
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ProductListItemForLocal[]> {
-
-    if (this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
-      const productIds = [];
-      for (const prod of this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
-        productIds.push(prod.id);
-        console.log(productIds);
-      }
-      productIds.map(String);
-      const prodString = productIds.toString();
-      return this.productService.getProductsForLocalStorage(prodString);
+    constructor(private localStorageService: LocalStorageService, private productService: ProductService) {
     }
-  }
+
+    resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ProductListItemForLocal[]> {
+        if (this.localStorageService.getItemsFromLocalStorage(CART_KEY).length != 0) {
+            this.isEmpty = true;
+        }
+        console.log(this.isEmpty);
+        if (this.isEmpty) {
+            console.log(this.localStorageService.getItemsFromLocalStorage(CART_KEY));
+            const productIds = [];
+            for (const prod of this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
+                productIds.push(prod.id);
+                console.log(productIds);
+            }
+            productIds.map(String);
+            const prodString = productIds.toString();
+            return this.productService.getProductsForLocalStorage(prodString);
+        } else {
+            return null;
+        }
+    }
 
 }

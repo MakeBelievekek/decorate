@@ -71,7 +71,7 @@ h3 {
   width: 100%;
   justify-content: space-evenly;
   padding: 10px 2.5%;
-  background-color: white;
+  background-color: var(--primaryWhite);
 }
 
 .product-details-table-item-left {

@@ -3,7 +3,7 @@
     grid-template-columns: 1fr;
     grid-template-rows: 140px;
     grid-template-areas: ' b1 ';
-    background-color: white;
+    background-color: var(--primaryWhite);
 }
 h2::before {
     content: "";

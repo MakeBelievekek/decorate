@@ -34,14 +34,14 @@
     p {
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-size: 1.9vw;
-        color: whitesmoke;
+        color: var(--primaryWhite);
         padding-top: 10px;
     }
 
     span {
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-size: 0.9vw;
-        color: white;
+        color: var(--primaryWhite);
     }
 }
 @media screen and (max-width: 899px) {
@@ -93,7 +93,7 @@
     span {
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
         font-size: 3vw;
-        color: white;
+        color: var(--primaryWhite);
     }
 
 }
