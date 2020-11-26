@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ScreenSizeModel } from '../../models/ScreenSize.model';
 import { HomeService } from '../../services/home.service';
+import { LocalStorageService } from '../../services/localStorage.service';
 import { PaymentService } from '../../services/payment.service';
 import { ProductService } from '../../services/product.service';
 import { ScreenService } from '../../services/screen.service';
@@ -17,7 +18,7 @@ const CASH_KEY = 'valami';
 export class HomeComponent implements OnInit {
 
     constructor(private productService: ProductService, private home: HomeService, private route: ActivatedRoute,
-                private paymentService: PaymentService, private toastr: ToastrService, private screenService: ScreenService) {
+                private paymentService: PaymentService, private toastr: ToastrService, private screenService: ScreenService, private localStorageService: LocalStorageService) {
     }
 
     screenSize: ScreenSizeModel = new class implements ScreenSizeModel {
@@ -35,8 +36,11 @@ export class HomeComponent implements OnInit {
     furnitureFabricImg: string;
     paymentId: string;
 
+
     ngOnInit(): void {
+        this.changeContentOnResize();
         this.images = this.route.snapshot.data.images;
+        console.log(this.localStorageService.getItemsFromLocalStorage('local_cartlist'));
         this.route.queryParams.subscribe(params => {
             this.paymentId = params['paymentId'];
             if (this.paymentId) {

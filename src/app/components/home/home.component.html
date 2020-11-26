@@ -1,5 +1,8 @@
+<nav>
+    <app-navbar></app-navbar>
+</nav>
+<app-content-header></app-content-header>
 <div class="content-margin">
-
     <app-content [darkener]="darkenerImg" [pillow]="pillowImg" [translucent]="translucentImg"></app-content>
     <app-sales *ngIf="this.screenSize.width > 499"></app-sales>
     <app-third-content [wallpaper]="wallpaperImg" [decoration]="decorationImg"></app-third-content>
@@ -7,5 +10,8 @@
     <app-second-content [blackout]="blackoutImg" [children]="childrenImg"
                         [furniture]="furnitureFabricImg"></app-second-content>
     <app-newsletter></app-newsletter>
-
 </div>
+<footer>
+    <app-footer></app-footer>
+</footer>
+

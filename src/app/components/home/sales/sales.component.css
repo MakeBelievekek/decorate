@@ -20,7 +20,7 @@
     }
 
     H4 {
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-family: 'Old Standard TT', serif;
         font-weight: bolder;
         color: var(--primaryLetterBlack);
         font-size: 2vw;
@@ -123,7 +123,7 @@
     }
 
     H4 {
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-family: 'Old Standard TT', serif;
         font-weight: bolder;
         color: var(--primaryLetterBlack);
         margin: 0;

@@ -5,7 +5,6 @@ footer {
 }
 
 a {
-    font-family: Arial, fantasy;
     color: var(--primaryLetterBlack);
     text-decoration: none;
     font-size: 1rem;
@@ -13,7 +12,12 @@ a {
     cursor: pointer;
 }
 
+p {
+    font-family: 'Old Standard TT', serif;
+}
+
 h1 {
+    font-family: 'Old Standard TT', serif;
     font-weight: bold;
     color: var(--primaryGreen);
 }
@@ -41,6 +45,8 @@ em {
     .footer-media {
         grid-column: 2/ 3;
         padding-left: 3%;
+        justify-self: center;
+        text-align: center;
     }
 
     .footer-menu {
@@ -76,7 +82,7 @@ em {
     }
 }
 
-@media all and (min-width: 675px) and (max-width: 1349px) {
+@media all and (min-width: 685px) and (max-width: 1349px) {
     footer {
         display: grid;
         grid-auto-flow: column;
@@ -87,8 +93,7 @@ em {
 
     }
 
-
-    .footer-menu, .footer-info {
+    .footer-menu, .footer-info, .footer-contact {
         justify-self: center;
         width: 275px;
     }
@@ -97,12 +102,7 @@ em {
         grid-area: med;
         width: 350px;
         justify-self: center;
-    }
-
-
-    .footer-menu {
-        grid-area: men;
-
+        text-align: center;
     }
 
     .footer-menu {
@@ -115,8 +115,6 @@ em {
 
     .footer-contact {
         grid-area: cont;
-        justify-self: center;
-        width: 275px;
     }
 
     .footer-pay {
@@ -126,46 +124,99 @@ em {
 }
 
 
-@media all and (max-width: 674px) {
+@media all and (min-width: 430px) and (max-width: 685px) {
     footer {
         display: grid;
         padding: 2em 0.5em 2em;
-        grid-auto-flow: column;
         grid-row-gap: 3em;
+        grid-auto-columns: 1fr 1fr;
+        grid-template-areas: "med med" "men inf" "cont cont" "pay pay";
+    }
 
-        grid-template-areas: "men inf" "cont cont" "med med" "pay pay";
+    .description {
+        padding: 10px 0 20px 0;
+        color: var(--primaryLetterBlack);
+        font-size: 1rem;
     }
 
     .footer-media {
         grid-area: med;
-        width: 95%;
         justify-self: center;
+        text-align: center;
+        width: 100%;
     }
-
 
     .footer-menu {
         grid-area: men;
-        width: 150px;
         justify-self: center;
+        text-align: left;
+        width: 100%;
+        margin-left: 30px;
     }
 
     .footer-info {
         grid-area: inf;
-        width: 100px;
         justify-self: center;
+        text-align: right;
+        width: 100%;
+        margin-right: 30px;
     }
 
     .footer-contact {
         grid-area: cont;
         justify-self: center;
-        width: 200px;
+        text-align: center;
+        width: 100%;
     }
 
     .footer-pay {
-        justify-self: center;
+        text-align: center;
         width: 95%;
         grid-area: pay;
     }
+
+    .contact-social-container {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .fb-page, .underline {
+        display: none;
+    }
+
+
+    h1 {
+        font-size: 7vw;
+    }
+
+    p {
+        font-size: 4vw;
+        font-family: 'Old Standard TT', serif;
+        color: var(--primaryLetterBlack);
+    }
+
+    a {
+        font-size: 1rem;
+        color: var(--primaryLetterBlack);
+    }
+}
+
+@media all and  (max-width: 429px) {
+    .fb-page, .underline, .footer-media {
+        display: none;
+    }
+
+    .footer-menu, .footer-info, .footer-contact, .footer-pay {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .contact-social-container {
+        justify-content: center;
+        align-items: center;
+    }
+
+
 }
 
 .flex-container {

@@ -14,7 +14,7 @@ export class LocalStorageService {
   }
 
   public storeOnLocalStorage(item: LocalProductModel, key: string): void {
-    const currentCartList = this.storage.get(key) || [];
+    let currentCartList = this.storage.get(key) || [];
     currentCartList.push({
       id: item.id,
       qty: item.qty,
@@ -23,7 +23,7 @@ export class LocalStorageService {
   }
 
   storeDetailsOnLocalStorage(data: LocalDetailsModel, key: string) {
-    const details = this.storage.get(key) || [];
+    let details = this.storage.get(key) || [];
     details.push({
       lastname: data.lastName,
       firstname: data.firstName,
@@ -33,8 +33,8 @@ export class LocalStorageService {
   }
 
   public getItemIdFromLocalStorage(key: string) {
-    const id: number [] = [];
-    for (const prod of this.storage.get(key) || []) {
+    let id: number [] = [];
+    for (let prod of this.storage.get(key) || []) {
       id.push(prod.id);
     }
     return id;
@@ -46,8 +46,8 @@ export class LocalStorageService {
   }
 
   updateItem(id: number, qty: number, key: string) {
-    const cart = this.getItemsFromLocalStorage(key);
-    for (const prod of cart) {
+    let cart = this.getItemsFromLocalStorage(key);
+    for (let prod of cart) {
       if (prod.id === id) {
         prod.qty = qty;
       }

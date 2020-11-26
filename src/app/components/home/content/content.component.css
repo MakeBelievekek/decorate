@@ -8,11 +8,7 @@
     cursor: pointer;
   }
 
-  span {
-    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-    font-size: 0.9vw;
-    color: white;
-  }
+
 
   .firstCard {
     grid-area: a1;

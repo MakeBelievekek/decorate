@@ -1,5 +1,7 @@
 @import "~animate.css/animate.min.css";
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital@1&display=swap');
+@import url(//db.onlinewebfonts.com/c/769d8053096aab819ab7a61471523cb5?family=PlutoSansW01-Regular);
 
 *, *::before, *::after {
     box-sizing: border-box;
@@ -24,6 +26,9 @@ p {
     margin: 0px;
     color: var(--primaryLetterBlack);
 }
+
+
+
 
 @font-face {
     font-family: 'Great Vibes';
@@ -94,10 +99,10 @@ p {
     }
 
     .mozaik-text {
-        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+        font-family: 'Old Standard TT', serif;
         font-weight: bolder;
-        font-size: 3.5vw;
-        line-height: 0.9;
+        font-size: 3.3vw;
+        line-height:1;
         color: WhiteSmoke;
     }
 
@@ -119,10 +124,10 @@ p {
     }
 
     .text {
-        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+        font-family: 'Old Standard TT', serif;
         font-weight: normal;
         font-size: 4vw;
-        line-height: 0.9;
+        line-height: 1;
         color: white;
         margin-top: 40px;
     }
@@ -138,7 +143,7 @@ p {
         background: none;
         margin-top: 10px;
         margin-bottom: 10px;
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-family: 'Old Standard TT', serif;
         font-size: 1.2vw;
         color: white;
     }
@@ -195,7 +200,7 @@ p {
     }
 
     .text {
-        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+        font-family: 'Old Standard TT', serif;
         font-size: 9vw;
         font-weight: bolder;
         color: white;
@@ -213,7 +218,7 @@ p {
         padding-bottom: 5px;
         width: 30vw;
         background: none;
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-family: 'Old Standard TT', serif;
         font-size: 3vw;
         color: white;
     }
@@ -255,7 +260,7 @@ p {
     }
 
     .mozaik-text {
-        font: 400 130px/0.8 'Great Vibes', Helvetica, sans-serif;
+        font-family: 'Old Standard TT', serif;
         font-weight: bolder;
         color: white;
         font-size: 6vw;
