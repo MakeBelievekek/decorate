@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ScreenControlModel } from '../../models/screenControl.model';
+import { ScreenSizeModel } from '../../models/ScreenSize.model';
 import { LocalStorageService } from '../../services/localStorage.service';
 import { ModalService } from '../../services/modal.service';
 import { ScreenService } from '../../services/screen.service';
@@ -16,7 +17,10 @@ const CART_KEY = 'local_cartList';
 export class NavbarComponent implements OnInit {
   screenControl: ScreenControlModel;
   numberOfItemsInBasket: number = 0;
-
+  screenSize: ScreenSizeModel = new class implements ScreenSizeModel {
+    height: number;
+    width: number;
+  };
 
   constructor(private modalService: ModalService, private screenService: ScreenService, private localStorageService: LocalStorageService) {
   }
@@ -33,9 +37,14 @@ export class NavbarComponent implements OnInit {
   }
 
   toggleProductsModal() {
+    console.log("valami")
     this.modalService.toggleModal('products');
   }
   toggleBasketModal() {
     this.modalService.toggleModal('basket');
+  }
+  @HostListener('window:resize', ['$event'])
+  changeContentOnResize() {
+    this.screenSize = this.screenService.getScreenSize();
   }
 }
