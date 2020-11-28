@@ -1,3 +1,7 @@
+*:focus {
+    outline: none;
+}
+
 p {
     font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
     font-size: 1.9vw;

@@ -1,55 +1,61 @@
-nav {
-  display: flex;
-  background: var(--primaryGreen);
-  height: 60px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 0px;
-  padding: 0px;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
-  z-index: 1030
+*:focus {
+    outline: none;
+}
+.menu-spacer {
+    flex: 1 1 auto;
 }
 
-nav ul {
-  float: left;
+mat-toolbar {
+    background-color: var(--primaryGreen);
+    color: black;
 }
 
-nav ul li {
-  float: left;
-  list-style: none;
-  position: relative;
+mat-toolbar-row {
+    padding: 0 30px;
 }
 
-nav div a {
-  display: block;
-  font-family: Arial;
-  color: #222;
-  font-size: 1rem;
-  padding: 19.5px 24px;
-  text-decoration: none;
+.button-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
 }
 
-
-nav div a:hover {
-  background-color: var(--primaryWhite);
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+.nav-btn {
+    display: flex;
+    height: 80%;
+    align-items: center;
+    padding: 0 20px;
+    cursor: pointer;
 }
 
-
-.make-left {
-  padding-left: 45px !important;
+.nav-btn:hover {
+    color: black;
+    background-color: var(--primaryGray);
+}
+p{
+    font-size: .8rem;
+    color: black;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
-.make-right {
-  padding-right: 45px !important;
+mat-sidenav {
+    background-color: var(--primaryGray);
+    width: 100%;
 }
 
-.burger {
-  padding: 12px 20px 17.5px 30px !important;
-  text-decoration: none;
+.mat-list-item {
+    font-size: 1rem;
+    text-transform: uppercase;
+    text-decoration: none;
 }
 
+mat-nav-list > a {
+    padding: 0 14px;
+}
 
-
+em {
+    padding-right: 10px;
+    font-size: 1rem;
+}

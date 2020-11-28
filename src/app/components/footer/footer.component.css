@@ -1,3 +1,7 @@
+*:focus {
+    outline: none;
+}
+
 footer {
     border-top: 1px solid var(--primaryLetterBlack);
     background: var(--primaryGray);
@@ -202,18 +206,23 @@ em {
 }
 
 @media all and  (max-width: 429px) {
+    footer {
+        padding: 2em 0.5em 2em;
+    }
+
     .fb-page, .underline, .footer-media {
         display: none;
     }
 
     .footer-menu, .footer-info, .footer-contact, .footer-pay {
         text-align: center;
-        margin: 10px 0;
+        margin: 10px 0 0 0;
     }
 
     .contact-social-container {
         justify-content: center;
         align-items: center;
+        padding: 0;
     }
 
 
@@ -240,6 +249,6 @@ em {
     padding-top: 1.5em;
 }
 
-.contact-social-container i {
+.contact-social-container {
     padding-right: 0.75em;
 }

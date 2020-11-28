@@ -1,10 +1,12 @@
-<div class="products-container" #productContainer>
-  <div class="products-content-wrapper" #productContent>
-    <header>
-      <app-products-header></app-products-header>
-    </header>
-    <app-products-filter (productContentScreenAttributes)="setScreenAttributes()"></app-products-filter>
-    <app-active-filters *ngIf="this.screenControl.largeScreen"></app-active-filters>
-    <app-products-list></app-products-list>
-  </div>
-</div>
+<app-navbar>
+    <div class="products-container" #productContainer>
+        <div class="products-content-wrapper" #productContent>
+            <header>
+                <app-products-header></app-products-header>
+            </header>
+            <app-products-filter (productContentScreenAttributes)="setScreenAttributes()"></app-products-filter>
+            <app-active-filters *ngIf="this.screenControl.largeScreen"></app-active-filters>
+            <app-products-list></app-products-list>
+        </div>
+    </div>
+</app-navbar>

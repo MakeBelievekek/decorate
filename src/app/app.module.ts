@@ -1,16 +1,23 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NbSpinnerModule, NbThemeModule } from '@nebular/theme';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
+import { NgxLoadingModule } from 'ngx-loading';
 import { ToastrModule } from 'ngx-toastr';
 import { StorageServiceModule } from 'ngx-webstorage-service';
 import { AccordionModule } from 'primeng/accordion';
@@ -41,6 +48,7 @@ import { BasketItemComponent } from './components/basket/basket-item/basket-item
 import { PlusMinusInputComponent } from './components/basket/basket-item/plus-minus-input/plus-minus-input.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { CheckoutComponent } from './components/basket/checkout/checkout.component';
+import { EmptyBasketComponent } from './components/basket/empty-basket/empty-basket.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContentHeaderComponent } from './components/home/content-header/content-header.component';
 import { ContentComponent } from './components/home/content/content.component';
@@ -76,7 +84,7 @@ import { CssAnimationStateDirective } from './directives/css-animation-state.dir
 import { ReloadOnNgForNewElementDirective } from './directives/reload-on-ng-for-new-element.directive';
 import { NameShortenerPipe } from './pipes/name-shortener.pipe';
 import { LocalStorageService } from './services/localStorage.service';
-import { EmptyBasketComponent } from './components/basket/empty-basket/empty-basket.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 const cookieConfig: NgcCookieConsentConfig = {
     'cookie': {
@@ -106,6 +114,7 @@ const cookieConfig: NgcCookieConsentConfig = {
         'policy': 'Cookie Policy',
     },
 };
+
 
 @NgModule({
     declarations: [
@@ -159,9 +168,13 @@ const cookieConfig: NgcCookieConsentConfig = {
         DecorateModalComponent,
         CssAnimationStateDirective,
         EmptyBasketComponent,
+
     ],
 
     imports: [
+        FlexLayoutModule,
+        NbSpinnerModule,
+        NbThemeModule.forRoot(),
         AccordionModule,
         NgcCookieConsentModule.forRoot(cookieConfig),
         MatBadgeModule,
@@ -190,6 +203,12 @@ const cookieConfig: NgcCookieConsentConfig = {
         OverlayPanelModule,
         ScrollPanelModule,
         CarouselModule,
+        NgxLoadingModule.forRoot({}),
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule,
+        MatButtonModule,
+        LayoutModule,
     ],
     providers: [LocalStorageService, ConfirmationService, MessageService],
     bootstrap: [AppComponent],

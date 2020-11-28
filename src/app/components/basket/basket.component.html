@@ -1,14 +1,13 @@
-<nav>
-    <app-navbar></app-navbar>
-</nav>
-<app-content-header></app-content-header>
-<div class="basket-container">
-    <div class="basket-wrapper">
-        <app-basket-header></app-basket-header>
-        <app-basket-content [productsFromLocalStorage]="productsFromLocalStorage"></app-basket-content>
-        <app-basket-bottom></app-basket-bottom>
+<app-navbar>
+    <app-content-header></app-content-header>
+    <div class="basket-container">
+        <div class="basket-wrapper">
+            <app-basket-header></app-basket-header>
+            <app-basket-content [productsFromLocalStorage]="productsFromLocalStorage"></app-basket-content>
+            <app-basket-bottom></app-basket-bottom>
+        </div>
     </div>
-</div>
-<footer>
-    <app-footer></app-footer>
-</footer>
+    <footer>
+        <app-footer></app-footer>
+    </footer>
+</app-navbar>

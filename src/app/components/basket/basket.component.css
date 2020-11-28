@@ -1,3 +1,7 @@
+*:focus {
+    outline: none;
+}
+
 .basket-container {
     display: grid;
     grid-template-columns: minmax(auto, 1fr) minmax(800px, 3.5fr) minmax(auto, 1fr);

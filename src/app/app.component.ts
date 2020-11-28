@@ -1,8 +1,9 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { NgcCookieConsentService, NgcInitializeEvent, NgcStatusChangeEvent } from 'ngx-cookieconsent';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ModalControllerModel } from './models/modalController.model';
 import { ScreenControlModel } from './models/screenControl.model';
+import { LoadingService } from './services/loading.service';
 import { LocalStorageService } from './services/localStorage.service';
 import { ModalService } from './services/modal.service';
 import { ScreenService } from './services/screen.service';
@@ -23,8 +24,12 @@ export class AppComponent implements OnInit, OnDestroy {
     private statusChangeSubscription: Subscription;
     private revokeChoiceSubscription: Subscription;
     private noCookieLawSubscription: Subscription;
+    isSpinnerVisible$: Observable<boolean> = this.loadingService.isNavigationPending$;
 
-    constructor(private modalService: ModalService, private screenService: ScreenService, private localStorageService: LocalStorageService, private ccService: NgcCookieConsentService) {
+
+    constructor(private modalService: ModalService, private screenService: ScreenService
+        , private localStorageService: LocalStorageService, private ccService: NgcCookieConsentService
+        , private loadingService: LoadingService) {
     }
 
     ngOnDestroy(): void {
@@ -37,6 +42,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
     ngOnInit(): void {
+        console.log(this.isSpinnerVisible$);
         this.modalControl = this.modalService.modalControl;
         this.screenControl = this.screenService.screenControl;
         this.changeContentOnResize();

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './components/admin/admin.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { CheckoutComponent } from './components/basket/checkout/checkout.component';
@@ -32,6 +32,9 @@ const routes: Routes = [
         },
     },
 ];
+const extraOptions: ExtraOptions = {
+    'enableTracing': true,
+};
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
