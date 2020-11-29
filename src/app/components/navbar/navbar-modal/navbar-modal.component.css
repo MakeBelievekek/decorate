@@ -20,7 +20,7 @@
     z-index: 1; /* Sit on top */
     padding-top: 65px; /* Location of the box */
     padding-left: 114px;
-    left: 0;
+    left: 17px;
     top: 0;
     width: 500px; /* Full width */
     overflow: auto; /* Enable scroll if needed */

@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar class="fixed-top">
     <mat-toolbar-row>
         <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
             <mat-icon>menu</mat-icon>
@@ -14,7 +14,7 @@
             <div class="nav-btn">
                 <p>Rólunk</p>
             </div>
-            <div class="nav-btn" >
+            <div class="nav-btn">
                 <p>Kívánságlista</p>
             </div>
             <div class="nav-btn" *ngIf="this.screenSize.width > 1080">
@@ -75,3 +75,4 @@
     <ng-content>
     </ng-content>
 </mat-sidenav-container>
+<app-navbar-modal></app-navbar-modal>

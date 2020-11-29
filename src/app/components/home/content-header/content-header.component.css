@@ -5,11 +5,11 @@
 @media screen and (min-width: 1000px) {
     .content-header {
         background-color: var(--primaryGray);
-        height: 140px;
+        height: 210px;
         display: grid;
-        grid-template-rows:  2fr;
+        grid-template-rows: 1fr 2fr;
         grid-template-columns: minmax(360px, 0.4fr) 1fr minmax(350px, 0.4fr);
-        grid-template-areas: "i1 i2 i3";
+        grid-template-areas: "h1 h2 h3" "i1 i2 i3";
         padding-left: 32px;
         padding-right: 32px;
         margin-top: 0;
@@ -104,7 +104,7 @@
 @media screen and (max-width: 999px) {
     .content-header {
         background-color: var(--primaryGray);
-        height: 140px;
+        height: 200px;
         display: flex;
         align-items: flex-end;
         justify-content: center;
