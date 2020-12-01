@@ -1,4 +1,4 @@
-<div class="content-header">
+<div class="content-header" *ngIf="this.screenSize.width > 730">
     <div class="icons">
         <div class="dot">
             <em class="fa fa-facebook-square fa-2x" placement="top" ngbTooltip="Facebook"></em>
@@ -10,7 +10,7 @@
     <div class="logo">
         <img src="assets/logo5.png" alt="">
     </div>
-    <div class="phone">
+    <div class="phone" *ngIf="this.screenSize.width > 730">
         <div class="telIcon">
             <div class="fa fa-mobile-phone fa-2x"></div>
             <p>+3670 394 3337</p>
@@ -19,5 +19,21 @@
             <em class="fa fa-envelope-o fa-2x" placement="top" ngbTooltip="Írj egy emailt"></em>
         </div>
     </div>
-</div>
 
+</div>
+<div class="content-header" *ngIf="this.screenSize.width < 731">
+    <div class="icons">
+        <div class="dot">
+            <div class="fa fa-mobile-phone fa-2x"></div>
+        </div>
+    </div>
+    <div class="logo">
+        <img src="assets/logo5.png" alt="">
+    </div>
+    <div class="phone" *ngIf="this.screenSize.width < 731">
+        <div class="mail-icon">
+            <em class="fa fa-envelope-o fa-2x" placement="top" ngbTooltip="Írj egy emailt"></em>
+        </div>
+    </div>
+
+</div>

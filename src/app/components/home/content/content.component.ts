@@ -10,6 +10,7 @@ export class ContentComponent implements OnInit {
 
     constructor() { }
 
+    loaded: boolean = false;
     @Input() darkener: string;
     @Input() translucent: string;
     @Input() pillow: string;

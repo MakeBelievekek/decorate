@@ -13,6 +13,15 @@
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/hu_HU/sdk.js#xfbml=1&version=v9.0"
         nonce="kof9IQEo"></script>
 <noscript>Please enable JavaScript to continue using this application.</noscript>
+<script>
+    document.onreadystatechange = function () {
+        if (document.readyState !== 'complete') {
+            document.querySelector('body').style.visibility = 'hidden';
+        } else {
+            document.querySelector('body').style.visibility = 'visible';
+        }
+    };
+</script>
 </body>
 
 </html>
