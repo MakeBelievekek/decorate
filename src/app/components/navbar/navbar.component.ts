@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, HostListener, OnInit } from '@angular/core';
 import { ScreenControlModel } from '../../models/screenControl.model';
 import { ScreenSizeModel } from '../../models/ScreenSize.model';
 import { LocalStorageService } from '../../services/localStorage.service';
@@ -12,39 +12,40 @@ const CART_KEY = 'local_cartList';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
-
 })
 export class NavbarComponent implements OnInit {
-  screenControl: ScreenControlModel;
-  numberOfItemsInBasket: number = 0;
-  screenSize: ScreenSizeModel = new class implements ScreenSizeModel {
-    height: number;
-    width: number;
-  };
+    screenControl: ScreenControlModel;
+    numberOfItemsInBasket: number = 0;
+    screenSize: ScreenSizeModel = new class implements ScreenSizeModel {
+        height: number;
+        width: number;
+    };
 
-  constructor(private modalService: ModalService, private screenService: ScreenService, private localStorageService: LocalStorageService) {
-  }
-
-  ngOnInit(): void {
-    this.screenControl = this.screenService.screenControl;
-    if (this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
-      this.numberOfItemsInBasket = this.localStorageService.getItemsFromLocalStorage(CART_KEY).length;
+    constructor(private modalService: ModalService, private screenService: ScreenService, private localStorageService: LocalStorageService) {
     }
-  }
 
-  toggleNavigationModal() {
-    this.modalService.toggleModal('navigation');
-  }
+    ngOnInit(): void {
+        this.screenControl = this.screenService.screenControl;
+        if (this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
+            this.numberOfItemsInBasket = this.localStorageService.getItemsFromLocalStorage(CART_KEY).length;
+        }
+    }
 
-  toggleProductsModal() {
-    console.log("valami")
-    this.modalService.toggleModal('products');
-  }
-  toggleBasketModal() {
-    this.modalService.toggleModal('basket');
-  }
-  @HostListener('window:resize', ['$event'])
-  changeContentOnResize() {
-    this.screenSize = this.screenService.getScreenSize();
-  }
+    toggleNavigationModal() {
+        this.modalService.toggleModal('navigation');
+    }
+
+    toggleProductsModal() {
+        console.log('valami');
+        this.modalService.toggleModal('products');
+    }
+
+    toggleBasketModal() {
+        this.modalService.toggleModal('basket');
+    }
+
+    @HostListener('window:resize', ['$event'])
+    changeContentOnResize() {
+        this.screenSize = this.screenService.getScreenSize();
+    }
 }

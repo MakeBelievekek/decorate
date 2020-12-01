@@ -2,12 +2,46 @@
     outline: none;
 }
 
+.img-hover-zoom {
+    overflow: hidden;
+}
+
+.img-hover-zoom img {
+    transition: transform 1s ease;
+}
+
+.img-hover-zoom:hover img {
+    transform: scale(1.2);
+}
 @media screen and (min-width: 900px) {
     .content {
         height: 32vw;
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-areas: "a1 a2 ";
+        cursor: pointer;
+    }
+
+
+    .firstCard {
+        grid-area: a1;
+        position: relative;
+        text-align: center;
+    }
+
+    .secondCard {
+        grid-area: a2;
+        position: relative;
+        text-align: center;
+    }
+
+    .title {
+        font-family: 'Old Standard TT', serif;
+        font-weight: normal;
+        font-size: 4vw;
+        line-height: 1;
+        color: var(--primaryWhite);
+        margin-top: 40px;
     }
 
     p {
@@ -17,26 +51,28 @@
         padding-top: 10px;
     }
 
-    .firstCard {
-        grid-area: a1;
-        display: grid;
-        grid-template-columns: 1fr 1fr 0.2fr;
-        grid-template-rows: 0.5fr 1fr 0.5fr;
-        grid-template-areas: "a b ." "d e ." "i j .";
+    .text-block {
+        position: absolute;
+        bottom: 2vw;
+        right: 2vw;
+        width: 32vw;
+        height: 20vw;
+        background: rgba(0, 0, 0, 0.4);
+        color: var(--primaryWhite);
+        padding: 0 20px;
     }
 
-    .secondCard {
-        grid-area: a2;
-        display: grid;
-        grid-template-columns: 1fr 1fr 0.2fr;
-        grid-template-rows: 0.5fr 1fr 0.5fr;
-        grid-template-areas: "a b ." "d e ." "i j .";
+    .imgPrimary {
+        display: block;
+        height: 50vw;
+        width: 50vw;
+        object-fit: cover;
     }
 }
 
 @media screen and (max-width: 899px) {
     .content {
-        height: 125vw;
+        height: 130vw;
         display: grid;
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
@@ -45,24 +81,50 @@
 
     .firstCard {
         grid-area: a1;
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        grid-template-areas: ". . . " ". e . " ". . . ";
+        position: relative;
+        text-align: center;
 
     }
 
     .secondCard {
         grid-area: b1;
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        grid-template-areas: ". . . " ". e . " ". . . ";
+        position: relative;
+        text-align: center;
+
+    }
+
+    .text-block {
+        position: absolute;
+        bottom: 20vw;
+        width: 100vw;
+        height: 20vw;
+        color: var(--primaryWhite);
+        padding: 0 20px;
+    }
+    .mozaik-text {
+        font-family: 'Old Standard TT', serif;
+        font-weight: bolder;
+        color: var(--primaryWhite);
+        font-size: 6vw;
+        text-align: center;
     }
 
     p {
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-        font-size: 3.5vw;
+        display: none;
+    }
+    .title {
+        font-family: 'Old Standard TT', serif;
+        font-size: 8vw;
         color: var(--primaryWhite);
-        padding-top: 10px;
+        line-height: .9;
+    }
+    .imgPrimary {
+        display: block;
+        width: 100vw;
+        height: 65vw;
+        object-fit: cover;
+        filter: brightness(80%);
+        cursor: pointer;
     }
 
 }

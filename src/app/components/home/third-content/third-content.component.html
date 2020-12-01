@@ -1,25 +1,43 @@
 <div class="content">
-    <div class="card-direction firstCard" appBackgroundImg [mainBackgroundImage]="this.wallpaper">
-        <div class="desc-backgr">
-        </div>
-        <div class="desc-text">
-            <h4 class="text">Tapéták széles <br> választéka
-            </h4>
+    <!-- <div class="card-direction firstCard" appBackgroundImg [mainBackgroundImage]="this.wallpaper">
+         <div class="desc-backgr">
+         </div>
+         <div class="desc-text">
+             <h4 class="text">Tapéták széles <br> választéka
+             </h4>
+             <p>Luxus tapéták Angliából és Olaszországból</p>
+             <button type="button" class="detailsButton " *ngIf="this.screenSize.width > 899"> Kínálatunk
+             </button>
+         </div>
+     </div>
+     <div class="card-direction secondCard " appBackgroundImg [mainBackgroundImage]="this.decoration ">
+         <div class="desc-backgr ">
+         </div>
+         <div class="desc-text">
+             <h4 class="text">Lakásdekorációs <br>kiegészítők
+             </h4>
+             <p>Faliképek a tökéletes harmónia megteremtéséért</p>
+             <button type="button" class="detailsButton " *ngIf="this.screenSize.width > 899">Kínálatunk
+             </button>
+         </div>
+
+     </div> -->
+    <div class="firstCard img-hover-zoom">
+        <ngui-in-view>
+            <img *ngIf  class="imgPrimary" src="{{this.wallpaper}}" alt="">
+        </ngui-in-view>
+        <div class="text-block">
+            <h4 class="title">Tapéták széles <br> választéka</h4>
             <p>Luxus tapéták Angliából és Olaszországból</p>
-            <button type="button" class="detailsButton " *ngIf="this.screenSize.width > 899"> Kínálatunk
-            </button>
         </div>
     </div>
-    <div class="card-direction secondCard " appBackgroundImg [mainBackgroundImage]="this.decoration ">
-        <div class="desc-backgr ">
+    <div class="secondCard img-hover-zoom">
+        <ngui-in-view>
+            <img *ngIf  class="imgPrimary" src="{{this.decoration}}" alt="">
+        </ngui-in-view>
+        <div class="text-block">
+            <h4 class="title">Lakásdekorációs <br>kiegészítők</h4>
+            <p>Faliképek a tökéletes <br> harmónia megteremtésért</p>
         </div>
-        <div class="desc-text">
-            <h4 class="text">Lakásdekorációs <br>kiegészítők
-            </h4>
-            <p>Faliképek a tökéletes harmónia megteremtéséért</p>
-            <button type="button" class="detailsButton " *ngIf="this.screenSize.width > 899">Kínálatunk
-            </button>
-        </div>
-
     </div>
 </div>

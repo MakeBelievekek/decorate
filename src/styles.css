@@ -42,28 +42,6 @@ body, html {
 }
 
 @media screen and (min-width: 900px) {
-    .card-direction {
-        position: relative;
-        overflow: hidden;
-        transition: all .8s;
-        width: 100%;
-        cursor: pointer;
-    }
-
-    .firstCard:hover::before, .secondCard:hover::before, .thirdCard:hover::before {
-        transform: scale(1.1);
-    }
-
-    .firstCard::before, .secondCard::before, .thirdCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
 
     .mozaik-down, .mozaik-up {
         background-color: var(--mozaikColor);
@@ -113,28 +91,6 @@ body, html {
         text-align: center;
     }
 
-    .desc-backgr {
-        position: relative;
-        grid-area: e;
-        background-color: black;
-        opacity: 30%;
-    }
-
-    .desc-text {
-        position: relative;
-        grid-area: e;
-        text-align: center;
-    }
-
-    .text {
-        font-family: 'Old Standard TT', serif;
-        font-weight: normal;
-        font-size: 4vw;
-        line-height: 1;
-        color: var(--primaryWhite);
-        margin-top: 40px;
-    }
-
     .detailsButton {
         border-radius: 25px;
         border: 2px solid var(--primaryWhite);;
@@ -160,76 +116,15 @@ body, html {
 }
 
 @media screen and (max-width: 899px) {
-    .card-direction {
-        position: relative;
-        overflow: hidden;
-        transition: all .8s;
-        width: 100%;
-        cursor: pointer;
-    }
-
-    .firstCard::before, .secondCard::before, .thirdCard::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: inherit;
-        transition: inherit;
-    }
-
-    .firstCard:hover::before, .secondCard:hover::before, .thirdCard:hover::before {
-        transform: scale(1.1);
-    }
 
     .mozaik-text-container {
         text-align: center;
-    }
-
-    .desc-backgr {
-        grid-column: 1/-1;
-        grid-row: 1/-1;
-        opacity: 25%;
-        background-color: black;
-    }
-
-
-    .desc-text {
-        position: relative;
-        grid-area: e;
-        text-align: center;
-
-    }
-
-    .text {
         font-family: 'Old Standard TT', serif;
         font-size: 9vw;
         font-weight: bolder;
         color: var(--primaryWhite);
         margin-bottom: 20px;
         margin-top: 20px;
-    }
-
-    .detailsButton {
-        position: relative;
-        border-radius: 25px;
-        border: 2px solid var(--primaryWhite);
-        padding-left: 15px;
-        padding-right: 15px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        width: 30vw;
-        background: none;
-        font-family: 'Old Standard TT', serif;
-        font-size: 3vw;
-        color: var(--primaryWhite);
-    }
-
-    .detailsButton:hover {
-        background-color: var(--primaryLetterBlack);
-        transition: 1s;
-        transition-timing-function: linear;
     }
 
     .mozaik-down, .mozaik-up {
@@ -260,14 +155,6 @@ body, html {
         top: -35px;
         border-bottom: 23px solid var(--mozaikColor);
         border-top: 15px solid transparent;
-    }
-
-    .mozaik-text {
-        font-family: 'Old Standard TT', serif;
-        font-weight: bolder;
-        color: var(--primaryWhite);
-        font-size: 6vw;
-        text-align: center;
     }
 }
 

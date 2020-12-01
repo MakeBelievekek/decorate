@@ -14,13 +14,6 @@ export class SecondContentComponent implements OnInit {
   @Input() furniture: string;
 
   ngOnInit(): void {
-    document.documentElement.style
-      .setProperty('--childrenUrl', 'url('+this.children+')');
-    document.documentElement.style
-      .setProperty('--blackoutUrl', 'url('+this.blackout+')');
-    document.documentElement.style
-      .setProperty('--furnitureFabricUrl', 'url('+this.furniture+')');
-
-  }
+   }
 
 }

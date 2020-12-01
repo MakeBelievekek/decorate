@@ -1,32 +1,63 @@
 <div class="content">
-    <div class="card-direction firstCard" appBackgroundImg [mainBackgroundImage]="this.blackout ">
+    <!--  <div class="card-direction firstCard" appBackgroundImg [mainBackgroundImage]="this.blackout ">
+      </div>
+      <div class="mozaik-up grid-up">
+          <div class="mozaik-text-container">
+              <h4 class="mozaik-text"> Black Out <br>függöny </h4>
+              <p> Teljes sötétítést biztosító függönyök </p>
+          </div>
+      </div>
+      <div class="card-direction secondCard" appBackgroundImg [mainBackgroundImage]="this.children ">
+      </div>
+      <div class="mozaik-down grid-down">
+          <div class="mozaik-text-container">
+              <h4 class="mozaik-text"> Gyerek <br>függöny </h4>
+              <p> Különleges függöny </p>
+          </div>
+      </div>
+      <div class="card-direction thirdCard"  appBackgroundImg [mainBackgroundImage]="this.furniture ">
+          <div class="desc-backgr">
+          </div>
+          <div class="desc-text">
+              <h3 class="text">Textil kiegészítők<br>
+              </h3>
+              <p> Egyedi, kézműves alkotások</p>
+              <button type="button" class="detailsButton ">
+                  Kínálatunk
+              </button>
+          </div>
+      </div>
+  -->
+    <div class="firstCard img-hover-zoom">
+        <ngui-in-view>
+            <img *ngIf  class="imgSecondary" src="{{this.blackout}}" alt="">
+        </ngui-in-view>
     </div>
     <div class="mozaik-up grid-up">
         <div class="mozaik-text-container">
-            <h4 class="mozaik-text"> Black Out <br>függöny </h4>
-            <p> Teljes sötétítést biztosító függönyök </p>
+            <h4 class="mozaik-text">Black Out <br>függöny </h4>
+            <p>Teljes sötétítést biztosító függönyök</p>
         </div>
     </div>
-    <div class="card-direction secondCard" appBackgroundImg [mainBackgroundImage]="this.children ">
+    <div class="secondCard img-hover-zoom">
+        <ngui-in-view>
+            <img *ngIf  class="imgSecondary" src="{{this.children}}" alt="">
+        </ngui-in-view>
     </div>
     <div class="mozaik-down grid-down">
         <div class="mozaik-text-container">
-            <h4 class="mozaik-text"> Gyerek <br>függöny </h4>
-            <p> Különleges függöny </p>
+            <h4 class="mozaik-text">Gyerek <br>függöny</h4>
+            <p> Különleges függöny</p>
         </div>
     </div>
-    <div class="card-direction thirdCard"  appBackgroundImg [mainBackgroundImage]="this.furniture ">
-        <div class="desc-backgr">
-        </div>
-        <div class="desc-text">
-            <h3 class="text">Textil kiegészítők<br>
-            </h3>
-            <p> Egyedi, kézműves alkotások</p>
-            <button type="button" class="detailsButton ">
-                Kínálatunk
-            </button>
+    <div class="thirdCard img-hover-zoom">
+        <ngui-in-view>
+            <img *ngIf  class="imgPrimary" src="{{this.furniture}}" alt="">
+        </ngui-in-view>
+        <div class="text-block">
+            <h4 class="title">Textil kiegészítők</h4>
+            <p>Egyedi <br> kézműves alkotások</p>
         </div>
     </div>
-
 
 </div>

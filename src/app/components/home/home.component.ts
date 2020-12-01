@@ -1,11 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
 import { ScreenSizeModel } from '../../models/ScreenSize.model';
 import { HomeService } from '../../services/home.service';
-import { LoadingService } from '../../services/loading.service';
-import { LocalStorageService } from '../../services/localStorage.service';
 import { PaymentService } from '../../services/payment.service';
 import { ProductService } from '../../services/product.service';
 import { ScreenService } from '../../services/screen.service';
@@ -21,8 +18,8 @@ export class HomeComponent implements OnInit {
 
     constructor(private productService: ProductService, private home: HomeService, private route: ActivatedRoute,
                 private paymentService: PaymentService, private toastr: ToastrService
-        , private screenService: ScreenService, private localStorageService: LocalStorageService
-        , private loadingService: LoadingService) {
+        , private screenService: ScreenService,
+    ) {
     }
 
 

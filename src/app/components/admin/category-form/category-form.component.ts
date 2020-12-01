@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import * as XLSX from 'xlsx';
 import { AttributeModel } from '../../../models/attributeModel';
 import { AdminService } from '../../../services/admin.service';
 
@@ -40,7 +39,7 @@ export class CategoryFormComponent implements OnInit {
         });
     }
 
-    onFileChange(event) {
+ /*   onFileChange(event) {
         let workBook = null;
         let jsonData = null;
         const reader = new FileReader();
@@ -76,4 +75,5 @@ export class CategoryFormComponent implements OnInit {
                     , () => {this.toastr.success("Sikeres mentés")});
         }
     }
+    */
 }

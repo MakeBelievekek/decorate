@@ -11,7 +11,7 @@
         grid-template-areas: "a1 a2 a3" "b1 b2 a3";
     }
 
-    .grig-down {
+    .grid-down {
         grid-area: a2;
     }
 
@@ -29,10 +29,50 @@
 
     .thirdCard {
         grid-area: a3;
-        display: grid;
-        grid-template-columns: 1fr 1fr 0.3fr;
-        grid-template-rows: 0.5fr 1fr 0.5fr;
-        grid-template-areas: "a b ." "d e ." "i j .";
+        position: relative;
+        text-align: center;
+    }
+
+    .imgPrimary {
+        height: 50vw;
+        width: 50vw;
+    }
+
+    .imgSecondary {
+        height: 25vw;
+        width: 25vw;
+    }
+
+    .img-hover-zoom {
+        overflow: hidden;
+    }
+
+    .img-hover-zoom img {
+        transition: transform 1s ease;
+    }
+
+    .img-hover-zoom:hover img {
+        transform: scale(1.2);
+    }
+
+    .title {
+        font-family: 'Old Standard TT', serif;
+        font-weight: normal;
+        font-size: 4vw;
+        line-height: 1;
+        color: var(--primaryWhite);
+        margin-top: 40px;
+    }
+
+    .text-block {
+        position: absolute;
+        bottom: 10vw;
+        right: 5vw;
+        width: 30vw;
+        height: 20vw;
+        background: rgba(0, 0, 0, 0.4);
+        color: var(--primaryWhite);
+        padding: 0 20px;
     }
 
     p {
@@ -41,13 +81,8 @@
         color: var(--primaryWhite);
         padding-top: 10px;
     }
-
-    span {
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-        font-size: 0.9vw;
-        color: var(--primaryWhite);
-    }
 }
+
 @media screen and (max-width: 899px) {
     .content {
         height: 150vw;
@@ -75,29 +110,68 @@
 
     .thirdCard {
         grid-area: c1;
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        grid-template-rows: 0.5fr 1fr 0.5fr;
-        grid-template-areas: "a b c" "d e f" "i j k";
+        position: relative;
+        text-align: center;
     }
+
     .mozaik-down:before {
         left: 99.5%;
         bottom: 35%;
         transform: rotate(-90deg);
     }
+
     .mozaik-up:before {
         right: 99.5%;
         top: 35%;
         transform: rotate(-90deg);
     }
 
+    .mozaik-text {
+        font-family: 'Old Standard TT', serif;
+        font-weight: bolder;
+        color: var(--primaryWhite);
+        font-size: 6vw;
+        text-align: center;
+    }
+
+    .text-block {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        bottom: 30vw;
+        width: 100vw;
+        height: 20vw;
+        color: var(--primaryWhite);
+        padding: 0 20px;
+    }
+
     p {
         display: none;
     }
-    span {
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-        font-size: 3vw;
+
+    .title {
+        font-family: 'Old Standard TT', serif;
+        font-size: 8vw;
         color: var(--primaryWhite);
+        line-height: .9;
+    }
+
+    .imgPrimary {
+        display: block;
+        width: 100vw;
+        height: 75vw;
+        object-fit: cover;
+        filter: brightness(80%);
+        cursor: pointer;
+    }
+
+    .imgSecondary {
+        display: block;
+        height: 37.5vw;
+        width: 50vw;
+        object-fit: cover;
+        cursor: pointer;
     }
 
 }

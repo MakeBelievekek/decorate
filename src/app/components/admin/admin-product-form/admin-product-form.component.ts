@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import * as XLSX from 'xlsx';
 import { AttributeData } from '../../../models/attributeData';
 import { AttributeListItemModel } from '../../../models/attributeListItemModel';
 import { FormDataModel } from '../../../models/formDataModel';
@@ -152,53 +151,54 @@ export class AdminProductFormComponent implements OnInit {
         });
     }
 
-    onFileChange(event) {
-        let workBook = null;
-        let jsonData = null;
-        const reader = new FileReader();
-        const file = event.target.files[0];
-        reader.onload = (event) => {
-            const data = reader.result;
-            workBook = XLSX.read(data, {type: 'binary'});
-            jsonData = workBook.SheetNames.reduce((initial, name) => {
-                const sheet = workBook.Sheets[name];
-                initial[name] = XLSX.utils.sheet_to_json(sheet);
-                return initial;
-            }, {});
-            for (var key in jsonData) {
-                if (jsonData.hasOwnProperty(key)) {
-                    for (let prod of jsonData[key]) {
-                        let img = prod.imageList;
-                        console.log(img);
-                        this.productModel = prod;
-                        this.productModel.imageList = [];
-                        this.productModel.imageList.push(new class implements ImageModel {
-                            imageType: string;
-                            imgUrl: string;
-                        });
-                        this.productsFromExcel.push(this.productModel);
+    /*
+        onFileChange(event) {
+            let workBook = null;
+            let jsonData = null;
+            const reader = new FileReader();
+            const file = event.target.files[0];
+            reader.onload = (event) => {
+                const data = reader.result;
+                workBook = XLSX.read(data, {type: 'binary'});
+                jsonData = workBook.SheetNames.reduce((initial, name) => {
+                    const sheet = workBook.Sheets[name];
+                    initial[name] = XLSX.utils.sheet_to_json(sheet);
+                    return initial;
+                }, {});
+                for (var key in jsonData) {
+                    if (jsonData.hasOwnProperty(key)) {
+                        for (let prod of jsonData[key]) {
+                            let img = prod.imageList;
+                            console.log(img);
+                            this.productModel = prod;
+                            this.productModel.imageList = [];
+                            this.productModel.imageList.push(new class implements ImageModel {
+                                imageType: string;
+                                imgUrl: string;
+                            });
+                            this.productsFromExcel.push(this.productModel);
+
+                        }
 
                     }
+                }
+                this.fileInputLabel = file.name;
+            };
+            reader.readAsBinaryString(file);
+        }
 
+        saveExcel() {
+            if (this.productsFromExcel) {
+                for (let prod of this.productsFromExcel) {
+                    console.log(prod.name);
+                    this.adminService.createProduct(prod, prod.productType)
+                        .subscribe(() => {}
+                            , (err) => {
+                                this.toastr.error(err);
+                            },
+                        );
                 }
             }
-            this.fileInputLabel = file.name;
-        };
-        reader.readAsBinaryString(file);
-    }
-
-    saveExcel() {
-        if (this.productsFromExcel) {
-            for (let prod of this.productsFromExcel) {
-                console.log(prod.name);
-                this.adminService.createProduct(prod, prod.productType)
-                    .subscribe(() => {}
-                        , (err) => {
-                            this.toastr.error(err);
-                        },
-                    );
-            }
         }
-    }
-
+    */
 }

@@ -19,7 +19,8 @@ export class BackgroundImgDirective implements OnInit {
   @Input() secondaryBackgroundImage: string;
   mousePosition: string;
 
-  constructor(private sanitizer: DomSanitizer, private elRef: ElementRef) {
+  constructor(private sanitizer: DomSanitizer,
+              private elRef: ElementRef) {
   }
 
   ngOnInit(): void {

@@ -1,83 +1,220 @@
+
 *:focus {
-  outline: none;
+    outline: none;
 }
 
+.img-hover-zoom {
+    overflow: hidden;
+}
+
+.img-hover-zoom img {
+    -webkit-transition: -webkit-transform 1s ease;
+    transition: -webkit-transform 1s ease;
+    transition: transform 1s ease;
+    transition: transform 1s ease, -webkit-transform 1s ease;
+}
+
+.img-hover-zoom:hover img {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+}
+
+
 @media screen and (min-width: 900px) {
-  .content {
-    height:50vw;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-areas: "a2 a1 a3" "a4 a1 a5";
-    cursor: pointer;
-  }
+    .content {
+        height: 50vw;
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-rows: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        -ms-grid-columns: 1fr 2fr 1fr;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-areas: "a2 a1 a3" "a4 a1 a5";
+        cursor: pointer;
+    }
+
+    .title {
+        font-family: 'Old Standard TT', serif;
+        font-weight: normal;
+        font-size: 4vw;
+        line-height: 1;
+        color: var(--primaryWhite);
+        margin-top: 40px;
+    }
+
+    .text-block {
+        position: absolute;
+        bottom: 10vw;
+        right: 2vw;
+        width: 30vw;
+        height: 30vw;
+        background: rgba(0, 0, 0, 0.4);
+        color: var(--primaryWhite);
+        padding: 0 20px;
+    }
+
+    .imgPrimary {
+        display: block;
+        width: 50vw;
+        height: 50vw;
+        -o-object-fit: cover;
+        object-fit: cover;
+
+    }
+
+    .imgSecondary {
+        display: block;
+        height: 25vw;
+        width: 25vw;
+        -o-object-fit: cover;
+        object-fit: cover;
+    }
+
+    .firstCard {
+        grid-area: a1;
+        position: relative;
+        text-align: center;
+    }
+
+    .secondCard {
+        grid-area: a4;
+    }
+
+    .thirdCard {
+        grid-area: a3;
+    }
+
+    .grig-down {
+        grid-area: a2;
+    }
+
+    .grid-up {
+        grid-area: a5;
+    }
+
+    p {
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-size: 1.9vw;
+        color: var(--primaryWhite);
+        padding-top: 10px;
+    }
+}
 
 
-
-  .firstCard {
-    grid-area: a1;
-    display: grid;
-    grid-template-columns: 1fr 1fr 0.3fr;
-    grid-template-rows: 0.5fr 1fr 0.5fr;
-    grid-template-areas: "a b ." "d e ." "i j .";
-  }
-
-  .secondCard {
-    grid-area: a4;
-  }
-
-  .thirdCard {
-    grid-area: a3;
-  }
-
-  .grig-down {
-    grid-area: a2;
-  }
-
-  .grid-up {
-    grid-area: a5;
-  }
-
-  p {
-    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-    font-size: 1.9vw;
-    font-weight: 900;
-    color: var(--primaryWhite);
-    padding-top: 10px;
-  }
+@media screen and (min-width: 900px) {
+    .firstCard {
+        -ms-grid-row: 1;
+        -ms-grid-row-span: 2;
+        -ms-grid-column: 2;
+    }
+    .secondCard {
+        -ms-grid-row: 2;
+        -ms-grid-column: 1;
+    }
+    .thirdCard {
+        -ms-grid-row: 1;
+        -ms-grid-column: 3;
+    }
+    .grig-down {
+        -ms-grid-row: 1;
+        -ms-grid-column: 1;
+    }
+    .grid-up {
+        -ms-grid-row: 2;
+        -ms-grid-column: 3;
+    }
 }
 
 @media screen and (max-width: 899px) {
-  .content {
-    height: 150vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 2fr 1fr 1fr;
-    grid-template-areas: "a a" "b1 c1" "b2 c2";
-  }
+    .content {
+        height: 150vw;
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+        -ms-grid-rows: 2fr 1fr 1fr;
+        grid-template-rows: 2fr 1fr 1fr;
+        grid-template-areas: "a a" "b1 c1" "b2 c2";
+        overflow: hidden;
+    }
 
-  .firstCard {
-    grid-area: a;
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 0.5fr 1fr 0.5fr;
-    grid-template-areas: "a b c" "d e f" "i j k";
-  }
+    .firstCard {
+        grid-area: a;
+        position: relative;
+        text-align: center;
+    }
 
-  .secondCard {
-    grid-area: b2;
-  }
+    .secondCard {
+        grid-area: b2;
+    }
 
-  .thirdCard {
-    grid-area: c1;
-  }
+    .thirdCard {
+        grid-area: c1;
+    }
 
-  p {
-    display: none;
-  }
+    .text-block {
+        position: absolute;
+        bottom: 30vw;
+        width: 100vw;
+        height: 20vw;
+        color: var(--primaryWhite);
+        padding: 0 20px;
+    }
 
+    .mozaik-text {
+        font-family: 'Old Standard TT', serif;
+        font-weight: bolder;
+        color: var(--primaryWhite);
+        font-size: 6vw;
+        text-align: center;
+    }
 
+    p {
+        display: none;
+    }
 
+    .title {
+        font-family: 'Old Standard TT', serif;
+        font-size: 8vw;
+        color: var(--primaryWhite);
+        line-height: .9;
+    }
+
+    .imgPrimary {
+        display: block;
+        width: 100vw;
+        height: 75vw;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -webkit-filter: brightness(80%);
+        filter: brightness(80%);
+        cursor: pointer;
+    }
+
+    .imgSecondary {
+        display: block;
+        height: 37.5vw;
+        width: 50vw;
+        -o-object-fit: cover;
+        object-fit: cover;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 899px) {
+    .firstCard {
+        -ms-grid-row: 1;
+        -ms-grid-column: 1;
+        -ms-grid-column-span: 2;
+    }
+    .secondCard {
+        -ms-grid-row: 3;
+        -ms-grid-column: 1;
+    }
+    .thirdCard {
+        -ms-grid-row: 2;
+        -ms-grid-column: 2;
+    }
 }
 
 

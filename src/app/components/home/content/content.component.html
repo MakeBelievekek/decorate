@@ -1,30 +1,55 @@
-<div class="content" [nbSpinner]="isSpinnerVisible$ | async" nbSpinnerStatus="danger">
-  <div class="card-direction firstCard" appBackgroundImg [mainBackgroundImage]="this.darkener">
-    <div class="desc-backgr">
+<div class="content">
+    <!-- <div class="card-direction firstCard" appBackgroundImg [mainBackgroundImage]="this.darkener">
+      <div class="desc-backgr">
+      </div>
+      <div class="desc-text">
+        <h3 class="text">Dekor <br>és <br> Sötétitő Függöny</h3>
+        <p>Exkluzív textilek, méretre vart dekorfüggönyök</p>
+        <button type="button" class="detailsButton ">
+          Kínálatunk
+        </button>
+      </div>
+    </div> -->
+    <div class="firstCard img-hover-zoom">
+        <img  class="imgPrimary" src="{{this.darkener}}" alt="">
+        <div class="text-block">
+            <h4 class="title">Dekor <br> és <br> Sötétítő Függöny</h4>
+            <p>Exkluzív textilek, méretre varrt dekorfüggönyök</p>
+        </div>
     </div>
-    <div class="desc-text">
-      <h3 class="text">Dekor <br>és <br> Sötétitő Függöny</h3>
-      <p>Exkluzív textilek, méretre vart dekorfüggönyök</p>
-      <button type="button" class="detailsButton ">
-        Kínálatunk
-      </button>
+    <div class="secondCard img-hover-zoom" >
+        <img class="imgSecondary" src="{{this.translucent}}" alt="">
     </div>
-  </div>
-  <div class="card-direction secondCard" appBackgroundImg [mainBackgroundImage]="this.translucent">
-  </div>
-  <div class="mozaik-down grid-down">
-    <div class="mozaik-text-container">
-      <h4 class="mozaik-text"> Fényáteresztő <br>függöny </h4>
-      <p> Különleges függöny </p>
+    <div class="mozaik-down grid-down">
+        <div class="mozaik-text-container">
+            <h4 class="mozaik-text">Fényáteresztő <br>függöny </h4>
+            <p>Különleges függönyök</p>
+        </div>
     </div>
-  </div>
-  <div class="card-direction thirdCard" appBackgroundImg [mainBackgroundImage]="this.pillow ">
-  </div>
-  <div class="mozaik-up grid-up">
-    <div class="mozaik-text-container">
-      <h4 class="mozaik-text">Díszpárna <br></h4>
-      <p>Gyönyörű díszpárnáink harmonikussá varázsolják otthonát</p>
+    <div class="thirdCard img-hover-zoom">
+        <img class="imgSecondary" src="{{this.pillow}}" alt="">
     </div>
-  </div>
-
+    <div class="mozaik-up grid-up">
+        <div class="mozaik-text-container">
+            <h4 class="mozaik-text">Díszpárna <br></h4>
+            <p>Gyönyörű díszpárnáink harmonikussá varázsolják otthonát</p>
+        </div>
+    </div>
+    <!-- <div class="card-direction secondCard" appBackgroundImg [mainBackgroundImage]="this.translucent">
+     </div>
+     <div class="mozaik-down grid-down">
+         <div class="mozaik-text-container">
+             <h4 class="mozaik-text"> Fényáteresztő <br>függöny </h4>
+             <p> Különleges függöny </p>
+         </div>
+     </div>
+     <div class="card-direction thirdCard" appBackgroundImg [mainBackgroundImage]="this.pillow ">
+     </div>
+     <div class="mozaik-up grid-up">
+         <div class="mozaik-text-container">
+             <h4 class="mozaik-text">Díszpárna <br></h4>
+             <p>Gyönyörű díszpárnáink harmonikussá varázsolják otthonát</p>
+         </div>
+     </div>
+ -->
 </div>
