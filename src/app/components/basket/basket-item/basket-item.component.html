@@ -1,6 +1,5 @@
-
 <div class="basket-item-grid">
-    img [src]="product.image" alt="">
+    <img src="{{this.product.image}}" alt="">
     <div class="basket-details">
         <p>{{product.productDesc}}</p>
         <p>Termék Kód: {{product.id}}</p>
@@ -18,7 +17,7 @@
     </div>
     <div class="total-price">
         {{this.totalPriceCounter}}
-        <img id="remove-icon" src="assets/remove-icon-png-7124.png" alt="">
+        <em class="fa fa-minus-circle"></em>
     </div>
 </div>
 

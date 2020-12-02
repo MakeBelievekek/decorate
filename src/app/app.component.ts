@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { AfterContentInit, Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { NgcCookieConsentService, NgcInitializeEvent, NgcStatusChangeEvent } from 'ngx-cookieconsent';
 import { Observable, Subscription } from 'rxjs';
 import { ModalControllerModel } from './models/modalController.model';
@@ -13,7 +13,7 @@ import { ScreenService } from './services/screen.service';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements OnInit, OnDestroy, AfterContentInit {
     title = 'decorate';
     modalControl: ModalControllerModel;
     screenControl: ScreenControlModel;
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private revokeChoiceSubscription: Subscription;
     private noCookieLawSubscription: Subscription;
     isSpinnerVisible$: Observable<boolean> = this.loadingService.isNavigationPending$;
-
+    loaded: boolean = false;
 
     constructor(private modalService: ModalService, private screenService: ScreenService
         , private localStorageService: LocalStorageService, private ccService: NgcCookieConsentService
@@ -38,11 +38,12 @@ export class AppComponent implements OnInit, OnDestroy {
         this.popupCloseSubscription.unsubscribe();
         this.initializeSubscription.unsubscribe();
         this.statusChangeSubscription.unsubscribe();
+        this.loaded = false;
     }
 
 
     ngOnInit(): void {
-        console.log(this.isSpinnerVisible$);
+
         this.modalControl = this.modalService.modalControl;
         this.screenControl = this.screenService.screenControl;
         this.changeContentOnResize();
@@ -87,4 +88,10 @@ export class AppComponent implements OnInit, OnDestroy {
         this.bodyPressed = true;
         this.closeModal();
     }
+
+    ngAfterContentInit(): void {
+
+    }
+
+
 }

@@ -1,6 +1,6 @@
 <app-navbar>
     <app-content-header></app-content-header>
-    <div class="content-margin">
+    <div class="content-margin" [ngStyle]="{'visibility':loaded ? 'visible' : 'hidden'}">
         <app-content [darkener]="darkenerImg" [pillow]="pillowImg" [translucent]="translucentImg"
         ></app-content>
         <app-sales *ngIf="this.screenSize.width > 499"></app-sales>

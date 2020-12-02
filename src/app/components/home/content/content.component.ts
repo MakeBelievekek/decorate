@@ -1,4 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+    AfterContentChecked,
+    AfterViewChecked,
+    AfterViewInit,
+    Component,
+    EventEmitter,
+    Input,
+    OnInit,
+    Output,
+} from '@angular/core';
 
 
 @Component({
@@ -8,9 +17,10 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ContentComponent implements OnInit {
 
+
     constructor() { }
 
-    loaded: boolean = false;
+
     @Input() darkener: string;
     @Input() translucent: string;
     @Input() pillow: string;
@@ -18,5 +28,6 @@ export class ContentComponent implements OnInit {
     ngOnInit(): void {
 
     }
+
 
 }

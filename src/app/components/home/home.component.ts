@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ScreenSizeModel } from '../../models/ScreenSize.model';
@@ -9,19 +9,20 @@ import { ScreenService } from '../../services/screen.service';
 
 const CASH_KEY = 'valami';
 
+
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+    loaded: boolean = false;
 
     constructor(private productService: ProductService, private home: HomeService, private route: ActivatedRoute,
                 private paymentService: PaymentService, private toastr: ToastrService
         , private screenService: ScreenService,
     ) {
     }
-
 
     screenSize: ScreenSizeModel = new class implements ScreenSizeModel {
         height: number;
@@ -40,6 +41,7 @@ export class HomeComponent implements OnInit {
 
 
     ngOnInit(): void {
+
         this.changeContentOnResize();
         this.images = this.route.snapshot.data.images;
         this.route.queryParams.subscribe(params => {
@@ -80,7 +82,6 @@ export class HomeComponent implements OnInit {
         }
     }
 
-
     showSuccessPayment() {
         this.toastr.success('Sikeres Fizetés');
     }
@@ -89,4 +90,6 @@ export class HomeComponent implements OnInit {
     changeContentOnResize() {
         this.screenSize = this.screenService.getScreenSize();
     }
+
+
 }

@@ -35,6 +35,7 @@ export class BasketItemComponent implements OnInit {
                 }
             }
         }
+        console.log(this.product.image)
     }
     countChange(event) {
         this.totalPriceCounter = event.value * this.product.price;
