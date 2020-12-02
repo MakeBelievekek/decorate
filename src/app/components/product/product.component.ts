@@ -1,18 +1,24 @@
-import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import {AfterContentInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
 import {ScreenService} from '../../services/screen.service';
 import {ScreenSizeModel} from '../../models/ScreenSize.model';
+import {Observable, Subject} from 'rxjs';
+import {log} from 'util';
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent implements OnInit, AfterContentInit {
   @ViewChild('productDetails') productDetails: ElementRef;
   screenModel: ScreenSizeModel;
   imagesDimensions: ScreenSizeModel;
   productDetailsDimensions: ScreenSizeModel;
   pushed: boolean;
+  size = new Subject<string>();
+  width: string;
+  contentLoaded: boolean;
+  valami: { width: string };
 
   constructor(private screenService: ScreenService) {
   }
@@ -24,6 +30,7 @@ export class ProductComponent implements OnInit {
     this.setImagesWidth();
     this.setProductDetailsWidth();
     // this.disableScrolling();
+
   }
 
   @HostListener('window:resize', ['$event'])
@@ -52,21 +59,37 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  pushPush() {
-    this.pushed = !this.pushed;
-    this.pushed ? this.disableScrolling() : this.enableScrolling();
+  openModal() {
+    this.pushed = true;
+    // this.pushed ? this.disableScrolling() : this.enableScrolling();
   }
 
-  disableScrolling() {
-    const x = window.scrollX;
-    const y = window.scrollY;
-    window.onscroll = () => {
-      window.scrollTo(x, y);
-    };
+  closeModal() {
+    this.pushed = false;
+    console.log('closed');
+    // this.pushed ? this.disableScrolling() : this.enableScrolling();
   }
 
-  enableScrolling() {
-    window.onscroll = () => {
-    };
+  ngAfterContentInit(): void {
+    this.contentLoaded = true;
+    if (this.contentLoaded) {
+      this.size.subscribe(value => {
+        console.log(value);
+        this.valami.width = value;
+      });
+    }
   }
+
+  /* disableScrolling() {
+     const x = window.scrollX;
+     const y = window.scrollY;
+     window.onscroll = () => {
+       window.scrollTo(x, y);
+     };
+   }
+
+   enableScrolling() {
+     window.onscroll = () => {
+     };
+   }*/
 }

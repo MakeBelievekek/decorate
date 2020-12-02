@@ -121,9 +121,9 @@ export class DecorateCarouselComponent implements OnDestroy, AfterContentInit, A
 
   @Input() verticalViewPortHeight = '300px';
 
-  @Input() contentClass: String = '';
+  @Input() contentClass: string = '';
 
-  @Input() indicatorsContentClass: String = '';
+  @Input() indicatorsContentClass: string = '';
 
   @Input() get value(): any[] {
     return this._value;

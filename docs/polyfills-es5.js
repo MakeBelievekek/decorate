@@ -15025,14 +15025,14 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         function g(b) {
           function c() {
             var a = d.length;
-            null == d[a - 1].offset && (d[a - 1].offset = 1), a > 1 && null == d[0].offset && (d[0].offset = 0);
+            null == d[a - 1].offset && (d[a - 1].animationDistance = 1), a > 1 && null == d[0].offset && (d[0].animationDistance = 0);
 
             for (var b = 0, c = d[0].offset, e = 1; e < a; e++) {
               var f = d[e].offset;
 
               if (null != f) {
                 for (var g = 1; g < e - b; g++) {
-                  d[b + g].offset = c + (f - c) * g / (e - b);
+                  d[b + g].animationDistance = c + (f - c) * g / (e - b);
                 }
 
                 b = e, c = f;

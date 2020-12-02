@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {HomeModel} from '../models/homeModel';
 import {environment} from '../../environments/environment';
 
-const BASE_URL = environment.apiUrl;
+const HOME_BASE_URL = environment.apiUrl + 'api/public/home';
 
 
 @Injectable({
@@ -16,7 +16,7 @@ export class HomeService {
   }
 
   getHomeImages(): Observable<HomeModel[]> {
-
-    return this.http.get<HomeModel[]>(BASE_URL + 'home');
+    console.log(HOME_BASE_URL);
+    return this.http.get<HomeModel[]>(HOME_BASE_URL);
   }
 }
