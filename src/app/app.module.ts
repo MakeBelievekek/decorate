@@ -41,6 +41,7 @@ import { FrameModule } from './modules/frame/frame.module';
 import { PlusMinusModule } from './modules/plus-minus/plus-minus.module';
 import { NameShortenerPipe } from './pipes/name-shortener.pipe';
 import { LocalStorageService } from './services/localStorage.service';
+import { BarionInformationComponent } from './components/barion-information/barion-information.component';
 
 const cookieConfig: NgcCookieConsentConfig = {
     'cookie': {
@@ -96,6 +97,7 @@ const cookieConfig: NgcCookieConsentConfig = {
         ProductModalComponent,
         DecorateModalComponent,
         CssAnimationStateDirective,
+        BarionInformationComponent,
 
     ],
 
@@ -115,10 +117,11 @@ const cookieConfig: NgcCookieConsentConfig = {
         NgbTooltipModule,
         MatTooltipModule,
         BreadcrumbModule,
-        CarouselModule,
+
         NgxLoadingModule.forRoot({}),
         FrameModule,
         PlusMinusModule,
+
     ],
     providers: [LocalStorageService, ConfirmationService, MessageService],
     bootstrap: [AppComponent],

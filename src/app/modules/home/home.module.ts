@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContentComponent } from '../../components/home/content/content.component';
 import { HomeComponent } from '../../components/home/home.component';
 import { NewsComponent } from '../../components/home/news/news.component';

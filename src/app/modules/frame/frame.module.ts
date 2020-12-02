@@ -9,6 +9,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
+import { CarouselModule } from 'primeng/carousel';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ContentHeaderComponent } from '../../components/home/content-header/content-header.component';
@@ -24,19 +25,21 @@ import { BackgroundImgDirective } from '../../directives/background-img.directiv
         FooterComponent,
         ContentHeaderComponent,
         BackgroundImgDirective,
+
     ],
     imports: [
-      CommonModule,
-      MatToolbarModule,
-      MatSidenavModule,
-      MatListModule,
-      MatButtonModule,
-      LayoutModule,
-      MatBadgeModule,
-      MatIconModule,
-      RouterModule,
-      FlexLayoutModule,
-      OverlayPanelModule,
+        CommonModule,
+        MatToolbarModule,
+        MatSidenavModule,
+        MatListModule,
+        MatButtonModule,
+        LayoutModule,
+        MatBadgeModule,
+        MatIconModule,
+        RouterModule,
+        FlexLayoutModule,
+        OverlayPanelModule,
+        CarouselModule,
     ],
     exports: [
         NavbarComponent,
@@ -45,6 +48,7 @@ import { BackgroundImgDirective } from '../../directives/background-img.directiv
         ContentHeaderComponent,
         BackgroundImgDirective,
         CommonModule,
+        CarouselModule,
     ],
 })
 export class FrameModule {

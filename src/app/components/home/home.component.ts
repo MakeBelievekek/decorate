@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ScreenSizeModel } from '../../models/ScreenSize.model';
@@ -15,13 +15,12 @@ const CASH_KEY = 'valami';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
     loaded: boolean = false;
 
     constructor(private productService: ProductService, private home: HomeService, private route: ActivatedRoute,
-                private paymentService: PaymentService, private toastr: ToastrService
-        , private screenService: ScreenService,
-    ) {
+                private paymentService: PaymentService, private toastr: ToastrService,
+                private screenService: ScreenService) {
     }
 
     screenSize: ScreenSizeModel = new class implements ScreenSizeModel {
@@ -41,7 +40,6 @@ export class HomeComponent implements OnInit {
 
 
     ngOnInit(): void {
-
         this.changeContentOnResize();
         this.images = this.route.snapshot.data.images;
         this.route.queryParams.subscribe(params => {
@@ -89,6 +87,10 @@ export class HomeComponent implements OnInit {
     @HostListener('window:resize', ['$event'])
     changeContentOnResize() {
         this.screenSize = this.screenService.getScreenSize();
+    }
+
+    ngAfterViewInit(): void {
+
     }
 
 

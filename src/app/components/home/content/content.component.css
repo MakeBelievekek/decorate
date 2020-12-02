@@ -135,7 +135,7 @@
         -ms-grid-rows: 2fr 1fr 1fr;
         grid-template-rows: 2fr 1fr 1fr;
         grid-template-areas: "a a" "b1 c1" "b2 c2";
-        overflow: hidden;
+
     }
 
     .firstCard {

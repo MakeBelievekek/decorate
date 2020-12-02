@@ -2,6 +2,17 @@
     outline: none;
 }
 
+.img-hover-zoom {
+    overflow: hidden;
+}
+
+.img-hover-zoom img {
+    transition: transform 1s ease;
+}
+
+.img-hover-zoom:hover img {
+    transform: scale(1.2);
+}
 @media screen and (min-width: 900px) {
     .content {
         height: 42vw;
@@ -43,17 +54,6 @@
         width: 25vw;
     }
 
-    .img-hover-zoom {
-        overflow: hidden;
-    }
-
-    .img-hover-zoom img {
-        transition: transform 1s ease;
-    }
-
-    .img-hover-zoom:hover img {
-        transform: scale(1.2);
-    }
 
     .title {
         font-family: 'Old Standard TT', serif;
