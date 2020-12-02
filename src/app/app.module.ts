@@ -41,6 +41,8 @@ import { FrameModule } from './modules/frame/frame.module';
 import { PlusMinusModule } from './modules/plus-minus/plus-minus.module';
 import { NameShortenerPipe } from './pipes/name-shortener.pipe';
 import { LocalStorageService } from './services/localStorage.service';
+import { ModalDirective } from './components/shared/decorate-modal/modal.directive';
+import {DecorateMakeCarouselComponent} from './components/shared/decorate-make-carousel/decorate-make-carousel.component';
 
 const cookieConfig: NgcCookieConsentConfig = {
     'cookie': {
@@ -73,31 +75,33 @@ const cookieConfig: NgcCookieConsentConfig = {
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        ProductsComponent,
-        ProductsListComponent,
-        ProductDetailsComponent,
-        SmallIgmagesComponent,
-        ProductsHeaderComponent,
-        ProductsModalComponent,
-        ProductsFilterComponent,
-        ProductComponent,
-        ProductListItemComponent,
-        ActiveFiltersComponent,
-        CardShadowDirective,
-        ReloadOnNgForNewElementDirective,
-        NameShortenerPipe,
-        ProductImagesComponent,
-        NavigationHeaderComponent,
-        ProductImageCardComponent,
-        ProductDetailsNewComponent,
-        DecorateCarouselComponent,
-        ProductModalComponent,
-        DecorateModalComponent,
-        CssAnimationStateDirective,
+  declarations: [
+    AppComponent,
+    ProductsComponent,
+    ProductsListComponent,
+    ProductDetailsComponent,
+    SmallIgmagesComponent,
+    ProductsHeaderComponent,
+    ProductsModalComponent,
+    ProductsFilterComponent,
+    ProductComponent,
+    ProductListItemComponent,
+    ActiveFiltersComponent,
+    CardShadowDirective,
+    ReloadOnNgForNewElementDirective,
+    NameShortenerPipe,
+    ProductImagesComponent,
+    NavigationHeaderComponent,
+    ProductImageCardComponent,
+    ProductDetailsNewComponent,
+    DecorateCarouselComponent,
+    ProductModalComponent,
+    DecorateModalComponent,
+    CssAnimationStateDirective,
+    ModalDirective,
+    DecorateMakeCarouselComponent,
 
-    ],
+  ],
 
     imports: [
         AccordionModule,

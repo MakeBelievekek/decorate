@@ -3,39 +3,46 @@
 <link href='https://fonts.googleapis.com/css?family=Doppio One' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
 <div class="product-details-new-container"
-     [ngStyle]="{'width.px': this.productDetailsDimension?.width}">
+     [ngStyle]="{'width.px': this.productDetailsDimension?.width}"
+     #productDetailContainer
+>
   <div class="product-new-title">{{this.dummyProduct.name}}</div>
   <div class="product-new-family">{{this.dummyProduct.productFamily}}</div>
   <div class="product-new-color">{{this.dummyProduct.color}}</div>
+
+  <!-- More color options btn start-->
   <div class="more-color-btn">
     TOVÁBBI SZÍNEK
     <div class="play-button">
-    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-         viewBox="0 0 41.999 41.999" style="enable-background:new 0 0 41.999 41.999;" xml:space="preserve"
-    width="14" height="14">
+      <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+           x="0px" y="0px"
+           viewBox="0 0 41.999 41.999" style="enable-background:new 0 0 41.999 41.999;" xml:space="preserve"
+           width="14" height="14">
 <path d="M36.068,20.176l-29-20C6.761-0.035,6.363-0.057,6.035,0.114C5.706,0.287,5.5,0.627,5.5,0.999v40
 	c0,0.372,0.206,0.713,0.535,0.886c0.146,0.076,0.306,0.114,0.465,0.114c0.199,0,0.397-0.06,0.568-0.177l29-20
 	c0.271-0.187,0.432-0.494,0.432-0.823S36.338,20.363,36.068,20.176z"/>
 </svg>
     </div>
   </div>
+  <!-- More color option btn end-->
+
   <h3>Leírás</h3>
   <p>{{this.dummyProduct.productDesc}}</p>
   <h3>Termék jellemzők</h3>
   <div class="product-details-table">
     <div class="product-details-table-item-left">Szín</div>
     <div class="product-details-table-item-right"
-        >{{this.dummyProduct.patternRep}}</div>
+    >{{this.dummyProduct.patternRep}}</div>
     <div class="product-details-table-item-left">Anyagösszetétel</div>
     <div class="product-details-table-item-right">{{this.dummyProduct.composition}}</div>
     <div class="product-details-table-item-left">Minta</div>
     <div class="product-details-table-item-right"
-        >{{this.dummyProduct.annotation}}, meg ez meg az meg még
+    >{{this.dummyProduct.annotation}}, meg ez meg az meg még
     </div>
     <div class="product-details-table-item-left">Stílus</div>
     <div class="product-details-table-item-right">{{this.dummyProduct.curtainType}}</div>
     <div class="product-details-table-item-left">Mintaismétlődés</div>
     <div class="product-details-table-item-right"
-        >{{this.dummyProduct.patternRep}}</div>
+    >{{this.dummyProduct.patternRep}}</div>
   </div>
 </div>

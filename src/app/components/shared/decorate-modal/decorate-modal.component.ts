@@ -1,73 +1,84 @@
-import {AfterViewInit, Component, ElementRef, HostBinding, Input, OnInit, ViewChild} from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+
 
 @Component({
   selector: 'app-decorate-modal',
   templateUrl: './decorate-modal.component.html',
   styleUrls: ['./decorate-modal.component.css'],
   animations: [
-    trigger('slide', [
-      state('normal', style(
-        {'left': '{{start}}' + 'px'}
-      ), {params: {start: 0}}),
-      state('slideRight', style(
-        {'left': '{{finish}}' + 'px'}
-        ), {params: {finish: 200}}
-      ),
-      state('slideLeft', style(
-        {'left': '{{finish}}' + 'px'}
-        ), {params: {finish: -200}}
-      ),
-      transition('normal => slideRight',
-        animate(250)),
-      transition('normal => slideLeft',
-        animate(250))
+    trigger('fadeInOut', [
+      state('closed', style(
+        {
+          top: '{{animationStart}}',
+          opacity: '{{opacityStartingValue}}'
+        }
+      ), {params: {animationStart: 0, opacityStartingValue: '0'}}),
+      state('open', style(
+        {
+          top: '{{animationFinish}}',
+          opacity: '{{opacityFinishValue}}'
+        }
+      ), {params: {animationFinish: 0, opacityFinishValue: '100%'}}),
+      transition('closed <=> open',
+        animate(175)),
+      transition('void => open',
+        animate(175)),
     ]),
-    /* transition('normal => slideRight', animate(3000))*/
   ]
 })
-export class DecorateModalComponent implements OnInit, AfterViewInit {
+export class DecorateModalComponent implements OnInit {
+  @Input() height: string;
+  @Input() width: string;
   @Input() show = false;
-  @ViewChild('key') eleRef: ElementRef;
-  counter = 0;
-  intervalId: any;
-  value: number;
-  state = 'normal';
-  colors = [{color: 'black'}, {color: 'red'}, {color: 'blue'}, {color: 'grey'}, {color: 'white'}, {color: 'green'}];
+  @Input() topOffSet = '50%';
+  @Input() animationStart = '60%';
+  @Input() centered = true;
+  @Output() modalClosed = new EventEmitter<boolean>();
+  @Input() fadedBackground: boolean;
+  animationFinished: boolean;
+  firstAnimationFinished: boolean;
+  isOpen: boolean;
+  modalState = 'open';
   start = 0;
-  finish = 0;
+  hasCustomWidth: boolean;
+  hasCustomHeight: boolean;
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor() {
   }
 
   ngOnInit(): void {
+    this.setTopOffsetToContent();
+    this.checkForCustomDimensions();
   }
 
-  ngAfterViewInit(): void {
-
+  changeState() {
+    if (this.animationFinished) {
+      this.modalState === 'open' ? this.modalState = 'closed' : this.modalState = 'open';
+    }
   }
 
-  clickClack() {
-    this.show = !this.show;
-  }
-
-  moveRight() {
-    this.finish = this.start + 200;
-    console.log('start', this.start);
-    console.log('finish', this.finish);
-    this.state = 'slideRight';
-  }
-
-  moveLeft() {
-    this.finish = this.start - 200;
-    console.log('start', this.start);
-    console.log('finish', this.finish);
-    this.state = 'slideLeft';
+  setTopOffsetToContent() {
+    if (this.centered) {
+      this.topOffSet = '50%';
+    }
   }
 
   animEnd($event: any) {
-    this.state = 'normal';
-    this.start = this.finish;
+    this.animationFinished = true;
+    this.firstAnimationFinished = true;
+    this.isOpen = !this.isOpen;
+    if (!this.isOpen) {
+      this.closeModal();
+    }
+  }
+
+  closeModal() {
+    this.modalClosed.emit(true);
+  }
+
+  checkForCustomDimensions() {
+    this.width ? this.hasCustomWidth = true : this.hasCustomWidth = false;
+    this.height ? this.hasCustomHeight = true : this.hasCustomHeight = false;
   }
 }

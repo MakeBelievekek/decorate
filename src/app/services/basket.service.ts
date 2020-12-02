@@ -4,7 +4,7 @@ import {Observable, Subject} from 'rxjs';
 import {AtpListItem} from '../models/atpListItem';
 import {environment} from '../../environments/environment';
 
-const BASE_URL = environment.apiUrl;
+const BASKET_BASE_URL = environment.apiUrl + 'api/public/payment';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +24,6 @@ export class BasketService {
   }
 
   getAtpList(): Observable<AtpListItem[]> {
-    return this.http.get<AtpListItem[]>(BASE_URL + 'payment/atp');
+    return this.http.get<AtpListItem[]>(BASKET_BASE_URL + '/atp');
   }
 }

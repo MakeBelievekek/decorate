@@ -13,21 +13,24 @@ export class SwitchService {
   };
 
   switch(type: string) {
-    if (type === 'category') {
-      this.switchMod.payment = false;
-      this.switchMod.category = true;
-      this.switchMod.product = false;
+    switch (type) {
+      case 'category':
+        this.switchMod.payment = false;
+        this.switchMod.category = true;
+        this.switchMod.product = false;
+        return this.switchMod;
+      case 'payment':
+        this.switchMod.category = false;
+        this.switchMod.product = false;
+        this.switchMod.payment = true;
+        return this.switchMod;
+      case 'product':
+        this.switchMod.payment = false;
+        this.switchMod.category = false;
+        this.switchMod.product = true;
+        return this.switchMod;
+      default:
+        return this.switchMod;
     }
-    if (type === 'payment') {
-      this.switchMod.category = false;
-      this.switchMod.product = false;
-      this.switchMod.payment = true;
-    }
-    if (type === 'product') {
-      this.switchMod.payment = false;
-      this.switchMod.category = false;
-      this.switchMod.product = true;
-    }
-    return this.switchMod;
   }
 }

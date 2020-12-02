@@ -1,8 +1,4 @@
-<!--<app-decorate-carousel [value]="[{name: 'hello'}, {name:'bello'}]"  [circular]="true" [numVisible]="2 ">
-  <ng-template let-car pTemplate="item">
-    {{car.name}}
-  </ng-template>
-</app-decorate-carousel>-->
+
 <div style="display: flex; flex-direction: column;">
   <app-navigation-header style="display: flex; align-self: center"></app-navigation-header>
   <div class="product-container">
@@ -12,22 +8,14 @@
     <div class="product-detail-side">
       <app-product-details-new></app-product-details-new>
     </div>
-
-
-    <!-- ez a régi ha esetleg kellen vissza-->
-    <!-- <div class="product-images">
-       <app-product-images [imageDimension]=this.imagesDimensions></app-product-images>
-     </div>
-     <div class="product-details" #productDetails>
-       <app-product-details [productDetailsDimension]="this.productDetailsDimensions"></app-product-details>
-     </div>-->
   </div>
 
-  <button (click)="pushPush()">nyomj meg</button>
+  <button (click)="openModal()">nyomj meg</button>
 </div>
-<app-decorate-modal *ngIf="pushed" [show]="this.pushed">
+<app-decorate-modal *ngIf="pushed" [show]="this.pushed" (modalClosed)="closeModal()" [fadedBackground]="true" [centered]="true" [animationStart]="'30%'" [width]="'60vw'">
 
- <!-- <div style="height: 200px; min-width: 200px; background-color: blue"></div>
+  <app-decorate-make-carousel></app-decorate-make-carousel>
+  <!-- <div style="height: 200px; min-width: 200px; background-color: blue"></div>
   <div style="height: 200px; min-width: 200px; background-color: cyan"></div>
   <div style="height: 200px; min-width: 200px; background-color: black"></div>-->
 </app-decorate-modal>

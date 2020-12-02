@@ -5,7 +5,7 @@ import {OrderModel} from '../models/orderModel';
 import {PaymentResponseModel} from '../models/paymentResponseModel';
 import {environment} from '../../environments/environment';
 
-const PAYMENT_BASE_URL = environment.apiUrl;
+const PAYMENT_BASE_URL = environment.apiUrl + 'api/public/payment';
 
 @Injectable({
   providedIn: 'root',
@@ -16,19 +16,19 @@ export class PaymentService {
   }
 
   transaction(): Observable<PaymentResponseModel> {
-    const observable = this.http.get<PaymentResponseModel>(PAYMENT_BASE_URL + 'payment');
+    const observable = this.http.get<PaymentResponseModel>(PAYMENT_BASE_URL);
     return observable;
   }
 
   sendingBarionOrder(order: OrderModel): Observable<any> {
-    return this.http.post<any>(PAYMENT_BASE_URL + 'payment/orderRequestBarion', order);
+    return this.http.post<any>(PAYMENT_BASE_URL + '/orderRequestBarion', order);
   }
 
   sendingOrder(order: OrderModel): Observable<any> {
-    return this.http.post<any>(PAYMENT_BASE_URL + 'payment/orderRequest', order);
+    return this.http.post<any>(PAYMENT_BASE_URL + '/orderRequest', order);
   }
 
   completePayment(paymentId: string): Observable<any> {
-    return this.http.post<any>(PAYMENT_BASE_URL + 'payment/paymentComplete', paymentId);
+    return this.http.post<any>(PAYMENT_BASE_URL + '/paymentComplete', paymentId);
   }
 }

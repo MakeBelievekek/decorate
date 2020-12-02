@@ -5,7 +5,7 @@ import {ProductListItemForLocal} from '../models/productListItemForLocal';
 import {ShippingOptions} from '../models/shippingOptions';
 import {environment} from '../../environments/environment';
 
-const PRODUCT_BASE_URL = environment.apiUrl;
+const PRODUCT_BASE_URL = environment.apiUrl + 'api/public/product';
 const CART_KEY = 'local_cartList';
 
 @Injectable({
@@ -18,10 +18,10 @@ export class ProductService {
 
   getProductsForLocalStorage(productsIds: string): Observable<ProductListItemForLocal[]> {
     console.log(productsIds);
-    return this.http.get<any>(PRODUCT_BASE_URL + 'product/local/' + productsIds);
+    return this.http.get<any>(PRODUCT_BASE_URL + '/local/' + productsIds);
   }
 
   getShippingOptions(): Observable<ShippingOptions[]> {
-    return this.http.get<ShippingOptions[]>(PRODUCT_BASE_URL + 'product/shippingOptions');
+    return this.http.get<ShippingOptions[]>(PRODUCT_BASE_URL + '/shippingOptions');
   }
 }
