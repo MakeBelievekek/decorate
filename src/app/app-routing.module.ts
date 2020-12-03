@@ -14,7 +14,7 @@ const routes: Routes = [
     },
     {path: 'admin', loadChildren: () => import('src/app/modules/admin/admin.module').then(m => m.AdminModule)},
     {
-        path: 'products',
+        path: 'termekkategoriak',
         loadChildren: () => import('src/app/modules/products/products.module').then(m => m.ProductsModule),
     },
     {path: 'product', component: ProductComponent},

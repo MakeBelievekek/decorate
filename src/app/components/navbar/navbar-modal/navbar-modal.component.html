@@ -73,12 +73,12 @@
                         <li *ngFor="let a of this.colors">{{a}}</li>
                     </ul>
                     <ul *ngIf="isOtherVisible">
-                        <li (click)="navigate(a.navigationUrl)" *ngFor="let a of this.otherProducts"
+                        <li (click)="otherNavigate(a.navigationUrl)" *ngFor="let a of this.otherProducts"
                             (mouseover)="showPicture(a.imgUrl)"
                             (mouseleave)="firstImageRender()">{{a.imageType}}</li>
                     </ul>
                     <ul *ngIf="isCurtainVisible">
-                        <li (click)="navigate(a.navigationUrl)" *ngFor="let a of this.curtains"
+                        <li (click)="curtainNavigate(a.navigationUrl)" *ngFor="let a of this.curtains"
                             (mouseover)="showPicture(a.imgUrl)"
                             (mouseleave)="firstImageRender()">{{a.imageType}}</li>
                     </ul>

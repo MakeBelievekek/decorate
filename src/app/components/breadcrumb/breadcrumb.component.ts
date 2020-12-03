@@ -46,7 +46,7 @@ export class BreadcrumbComponent implements OnInit {
 
         const breadcrumb: BreadcrumbModel = {
             label: label,
-            url: 'products' + nextUrl,
+            url: 'termekkategoriak' + nextUrl,
         };
         const newBreadcrumbs = breadcrumb.label ? [...breadcrumbs, breadcrumb] : [...breadcrumbs];
         if (route.firstChild) {

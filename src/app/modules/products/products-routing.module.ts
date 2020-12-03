@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductComponent } from '../../components/product/product.component';
 import { ProductsComponent } from '../../components/products/products.component';
 
 
@@ -13,38 +12,37 @@ const routes: Routes = [
         },
         children: [
             {
-                path: 'ifjusagi',
-                component: ProductsComponent,
-                data: {
-                    breadcrumb: 'Ifjúsági',
-                },
-            }, {
                 path: 'fuggonyok',
                 component: ProductsComponent,
                 data: {
                     breadcrumb: 'Függönyök',
+                }, children: [{
+                    path: 'sotetito',
+                    component: ProductsComponent,
+                    data: {
+                        breadcrumb: 'Sötétítő',
+                    },
                 },
-            },
-            {
-                path: 'sotetito',
-                component: ProductsComponent,
-                data: {
-                    breadcrumb: 'Sötétítő',
-                },
-            },
-            {
-                path: 'fenyatereszto',
-                component: ProductsComponent,
-                data: {
-                    breadcrumb: 'Fényáteresztő',
-                },
-            },
-            {
-                path: 'blackout',
-                component: ProductsComponent,
-                data: {
-                    breadcrumb: 'Blackout',
-                },
+                    {
+                        path: 'fenyatereszto',
+                        component: ProductsComponent,
+                        data: {
+                            breadcrumb: 'Fényáteresztő',
+                        },
+                    },
+                    {
+                        path: 'blackout',
+                        component: ProductsComponent,
+                        data: {
+                            breadcrumb: 'Blackout',
+                        },
+                    }, {
+                        path: 'ifjusagi',
+                        component: ProductsComponent,
+                        data: {
+                            breadcrumb: 'Ifjúsági',
+                        },
+                    }],
             },
             {
                 path: 'textilkiegeszito',

@@ -71,20 +71,19 @@ export class NavbarModalComponent implements OnInit {
         }
     }
 
-    showPicture(a: string) {
-        this.actualImage = a;
+    showPicture(actual: string) {
+        this.actualImage = actual;
     }
 
     firstImageRender() {
         this.actualImage = this.firstImage;
     }
 
-
-    log(va: string) {
-        console.log(va);
+    curtainNavigate(url: string) {
+        this.router.navigateByUrl('termekkategoriak/fuggonyok/' + url);
     }
 
-    navigate(url: string) {
-        this.router.navigateByUrl('products/' + url);
+    otherNavigate(url: string) {
+        this.router.navigateByUrl('termekkategoriak/' + url);
     }
 }

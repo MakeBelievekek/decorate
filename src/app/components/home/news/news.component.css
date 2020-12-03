@@ -2,12 +2,13 @@
     outline: none;
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 1261px) {
     .sales-container {
         background-color: var(--primaryGray);
         display: grid;
-        grid-template-columns: .3fr 1fr;
+        grid-template-columns: minmax(250px, 1fr) 2fr;
         grid-template-areas: "a b ";
+        height: 230px;
     }
 
     .sales-text {
@@ -23,24 +24,22 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 20px;
     }
 
     H4 {
         font-family: 'Old Standard TT', serif;
         font-weight: bolder;
         color: var(--primaryLetterBlack);
-        font-size: 2vw;
+        font-size: 2rem;
+        margin: 0 50px 0 50px
     }
 
     img {
         display: block;
-        width: 12vw;
-        height: 10vw;
+        width: 180px;
+        height: 180px;
         cursor: pointer;
-        border-radius: 8px;
         box-shadow: 0 4px 8px 0 rgba(1, 1, 1, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.79);
-        margin: 0 20px;
     }
 
     .overlay {
@@ -49,16 +48,21 @@
         bottom: 0;
         left: 0;
         right: 0;
-        height: 14vw;
-        width: 16vw;
+        height: 180px;
+        width: 180px;
         opacity: 0;
         transition: .5s ease;
         background-color: var(--primaryLetterBlack);
-        border-radius: 8px;
     }
 
     .img-container {
         position: relative;
+        margin: 0 30px;
+        width: 180px;
+        height: 180px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .img-container:hover .overlay {
@@ -68,7 +72,7 @@
     .img-text {
         color: var(--primaryWhite);
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-        font-size: 2vw;
+        font-size: 2rem;
         font-weight: bolder;
         position: absolute;
         top: 50%;
@@ -79,20 +83,20 @@
 }
 
 
-@media screen and (max-width: 1025px) and (min-width: 768px) {
+@media screen and (max-width: 1260px) and (min-width: 768px) {
     .sales-container {
         background-color: var(--primaryGray);
         display: grid;
         grid-auto-rows: .4fr 1fr;
         grid-template-areas: "title" "images";
-        justify-content: center;
-        align-items: center;
+        height: 250px;
     }
 
     .sales-text {
         grid-area: title;
-        text-align: center;
-        margin: 10px 0 0 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .cards-pos {
@@ -100,17 +104,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 20px 0;
     }
 
     img {
         display: block;
-        width: 16vw;
-        height: 14vw;
+        width: 150px;
+        height: 150px;
         cursor: pointer;
-        border-radius: 8px;
         box-shadow: 0 4px 8px 0 rgba(1, 1, 1, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.79);
-        margin: 0 10px;
     }
 
     .overlay {
@@ -119,16 +120,19 @@
         bottom: 0;
         left: 0;
         right: 0;
-        height: 18vw;
-        width: 20vw;
+        height: 150px;
+        width: 150px;
         opacity: 0;
         transition: .5s ease;
         background-color: var(--primaryLetterBlack);
-        border-radius: 8px;
     }
 
     .img-container {
         position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 20px;
     }
 
     .img-container:hover .overlay {
@@ -138,7 +142,7 @@
     .img-text {
         color: var(--primaryWhite);
         font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
-        font-size: 5vw;
+        font-size: 1.7rem;
         font-weight: bolder;
         position: absolute;
         top: 50%;
@@ -152,45 +156,35 @@
         font-weight: bold;
         color: var(--primaryLetterBlack);
         margin: 0;
+        font-size: 2rem;
     }
 }
 
 @media screen and (max-width: 767px) {
     .sales-container {
-        height: 100vw;
-        background-color: var(--primaryGray);
-        display: grid;
-        grid-auto-columns: 1fr 1fr;
-        grid-auto-rows: .25fr 1fr;
-        grid-template-areas: "title title" "image image";
+        display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 100%;
+        background-color: var(--primaryGray);
     }
 
-    .sales-text {
-        grid-area: title;
-        text-align: center;
-        margin: 30px 0 0 0;
-    }
-
-    .cards-pos {
-        grid-area: image;
-        display: grid;
-        grid-auto-columns: 1fr 1fr;
-        grid-auto-rows: 1fr 1fr;
-        grid-template-areas: "a b" "c d";
-        grid-gap: 20px;
-
+    .cards-pos, .sales-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 10px 0 0 0;
+        width: 80vw;
     }
 
     img {
         display: block;
-        width: 35vw;
-        height: 30vw;
+        width: 27vw;
+        height: 25vw;
         cursor: pointer;
-        border-radius: 8px;
         box-shadow: 0 4px 8px 0 rgba(1, 1, 1, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.79);
-        margin: 0 10px;
     }
 
     .overlay {
@@ -199,20 +193,18 @@
         bottom: 0;
         left: 0;
         right: 0;
-        height: 18vw;
-        width: 20vw;
+        height: 25vw;
+        width: 27vw;
         opacity: 0;
         transition: .5s ease;
         background-color: var(--primaryLetterBlack);
-        border-radius: 8px;
     }
 
     .img-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-
+        position: relative;
+        width: 27vw;
+        height: 25vw;
+        margin: 20px;
     }
 
     .img-container:hover .overlay {
@@ -234,7 +226,7 @@
     H4 {
         font-family: 'Old Standard TT', serif;
         font-weight: bold;
-        font-size: 8vw;
+        font-size: 5vw;
         color: var(--primaryLetterBlack);
         margin: 0;
     }
