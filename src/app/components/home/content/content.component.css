@@ -55,7 +55,7 @@
 
     .imgPrimary {
         display: block;
-        width: 50vw;
+        width: 100%;
         height: 50vw;
         -o-object-fit: cover;
         object-fit: cover;
@@ -65,7 +65,7 @@
     .imgSecondary {
         display: block;
         height: 25vw;
-        width: 25vw;
+        width: 100%;
         -o-object-fit: cover;
         object-fit: cover;
     }
@@ -93,7 +93,7 @@
     }
 
     p {
-        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-family: Pluto Sans W01 Regular, serif;
         font-size: 1.9vw;
         color: var(--primaryWhite);
         padding-top: 10px;
@@ -107,18 +107,22 @@
         -ms-grid-row-span: 2;
         -ms-grid-column: 2;
     }
+
     .secondCard {
         -ms-grid-row: 2;
         -ms-grid-column: 1;
     }
+
     .thirdCard {
         -ms-grid-row: 1;
         -ms-grid-column: 3;
     }
+
     .grig-down {
         -ms-grid-row: 1;
         -ms-grid-column: 1;
     }
+
     .grid-up {
         -ms-grid-row: 2;
         -ms-grid-column: 3;
@@ -207,10 +211,12 @@
         -ms-grid-column: 1;
         -ms-grid-column-span: 2;
     }
+
     .secondCard {
         -ms-grid-row: 3;
         -ms-grid-column: 1;
     }
+
     .thirdCard {
         -ms-grid-row: 2;
         -ms-grid-column: 2;

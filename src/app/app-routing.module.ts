@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
-import { QuicklinkStrategy } from 'ngx-quicklink';
 import { BarionInformationComponent } from './components/barion-information/barion-information.component';
 import { ProductComponent } from './components/product/product.component';
-import { ProductsComponent } from './components/products/products.component';
 
 
 const routes: Routes = [
@@ -15,9 +13,12 @@ const routes: Routes = [
         loadChildren: () => import('src/app/modules/checkout/checkout.module').then(m => m.CheckoutModule),
     },
     {path: 'admin', loadChildren: () => import('src/app/modules/admin/admin.module').then(m => m.AdminModule)},
-    {path: 'products', component: ProductsComponent},
+    {
+        path: 'products',
+        loadChildren: () => import('src/app/modules/products/products.module').then(m => m.ProductsModule),
+    },
     {path: 'product', component: ProductComponent},
-    {path: 'barion-fizetesi-tajekoztato', component : BarionInformationComponent}
+    {path: 'barion-fizetesi-tajekoztato', component: BarionInformationComponent},
 ];
 const extraOptions: ExtraOptions = {
     'enableTracing': true,

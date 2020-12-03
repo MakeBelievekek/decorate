@@ -1,4 +1,4 @@
-<mat-toolbar class="fixed-top" >
+<mat-toolbar class="fixed-top">
     <mat-toolbar-row>
         <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
             <mat-icon>menu</mat-icon>
@@ -7,9 +7,11 @@
             <div class="nav-btn">
                 <p routerLink="/home">Főoldal</p>
             </div>
-            <div class="nav-btn">
-                <p (click)="toggleProductsModal()">Termékek <em class="fa fa-chevron-down pl-1 pb-1"
-                                                                aria-hidden="true"></em></p>
+            <div class="nav-btn"
+                 [ngClass]="{'product-btn' :this.modalControl.showModal}">
+                <p (click)="toggleProductsModal()">
+                    Termékek
+                    <em class="fa fa-chevron-down pl-1 pb-1" aria-hidden="true"></em></p>
             </div>
             <div class="nav-btn">
                 <p>Rólunk</p>
@@ -59,7 +61,7 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-sidenav-container fxFlexFill>
+<mat-sidenav-container fxFlexFill #sidenavContainer>
     <mat-sidenav #sidenav>
         <mat-nav-list fxShow="true" fxHide.gt-sm>
             <a (click)="sidenav.toggle()" mat-list-item><em class="fa fa-times"></em></a>

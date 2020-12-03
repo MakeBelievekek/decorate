@@ -45,13 +45,13 @@
     }
 
     .imgPrimary {
-        height: 50vw;
-        width: 50vw;
+        height: 42vw;
+        width: 100%;
     }
 
     .imgSecondary {
-        height: 25vw;
-        width: 25vw;
+        height: 21vw;
+        width: 100%;
     }
 
 

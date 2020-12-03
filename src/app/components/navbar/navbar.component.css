@@ -1,6 +1,7 @@
 *:focus {
     outline: none;
 }
+
 .menu-spacer {
     flex: 1 1 auto;
 }
@@ -33,11 +34,18 @@ mat-toolbar-row {
     color: black;
     background-color: var(--primaryGray);
 }
-p{
+
+.product-btn {
+    background-color: var(--primaryGray);
+    height: 100%;
+}
+
+p {
     font-size: .8rem;
     color: black;
     text-transform: uppercase;
     font-weight: bold;
+    font-family: 'Pluto Sans W01 Regular', serif
 }
 
 mat-sidenav {
