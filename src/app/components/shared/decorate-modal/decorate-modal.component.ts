@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 
@@ -27,7 +27,7 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
     ]),
   ]
 })
-export class DecorateModalComponent implements OnInit {
+export class DecorateModalComponent implements OnInit, OnDestroy, AfterViewInit {
   @Input() height: string;
   @Input() width: string;
   @Input() show = false;
@@ -36,15 +36,18 @@ export class DecorateModalComponent implements OnInit {
   @Input() centered = true;
   @Output() modalClosed = new EventEmitter<boolean>();
   @Input() fadedBackground: boolean;
+  @Input() modalState = 'open';
+  @Input() whitShadow: boolean;
+  @Output() rightPosition = new EventEmitter<boolean>();
+
   animationFinished: boolean;
   firstAnimationFinished: boolean;
   isOpen: boolean;
-  modalState = 'open';
   start = 0;
   hasCustomWidth: boolean;
   hasCustomHeight: boolean;
 
-  constructor() {
+  constructor(private elRef: ElementRef) {
   }
 
   ngOnInit(): void {
@@ -80,5 +83,20 @@ export class DecorateModalComponent implements OnInit {
   checkForCustomDimensions() {
     this.width ? this.hasCustomWidth = true : this.hasCustomWidth = false;
     this.height ? this.hasCustomHeight = true : this.hasCustomHeight = false;
+  }
+
+  ngOnDestroy(): void {
+    window.onscroll = () => {
+    };
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.elRef.nativeElement.offsetLeft);
+    console.log(this.elRef.nativeElement.offsetTop);
+  }
+
+  animStart($event: any) {
+    this.animationFinished = false;
+
   }
 }

@@ -1,26 +1,18 @@
-<app-navbar>
-    <app-content-header></app-content-header>
+<app-navbar></app-navbar>
+<app-content-header></app-content-header>
 
-    <div style="display: flex; flex-direction: column;">
-        <app-navigation-header style="display: flex; align-self: center"></app-navigation-header>
-        <div class="product-container">
-            <div class="product-image-side">
-                <app-product-image-card></app-product-image-card>
-            </div>
-            <div class="product-detail-side">
-                <app-product-details-new></app-product-details-new>
-            </div>
-        </div>
-
-        <button (click)="openModal()">nyomj meg</button>
+<div style="display: flex; flex-direction: column;" appCssAnimationState>
+  <app-navigation-header style="display: flex; align-self: center"></app-navigation-header>
+  <div class="product-container">
+    <div class="product-image-side">
+      <app-product-image-card></app-product-image-card>
     </div>
-    <app-decorate-modal *ngIf="pushed" [show]="this.pushed" (modalClosed)="closeModal()" [fadedBackground]="true"
-                        [centered]="true" [animationStart]="'30%'" [width]="'60vw'">
+    <div class="product-detail-side">
+      <app-product-details-new></app-product-details-new>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
 
-        <app-decorate-make-carousel></app-decorate-make-carousel>
-        <!-- <div style="height: 200px; min-width: 200px; background-color: blue"></div>
-        <div style="height: 200px; min-width: 200px; background-color: cyan"></div>
-        <div style="height: 200px; min-width: 200px; background-color: black"></div>-->
-    </app-decorate-modal>
-    <app-footer></app-footer>
-</app-navbar>
+
+

@@ -1,67 +1,72 @@
 <mat-toolbar class="fixed-top">
-    <mat-toolbar-row>
-        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
-            <mat-icon>menu</mat-icon>
-        </button>
-        <div class="button-container" fxShow="true" fxHide.lt-md style="height: 100%">
-            <div class="nav-btn">
-                <p routerLink="/home">Főoldal</p>
-            </div>
-            <div class="nav-btn"
-                 [ngClass]="{'product-btn' :this.modalControl.showModal}">
-                <p (click)="toggleProductsModal()">
-                    Termékek
-                    <em class="fa fa-chevron-down pl-1 pb-1" aria-hidden="true"></em></p>
-            </div>
-            <div class="nav-btn">
-                <p>Rólunk</p>
-            </div>
-            <div class="nav-btn">
-                <p>Kívánságlista</p>
-            </div>
-            <div class="nav-btn" *ngIf="this.screenSize.width > 1080">
-                <p>Kapcsolat</p>
-            </div>
-        </div>
-        <span class="menu-spacer"></span>
-        <div class="button-container" fxShow="true" fxHide.lt-md>
-            <div class="nav-btn">
-                <p><em class="fa fa-search pl-2"></em>Keresés</p>
-            </div>
-            <div class="nav-btn">
-                <p><em class="fa fa-user pl-2"></em>Bejelentkezés</p>
-            </div>
-            <div class="nav-btn">
-                <p routerLink="/basket">
-                    <span matBadge="{{numberOfItemsInBasket}}" matBadgeOverlap="true" matBadgeSize="small"></span>
-                    <em class="fa fa-shopping-basket pl-2"></em>
-                    Kosár</p>
-            </div>
-        </div>
-        <div class="button-container" fxShow="true" fxHide.gt-sm fxHide.xs>
-            <div class="nav-btn">
-                <p><em class="fa fa-search pl-2"></em>Keresés</p>
-            </div>
-            <div class="nav-btn">
-                <p><em class="fa fa-user pl-2"></em>Bejelentkezés</p>
-            </div>
-            <div class="nav-btn">
-                <p routerLink="/basket">
-                    <span matBadge="{{numberOfItemsInBasket}}" matBadgeOverlap="true"></span>
-                    <em class="fa fa-shopping-basket pl-2"></em>Kosár</p>
-            </div>
-        </div>
-        <div class="button-container" fxShow="true" fxHide.gt-xs>
-            <div class="nav-btn">
-                <p routerLink="/basket">
-                    <span matBadge="{{numberOfItemsInBasket}}" matBadgeOverlap="true"></span>
-                    <em class="fa fa-shopping-basket pl-2"></em>Kosár</p>
-            </div>
-        </div>
-    </mat-toolbar-row>
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="this.toggleMakeSide()" fxShow="true" fxHide.gt-sm>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="button-container" fxShow="true" fxHide.lt-md style="height: 100%">
+      <div class="nav-btn">
+        <p routerLink="/home">Főoldal</p>
+      </div>
+      <div class="nav-btn"
+           [ngClass]="{'product-btn' :this.modalControl.showModal}">
+        <p (click)="toggleProductsModal()">
+          Termékek
+          <em class="fa fa-chevron-down pl-1 pb-1" aria-hidden="true"></em></p>
+      </div>
+      <div class="nav-btn">
+        <p>Rólunk</p>
+      </div>
+      <div class="nav-btn">
+        <p>Kívánságlista</p>
+      </div>
+      <div class="nav-btn" *ngIf="this.screenSize.width > 1080">
+        <p>Kapcsolat</p>
+      </div>
+    </div>
+    <span class="menu-spacer"></span>
+    <div class="button-container" fxShow="true" fxHide.lt-md>
+      <div class="nav-btn">
+        <p><em class="fa fa-search pl-2"></em>Keresés</p>
+      </div>
+      <div class="nav-btn">
+        <p><em class="fa fa-user pl-2"></em>Bejelentkezés</p>
+      </div>
+      <div class="nav-btn">
+        <p routerLink="/basket">
+          <span matBadge="{{numberOfItemsInBasket}}" matBadgeOverlap="true" matBadgeSize="small"></span>
+          <em class="fa fa-shopping-basket pl-2"></em>
+          Kosár</p>
+      </div>
+    </div>
+    <div class="button-container" fxShow="true" fxHide.gt-sm fxHide.xs>
+      <div class="nav-btn">
+        <p><em class="fa fa-search pl-2"></em>Keresés</p>
+      </div>
+      <div class="nav-btn">
+        <p><em class="fa fa-user pl-2"></em>Bejelentkezés</p>
+      </div>
+      <div class="nav-btn">
+        <p routerLink="/basket">
+          <span matBadge="{{numberOfItemsInBasket}}" matBadgeOverlap="true"></span>
+          <em class="fa fa-shopping-basket pl-2"></em>Kosár</p>
+      </div>
+    </div>
+    <div class="button-container" fxShow="true" fxHide.gt-xs>
+      <div class="nav-btn">
+        <p routerLink="/basket">
+          <span matBadge="{{numberOfItemsInBasket}}" matBadgeOverlap="true"></span>
+          <em class="fa fa-shopping-basket pl-2"></em>Kosár</p>
+      </div>
+    </div>
+  </mat-toolbar-row>
 </mat-toolbar>
+<ng-content>
+</ng-content>
 
-<mat-sidenav-container fxFlexFill #sidenavContainer>
+<!-- ezt kell vissza rakni a menü fölé és az enyémet ki csillagozni
+<button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+-->
+<!--mat-sidenav-container fxFlexFill #sidenavContainer>
     <mat-sidenav #sidenav>
         <mat-nav-list fxShow="true" fxHide.gt-sm>
             <a (click)="sidenav.toggle()" mat-list-item><em class="fa fa-times"></em></a>
@@ -74,7 +79,23 @@
             <a mat-list-item fxShow="true" fxHide.gt-xs>Keresés</a>
         </mat-nav-list>
     </mat-sidenav>
-    <ng-content>
-    </ng-content>
-</mat-sidenav-container>
+
+</mat-sidenav-container>-->
+
+<div *ngIf="this.showMakeSideSlide" class="make-side-bar"
+     [ngClass]="{  'slide-right': this.animationState === 'open',
+              'slide-left': this.animationState === 'close'}"
+     (animationEnded)="this.closeMakeSlide()"
+     [animationName]="'slide-left'"
+     appAnim
+>
+  <a><em class="fa fa-times"></em></a>
+  <a routerLink="/" mat-list-item>Főoldal</a>
+  <a routerLink="/products" mat-list-item>Termékek</a>
+  <a>Rólunk</a>
+  <a>Kívánságlista</a>
+  <a>Kapcsolat</a>
+  <a>Bejelentkezés</a>
+  <a>Keresés</a>
+</div>
 <app-navbar-modal></app-navbar-modal>

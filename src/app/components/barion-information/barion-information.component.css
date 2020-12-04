@@ -6,7 +6,7 @@ h1, h3, p {
 .info-container {
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     flex-direction: column;
     margin: 0 400px;
 }
@@ -33,7 +33,7 @@ li {
     .info-container {
         display: flex;
         justify-content: center;
-        align-items: start;
+        align-items: flex-start;
         flex-direction: column;
         margin: 0 300px;
     }
@@ -43,7 +43,7 @@ li {
     .info-container {
         display: flex;
         justify-content: center;
-        align-items: start;
+        align-items: flex-start;
         flex-direction: column;
         margin: 0 150px;
     }
@@ -53,7 +53,7 @@ li {
     .info-container {
         display: flex;
         justify-content: center;
-        align-items: start;
+        align-items: flex-start;
         flex-direction: column;
         margin: 0 50px;
     }
@@ -63,7 +63,7 @@ li {
     .info-container {
         display: flex;
         justify-content: center;
-        align-items: start;
+        align-items: flex-start;
         flex-direction: column;
         margin: 0 15px;
     }

@@ -26,7 +26,6 @@ export class ContentComponent implements OnInit {
     @Input() pillow: string;
 
     ngOnInit(): void {
-
     }
 
 
