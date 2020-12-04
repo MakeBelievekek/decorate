@@ -51,31 +51,39 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }, () => {}, () => {
         });
         for (let im of this.images) {
-            if (im.type == 'Darkener') {
-                this.darkenerImg = im.imgUrl;
-            }
-            if (im.type == 'Blackout') {
-                this.blackoutImg = im.imgUrl;
-                console.log(this.blackoutImg);
-            }
-            if (im.type == 'Wallpaper') {
-                this.wallpaperImg = im.imgUrl;
-            }
-            if (im.type == 'Translucent') {
-                this.translucentImg = im.imgUrl;
-            }
-            if (im.type == 'Pillow') {
-                this.pillowImg = im.imgUrl;
-
-            }
-            if (im.type == 'Children') {
-                this.childrenImg = im.imgUrl;
-            }
-            if (im.type == 'Decoration') {
-                this.decorationImg = im.imgUrl;
-            }
-            if (im.type == 'FurnitureFabric') {
-                this.furnitureFabricImg = im.imgUrl;
+            switch (im.type) {
+                case 'Darkener': {
+                    this.darkenerImg = im.imgUrl;
+                    break;
+                }
+                case 'Blackout': {
+                    this.blackoutImg = im.imgUrl;
+                    break;
+                }
+                case 'Wallpaper': {
+                    this.wallpaperImg = im.imgUrl;
+                    break;
+                }
+                case 'Translucent': {
+                    this.translucentImg = im.imgUrl;
+                    break;
+                }
+                case 'Pillow': {
+                    this.pillowImg = im.imgUrl;
+                    break;
+                }
+                case 'Children': {
+                    this.childrenImg = im.imgUrl;
+                    break;
+                }
+                case 'Decoration': {
+                    this.decorationImg = im.imgUrl;
+                    break;
+                }
+                case 'FurnitureFabric': {
+                    this.furnitureFabricImg = im.imgUrl;
+                    break;
+                }
             }
         }
     }

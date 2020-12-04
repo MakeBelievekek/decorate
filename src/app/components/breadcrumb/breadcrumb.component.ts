@@ -3,6 +3,8 @@ import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from '@angular/rou
 import { distinctUntilChanged, filter } from 'rxjs/operators';
 import { BreadcrumbModel } from '../../models/breadcrumbModel';
 
+const constPath = 'home/termekkategoriak';
+
 @Component({
     selector: 'app-breadcrumb',
     templateUrl: './breadcrumb.component.html',
@@ -21,11 +23,11 @@ export class BreadcrumbComponent implements OnInit {
 
 
     ngOnInit(): void {
+
         this.router.events.pipe(filter((event: RouterEvent) => this.isNavigationEnd(event)),
             distinctUntilChanged()).subscribe(() => {
             this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
         });
-
     }
 
     buildBreadCrumb(route: ActivatedRoute, url: string = '', breadcrumbs: BreadcrumbModel[] = []): BreadcrumbModel[] {
@@ -46,7 +48,7 @@ export class BreadcrumbComponent implements OnInit {
 
         const breadcrumb: BreadcrumbModel = {
             label: label,
-            url: 'termekkategoriak' + nextUrl,
+            url: constPath + nextUrl,
         };
         const newBreadcrumbs = breadcrumb.label ? [...breadcrumbs, breadcrumb] : [...breadcrumbs];
         if (route.firstChild) {

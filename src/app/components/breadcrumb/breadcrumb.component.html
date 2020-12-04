@@ -1,4 +1,8 @@
 <div class="bread">
+    <div class="path">
+        <a [href]="'/home'">Főoldal</a>
+        <i class="right arrow"></i>
+    </div>
     <div *ngFor="let breadcrumb of this.breadcrumbs" class="path">
         <a [href]="breadcrumb.url">{{breadcrumb.label}}</a>
         <i class="right arrow"></i>

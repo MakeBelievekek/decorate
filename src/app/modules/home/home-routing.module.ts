@@ -6,8 +6,11 @@ import { HomeResolver } from '../../services/home-resolver';
 
 const routes: Routes = [{
 
-    path: ''
-    , component: HomeComponent, resolve: {
+    path: '',
+    component: HomeComponent,
+    data: {
+        breadcrumb: 'Főoldal',
+    }, resolve: {
         images: HomeResolver,
     },
 

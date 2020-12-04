@@ -4,6 +4,9 @@ import { ModalControllerModel } from '../../../models/modalController.model';
 import { NavbarImageModel } from '../../../models/navbarImageModel';
 import { ModalService } from '../../../services/modal.service';
 
+const curtainPath = 'home/termekkategoriak/fuggonyok/';
+const otherPath = 'home/termekkategoriak/';
+
 @Component({
     selector: 'app-navbar-modal',
     templateUrl: './navbar-modal.component.html',
@@ -45,29 +48,35 @@ export class NavbarModalComponent implements OnInit {
 
 
     visible(chooise: string) {
-        if (chooise === 'color') {
-            this.isColorVisible = true;
-            this.isCurtainVisible = false;
-            this.isOtherVisible = false;
-            this.isStyleVisible = false;
-        }
-        if (chooise === 'curtain') {
-            this.isColorVisible = false;
-            this.isOtherVisible = false;
-            this.isStyleVisible = false;
-            this.isCurtainVisible = true;
-        }
-        if (chooise === 'style') {
-            this.isStyleVisible = true;
-            this.isColorVisible = false;
-            this.isCurtainVisible = false;
-            this.isOtherVisible = false;
-        }
-        if (chooise === 'other') {
-            this.isOtherVisible = true;
-            this.isStyleVisible = false;
-            this.isColorVisible = false;
-            this.isCurtainVisible = false;
+        switch (chooise) {
+            case 'color': {
+                this.isColorVisible = true;
+                this.isCurtainVisible = false;
+                this.isOtherVisible = false;
+                this.isStyleVisible = false;
+                break;
+            }
+            case 'curtain': {
+                this.isColorVisible = false;
+                this.isOtherVisible = false;
+                this.isStyleVisible = false;
+                this.isCurtainVisible = true;
+                break;
+            }
+            case 'style': {
+                this.isStyleVisible = true;
+                this.isColorVisible = false;
+                this.isCurtainVisible = false;
+                this.isOtherVisible = false;
+                break;
+            }
+            case 'other': {
+                this.isOtherVisible = true;
+                this.isStyleVisible = false;
+                this.isColorVisible = false;
+                this.isCurtainVisible = false;
+                break;
+            }
         }
     }
 
@@ -80,10 +89,10 @@ export class NavbarModalComponent implements OnInit {
     }
 
     curtainNavigate(url: string) {
-        this.router.navigateByUrl('termekkategoriak/fuggonyok/' + url);
+        this.router.navigateByUrl(curtainPath + url);
     }
 
     otherNavigate(url: string) {
-        this.router.navigateByUrl('termekkategoriak/' + url);
+        this.router.navigateByUrl(otherPath + url);
     }
 }
