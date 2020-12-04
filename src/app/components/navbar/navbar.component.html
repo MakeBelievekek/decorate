@@ -1,6 +1,6 @@
 <mat-toolbar class="fixed-top">
   <mat-toolbar-row>
-    <button mat-icon-button (click)="this.toggleMakeSide()" fxShow="true" fxHide.gt-sm>
+    <button mat-icon-button (click)="this.toggleSideSlide()" fxShow="true" fxHide.gt-sm>
       <mat-icon>menu</mat-icon>
     </button>
     <div class="button-container" fxShow="true" fxHide.lt-md style="height: 100%">
@@ -79,13 +79,14 @@
             <a mat-list-item fxShow="true" fxHide.gt-xs>Keresés</a>
         </mat-nav-list>
     </mat-sidenav>
-
+<ng-content>
+</ng-content>
 </mat-sidenav-container>-->
 
-<div *ngIf="this.showMakeSideSlide" class="make-side-bar"
+<div *ngIf="this.showSideSlide" class="make-side-bar"
      [ngClass]="{  'slide-right': this.animationState === 'open',
               'slide-left': this.animationState === 'close'}"
-     (animationEnded)="this.closeMakeSlide()"
+     (animationEnded)="this.closeSlide()"
      [animationName]="'slide-left'"
      appAnim
 >

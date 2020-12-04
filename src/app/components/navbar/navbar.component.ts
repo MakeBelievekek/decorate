@@ -15,7 +15,7 @@ const CART_KEY = 'local_cartList';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  showMakeSideSlide: boolean;
+  showSideSlide: boolean;
   animationState = null;
   screenControl: ScreenControlModel;
   numberOfItemsInBasket: number = 0;
@@ -65,14 +65,14 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  toggleMakeSide(): void {
-    this.showMakeSideSlide = true;
+  toggleSideSlide(): void {
+    this.showSideSlide = true;
     this.animationState === 'open' ? this.animationState = 'close' : this.animationState = 'open';
     this.disableScroll();
   }
 
-  closeMakeSlide(): void {
-    this.showMakeSideSlide = false;
+  closeSlide(): void {
+    this.showSideSlide = false;
     this.enableScroll();
   }
 
