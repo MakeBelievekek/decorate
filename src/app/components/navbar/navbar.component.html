@@ -38,11 +38,11 @@
           Kosár</p>
       </div>
     </div>
-    <div class="button-container" fxShow="true" fxHide.gt-sm fxHide.xs>
-      <div class="nav-btn">
+    <div class="button-container" fxShow="true" fxHide.gt-sm fxHide.xs >
+      <div class="nav-btn" *ngIf="this.animationState !== 'open'">
         <p><em class="fa fa-search pl-2"></em>Keresés</p>
       </div>
-      <div class="nav-btn">
+      <div class="nav-btn" *ngIf="this.animationState !== 'open'">
         <p><em class="fa fa-user pl-2"></em>Bejelentkezés</p>
       </div>
       <div class="nav-btn">
@@ -90,9 +90,8 @@
      [animationName]="'slide-left'"
      appAnim
 >
-  <a><em class="fa fa-times"></em></a>
-  <a routerLink="/" mat-list-item>Főoldal</a>
-  <a routerLink="/products" mat-list-item>Termékek</a>
+  <a routerLink="/" (click)="enableScroll()">Főoldal</a>
+  <a routerLink="/product" (click)="enableScroll()">Termékek</a>
   <a>Rólunk</a>
   <a>Kívánságlista</a>
   <a>Kapcsolat</a>
