@@ -83,7 +83,7 @@ export class NavbarComponent implements OnInit {
       window.scrollTo(x, y);
     };
   }
-  private enableScroll() {
+  enableScroll() {
     window.onscroll = () => {
     };
   }
