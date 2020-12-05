@@ -23,7 +23,6 @@ import { HomeRoutingModule } from './home-routing.module';
         SecondContentComponent,
         ThirdContentComponent,
         NguiInViewComponent,
-
     ],
     imports: [
         RouterModule,

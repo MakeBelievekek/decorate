@@ -61,17 +61,17 @@
     </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-sidenav-container fxFlexFill #sidenavContainer>
+<mat-sidenav-container #sidenavContainer>
     <mat-sidenav #sidenav>
         <mat-nav-list fxShow="true" fxHide.gt-sm>
             <a (click)="sidenav.toggle()" mat-list-item><em class="fa fa-times"></em></a>
-            <a routerLink="/" mat-list-item>Főoldal</a>
-            <a routerLink="/products" mat-list-item>Termékek</a>
-            <a mat-list-item>Rólunk</a>
-            <a mat-list-item>Kívánságlista</a>
-            <a mat-list-item>Kapcsolat</a>
-            <a mat-list-item fxShow="true" fxHide.gt-xs>Bejelentkezés</a>
-            <a mat-list-item fxShow="true" fxHide.gt-xs>Keresés</a>
+            <a (click)="sidenav.toggle()" routerLink="/" mat-list-item>Főoldal</a>
+            <a (click)="sidenav.toggle()" routerLink="/home/termekkategoriak" mat-list-item>Termékek</a>
+            <a (click)="sidenav.toggle()" mat-list-item>Rólunk</a>
+            <a (click)="sidenav.toggle()" mat-list-item>Kívánságlista</a>
+            <a (click)="sidenav.toggle()" mat-list-item>Kapcsolat</a>
+            <a (click)="sidenav.toggle()" mat-list-item fxShow="true" fxHide.gt-xs>Bejelentkezés</a>
+            <a (click)="sidenav.toggle()" mat-list-item fxShow="true" fxHide.gt-xs>Keresés</a>
         </mat-nav-list>
     </mat-sidenav>
     <ng-content>

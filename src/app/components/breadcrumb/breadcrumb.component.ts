@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Route, Router, RouterEvent } from '@angular/router';
 import { distinctUntilChanged, filter } from 'rxjs/operators';
 import { BreadcrumbModel } from '../../models/breadcrumbModel';
 
@@ -12,15 +12,12 @@ const constPath = 'home/termekkategoriak';
 })
 export class BreadcrumbComponent implements OnInit {
 
-
     breadcrumbs: BreadcrumbModel[] = [];
-
 
     constructor(private router: Router,
                 private activatedRoute: ActivatedRoute) {
         this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
     }
-
 
     ngOnInit(): void {
 
@@ -28,13 +25,12 @@ export class BreadcrumbComponent implements OnInit {
             distinctUntilChanged()).subscribe(() => {
             this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
         });
-    }
 
+    }
     buildBreadCrumb(route: ActivatedRoute, url: string = '', breadcrumbs: BreadcrumbModel[] = []): BreadcrumbModel[] {
 
         let label = route.routeConfig && route.routeConfig.data ? route.routeConfig.data.breadcrumb : '';
         let path = route.routeConfig && route.routeConfig.data ? route.routeConfig.path : '';
-
 
         const lastRoutePart = path.split('/').pop();
         const isDynamicRoute = lastRoutePart.startsWith(':');

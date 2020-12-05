@@ -2,7 +2,243 @@
     outline: none;
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 1261px) {
+    .sales-container {
+        background-color: var(--primaryGray);
+        display: grid;
+        grid-template-columns: minmax(250px, 1fr) 2fr;
+        grid-template-areas: "a b ";
+        height: 230px;
+    }
+
+    .sales-text {
+        grid-area: a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cards-pos {
+        grid-area: b;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    H4 {
+        font-family: 'Old Standard TT', serif;
+        font-weight: bolder;
+        color: var(--primaryLetterBlack);
+        font-size: 1.8rem;
+        margin: 0 50px 0 50px
+    }
+
+    img {
+        display: block;
+        width: 180px;
+        height: 180px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px 0 rgba(1, 1, 1, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.79);
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 180px;
+        width: 180px;
+        opacity: 0;
+        transition: .5s ease;
+        background-color: var(--primaryLetterBlack);
+    }
+
+    .img-container {
+        position: relative;
+        margin: 0 30px;
+        width: 180px;
+        height: 180px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .img-container:hover .overlay {
+        opacity: 50%;
+    }
+
+    .img-text {
+        color: var(--primaryWhite);
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-size: 2rem;
+        font-weight: bolder;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+}
+
+
+@media screen and (max-width: 1260px) and (min-width: 768px) {
+    .sales-container {
+        background-color: var(--primaryGray);
+        display: grid;
+        grid-auto-rows: .4fr 1fr;
+        grid-template-areas: "title" "images";
+        height: 280px;
+    }
+
+    .sales-text {
+        grid-area: title;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin: 20px 0 0 0;
+    }
+
+    .cards-pos {
+        grid-area: images;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    img {
+        display: block;
+        width: 150px;
+        height: 150px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px 0 rgba(1, 1, 1, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.79);
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 150px;
+        width: 150px;
+        opacity: 0;
+        transition: .5s ease;
+        background-color: var(--primaryLetterBlack);
+    }
+
+    .img-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 20px;
+    }
+
+    .img-container:hover .overlay {
+        opacity: 50%;
+    }
+
+    .img-text {
+        color: var(--primaryWhite);
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-size: 1.7rem;
+        font-weight: bolder;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+
+    H4 {
+        font-family: 'Old Standard TT', serif;
+        font-weight: bold;
+        color: var(--primaryLetterBlack);
+        margin: 0;
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .sales-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: var(--primaryGray);
+    }
+
+    .cards-pos, .sales-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 80vw;
+    }
+
+    .sales-text {
+        margin: 20px 0 0 0;
+        text-align: center;
+    }
+
+    img {
+        display: block;
+        width: 27vw;
+        height: 25vw;
+        cursor: pointer;
+        box-shadow: 0 4px 8px 0 rgba(1, 1, 1, 0.6), 0 6px 20px 0 rgba(0, 0, 0, 0.79);
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 25vw;
+        width: 27vw;
+        opacity: 0;
+        transition: .5s ease;
+        background-color: var(--primaryLetterBlack);
+    }
+
+    .img-container {
+        position: relative;
+        width: 27vw;
+        height: 25vw;
+        margin: 20px;
+    }
+
+    .img-container:hover .overlay {
+        opacity: 50%;
+    }
+
+    .img-text {
+        color: var(--primaryWhite);
+        font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+        font-size: 5vw;
+        font-weight: bolder;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+
+    H4 {
+        font-family: 'Old Standard TT', serif;
+        font-weight: bold;
+        font-size: 2rem;
+        color: var(--primaryLetterBlack);
+        margin: 0;
+    }
+}
+
+
+/*@media screen and (min-width: 900px) {
     .sales-container {
         background-color: var(--primaryGray);
         display: grid;
@@ -90,7 +326,7 @@
         transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
     }
-    */
+
 
 
 }
@@ -133,7 +369,7 @@
         margin: 0;
     }
 
-    /*
+
         .cards-pos {
             grid-area: images;
             display: grid;
@@ -195,5 +431,6 @@
             -ms-transform: translate(-50%, -50%);
         }
 
-         */
+
 }
+*/

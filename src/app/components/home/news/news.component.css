@@ -30,7 +30,7 @@
         font-family: 'Old Standard TT', serif;
         font-weight: bolder;
         color: var(--primaryLetterBlack);
-        font-size: 2rem;
+        font-size: 1.8rem;
         margin: 0 50px 0 50px
     }
 
@@ -89,14 +89,14 @@
         display: grid;
         grid-auto-rows: .4fr 1fr;
         grid-template-areas: "title" "images";
-        height: 250px;
+        height: 280px;
     }
 
     .sales-text {
         grid-area: title;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-end;
     }
 
     .cards-pos {
@@ -175,8 +175,11 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        margin: 10px 0 0 0;
         width: 80vw;
+    }
+
+    .sales-text {
+        margin: 20px 0 0 0;
     }
 
     img {
@@ -226,7 +229,7 @@
     H4 {
         font-family: 'Old Standard TT', serif;
         font-weight: bold;
-        font-size: 5vw;
+        font-size: 2rem;
         color: var(--primaryLetterBlack);
         margin: 0;
     }

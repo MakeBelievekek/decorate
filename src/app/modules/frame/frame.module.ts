@@ -25,7 +25,6 @@ import { BackgroundImgDirective } from '../../directives/background-img.directiv
         FooterComponent,
         ContentHeaderComponent,
         BackgroundImgDirective,
-
     ],
     imports: [
         CommonModule,

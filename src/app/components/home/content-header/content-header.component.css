@@ -248,14 +248,14 @@
 
 }
 
-@media screen and (min-width: 400px) and (max-width: 730px) {
+@media screen and (min-width: 600px) and (max-width: 730px) {
     .content-header {
         background-color: var(--primaryGray);
-        height: 220px;
+        height: 190px;
         display: -ms-grid;
         display: grid;
-        -ms-grid-rows: 70px 150px;
-        grid-template-rows: 70px 150px;
+        -ms-grid-rows: 70px 120px;
+        grid-template-rows: 70px 120px;
         -ms-grid-columns: minmax(100px, 0.4fr) 1fr minmax(100px, 0.4fr);
         grid-template-columns: minmax(100px, 0.4fr) 1fr minmax(100px, 0.4fr);
         grid-template-areas: "h1 h2 h3" "i1 i2 i3";
@@ -327,8 +327,8 @@
     }
 
     img {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
 
     }
 
@@ -371,14 +371,136 @@
     }
 }
 
+@media screen and (min-width: 400px) and (max-width: 599px) {
+    .content-header {
+        background-color: var(--primaryGray);
+        height: 180px;
+        display: -ms-grid;
+        display: grid;
+        -ms-grid-rows: 60px 120px;
+        grid-template-rows: 60px 120px;
+        -ms-grid-columns: minmax(100px, 0.4fr) 1fr minmax(100px, 0.4fr);
+        grid-template-columns: minmax(100px, 0.4fr) 1fr minmax(100px, 0.4fr);
+        grid-template-areas: "h1 h2 h3" "i1 i2 i3";
+        padding-left: 32px;
+        padding-right: 32px;
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    .icons {
+        grid-area: i1;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+
+    .dot, .mail-icon, .telIcon {
+        height: 50px;
+        width: 50px;
+        background-color: var(--primaryWhite);
+        border-radius: 50%;
+        border: 1px solid #CCCCCC;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        margin-left: 10px;
+        cursor: pointer;
+        -webkit-transition: 700ms;
+        transition: 700ms;
+        -webkit-transition-timing-function: linear;
+        transition-timing-function: linear;
+    }
+
+    .mail-icon {
+        margin-right: 10px;
+    }
+
+    .phone {
+        grid-area: i3;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
+        justify-content: flex-end;
+    }
+
+    p {
+        display: none;
+    }
+
+    .dot:hover, .telIcon:hover, .mail-icon:hover {
+        background-color: #C5C5C5;
+    }
+
+    img {
+        width: 120px;
+        height: 120px;
+
+    }
+
+    .logo {
+        grid-area: i2;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .dot, .mail-icon {
+        -ms-grid-row: 2;
+        -ms-grid-column: 1;
+    }
+    .icons {
+        -ms-grid-row: 2;
+        -ms-grid-column: 1;
+    }
+    .phone {
+        -ms-grid-row: 2;
+        -ms-grid-column: 3;
+    }
+    .logo {
+        -ms-grid-row: 2;
+        -ms-grid-column: 2;
+    }
+    .icons {
+        -ms-grid-row: 2;
+        -ms-grid-column: 1;
+    }
+    .phone {
+        -ms-grid-row: 2;
+        -ms-grid-column: 3;
+    }
+    .logo {
+        -ms-grid-row: 2;
+        -ms-grid-column: 2;
+    }
+}
 @media screen and  (max-width: 399px) {
     .content-header {
         background-color: var(--primaryGray);
-        height: 220px;
+        height: 180px;
         display: -ms-grid;
         display: grid;
-        -ms-grid-rows: 70px 150px;
-        grid-template-rows: 70px 150px;
+        -ms-grid-rows: 60px 120px;
+        grid-template-rows: 60px 120px;
         -ms-grid-columns:  0.4fr 1fr  0.4fr;
         grid-template-columns:  0.4fr 1fr  0.4fr;
         grid-template-areas: "h1 h2 h3" "i1 i2 i3";
@@ -387,8 +509,8 @@
     }
 
     img {
-        width: 150px;
-        height: 150px;
+        width: 120px;
+        height: 120px;
 
     }
 
