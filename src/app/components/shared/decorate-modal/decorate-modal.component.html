@@ -1,19 +1,22 @@
-<div (@fadeInOut.done)="this.animEnd($event)"
-     (@fadeInOut.start)="this.animationFinished = false"
+<div (@fadeInOut.start)="this.animStart($event)"
+     (@fadeInOut.done)="this.animEnd($event)"
      (closeModal)="this.changeState()"
      [@fadeInOut]="{value: this.modalState, params: { animationStart: this.animationStart, animationFinish: this.topOffSet}}"
      [ngStyle]="this.centered ? {top: this.animationStart, left: '50%', transform: 'translate(-50%, -50%)' } : {top: this.animationStart}"
+     [ngClass]="{'modal-shadow': this.whitShadow}"
      appModal
      class="decorate-modal"
 >
-  <div [ngStyle]="this.hasCustomWidth && this.hasCustomHeight ? {width: this.width, height: this.height} :
+  <div style="position: relative">
+    <div [ngStyle]="this.hasCustomWidth && this.hasCustomHeight ? {width: this.width, height: this.height} :
   this.hasCustomWidth ? {width: this.width} : this.hasCustomHeight ? {height: this.height} :{visibility: 'visible'}">
-    <ng-content></ng-content>
+      <ng-content></ng-content>
+    </div>
+
   </div>
 </div>
+
 <div *ngIf="this.fadedBackground" class="fixed-modal-background"
      [@fadeInOut]="{value: this.modalState, params: {opacityStartingValue: '0%', opacityFinishValue: '50%'}}"
-></div>
-
-<!-- [ngStyle]="this.hasCustomWidth ? {width: this.width} : {visibility: 'visible'}"
-     [ngStyle]="this.hasCustomHeight ? {height: this.height} : {visibility: 'visible'}"-->
+>
+</div>

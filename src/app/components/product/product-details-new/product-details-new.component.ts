@@ -7,10 +7,13 @@ import {DummyProductModel} from '../../../models/dummyProductModel';
   templateUrl: './product-details-new.component.html',
   styleUrls: ['./product-details-new.component.css']
 })
-export class ProductDetailsNewComponent implements OnInit, AfterViewInit {
+export class ProductDetailsNewComponent implements OnInit {
   @Input() productDetailsDimension: ScreenSizeModel;
   @Input() dummyProduct: DummyProductModel;
   @ViewChild('productDetailContainer') productDetailContainer: ElementRef;
+  isModalOpen: boolean;
+  modalState = 'open';
+  similarProducts = [new DummyProductModel(), new DummyProductModel()];
 
   constructor() {
   }
@@ -19,8 +22,32 @@ export class ProductDetailsNewComponent implements OnInit, AfterViewInit {
     this.dummyProduct = new DummyProductModel();
   }
 
-  ngAfterViewInit(): void {
-    console.log('hello from the other side: ', this.productDetailContainer.nativeElement.offsetWidth);
+  openModal() {
+    this.modalState = 'open';
+    this.isModalOpen = true;
+    this.disableScroll();
+  }
+
+  private disableScroll() {
+    const x = window.scrollX;
+    const y = window.scrollY;
+    window.onscroll = () => {
+      window.scrollTo(x, y);
+    };
+  }
+  private enableScroll() {
+    window.onscroll = () => {
+    };
+  }
+  startModalClose() {
+    this.modalState = 'closed';
+    this.enableScroll();
+  }
+
+
+
+  closeModal() {
+    this.isModalOpen = false;
   }
 
 }

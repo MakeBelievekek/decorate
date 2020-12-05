@@ -16,16 +16,21 @@ import { ContentHeaderComponent } from '../../components/home/content-header/con
 import { NavbarModalComponent } from '../../components/navbar/navbar-modal/navbar-modal.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { BackgroundImgDirective } from '../../directives/background-img.directive';
+import {DomChangeDirective} from '../../directives/dom-change.directive';
+import {AnimDirective} from '../../directives/anim.directive';
 
 
 @NgModule({
-    declarations: [
-        NavbarComponent,
-        NavbarModalComponent,
-        FooterComponent,
-        ContentHeaderComponent,
-        BackgroundImgDirective,
-    ],
+  declarations: [
+    NavbarComponent,
+    NavbarModalComponent,
+    FooterComponent,
+    ContentHeaderComponent,
+    BackgroundImgDirective,
+    DomChangeDirective,
+    AnimDirective,
+
+  ],
     imports: [
         CommonModule,
         MatToolbarModule,

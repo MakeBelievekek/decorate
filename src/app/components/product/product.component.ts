@@ -59,17 +59,6 @@ export class ProductComponent implements OnInit, AfterContentInit {
     }
   }
 
-  openModal() {
-    this.pushed = true;
-    // this.pushed ? this.disableScrolling() : this.enableScrolling();
-  }
-
-  closeModal() {
-    this.pushed = false;
-    console.log('closed');
-    // this.pushed ? this.disableScrolling() : this.enableScrolling();
-  }
-
   ngAfterContentInit(): void {
     this.contentLoaded = true;
     if (this.contentLoaded) {

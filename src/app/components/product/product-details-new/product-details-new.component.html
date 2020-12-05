@@ -11,8 +11,8 @@
   <div class="product-new-color">{{this.dummyProduct.color}}</div>
 
   <!-- More color options btn start-->
-  <div class="more-color-btn">
-    TOVÁBBI SZÍNEK
+  <div class="more-color-btn" (click)="this.openModal()">
+    HASONLÓ TERMÉKEK
     <div class="play-button">
       <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
            x="0px" y="0px"
@@ -45,4 +45,42 @@
     <div class="product-details-table-item-right"
     >{{this.dummyProduct.patternRep}}</div>
   </div>
+
+
 </div>
+<app-decorate-modal *ngIf="isModalOpen"
+                    [show]="this.isModalOpen"
+                    (modalClosed)="closeModal()"
+                    [fadedBackground]="true"
+                    [centered]="true"
+                    [animationStart]="'40%'"
+                    [whitShadow]="true"
+                    [modalState]="this.modalState"
+>
+  <div class="similar-item-container" appCssAnimationState>
+    <ng-container *ngFor="let similarProduct of similarProducts">
+      <app-similar-item [product]="similarProduct"></app-similar-item>
+    </ng-container>
+
+    <!-- close btn start  -->
+      <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg" class="modal-close-btn"
+           (click)="startModalClose()"
+      >
+        <g>
+          <title>background</title>
+          <rect fill="none" id="canvas_background" height="42" width="42" y="-1" x="-1"/>
+        </g>
+        <g>
+          <g id="svg_20">
+            <ellipse stroke="null" ry="20" rx="20" id="svg_19" cy="20" cx="20" stroke-width="1.5" fill="#c6d7cd"/>
+            <g stroke="null" id="svg_2">
+              <path stroke="null" id="svg_3"
+                    d="m20.90242,20.00003l7.07811,-6.71653c0.2492,-0.23647 0.2492,-0.61986 0,-0.8563c-0.2492,-0.23644 -0.65323,-0.23647 -0.9024,0l-7.07815,6.71653l-7.07811,-6.71653c-0.2492,-0.23647 -0.65323,-0.23647 -0.9024,0c-0.24917,0.23647 -0.2492,0.61986 0,0.8563l7.07811,6.7165l-7.07811,6.71653c-0.2492,0.23647 -0.2492,0.61986 0,0.8563c0.12458,0.11822 0.2879,0.17731 0.45122,0.17731c0.16332,0 0.3266,-0.05909 0.45122,-0.17731l7.07808,-6.7165l7.07811,6.7165c0.12458,0.11822 0.2879,0.17731 0.45122,0.17731s0.3266,-0.05909 0.45122,-0.17731c0.2492,-0.23647 0.2492,-0.61986 0,-0.8563l-7.07811,-6.7165z"/>
+            </g>
+          </g>
+        </g>
+      </svg>
+    </div>
+  <!--  close btn end  -->
+</app-decorate-modal>
+
