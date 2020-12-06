@@ -29,13 +29,13 @@
 }
 
 p {
-    margin: 0px;
+    margin: 0;
     color: var(--primaryLetterBlack);
 
 }
 
 body {
-    margin: 0px;
+    margin: 0;
 }
 
 body, html {
@@ -57,7 +57,7 @@ body, html {
     .mozaik-down:before {
         content: "";
         position: absolute;
-        right: 45%;
+        right: 43%;
         bottom: -35px;
         width: 0;
         height: 0;
@@ -70,7 +70,7 @@ body, html {
     .mozaik-up:before {
         content: "";
         position: absolute;
-        right: 45%;
+        right: 43%;
         top: -35px;
         width: 0;
         height: 0;
@@ -152,7 +152,7 @@ body, html {
     }
 
     .mozaik-up:before {
-        bottom: 0px;
+        bottom: 0;
         top: -35px;
         border-bottom: 23px solid var(--mozaikColor);
         border-top: 15px solid transparent;

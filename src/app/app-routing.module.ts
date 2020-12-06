@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { BarionInformationComponent } from './components/barion-information/barion-information.component';
-import { ProductComponent } from './components/product/product.component';
 
 
 const routes: Routes = [
@@ -14,10 +13,41 @@ const routes: Routes = [
     },
     {path: 'admin', loadChildren: () => import('src/app/modules/admin/admin.module').then(m => m.AdminModule)},
     {
-        path: 'home/termekkategoriak',
+        path: 'termekkategoriak',
         loadChildren: () => import('src/app/modules/products/products.module').then(m => m.ProductsModule),
     },
-    {path: 'product', component: ProductComponent},
+    {
+        path: 'termekkategoriak/fuggonyok/ifjusagi/:id',
+        loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),
+    },
+    {
+        path: 'termekkategoriak/fuggonyok/blackout/:id',
+        loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),
+    },
+    {
+        path: 'termekkategoriak/fuggonyok/sotetito/:id',
+        loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),
+    },
+    {
+        path: 'termekkategoriak/fuggonyok/fenyatereszto/:id',
+        loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),
+    },
+    {
+        path: 'termekkategoriak/textilkiegeszito/:id',
+        loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),
+    },
+    {
+        path: 'termekkategoriak/parna/:id',
+        loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),
+    },
+    {
+        path: 'termekkategoriak/tapeta/:id',
+        loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),
+    },
+    {
+        path: 'termekkategoriak/lakasdekoracio/:id',
+        loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),
+    },
     {path: 'barion-fizetesi-tajekoztato', component: BarionInformationComponent},
 ];
 const extraOptions: ExtraOptions = {

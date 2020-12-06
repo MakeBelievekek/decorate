@@ -76,14 +76,14 @@ export class NavbarComponent implements OnInit {
     this.enableScroll();
   }
 
-  private disableScroll() {
+  disableScroll() {
     const x = window.scrollX;
     const y = window.scrollY;
     window.onscroll = () => {
       window.scrollTo(x, y);
     };
   }
-  private enableScroll() {
+   enableScroll() {
     window.onscroll = () => {
     };
   }

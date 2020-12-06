@@ -4,8 +4,8 @@ import { ModalControllerModel } from '../../../models/modalController.model';
 import { NavbarImageModel } from '../../../models/navbarImageModel';
 import { ModalService } from '../../../services/modal.service';
 
-const curtainPath = 'home/termekkategoriak/fuggonyok/';
-const otherPath = 'home/termekkategoriak/';
+const curtainPath = '/termekkategoriak/fuggonyok/';
+const otherPath = '/termekkategoriak/';
 
 @Component({
     selector: 'app-navbar-modal',

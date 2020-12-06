@@ -4,8 +4,11 @@
         <i class="right arrow"></i>
     </div>
     <div *ngFor="let breadcrumb of this.breadcrumbs" class="path">
-        <a [href]="breadcrumb.url">{{breadcrumb.label}}</a>
-        <i class="right arrow"></i>
+        <div *ngIf="this.breadcrumb.label">
+            <a [href]="breadcrumb.url"
+               [ngClass]="{'active':breadcrumb === breadcrumbs[breadcrumbs.length-1]}">{{breadcrumb.label}}</a>
+            <i class="right arrow" *ngIf="breadcrumb !== breadcrumbs[breadcrumbs.length-1]"></i>
+        </div>
     </div>
 
 </div>

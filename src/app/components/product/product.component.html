@@ -2,16 +2,16 @@
 <app-content-header></app-content-header>
 
 <div style="display: flex; flex-direction: column;" appCssAnimationState>
-  <app-navigation-header style="display: flex; align-self: center"></app-navigation-header>
-  <div class="product-container">
-    <div class="product-image-side">
-      <app-product-image-card></app-product-image-card>
+    <app-breadcrumb></app-breadcrumb>
+    <div class="product-container">
+        <div class="product-image-side">
+            <app-product-image-card></app-product-image-card>
+        </div>
+        <div class="product-detail-side">
+            <app-product-details-new></app-product-details-new>
+        </div>
     </div>
-    <div class="product-detail-side">
-      <app-product-details-new></app-product-details-new>
-    </div>
-  </div>
-  <app-footer></app-footer>
+    <app-footer></app-footer>
 </div>
 
 

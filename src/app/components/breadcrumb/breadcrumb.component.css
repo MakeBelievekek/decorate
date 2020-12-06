@@ -12,6 +12,15 @@ a:hover {
     color: #63b0bb;
 }
 
+.active {
+    cursor: default;
+    font-weight: bold;
+    pointer-events: none;
+}
+.active:hover{
+    color:black;
+}
+
 .bread, .path {
     display: flex;
     justify-content: flex-start;

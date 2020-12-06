@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {ScreenSizeModel} from '../../../models/ScreenSize.model';
-import {DummyProductModel} from '../../../models/dummyProductModel';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { DummyProductModel } from '../../../models/dummyProductModel';
+import { ScreenSizeModel } from '../../../models/ScreenSize.model';
 
 @Component({
   selector: 'app-product-details-new',

@@ -1,8 +1,7 @@
-import {AfterContentInit, Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
-import {ScreenService} from '../../services/screen.service';
-import {ScreenSizeModel} from '../../models/ScreenSize.model';
-import {Observable, Subject} from 'rxjs';
-import {log} from 'util';
+import { AfterContentInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
+import { ScreenSizeModel } from '../../models/ScreenSize.model';
+import { ScreenService } from '../../services/screen.service';
 
 @Component({
   selector: 'app-product',

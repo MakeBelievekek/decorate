@@ -6,35 +6,35 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'primeng/carousel';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ContentHeaderComponent } from '../../components/home/content-header/content-header.component';
 import { NavbarModalComponent } from '../../components/navbar/navbar-modal/navbar-modal.component';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { AnimDirective } from '../../directives/anim.directive';
 import { BackgroundImgDirective } from '../../directives/background-img.directive';
-import {DomChangeDirective} from '../../directives/dom-change.directive';
-import {AnimDirective} from '../../directives/anim.directive';
+import { DomChangeDirective } from '../../directives/dom-change.directive';
 
 
 @NgModule({
-  declarations: [
-    NavbarComponent,
-    NavbarModalComponent,
-    FooterComponent,
-    ContentHeaderComponent,
-    BackgroundImgDirective,
-    DomChangeDirective,
-    AnimDirective,
-
-  ],
+    declarations: [
+        NavbarComponent,
+        NavbarModalComponent,
+        FooterComponent,
+        ContentHeaderComponent,
+        BackgroundImgDirective,
+        DomChangeDirective,
+        AnimDirective,
+        BreadcrumbComponent,
+    ],
     imports: [
         CommonModule,
         MatToolbarModule,
-        MatSidenavModule,
+       // MatSidenavModule,
         MatListModule,
         MatButtonModule,
         LayoutModule,
@@ -43,7 +43,6 @@ import {AnimDirective} from '../../directives/anim.directive';
         RouterModule,
         FlexLayoutModule,
         OverlayPanelModule,
-        CarouselModule,
     ],
     exports: [
         NavbarComponent,
@@ -53,6 +52,7 @@ import {AnimDirective} from '../../directives/anim.directive';
         BackgroundImgDirective,
         CommonModule,
         CarouselModule,
+        BreadcrumbComponent,
     ],
 })
 export class FrameModule {

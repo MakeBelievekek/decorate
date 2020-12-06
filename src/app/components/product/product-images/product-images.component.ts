@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, ElementRef, HostListener, Input, OnInit, ViewChild} from '@angular/core';
-import {ScreenSizeModel} from '../../../models/ScreenSize.model';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ScreenSizeModel } from '../../../models/ScreenSize.model';
 
 @Component({
   selector: 'app-product-images',
