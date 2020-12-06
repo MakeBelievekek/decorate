@@ -15,15 +15,10 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BarionInformationComponent } from './components/barion-information/barion-information.component';
-import { ProductImagesComponent } from './components/product/product-images/product-images.component';
 import { DecorateMakeCarouselComponent } from './components/shared/decorate-make-carousel/decorate-make-carousel.component';
-import { DecorateModalComponent } from './components/shared/decorate-modal/decorate-modal.component';
-import { ModalDirective } from './components/shared/decorate-modal/modal.directive';
-import { CardShadowDirective } from './directives/card-shadow.directive';
-import { CssAnimationStateDirective } from './directives/css-animation-state.directive';
 import { FrameModule } from './modules/frame/frame.module';
-import { PlusMinusModule } from './modules/plus-minus/plus-minus.module';
 import { LocalStorageService } from './services/localStorage.service';
+import { WishItemComponent } from './components/wish-list/wish-item/wish-item.component';
 
 const cookieConfig: NgcCookieConsentConfig = {
     'cookie': {
@@ -60,6 +55,7 @@ const cookieConfig: NgcCookieConsentConfig = {
         AppComponent,
         DecorateMakeCarouselComponent,
         BarionInformationComponent,
+
     ],
 
     imports: [

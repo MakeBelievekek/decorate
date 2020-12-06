@@ -1,0 +1,13 @@
+<div class="flex-container">
+    <div style="margin-bottom: 50px">
+        <div class="flex-header" >
+        </div>
+        <div *ngFor="let prod of this.productsFromLocalStorage">
+            <app-wish-item [product]="prod" ></app-wish-item>
+        </div>
+        <div class="empty-basket" *ngIf="this.productsFromLocalStorage == null">
+            <app-empty-wish></app-empty-wish>
+            <button class="basket-continue-btn" routerLink="/">Vásárlás folytatása</button>
+        </div>
+    </div>
+</div>

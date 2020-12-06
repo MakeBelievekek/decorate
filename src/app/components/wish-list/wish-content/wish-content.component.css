@@ -1,0 +1,59 @@
+*:focus {
+    outline: none;
+}
+.flex-header {
+    display: grid;
+    grid-template-columns: minmax(280px, 2fr) 2fr 1fr 1fr;
+    grid-template-areas: 'a b c d ';
+    margin-bottom: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
+    height: 50px;
+}
+.flex-container {
+    display: flex;
+    flex-grow: 1;
+    min-width: 800px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: var(--primaryGray);
+
+}
+.empty-basket{
+    margin: 40px;
+}
+div > h4 {
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-weight: bolder;
+    font-size: 1.5rem;
+    text-align: center;
+    align-self: flex-end;
+    color: var(--primaryLetterBlack);
+    margin: 0;
+}
+.discount-code-btn {
+    width: 80px;
+    background: var(--primaryGreen);
+}
+
+.basket-continue-btn {
+    background: var(--primaryGreen);
+    width: 200px;
+}
+
+.basket-continue-btn:hover{
+    background: #64B385;
+}
+
+.basket-continue-btn {
+    margin-right: auto;
+}
+
+ button {
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    margin-top: 30px;
+    height: 38px;
+    width: 150px;
+    border-radius: 20px;
+    border: 1px solid var(--primaryGray);
+}

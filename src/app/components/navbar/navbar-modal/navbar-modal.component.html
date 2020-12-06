@@ -52,11 +52,6 @@
                         <h4 [ngStyle]="{color: isColorVisible ? 'black' : 'gray'}">SZÍNEK </h4>
                         <i class="right" [ngClass]="{ 'arrowHover' :isColorVisible,'arrow':!isColorVisible}"></i>
                     </div>
-                    <div class="drop-title" (mouseenter)="visible('style')"
-                         [ngStyle]="{'border-bottom':  isStyleVisible ? '1px solid black' : '1px solid gray'}">
-                        <h4 [ngStyle]="{color: isStyleVisible ? 'black' : 'gray'}">STÍLUSOK</h4>
-                        <i class="right" [ngClass]="{ 'arrowHover' :isStyleVisible,'arrow':!isStyleVisible}"></i>
-                    </div>
                     <div class="drop-title" (mouseenter)="visible('curtain')"
                          [ngStyle]="{'border-bottom':  isCurtainVisible ? '1px solid black' : '1px solid gray'}">
                         <h4 [ngStyle]="{color: isCurtainVisible ? 'black' : 'gray'}">FÜGGÖNYÖK</h4>
@@ -64,7 +59,7 @@
                     </div>
                     <div class="drop-title" (mouseenter)="visible('other')"
                          [ngStyle]="{'border-bottom':  isOtherVisible ? '1px solid black' : '1px solid gray'}">
-                        <h4 [ngStyle]="{color: isOtherVisible ? 'black' : 'gray'}">TÍPUSOK</h4>
+                        <h4 [ngStyle]="{color: isOtherVisible ? 'black' : 'gray'}">EGYÉB TERMÉKEINK</h4>
                         <i class="right" [ngClass]="{ 'arrowHover' :isOtherVisible,'arrow':!isOtherVisible}"></i>
                     </div>
                 </div>
@@ -92,6 +87,7 @@
 
     <div class="products-modal animate__animated animate__fadeOutUp"
          *ngIf="this.modalControl.control === 'products' && !this.modalControl.showModal">
+        <!-- Modal content -->
         <div class="custom-modal-content">
             <div class="product-categoris">
                 <div class="drop">
@@ -100,27 +96,30 @@
                         <h4 [ngStyle]="{color: isColorVisible ? 'black' : 'gray'}">SZÍNEK </h4>
                         <i class="right" [ngClass]="{ 'arrowHover' :isColorVisible,'arrow':!isColorVisible}"></i>
                     </div>
-                    <div class="drop-title" (mouseenter)="visible('style')"
-                         [ngStyle]="{'border-bottom':  isStyleVisible ? '1px solid black' : '1px solid gray'}">
-                        <h4 [ngStyle]="{color: isStyleVisible ? 'black' : 'gray'}">STÍLUSOK</h4>
-                        <i class="right" [ngClass]="{ 'arrowHover' :isStyleVisible,'arrow':!isStyleVisible}"></i>
-                    </div>
-                    <div class="drop-title" (mouseenter)="visible('type')"
+                    <div class="drop-title" (mouseenter)="visible('curtain')"
                          [ngStyle]="{'border-bottom':  isCurtainVisible ? '1px solid black' : '1px solid gray'}">
-                        <h4 [ngStyle]="{color: isCurtainVisible ? 'black' : 'gray'}">TÍPUSOK</h4>
+                        <h4 [ngStyle]="{color: isCurtainVisible ? 'black' : 'gray'}">FÜGGÖNYÖK</h4>
                         <i class="right" [ngClass]="{ 'arrowHover' :isCurtainVisible,'arrow':!isCurtainVisible}"></i>
+                    </div>
+                    <div class="drop-title" (mouseenter)="visible('other')"
+                         [ngStyle]="{'border-bottom':  isOtherVisible ? '1px solid black' : '1px solid gray'}">
+                        <h4 [ngStyle]="{color: isOtherVisible ? 'black' : 'gray'}">EGYÉB TERMÉKEINK</h4>
+                        <i class="right" [ngClass]="{ 'arrowHover' :isOtherVisible,'arrow':!isOtherVisible}"></i>
                     </div>
                 </div>
                 <div class="details">
                     <ul *ngIf="isColorVisible">
                         <li *ngFor="let a of this.colors">{{a}}</li>
                     </ul>
-                    <ul *ngIf="isCurtainVisible">
-                        <li *ngFor="let a of this.curtains"
+                    <ul *ngIf="isOtherVisible">
+                        <li (click)="otherNavigate(a.navigationUrl)" *ngFor="let a of this.otherProducts"
                             (mouseover)="showPicture(a.imgUrl)"
-                            (mouseleave)="firstImageRender()">
-                            {{a.imageType}}
-                        </li>
+                            (mouseleave)="firstImageRender()">{{a.imageType}}</li>
+                    </ul>
+                    <ul *ngIf="isCurtainVisible">
+                        <li (click)="curtainNavigate(a.navigationUrl)" *ngFor="let a of this.curtains"
+                            (mouseover)="showPicture(a.imgUrl)"
+                            (mouseleave)="firstImageRender()">{{a.imageType}}</li>
                     </ul>
                 </div>
                 <div class="modal-img">
@@ -129,3 +128,4 @@
             </div>
         </div>
     </div>
+</div>

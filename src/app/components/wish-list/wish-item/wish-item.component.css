@@ -1,0 +1,43 @@
+*:focus {
+    outline: none;
+}
+
+em {
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.fa {
+    color: red;
+}
+
+.basket-item-grid {
+    display: grid;
+    grid-template-columns: 1fr minmax(140px, 1fr) 2fr 1fr 1fr;
+    grid-template-areas: 'a b c d e';
+    background-color: var(--primaryWhite);
+    margin-bottom: 5px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.basket-details {
+    grid-area: b;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.remove {
+    grid-area: e;
+    align-self: center;
+    text-align: center;
+
+}
+
+.basket-item-grid > img {
+    grid-area: a;
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+}

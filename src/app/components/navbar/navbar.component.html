@@ -17,7 +17,10 @@
         <p>Rólunk</p>
       </div>
       <div class="nav-btn">
-        <p>Kívánságlista</p>
+        <p routerLink="/kivansaglista">
+          <span matBadge="{{numberOfItemsInBasket}}" matBadgeOverlap="true"  matBadgeSize="small" *ngIf="numberOfItemInWish !==0"></span>
+          <em class="fa fa-heart pl-2" *ngIf="numberOfItemInWish !==0"></em>
+          Kívánságlista</p>
       </div>
       <div class="nav-btn" *ngIf="this.screenSize.width > 1080">
         <p>Kapcsolat</p>
@@ -93,7 +96,7 @@
   <a routerLink="/" (click)="enableScroll()">Főoldal</a>
   <a routerLink="/termekkategoriak" (click)="enableScroll()">Termékek</a>
   <a>Rólunk</a>
-  <a>Kívánságlista</a>
+  <a routerLink="/kivansaglista" (click)="enableScroll()">Kívánságlista</a>
   <a>Kapcsolat</a>
   <a>Bejelentkezés</a>
   <a>Keresés</a>

@@ -31,13 +31,13 @@ export class BreadCrumbService {
                 return  'Blackout';
             }
             case 'textilkiegeszito': {
-                return  'Textilkiegészítő';
+                return  'Textilkiegészítők';
             }
             case 'tapeta': {
-                return  'Tapéta';
+                return  'Tapéták';
             }
             case 'lakasdekoracio': {
-                return  'Lakásdekoráció';
+                return  'Lakásdekorációk';
             }
             case 'parna': {
                 return  'Párnák';

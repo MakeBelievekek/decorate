@@ -1,0 +1,18 @@
+*:focus {
+    outline: none;
+}
+
+p {
+    font-size: 1.2rem;
+    font-family: 'Old Standard TT', serif;
+    font-weight: bold;
+    padding: 10px;
+}
+.fa-info-circle{
+    margin-right:10px ;
+}
+.empty-basket-container {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--primaryWhite);
+}

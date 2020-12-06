@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { NavigationEnd, Router, RouterEvent } from '@angular/router';
+import { distinctUntilChanged, filter } from 'rxjs/operators';
 import { BreadcrumbModel } from '../../models/breadcrumbModel';
 import { BreadCrumbService } from '../../services/breadCrumb.service';
+import { LoadingService } from '../../services/loading.service';
 
 const constPath = '/termekkategoriak';
 
@@ -15,25 +17,31 @@ export class BreadcrumbComponent implements OnInit {
     breadcrumbs: BreadcrumbModel[] = [];
     path: string = '';
     stations: string[] = [];
-    isHovered: boolean = false;
+    isNavigationEnd$ = this.loadingService.isNavigationPending$;
 
     constructor(private router: Router,
                 private breadcrumbService: BreadCrumbService,
-                private activatedRoute: ActivatedRoute) {
+                private loadingService: LoadingService) {
         //  this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
-        this.path = router.url;
-        this.stations = this.path.split('/');
-        this.stations.shift();
+        this.initial();
+        this.buildBreadCrumb(this.router, this.path, this.stations, this.breadcrumbs);
     }
 
     ngOnInit(): void {
-        /*    this.router.events.pipe(filter((event: RouterEvent) => this.isNavigationEnd(event)),
-                distinctUntilChanged()).subscribe(() => {
-                this.breadcrumbs = this.buildBreadCrumb(this.activatedRoute.root);
-            });
-    */
-        this.buildBreadCrumb(this.router, this.path, this.stations, this.breadcrumbs);
-        console.log(this.breadcrumbs)
+        this.router.events.pipe(filter((event: RouterEvent) => this.isNavigationEnd(event)),
+            distinctUntilChanged()).subscribe(() => {
+            console.log('navigálok');
+            this.initial();
+            this.buildBreadCrumb(this.router, this.path, this.stations, this.breadcrumbs);
+            console.log(this.breadcrumbs);
+        });
+    }
+
+    initial() {
+        this.breadcrumbs = [];
+        this.path = this.router.url;
+        this.stations = this.path.split('/');
+        this.stations.shift();
     }
 
     buildBreadCrumb(router: Router, path: string, stations: string[], breadcrumb: BreadcrumbModel[] = []) {
@@ -85,15 +93,13 @@ export class BreadcrumbComponent implements OnInit {
 
           return newBreadcrumbs;
       }
-
-      private isNavigationEnd(event: RouterEvent): boolean {
-          return event instanceof NavigationEnd;
-      }
-
-      cons(url: string) {
-          console.log(url);
-      }*/
-    select() {
-        this.isHovered = true;
+*/
+    private isNavigationEnd(event: RouterEvent): boolean {
+        return event instanceof NavigationEnd;
     }
+
+    cons(url: string) {
+        console.log(url);
+    }
+
 }
