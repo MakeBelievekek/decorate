@@ -24,7 +24,7 @@
 .products-filter-order-selector-dropdown {
   position: absolute;
   top: 2rem;
-  z-index: 1050;
+  z-index: 1000;
   border: solid 0.3px black;
   background: whitesmoke;
   min-width: 250px;
@@ -65,7 +65,7 @@ justify-content: center;
 .products-filter-color-selector-dropdown {
   position: absolute;
   top: 2rem;
-  z-index: 1050;
+  z-index: 1000;
   border: solid 0.3px black;
   background: whitesmoke;
   width: 525px;
