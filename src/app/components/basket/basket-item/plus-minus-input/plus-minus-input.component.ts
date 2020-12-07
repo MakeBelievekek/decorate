@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {LocalProductModel} from '../../../../models/localProductModel';
-import {TotalPriceModel} from '../../../../models/totalPriceModel';
-import {LocalStorageService} from '../../../../services/localStorage.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { LocalProductModel } from '../../../../models/localProductModel';
+import { TotalPriceModel } from '../../../../models/totalPriceModel';
+import { LocalStorageService } from '../../../../services/localStorage.service';
 
 const CART_KEY = 'local_cartList';
 
@@ -37,17 +37,17 @@ export class PlusMinusInputComponent implements OnInit {
     renderedValue: string;
     value: number = 0;
 
-  ngOnInit() {
-    this.value = this.initialValue ? this.value = this.initialValue : 0;
-    this.renderedValue = this.value.toString();
-    if (this.localStorageService.getItemIdFromLocalStorage(CART_KEY)) {
-      if (!this.localStorageService.getItemIdFromLocalStorage(CART_KEY).includes(this.prodId)) {
-        this.localStorageService.storeOnLocalStorage(this.item, CART_KEY);
-      }
-    } else {
-      this.localStorageService.storeOnLocalStorage(this.item, CART_KEY);
+    ngOnInit() {
+        this.value = this.initialValue ? this.value = this.initialValue : 0;
+        this.renderedValue = this.value.toString();
+        /*if (this.localStorageService.getItemIdFromLocalStorage(CART_KEY)) {
+          if (!this.localStorageService.getItemIdFromLocalStorage(CART_KEY).includes(this.prodId)) {
+            this.localStorageService.storeOnLocalStorage(this.item, CART_KEY);
+          }
+        } else {
+          this.localStorageService.storeOnLocalStorage(this.item, CART_KEY);
+        }*/
     }
-  }
 
     toggleMore = () => {
         if (this.step + this.value <= this.max) {
