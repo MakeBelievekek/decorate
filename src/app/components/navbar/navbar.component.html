@@ -3,7 +3,7 @@
     <button mat-icon-button (click)="this.toggleSideSlide()" fxShow="true" fxHide.gt-sm>
       <mat-icon>menu</mat-icon>
     </button>
-    <div class="button-container" fxShow="true" fxHide.lt-md style="height: 100%">
+    <div class="button-container" fxShow="true" fxHide.lt-md >
       <div class="nav-btn">
         <p routerLink="/home">Főoldal</p>
       </div>
@@ -63,6 +63,7 @@
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
+
 <ng-content>
 </ng-content>
 

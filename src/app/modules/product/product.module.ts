@@ -7,7 +7,6 @@ import { ProductImageCardComponent } from '../../components/product/product-imag
 import { ProductImagesComponent } from '../../components/product/product-images/product-images.component';
 import { ProductModalComponent } from '../../components/product/product-modal/product-modal.component';
 import { ProductComponent } from '../../components/product/product.component';
-import { DecorateModalComponent } from '../../components/shared/decorate-modal/decorate-modal.component';
 import { ModalDirective } from '../../components/shared/decorate-modal/modal.directive';
 import { CardShadowDirective } from '../../directives/card-shadow.directive';
 import { CssAnimationStateDirective } from '../../directives/css-animation-state.directive';

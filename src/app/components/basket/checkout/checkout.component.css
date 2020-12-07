@@ -4,13 +4,14 @@
 
 .checkout-container {
     display: grid;
-    grid-template-columns: minmax(auto, 1fr) minmax(500px, 1.5fr) minmax(300px, 1fr) minmax(auto, 1fr);
+    grid-template-columns: minmax(auto, 1fr) minmax(500px, 1.5fr) minmax(350px, 1fr) minmax(auto, 1fr);
     grid-template-areas: 'a b c d ';
     margin-bottom: 50px;
 }
 
 .check-content {
     grid-area: b;
+    width: 400px;
 }
 
 h4 {
@@ -117,9 +118,9 @@ select {
 }
 
 .basket-continue-btn {
-    margin-top: 20px;
-    background: var(--primaryGreen);
+    margin: 20px 0 0 0;
     width: 300px;
+    background: var(--primaryGreen);
     border-radius: 25px;
     border: 1px solid var(--primaryGreen);
     padding: 7px;
@@ -173,10 +174,6 @@ select {
 
 .td-right {
     text-align: right;
-}
-
-.check-form {
-    width: 400px;
 }
 
 .check-basket-form > a, p {
@@ -246,7 +243,7 @@ select {
 .paymentOptions {
     width: 350px;
     height: auto;
-    margin: 0px;
+    margin: 0;
 }
 
 .payment {
@@ -258,18 +255,64 @@ select {
     padding: 20px;
 }
 
-#CVV2 {
-    margin: 0px;
-    width: 200px;
+@media all and (min-width: 451px) and (max-width: 950px) {
+
+    .checkout-container {
+        display: grid;
+        grid-template-columns: minmax(auto, 1fr) 1fr minmax(auto, 1fr);
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: 'a1 a2 a3' 'b1 b2 b3';
+        margin-bottom: 50px;
+    }
+
+    .check-content {
+        grid-area: a2;
+    }
+
+    .checkout-basket {
+        grid-area: b2;
+    }
+
+    .chk-bsk {
+        width: 400px;
+    }
+
+    .check-content > h4 {
+        text-align: center;
+    }
 }
 
-.cvv-flex {
-    display: flex;
-}
+@media all and (max-width: 450px) {
 
-#cvv2-image {
-    margin: 0 0 0 10px;
+    .checkout-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+        grid-template-areas: 'a2' 'b2 ';
+        margin: 0 10px 50px;
+    }
 
-    max-width: 100%;
-    height: auto;
+    .check-content {
+        grid-area: a2;
+        width: 100%;
+    }
+
+    .checkout-basket {
+        grid-area: b2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+    .basket-continue-btn, .underline, .chk-bsk, .paymentOptions {
+        width: 100%;
+    }
+
+
+    .check-content > h4 {
+        text-align: center;
+        font-size: 1.7rem;
+    }
 }
