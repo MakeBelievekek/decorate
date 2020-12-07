@@ -39,16 +39,7 @@
 @media  all and (max-width: 901px) {
   .products-container {
     position: relative;
-    display: grid;
-    width: 100%;
-    grid-template-columns: 3vw  1fr 3vw;
-    grid-template-rows: 70px 1fr;
-    grid-template-areas: ". . ."
-    ". content .";
-  }
-
-  .products-content-wrapper {
-    grid-area: content;
+    display: flex;
   }
 
 }

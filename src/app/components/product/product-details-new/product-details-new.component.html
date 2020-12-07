@@ -7,6 +7,7 @@
      #productDetailContainer
 >
   <div class="product-new-title">{{this.dummyProduct.name}}</div>
+  <div class="product-new-price">{{this.dummyProduct?.price | currency}} Ft</div>
   <div class="product-new-family">{{this.dummyProduct.productFamily}}</div>
   <div class="product-new-color">{{this.dummyProduct.color}}</div>
 
@@ -67,7 +68,6 @@
            (click)="startModalClose()"
       >
         <g>
-          <title>background</title>
           <rect fill="none" id="canvas_background" height="42" width="42" y="-1" x="-1"/>
         </g>
         <g>

@@ -13,6 +13,12 @@
   color: #cad8cd;
 }
 
+.product-new-price {
+  font-family: 'Doppio One', serif;
+  font-size: 1.75rem;
+  color: black;
+}
+
 .product-new-family {
   font-family: 'Bilbo Swash Caps', sans-serif;
   font-size: 33px;
@@ -77,7 +83,7 @@ h3 {
 
 .product-details-table-item-left {
   display: flex;
-  width: 40%;
+  width: 50%;
   font-size: 1.2rem;
   font-family: 'Didact Gothic', sans-serif;
   margin-top: 3px;
@@ -85,7 +91,7 @@ h3 {
 
 .product-details-table-item-right {
   display: flex;
-  width: 60%;
+  width: 50%;
   font-size: 1.2rem;
   padding-left: 3px;
   padding-right: 3px;
@@ -116,6 +122,8 @@ h3 {
   right: -20px;
 }
 
+
+
 @media all and (max-width:  845px){
   .similar-item-container {
     display: flex;
@@ -124,11 +132,8 @@ h3 {
     align-items: center;
     width: 90vw;
     height: 290px;
-    background-color: #e9e8e6
+    background-color: #e9e8e6;
   }
-
-
-
 }
 
 @media all and (max-width:  475px){
@@ -139,7 +144,7 @@ h3 {
     align-items: center;
     width: 96vw;
     height: 250px;
-    background-color: #e9e8e6
+    background-color: #e9e8e6;
   }
 
   .modal-close-btn {
@@ -149,8 +154,6 @@ h3 {
     left: calc(50% - 20px);
   }
 
-
 }
-
 
 

@@ -39,8 +39,8 @@ export class DummyProductModel {
   recommendedGlue = 'csempe ragasztó';
   cleaningInst = 'gőz';
   imageList = [ {imageType: 'main', imgUrl: 'https://i.imgur.com/1nyTupT.jpg'},
-                {imageType: 'secondary', imgUrl: 'https://i.imgur.com/1nyTupT.jpg'},
-                {imageType: 'secondary', imgUrl: 'https://i.imgur.com/1nyTupT.jpg'}];
+                {imageType: 'secondary', imgUrl: 'https://i.imgur.com/BPzc9JK.jpg?1'},
+                {imageType: 'secondary', imgUrl: 'https://i.imgur.com/wjoNXAQ.jpg'}];
   attributeListItemData = [{id: 110}];
   color = 'Piros';
 }

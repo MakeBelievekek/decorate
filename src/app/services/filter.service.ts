@@ -9,8 +9,8 @@ export class FilterService {
 
   constructor() {
     this.filterControl = {
-      order: ['lőség 1', 'lehetőség 2', 'lehetőség 3', 'lehetőség 4', 'lehetőség 5', 'lehetőség 6', 'lehetőség 5', 'lehetőség 6'],
-      colors: ['fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok', 'jazmin', 'fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok', 'jazmin'],
+      order: ['Árszerint növekvő', 'Árszerint csökkenő', 'Legnépszerübb elöl', 'A-Z', 'Z-A'],
+      colors: ['fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok', 'jazmin', 'okker', 'lila', 'csoki', 'ezüst', 'arany', 'jácint', 'viola'],
       designers: ['fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok', 'jazmin', 'fekete', 'fehér', 'szürke', 'piros', 'narancs', 'túzok', 'jazmin'],
       activeOrder: undefined,
       activeColors: [],

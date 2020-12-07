@@ -1,10 +1,10 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { FilterControlModel } from '../../../models/filterControl.model';
-import { ModalControllerModel } from '../../../models/modalController.model';
-import { ScreenControlModel } from '../../../models/screenControl.model';
-import { FilterService } from '../../../services/filter.service';
-import { ModalService } from '../../../services/modal.service';
-import { ScreenService } from '../../../services/screen.service';
+import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild} from '@angular/core';
+import {FilterControlModel} from '../../../models/filterControl.model';
+import {ModalControllerModel} from '../../../models/modalController.model';
+import {ScreenControlModel} from '../../../models/screenControl.model';
+import {FilterService} from '../../../services/filter.service';
+import {ModalService} from '../../../services/modal.service';
+import {ScreenService} from '../../../services/screen.service';
 
 
 @Component({
@@ -16,9 +16,16 @@ export class ProductsFilterComponent implements OnInit {
   modalControl: ModalControllerModel;
   filterControl: FilterControlModel;
   screenControl: ScreenControlModel;
+  smallScreen: boolean;
+  isOrderDropdownOpen: boolean;
+  isColorDropdownOpen: boolean;
+  colorButtonTopOffSet: number;
+  colorButtonLeftOffSet: number;
   dropDownMeasurements: any = {top: 0, width: 0};
   @Output() productContentScreenAttributes: EventEmitter<string>;
   @ViewChild('filterControlContainer') filterControlContainer: ElementRef;
+  @ViewChild('colourElement') colorElement: ElementRef;
+  @ViewChild('orderButton') orderButton: ElementRef;
   showSmallColorFilter: boolean;
 
 
@@ -33,20 +40,42 @@ export class ProductsFilterComponent implements OnInit {
     this.filterControl = this.filterService.filterControl;
     this.screenControl = this.screenService.screenControl;
     this.filterControl.activeOrder = this.filterService.filterControl.order[0];
+    this.screenService.getScreenSize().width < 1001 ? this.smallScreen = true : this.smallScreen = false;
+
   }
 
   // TODO be le kell rakni egy plusz feltételt amikor pici dropdown van akkor más mutason
   toggleOrderModal(): void {
-    this.modalService.toggleModal('order');
-    if (this.modalControl.control === 'order' && this.modalControl.showModal && this.screenControl.smallDropdown) {
-    }
+    this.isColorDropdownOpen = false;
+    this.isOrderDropdownOpen = !this.isOrderDropdownOpen;
+
+
+    /* this.modalService.toggleModal('order');
+     if (this.modalControl.control === 'order' && this.modalControl.showModal && this.screenControl.smallDropdown) {
+     }*/
   }
 
   toggleColorModal(): void {
-    this.productContentScreenAttributes.emit('show');
-    this.dropDownMeasurements = this.getTopOfSetAndWidth();
-    this.dropDownMeasurements.top += 6;
-    this.modalService.toggleModal('color');
+   /* console.log(document.documentElement.scrollTop);
+    console.log(document.documentElement.scrollTop + this.colorElement.nativeElement.getBoundingClientRect().top);
+    console.log('color: ', this.colorElement.nativeElement.getBoundingClientRect().top);
+    console.log('filter: ', this.filterControlContainer.nativeElement.getBoundingClientRect().top);
+    console.log(this.colorElement.nativeElement.getBoundingClientRect());*/
+    if (!this.smallScreen) {
+      this.colorButtonTopOffSet = this.colorElement.nativeElement.getBoundingClientRect().top
+        + this.colorElement.nativeElement.getBoundingClientRect().height;
+      this.colorButtonLeftOffSet = this.colorElement.nativeElement.getBoundingClientRect().left;
+    }
+
+    if (this.showSmallColorFilter) {
+      this.showSmallColorFilter = false;
+    }
+    this.isOrderDropdownOpen = false;
+    this.isColorDropdownOpen = !this.isColorDropdownOpen;
+    /* this.productContentScreenAttributes.emit('show');
+     this.dropDownMeasurements = this.getTopOfSetAndWidth();
+     this.dropDownMeasurements.top += 6;
+     this.modalService.toggleModal('color');*/
   }
 
   toggleDesignModal(): void {
@@ -63,6 +92,11 @@ export class ProductsFilterComponent implements OnInit {
     } else {
       this.showSmallColorFilter = true;
     }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize() {
+    this.screenService.getScreenSize().width < 1001 ? this.smallScreen = true : this.smallScreen = false;
   }
 
   handleActiveOrders(order: string): void {
