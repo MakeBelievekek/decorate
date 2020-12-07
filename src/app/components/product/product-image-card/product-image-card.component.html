@@ -1,7 +1,7 @@
 <div class="product-image-card-container">
   <img [src]="this.mainImage" alt="" class="product-image-card-image">
 
-  <div style="margin-top: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; width:100%">
+  <div style="margin-top: 10px; display: flex; justify-content: space-between; width:100%">
 
     <ng-container *ngFor="let image of this.dummyProduct.imageList">
       <img src="{{image.imgUrl}}" class="product-image-small-img"
