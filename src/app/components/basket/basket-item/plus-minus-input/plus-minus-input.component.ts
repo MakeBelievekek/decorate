@@ -40,7 +40,6 @@ export class PlusMinusInputComponent implements OnInit {
   ngOnInit() {
     this.value = this.initialValue ? this.value = this.initialValue : 0;
     this.renderedValue = this.value.toString();
-    this.setProdToLocal();
     if (this.localStorageService.getItemIdFromLocalStorage(CART_KEY)) {
       if (!this.localStorageService.getItemIdFromLocalStorage(CART_KEY).includes(this.prodId)) {
         this.localStorageService.storeOnLocalStorage(this.item, CART_KEY);

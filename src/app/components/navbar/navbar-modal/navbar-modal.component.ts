@@ -79,9 +79,11 @@ export class NavbarModalComponent implements OnInit {
 
     curtainNavigate(url: string) {
         this.router.navigateByUrl(curtainPath + url);
+        this.modalControl.showModal = false;
     }
 
     otherNavigate(url: string) {
         this.router.navigateByUrl(otherPath + url);
+        this.modalControl.showModal = false;
     }
 }

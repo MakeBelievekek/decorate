@@ -24,7 +24,7 @@ export interface DummyProductModel {
 }
 
 export class DummyProductModel {
-  name = 'Japan Black';
+  name = 'Japan Gray';
   productType = 'fügöny';
   productDesc = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur beatae blanditiis distinctio laborum mollitia officia quisquam recusandae reprehenderit? Beatae dicta dignissimos maiores maxime molestiae officia quibusdam quis quod reiciendis.';
   itemNumber = '105984';
@@ -42,5 +42,5 @@ export class DummyProductModel {
                 {imageType: 'secondary', imgUrl: 'https://i.imgur.com/CjhCxAf.jpg'},
                 {imageType: 'secondary', imgUrl: 'https://i.imgur.com/wUlw1vQ.jpg'}];
   attributeListItemData = [{id: 110}];
-  color = 'Piros';
+  color = 'Szürke';
 }

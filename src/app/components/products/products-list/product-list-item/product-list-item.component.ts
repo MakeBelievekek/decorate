@@ -1,36 +1,37 @@
-import {Component, ElementRef, HostListener, OnInit, ViewChild} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { DummyProductModel } from '../../../../models/dummyProductModel';
 
 @Component({
-  selector: 'app-product-list-item',
-  templateUrl: './product-list-item.component.html',
-  styleUrls: ['./product-list-item.component.css']
+    selector: 'app-product-list-item',
+    templateUrl: './product-list-item.component.html',
+    styleUrls: ['./product-list-item.component.css'],
 })
 export class ProductListItemComponent implements OnInit {
-  showControl: boolean;
-  likeHover: boolean;
-  dummyProduct: any = {productName: 'Vaalmmi hosszu és érdeks'};
-  showTooltip: boolean;
-  placeholder: string;
+    showControl: boolean;
+    likeHover: boolean;
+    @Input() dummyProduct: DummyProductModel;
+    showTooltip: boolean;
+    placeholder: string;
 
 
-  constructor() {
-  }
+    constructor() {
+    }
 
-  ngOnInit(): void {
-  }
+    ngOnInit(): void {
+    }
 
-  toggleLikeHover(): void {
-    this.likeHover = !this.likeHover;
-  }
+    toggleLikeHover(): void {
+        this.likeHover = !this.likeHover;
+    }
 
-  toggleControl(): void {
-    this.showControl = !this.showControl;
-  }
+    toggleControl(): void {
+        this.showControl = !this.showControl;
+    }
 
 
-  toggleTooltip(event): void {
-    console.log(event);
-    this.placeholder = event;
-    this.showTooltip = !this.showTooltip;
-  }
+    toggleTooltip(event): void {
+        console.log(event);
+        this.placeholder = event;
+        this.showTooltip = !this.showTooltip;
+    }
 }
