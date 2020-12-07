@@ -5,7 +5,6 @@ import {SimilarItemComponent} from '../../components/product/product-details-new
 import {ProductDetailsComponent} from '../../components/product/product-details/product-details.component';
 import {ProductImageCardComponent} from '../../components/product/product-image-card/product-image-card.component';
 import {ProductComponent} from '../../components/product/product.component';
-import {ModalDirective} from '../../components/shared/decorate-modal/modal.directive';
 import {CardShadowDirective} from '../../directives/card-shadow.directive';
 import {CssAnimationStateDirective} from '../../directives/css-animation-state.directive';
 import {DecorateModalModule} from '../decorate-modal/decorate-modal.module';
@@ -24,7 +23,6 @@ import {CurrencyPipe} from '../../pipes/currency.pipe';
     SimilarItemComponent,
     CardShadowDirective,
     CssAnimationStateDirective,
-    ModalDirective,
     CurrencyPipe
   ],
   imports: [

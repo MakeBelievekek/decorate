@@ -46,6 +46,35 @@ justify-content: center;
   background: lightgrey;
 }
 
+.products-filter-color-selector a {
+  font-family: Arial, fantasy;
+  color: #222;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.products-filter-color-selector {
+  display: flex;
+  width: 100px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.products-filter-color-selector-dropdown {
+  position: absolute;
+  top: 2rem;
+  z-index: 1050;
+  border: solid 0.3px black;
+  background: whitesmoke;
+  width: 525px;
+  display: flex;
+  flex-wrap: wrap;
+  cursor: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 .filter-element {
   position: relative;
 }
@@ -96,26 +125,31 @@ justify-content: center;
 }
 
 .color-dropdown-control-area {
-  grid-column: 1 / -1;
-  padding-top: 1rem;
   display: flex;
-  justify-content: space-between;
-  padding-bottom: 2rem;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .color-dropdown-item {
-  display: block;
-  width: fit-content;
+  display: inline-block;
+  cursor: pointer;
 }
 
 .color-button {
-  display: block;
+  display: flex;
   width: 7rem;
-  line-height: 3rem;
+  height: 3rem;
   cursor: pointer;
-  background: darkslategrey;
-  text-align: center;
-  vertical-align: middle;
+  background: #c6d7cd;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.color-button:hover {
+  background: #b4cbbd;
 }
 
 .show-design-dropdown {
@@ -153,115 +187,54 @@ justify-content: center;
 
 
 .small-order-dropdown-container {
-  flex: 1 0 auto;
   display: flex;
-  position: fixed;
   flex-direction: column;
-  z-index: 100;
-  top: 20%;
-  background: var(--primaryWhite);
-  width: 85vw;
-  -webkit-box-shadow: 10px 10px 44px -13px rgba(0, 0, 0, 0.63);
-  -moz-box-shadow: 10px 10px 44px -13px rgba(0, 0, 0, 0.63);
-  box-shadow: 10px 10px 44px -13px rgba(0, 0, 0, 0.63);
-  max-height: 80vh;
+  width: 310px;
+  height: 80vh;
+  background: whitesmoke;
   overflow: auto;
 }
 
-@media all and (min-width: 550px) and (max-width: 999px) {
-  .small-custom {
-    display: flex;
-    flex: 1 0 auto;
-    padding-left: 35vw;
-    border-bottom: solid gray 0.1em;
-    font-size: 1.25rem;
-    height: 3rem;
-    align-items: center;
-  }
-
-
-  .small-custom:hover {
-    background: lightgray;
-    cursor: pointer;
-  }
-
-  .small-header-container {
-    display: flex;
-    border-bottom: solid gray 0.1em;
-  }
-
-  .small-header-text {
-    display: flex;
-    flex: 1 0 0;
-    padding-left: 35vw;
-    font-size: 2rem;
-  }
-
-  .small-header-exit {
-    display: flex;
-    font-size: 2rem;
-    align-items: center;
-    padding-right: 0.5em;
-    cursor: pointer;
-
-  }
+.small-custom:hover {
+  background: lightgray;
+  cursor: pointer;
+}
+.small-custom {
+  display: flex;
+  flex: 1 0 auto;
+  padding-left: 2vw;
+  border-bottom: solid gray 0.1em;
+  height: 3rem;
+  font-size: 1.25rem;
+  align-items: center;
+}
+.small-header-container {
+  display: flex;
+  border-bottom: solid gray 0.1em;
 }
 
-
-@media all and (max-width: 549px) {
-  .small-custom {
-    display: flex;
-    flex: 1 0 auto;
-    padding-left: 2vw;
-    border-bottom: solid gray 0.1em;
-    height: 3rem;
-    font-size: 1.25rem;
-    align-items: center;
-  }
-
-  .small-custom:hover {
-    background: lightgray;
-    cursor: pointer;
-  }
-
-  .small-header-container {
-    display: flex;
-    border-bottom: solid gray 0.1em;
-  }
-
-  .small-header-text {
-    display: flex;
-    flex: 1 0 0;
-    padding-left: 2vw;
-    font-size: 2rem;
-  }
-
-  .small-header-exit {
-    display: flex;
-    font-size: 2rem;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
+.small-header-text {
+  display: flex;
+  flex: 1 0 0;
+  padding-left: 2vw;
+  font-size: 2rem;
 }
 
+.small-header-exit {
+  display: flex;
+  font-size: 2rem;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
 
 .small-filter-dropdown-container {
   display: flex;
-  position: fixed;
   flex-flow: column;
-  flex: 1 0 auto;
-  z-index: 100;
-  top: 20%;
-  background: var(--primaryWhite);
-  min-height: 75vh;
-  max-height: 75vh;
-  width: 85vw;
+  background: whitesmoke;
   overflow: auto;
-  -webkit-box-shadow: 10px 10px 44px -13px rgba(0, 0, 0, 0.63);
-  -moz-box-shadow: 10px 10px 44px -13px rgba(0, 0, 0, 0.63);
-  box-shadow: 10px 10px 44px -13px rgba(0, 0, 0, 0.63);
+  width: 90vw;
+  height: 85vh;
 }
 
 
