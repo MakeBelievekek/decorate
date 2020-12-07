@@ -16,6 +16,13 @@
   display: block;
 }
 
+.product-image-small-img-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .product-image-small-img {
   width: 25vw;
   height: 25vw;
