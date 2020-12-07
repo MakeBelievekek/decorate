@@ -24,23 +24,23 @@ export interface DummyProductModel {
 }
 
 export class DummyProductModel {
-  name = 'Valódi Sötétitő Függyöny';
+  name = 'Japan Black';
   productType = 'fügöny';
   productDesc = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur beatae blanditiis distinctio laborum mollitia officia quisquam recusandae reprehenderit? Beatae dicta dignissimos maiores maxime molestiae officia quibusdam quis quod reiciendis.';
-  itemNumber = '111';
-  width = 10;
+  itemNumber = '105984';
+  width = 52 ;
   height = 20;
   curtainType = 'sötétítő';
-  patternRep = 15;
-  price = 2000;
+  patternRep = 64;
+  price = 11700 ;
   composition = 'vastag';
   productFamily = 'Fügöny';
-  annotation = 'gazdag';
+  annotation = ' Vlies alap, Falat kenni a ragasztóval';
   recommendedGlue = 'csempe ragasztó';
   cleaningInst = 'gőz';
-  imageList = [ {imageType: 'main', imgUrl: 'https://i.imgur.com/1nyTupT.jpg'},
-                {imageType: 'secondary', imgUrl: 'https://i.imgur.com/BPzc9JK.jpg?1'},
-                {imageType: 'secondary', imgUrl: 'https://i.imgur.com/wjoNXAQ.jpg'}];
+  imageList = [ {imageType: 'main', imgUrl: 'https://i.imgur.com/Vcfn5DW.jpg'},
+                {imageType: 'secondary', imgUrl: 'https://i.imgur.com/CjhCxAf.jpg'},
+                {imageType: 'secondary', imgUrl: 'https://i.imgur.com/wUlw1vQ.jpg'}];
   attributeListItemData = [{id: 110}];
   color = 'Piros';
 }
