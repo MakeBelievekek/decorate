@@ -8,7 +8,7 @@
 >
   <div class="product-new-title">{{this.dummyProduct.name}}</div>
   <div class="product-new-price">{{this.dummyProduct?.price | currency}} Ft</div>
-  <div class="product-new-family">{{this.dummyProduct.productFamily}}</div>
+  <!--<div class="product-new-family">{{this.dummyProduct.productFamily}}</div>-->
   <div class="product-new-color">{{this.dummyProduct.color}}</div>
 
   <!-- More color options btn start-->
@@ -46,6 +46,9 @@
     <div class="product-details-table-item-right"
     >{{this.dummyProduct.patternRep}}</div>
   </div>
+  <div style="display: flex; width: 310px;">
+    <div>Ár {{this.dummyProduct.price |currency}} Ft</div>
+  </div>
 
 
 </div>
@@ -64,23 +67,23 @@
     </ng-container>
 
     <!-- close btn start  -->
-      <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg" class="modal-close-btn"
-           (click)="startModalClose()"
-      >
-        <g>
-          <rect fill="none" id="canvas_background" height="42" width="42" y="-1" x="-1"/>
-        </g>
-        <g>
-          <g id="svg_20">
-            <ellipse stroke="null" ry="20" rx="20" id="svg_19" cy="20" cx="20" stroke-width="1.5" fill="#c6d7cd"/>
-            <g stroke="null" id="svg_2">
-              <path stroke="null" id="svg_3"
-                    d="m20.90242,20.00003l7.07811,-6.71653c0.2492,-0.23647 0.2492,-0.61986 0,-0.8563c-0.2492,-0.23644 -0.65323,-0.23647 -0.9024,0l-7.07815,6.71653l-7.07811,-6.71653c-0.2492,-0.23647 -0.65323,-0.23647 -0.9024,0c-0.24917,0.23647 -0.2492,0.61986 0,0.8563l7.07811,6.7165l-7.07811,6.71653c-0.2492,0.23647 -0.2492,0.61986 0,0.8563c0.12458,0.11822 0.2879,0.17731 0.45122,0.17731c0.16332,0 0.3266,-0.05909 0.45122,-0.17731l7.07808,-6.7165l7.07811,6.7165c0.12458,0.11822 0.2879,0.17731 0.45122,0.17731s0.3266,-0.05909 0.45122,-0.17731c0.2492,-0.23647 0.2492,-0.61986 0,-0.8563l-7.07811,-6.7165z"/>
-            </g>
+    <svg width="40" height="40" xmlns="http://www.w3.org/2000/svg" class="modal-close-btn"
+         (click)="startModalClose()"
+    >
+      <g>
+        <rect fill="none" id="canvas_background" height="42" width="42" y="-1" x="-1"/>
+      </g>
+      <g>
+        <g id="svg_20">
+          <ellipse stroke="null" ry="20" rx="20" id="svg_19" cy="20" cx="20" stroke-width="1.5" fill="#c6d7cd"/>
+          <g stroke="null" id="svg_2">
+            <path stroke="null" id="svg_3"
+                  d="m20.90242,20.00003l7.07811,-6.71653c0.2492,-0.23647 0.2492,-0.61986 0,-0.8563c-0.2492,-0.23644 -0.65323,-0.23647 -0.9024,0l-7.07815,6.71653l-7.07811,-6.71653c-0.2492,-0.23647 -0.65323,-0.23647 -0.9024,0c-0.24917,0.23647 -0.2492,0.61986 0,0.8563l7.07811,6.7165l-7.07811,6.71653c-0.2492,0.23647 -0.2492,0.61986 0,0.8563c0.12458,0.11822 0.2879,0.17731 0.45122,0.17731c0.16332,0 0.3266,-0.05909 0.45122,-0.17731l7.07808,-6.7165l7.07811,6.7165c0.12458,0.11822 0.2879,0.17731 0.45122,0.17731s0.3266,-0.05909 0.45122,-0.17731c0.2492,-0.23647 0.2492,-0.61986 0,-0.8563l-7.07811,-6.7165z"/>
           </g>
         </g>
-      </svg>
-    </div>
+      </g>
+    </svg>
+  </div>
   <!--  close btn end  -->
 </app-decorate-modal>
 

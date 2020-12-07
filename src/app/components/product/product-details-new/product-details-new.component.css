@@ -19,6 +19,12 @@
   color: black;
 }
 
+.product-new-price {
+  font-family: 'Doppio One', serif;
+  font-size: 1.75rem;
+  color: black;
+}
+
 .product-new-family {
   font-family: 'Bilbo Swash Caps', sans-serif;
   font-size: 33px;
