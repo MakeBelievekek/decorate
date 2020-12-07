@@ -9,6 +9,7 @@ import { ProductsListComponent } from '../../components/products/products-list/p
 import { ProductsModalComponent } from '../../components/products/products-modal/products-modal.component';
 import { ProductsComponent } from '../../components/products/products.component';
 import { NameShortenerPipe } from '../../pipes/name-shortener.pipe';
+import { DecorateModalModule } from '../decorate-modal/decorate-modal.module';
 import { FrameModule } from '../frame/frame.module';
 
 import { ProductsRoutingModule } from './products-routing.module';
@@ -31,6 +32,7 @@ import { ProductsRoutingModule } from './products-routing.module';
         FrameModule,
         ProductsRoutingModule,
         MatTooltipModule,
+        DecorateModalModule
     ],
 })
 export class ProductsModule {

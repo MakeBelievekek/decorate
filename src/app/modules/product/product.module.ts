@@ -11,6 +11,7 @@ import { DecorateModalComponent } from '../../components/shared/decorate-modal/d
 import { ModalDirective } from '../../components/shared/decorate-modal/modal.directive';
 import { CardShadowDirective } from '../../directives/card-shadow.directive';
 import { CssAnimationStateDirective } from '../../directives/css-animation-state.directive';
+import { DecorateModalModule } from '../decorate-modal/decorate-modal.module';
 import { FrameModule } from '../frame/frame.module';
 import { PlusMinusModule } from '../plus-minus/plus-minus.module';
 import { ProductRoutingModule } from './product-routing.module';
@@ -26,7 +27,6 @@ import { ProductRoutingModule } from './product-routing.module';
         SimilarItemComponent,
         CardShadowDirective,
         ProductImagesComponent,
-        DecorateModalComponent,
         CssAnimationStateDirective,
         ModalDirective,
     ],
@@ -35,6 +35,7 @@ import { ProductRoutingModule } from './product-routing.module';
         FrameModule,
         ProductRoutingModule,
         PlusMinusModule,
+        DecorateModalModule
     ],
 })
 export class ProductModule {
