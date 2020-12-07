@@ -10,10 +10,18 @@ import {DummyProductModel} from '../../../models/dummyProductModel';
 export class ProductImageCardComponent implements OnInit {
   @Input() imageDimension: ScreenSizeModel;
   @Input() dummyProduct: DummyProductModel;
-  constructor() { }
+  @Input() mainImage: string;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.dummyProduct = new DummyProductModel();
+    this.mainImage = this.dummyProduct.imageList[0].imgUrl;
   }
 
+  changeImage(imgUrl: string) {
+    this.mainImage = imgUrl;
+    console.log(imgUrl);
+  }
 }

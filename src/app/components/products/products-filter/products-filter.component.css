@@ -1,7 +1,49 @@
 .filter-container {
   display: flex;
   gap: 3rem;
-  flex-direction: row;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.products-filter-order-selector {
+  display: flex;
+  width: 200px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.products-filter-order-selector a {
+  font-family: Arial, fantasy;
+  color: #222;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.products-filter-order-selector-dropdown {
+  position: absolute;
+  top: 2rem;
+  z-index: 1050;
+  border: solid 0.3px black;
+  background: whitesmoke;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+justify-content: center;
+}
+
+.custom {
+  padding-top: 7px;
+  font-family: Arial, fantasy;
+  color: #222;
+  text-decoration: none;
+  font-size: 1.2rem;
+  display: block;
+}
+
+.custom:hover {
+  background: lightgrey;
 }
 
 .filter-element {
@@ -9,14 +51,14 @@
 }
 
 
-a {
+.filter-container a {
   font-family: Arial, fantasy;
   color: #222;
   text-decoration: none;
   font-size: 1.2rem;
 }
 
-i {
+.filter-container i {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
@@ -84,20 +126,7 @@ i {
 }
 
 
-.custom {
-  padding-top: 7px;
-  font-family: Arial, fantasy;
-  color: #222;
-  text-decoration: none;
-  font-size: 1.2rem;
-  width: 160px;
-  display: block;
-  background: yellowgreen;
-}
 
-.custom:hover {
-  background: lightgrey;
-}
 
 /*                  small settings                 */
 .small-filter-container {

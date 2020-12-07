@@ -1,10 +1,10 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { FilterControlModel } from '../../../models/filterControl.model';
-import { ModalControllerModel } from '../../../models/modalController.model';
-import { ScreenControlModel } from '../../../models/screenControl.model';
-import { FilterService } from '../../../services/filter.service';
-import { ModalService } from '../../../services/modal.service';
-import { ScreenService } from '../../../services/screen.service';
+import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {FilterControlModel} from '../../../models/filterControl.model';
+import {ModalControllerModel} from '../../../models/modalController.model';
+import {ScreenControlModel} from '../../../models/screenControl.model';
+import {FilterService} from '../../../services/filter.service';
+import {ModalService} from '../../../services/modal.service';
+import {ScreenService} from '../../../services/screen.service';
 
 
 @Component({
@@ -16,9 +16,14 @@ export class ProductsFilterComponent implements OnInit {
   modalControl: ModalControllerModel;
   filterControl: FilterControlModel;
   screenControl: ScreenControlModel;
+  isOrderDropdownOpen: boolean;
+  isColorDropdownOpen: boolean;
+  colorButtonTopOffSet: number;
   dropDownMeasurements: any = {top: 0, width: 0};
   @Output() productContentScreenAttributes: EventEmitter<string>;
   @ViewChild('filterControlContainer') filterControlContainer: ElementRef;
+  @ViewChild('colourElement') colorElement: ElementRef;
+  @ViewChild('orderButton') orderButton: ElementRef;
   showSmallColorFilter: boolean;
 
 
@@ -37,16 +42,27 @@ export class ProductsFilterComponent implements OnInit {
 
   // TODO be le kell rakni egy plusz feltételt amikor pici dropdown van akkor más mutason
   toggleOrderModal(): void {
-    this.modalService.toggleModal('order');
-    if (this.modalControl.control === 'order' && this.modalControl.showModal && this.screenControl.smallDropdown) {
-    }
+    this.isColorDropdownOpen = false;
+    this.isOrderDropdownOpen = !this.isOrderDropdownOpen;
+
+
+    /* this.modalService.toggleModal('order');
+     if (this.modalControl.control === 'order' && this.modalControl.showModal && this.screenControl.smallDropdown) {
+     }*/
   }
 
   toggleColorModal(): void {
-    this.productContentScreenAttributes.emit('show');
-    this.dropDownMeasurements = this.getTopOfSetAndWidth();
-    this.dropDownMeasurements.top += 6;
-    this.modalService.toggleModal('color');
+    console.log(this.colorElement.nativeElement);
+    console.log(this.colorElement.nativeElement.offsetTop + this.filterControlContainer.nativeElement.clientHeight);
+    console.log(this.getTopOfSetAndWidth());
+    this.colorButtonTopOffSet = this.colorElement.nativeElement.offsetTop - 64;
+
+    this.isOrderDropdownOpen = false;
+    this.isColorDropdownOpen = !this.isColorDropdownOpen;
+    /* this.productContentScreenAttributes.emit('show');
+     this.dropDownMeasurements = this.getTopOfSetAndWidth();
+     this.dropDownMeasurements.top += 6;
+     this.modalService.toggleModal('color');*/
   }
 
   toggleDesignModal(): void {

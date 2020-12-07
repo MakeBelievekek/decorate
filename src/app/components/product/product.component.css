@@ -13,7 +13,7 @@
 
   .product-image-side {
     display: block;
-    max-width: 760px;
+    width: 55vw;
   }
 
   .product-detail-side {

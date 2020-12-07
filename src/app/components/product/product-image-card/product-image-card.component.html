@@ -1,13 +1,20 @@
 <div class="product-image-card-container">
-  <div class="product-image-card-image animate__animated animate__fadeIn"
-  appBackgroundImg
-  [mainBackgroundImage]=this.dummyProduct.imageList[0].imgUrl>
+  <img [src]="this.mainImage" alt="" class="product-image-card-image">
+
+  <div style="margin-top: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; width:100%">
+
+    <ng-container *ngFor="let image of this.dummyProduct.imageList">
+      <img src="{{image.imgUrl}}" class="product-image-small-img"
+           (click)="changeImage(image.imgUrl)">
+    </ng-container>
+
   </div>
   <div class="product-image-card-text">
     <div class="order-btn">
       MEGRENDELEM
       <div class="play-button">
-        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+             x="0px" y="0px"
              viewBox="0 0 41.999 41.999" style="enable-background:new 0 0 41.999 41.999;" xml:space="preserve"
              width="14" height="14" fill="#fde6de">
 <path d="M36.068,20.176l-29-20C6.761-0.035,6.363-0.057,6.035,0.114C5.706,0.287,5.5,0.627,5.5,0.999v40
