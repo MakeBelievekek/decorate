@@ -18,6 +18,7 @@ export class ProductListItemComponent implements OnInit {
     }
 
     ngOnInit(): void {
+      console.log(this.dummyProduct.name);
     }
 
     toggleLikeHover(): void {

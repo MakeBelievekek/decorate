@@ -1,47 +1,15 @@
-<div (click)="this.keepModalOnScreen()">
-    <!-- NAVIGATION MODAL STATES -->
-
-    <div class="navigation-modal animate__animated animate__fadeInDown"
-         *ngIf="this.modalControl.control === 'navigation' && this.modalControl.showModal"
-    >
-        <!-- Modal content -->
-        <div class="custom-modal-content">
-            <p>ez a modal nem nem NAVIGATION</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-        </div>
-    </div>
-
-    <div class="navigation-modal animate__animated animate__fadeOutUp"
-         *ngIf="this.modalControl.control === 'navigation' && !this.modalControl.showModal"
-    >
-        <!-- Modal content -->
-        <div class="custom-modal-content">
-            <p>ez a modal nem nem NAVIGATION</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-            <p>Some text in the Modal..</p>
-        </div>
-    </div>
-
+<div (click)="this.keepModalOnScreen()"
+     (mouseleave)="this.animationState = 'close'"
+     >
     <!-- PRODUCTS MODAL STATES -->
 
-    <div class="products-modal animate__animated animate__fadeInDown"
-         *ngIf="this.modalControl.control === 'products' && this.modalControl.showModal"
+    <div class="products-modal"
+         [ngClass]="{  'slide-bottom': this.animationState === 'open',
+              'slide-top': this.animationState === 'close'}"
+         (animationEnded)="this.closeNavigationModal()"
+         [animationName]="'slide-top'"
+         appAnim
+
          (mouseleave)="this.modalControl.showModal =false ; visible('color')">
         <!-- Modal content -->
         <div class="custom-modal-content">

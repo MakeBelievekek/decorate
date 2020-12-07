@@ -87,6 +87,7 @@
 </ng-content>
 </mat-sidenav-container>-->
 
+<!-- side menu start  -->
 <div *ngIf="this.showSideSlide" class="make-side-bar"
      [ngClass]="{  'slide-right': this.animationState === 'open',
               'slide-left': this.animationState === 'close'}"
@@ -102,4 +103,10 @@
   <a>Bejelentkezés</a>
   <a>Keresés</a>
 </div>
-<app-navbar-modal></app-navbar-modal>
+<!-- side menu end  -->
+
+<app-navbar-modal *ngIf="this.isProductSelectorDropdownOpen"
+                  [isShowing]="this.isProductSelectorDropdownOpen"
+                  [animationState]="this?.productSelectorDropDownState"
+                  (productModalCloseAnimFinished)="this.closeProductModal()"
+></app-navbar-modal>
