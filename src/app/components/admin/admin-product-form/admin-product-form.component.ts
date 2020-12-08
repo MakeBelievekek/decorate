@@ -1,3 +1,4 @@
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -7,6 +8,7 @@ import { FormDataModel } from '../../../models/formDataModel';
 import { ImageModel } from '../../../models/imageModel';
 import { ProductModel } from '../../../models/productModel';
 import { AdminService } from '../../../services/admin.service';
+import { FileUploadService } from '../../../services/fileUpload.service';
 
 @Component({
     selector: 'app-admin-product-form',
@@ -52,12 +54,17 @@ export class AdminProductFormComponent implements OnInit {
         cleaningInst: string;
         curtainType: string;
     };
-
+    title = 'File-Upload-Save';
+    selectedFiles: FileList;
+    currentFileUpload: File;
+    progress: {percentage: number} = {percentage: 0};
+    selectedFile = null;
+    changeImage = false;
     productsFromExcel: ProductModel[] = [];
     fileInputLabel: string;
 
 
-    constructor(private adminService: AdminService, private toastr: ToastrService) {
+    constructor(private adminService: AdminService, private toastr: ToastrService, private fileUploadService: FileUploadService) {
         this.productForm = new FormGroup({
             'productType': new FormControl(''),
             'curtainType': new FormControl(''),
@@ -201,4 +208,40 @@ export class AdminProductFormComponent implements OnInit {
             }
         }
     */
+
+    downloadFile() {
+        const link = document.createElement('a');
+        link.setAttribute('target', '_blank');
+        link.setAttribute('href', '_File_Saved_Path');
+        link.setAttribute('download', 'file_name.pdf');
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+    }
+
+    change($event) {
+        this.changeImage = true;
+    }
+
+    changedImage(event) {
+        this.selectedFile = event.target.files[0];
+    }
+
+    upload() {
+        this.progress.percentage = 0;
+        this.currentFileUpload = this.selectedFiles.item(0);
+        this.fileUploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+                if (event.type === HttpEventType.UploadProgress) {
+                    this.progress.percentage = Math.round(100 * event.loaded / event.total);
+                } else if (event instanceof HttpResponse) {
+                    alert('File Successfully Uploaded');
+                }
+                this.selectedFiles = undefined;
+            },
+        );
+    }
+
+    selectFile(event) {
+        this.selectedFiles = event.target.files;
+    }
 }
