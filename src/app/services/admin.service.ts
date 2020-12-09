@@ -10,7 +10,9 @@ import { ProductModel } from '../models/productModel';
 import { ApiErrorHandler } from './apiErrorHandler';
 import {environment} from '../../environments/environment';
 
+
 const ADMIN_BASE_URL = environment.apiUrl + 'api/restricted/admin';
+const BASE_URL = environment.apiUrl + 'api/public';
 
 @Injectable({
     providedIn: 'root',
@@ -24,7 +26,7 @@ export class AdminService {
     toggleService = new Subject<boolean>();
 
     createProduct(data: ProductModel, typeOfProduct): Observable<ProductModel> {
-        return this.http.post<ProductModel>(ADMIN_BASE_URL + '/' + typeOfProduct, data)
+        return this.http.post<ProductModel>(BASE_URL + '/' + typeOfProduct, data)
             .pipe(retry(1), catchError(this.errorHandler.handleError));
     }
 

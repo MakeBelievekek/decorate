@@ -1,6 +1,6 @@
-import { HttpClient, HttpEvent, HttpEventType, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 const FILE_UPLOAD_URL = environment.apiUrl + 'api/public/fileupload';
@@ -14,42 +14,17 @@ export class FileUploadService {
     constructor(private http: HttpClient) {
 
     }
+    upload(file):Observable<any> {
 
-   /* pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
-        const data: FormData = new FormData();
-        data.append('file', file);
-        const newRequest = new HttpRequest('POST', FILE_UPLOAD_URL, data, {
-            reportProgress: true,
-            responseType: 'text',
-        });
-        console.log(data);
-        return this.https.request(newRequest);
-    }*/
-    public upload(files: Set<File>):
-        { [key: string]: { progress: Observable<number> } } {
-        const status: { [key: string]: { progress: Observable<number> } } = {};
+        // Create form data
+        const formData = new FormData();
 
-        files.forEach(file => {
+        // Store form name as "file" with file data
+        formData.append("file", file, file.name);
 
-            const formData: FormData = new FormData();
-            formData.append('file', file, file.name);
-            const req = new HttpRequest('POST', FILE_UPLOAD_URL, formData, {
-                reportProgress: true
-            });
-            const progress = new Subject<number>();
-            this.http.request(req).subscribe(event => {
-                if (event.type === HttpEventType.UploadProgress) {
-                    const percentDone = Math.round(100 * event.loaded / event.total);
-                    progress.next(percentDone);
-                } else if (event instanceof HttpResponse) {
-                    progress.complete();
-                }
-            });
-
-            status[file.name] = {
-                progress: progress.asObservable()
-            };
-        });
-        return status;
+        // Make http post request over api
+        // with formData as req
+        return this.http.post(FILE_UPLOAD_URL, formData)
     }
+
 }

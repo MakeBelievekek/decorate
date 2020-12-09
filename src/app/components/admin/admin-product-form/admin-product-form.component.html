@@ -1,4 +1,4 @@
-<form [formGroup]="productForm" method="post">
+<form [formGroup]="productForm" method="post" #myForm="ngForm" >
     <div class="form-group">
         <label for="productType">Product Type</label>
         <select class="form-control" id="productType" (change)="getType()" formControlName="productType">
@@ -102,30 +102,29 @@
             <input type="text" class="form-control" id="second" formControlName="secondaryImg">
         </div>
     </div>
-    <a class="btn btn-primary" (click)="saveProduct()">Save</a>
+    <a class="btn btn-primary" (click)="saveProduct() ;  myForm.reset()">Save</a>
 
 </form>
 
-<!--
-<input type="file" id="customFile" (change)="selectFile($event)">
-<button class="btn btn-primary" [disabled]="!selectedFiles " (click)="upload()">Save File</button>
-<button class="btn btn-primary" style="margin-left: 10px" (click)="downloadFile()">View File</button>
-<div class="row">
-    <div class="col-sm-12">
-        <div>
-            <h6 class="head-title margin-top-8"><span>Upload from excel</span></h6>
-        </div>
-    </div>
+<div class="text-center">
+    <input class="form-control" type="file"
+           (change)="onChange($event)">
 
-    <div class="col-sm-6 text-center">
-        <div class="custom-file">
-            <input type="file" class="custom-file-input" id="customFile" name="myfile"
-                   (change)="selectFile($event)">
-            <label class="custom-file-label" for="customFile">{{fileInputLabel || 'Choose File'}}</label>
-        </div>
- </div>
-    <div class="col-sm-6 text-center">
-        <button class="btn btn-primary" (click)="upload()">save</button>
-    </div>
-</div>-->
+    <button (click)="onUpload()"
+            class="btn btn-success">
+        Upload
+    </button>
+</div>
+
+<!-- Shareable short link of  uoloaded file -->
+<div class="container text-center jumbotron"
+     *ngIf="shortLink">
+    <h2> Visit Here</h2>
+    <a href="{{shortLink}}">{{shortLink}}</a>
+</div>
+
+<!--Flag variable is used here-->
+<div class="container" *ngIf="loading">
+    <h3>Loading ...</h3>
+</div>
 

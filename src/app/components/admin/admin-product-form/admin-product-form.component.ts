@@ -53,14 +53,9 @@ export class AdminProductFormComponent implements OnInit {
         cleaningInst: string;
         curtainType: string;
     };
-    title = 'File-Upload-Save';
-    selectedFiles: FileList;
-    currentFileUpload: File;
-    progress: {percentage: number} = {percentage: 0};
-    selectedFile = null;
-    changeImage = false;
-    productsFromExcel: ProductModel[] = [];
-    fileInputLabel: string;
+    shortLink: string = '';
+    loading: boolean = false;
+    file: File = null;
 
 
     constructor(private adminService: AdminService, private toastr: ToastrService, private fileUploadService: FileUploadService) {
@@ -155,92 +150,27 @@ export class AdminProductFormComponent implements OnInit {
         console.log(this.productModel);
         this.adminService.createProduct(this.productModel, this.productModel.productType.toLowerCase()).subscribe(() => {
         });
+
     }
 
-    /*
-        onFileChange(event) {
-            let workBook = null;
-            let jsonData = null;
-            const reader = new FileReader();
-            const file = event.target.files[0];
-            reader.onload = (event) => {
-                const data = reader.result;
-                workBook = XLSX.read(data, {type: 'binary'});
-                jsonData = workBook.SheetNames.reduce((initial, name) => {
-                    const sheet = workBook.Sheets[name];
-                    initial[name] = XLSX.utils.sheet_to_json(sheet);
-                    return initial;
-                }, {});
-                for (var key in jsonData) {
-                    if (jsonData.hasOwnProperty(key)) {
-                        for (let prod of jsonData[key]) {
-                            let img = prod.imageList;
-                            console.log(img);
-                            this.productModel = prod;
-                            this.productModel.imageList = [];
-                            this.productModel.imageList.push(new class implements ImageModel {
-                                imageType: string;
-                                imgUrl: string;
-                            });
-                            this.productsFromExcel.push(this.productModel);
+    onChange(event) {
+        this.file = event.target.files[0];
+    }
 
-                        }
+    // OnClick of button Upload
+    onUpload() {
+        this.loading = !this.loading;
+        console.log(this.file);
+        this.fileUploadService.upload(this.file).subscribe(
+            (event: any) => {
+                if (typeof (event) === 'object') {
 
-                    }
+                    // Short link via api response
+                    this.shortLink = event.link;
+
+                    this.loading = false; // Flag variable
                 }
-                this.fileInputLabel = file.name;
-            };
-            reader.readAsBinaryString(file);
-        }
-
-        saveExcel() {
-            if (this.productsFromExcel) {
-                for (let prod of this.productsFromExcel) {
-                    console.log(prod.name);
-                    this.adminService.createProduct(prod, prod.productType)
-                        .subscribe(() => {}
-                            , (err) => {
-                                this.toastr.error(err);
-                            },
-                        );
-                }
-            }
-        }
-    */
-
-    downloadFile() {
-        const link = document.createElement('a');
-        link.setAttribute('target', '_blank');
-        link.setAttribute('href', '_File_Saved_Path');
-        link.setAttribute('download', 'file_name.pdf');
-        document.body.appendChild(link);
-        link.click();
-        link.remove();
+            },
+        );
     }
-
-    change($event) {
-        this.changeImage = true;
-    }
-
-    changedImage(event) {
-        this.selectedFile = event.target.files[0];
-    }
-
-    /*   upload() {
-           this.progress.percentage = 0;
-           this.currentFileUpload = this.selectedFiles.item(0);
-           this.fileUploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-                   if (event.type === HttpEventType.UploadProgress) {
-                       this.progress.percentage = Math.round(100 * event.loaded / event.total);
-                   } else if (event instanceof HttpResponse) {
-                       alert('File Successfully Uploaded');
-                   }
-                   this.selectedFiles = undefined;
-               },
-           );
-       }
-
-       selectFile(event) {
-           this.selectedFiles = event.target.files;
-       }*/
 }
