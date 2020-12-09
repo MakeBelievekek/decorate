@@ -1,6 +1,6 @@
-import { HttpClient, HttpEvent, HttpRequest } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpEventType, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../environments/environment';
 
 const FILE_UPLOAD_URL = environment.apiUrl + 'api/public/fileupload';
@@ -11,17 +11,45 @@ const FILE_UPLOAD_URL = environment.apiUrl + 'api/public/fileupload';
 export class FileUploadService {
 
 
-    constructor(private https: HttpClient) {
+    constructor(private http: HttpClient) {
 
     }
 
-    pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
+   /* pushFileToStorage(file: File): Observable<HttpEvent<{}>> {
         const data: FormData = new FormData();
         data.append('file', file);
         const newRequest = new HttpRequest('POST', FILE_UPLOAD_URL, data, {
             reportProgress: true,
             responseType: 'text',
         });
+        console.log(data);
         return this.https.request(newRequest);
+    }*/
+    public upload(files: Set<File>):
+        { [key: string]: { progress: Observable<number> } } {
+        const status: { [key: string]: { progress: Observable<number> } } = {};
+
+        files.forEach(file => {
+
+            const formData: FormData = new FormData();
+            formData.append('file', file, file.name);
+            const req = new HttpRequest('POST', FILE_UPLOAD_URL, formData, {
+                reportProgress: true
+            });
+            const progress = new Subject<number>();
+            this.http.request(req).subscribe(event => {
+                if (event.type === HttpEventType.UploadProgress) {
+                    const percentDone = Math.round(100 * event.loaded / event.total);
+                    progress.next(percentDone);
+                } else if (event instanceof HttpResponse) {
+                    progress.complete();
+                }
+            });
+
+            status[file.name] = {
+                progress: progress.asObservable()
+            };
+        });
+        return status;
     }
 }

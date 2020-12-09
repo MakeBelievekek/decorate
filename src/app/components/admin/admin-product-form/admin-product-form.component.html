@@ -105,10 +105,12 @@
     <a class="btn btn-primary" (click)="saveProduct()">Save</a>
 
 </form>
+
+<!--
 <input type="file" id="customFile" (change)="selectFile($event)">
 <button class="btn btn-primary" [disabled]="!selectedFiles " (click)="upload()">Save File</button>
 <button class="btn btn-primary" style="margin-left: 10px" (click)="downloadFile()">View File</button>
-<!-- <div class="row">
+<div class="row">
     <div class="col-sm-12">
         <div>
             <h6 class="head-title margin-top-8"><span>Upload from excel</span></h6>
@@ -118,12 +120,12 @@
     <div class="col-sm-6 text-center">
         <div class="custom-file">
             <input type="file" class="custom-file-input" id="customFile" name="myfile"
-                   (change)="onFileChange($event)">
+                   (change)="selectFile($event)">
             <label class="custom-file-label" for="customFile">{{fileInputLabel || 'Choose File'}}</label>
         </div>
  </div>
     <div class="col-sm-6 text-center">
-        <button class="btn btn-primary" (click)="saveExcel()">save</button>
+        <button class="btn btn-primary" (click)="upload()">save</button>
     </div>
-</div>
--->
+</div>-->
+

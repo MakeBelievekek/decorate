@@ -1,4 +1,3 @@
-import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
@@ -227,21 +226,21 @@ export class AdminProductFormComponent implements OnInit {
         this.selectedFile = event.target.files[0];
     }
 
-    upload() {
-        this.progress.percentage = 0;
-        this.currentFileUpload = this.selectedFiles.item(0);
-        this.fileUploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
-                if (event.type === HttpEventType.UploadProgress) {
-                    this.progress.percentage = Math.round(100 * event.loaded / event.total);
-                } else if (event instanceof HttpResponse) {
-                    alert('File Successfully Uploaded');
-                }
-                this.selectedFiles = undefined;
-            },
-        );
-    }
+    /*   upload() {
+           this.progress.percentage = 0;
+           this.currentFileUpload = this.selectedFiles.item(0);
+           this.fileUploadService.pushFileToStorage(this.currentFileUpload).subscribe(event => {
+                   if (event.type === HttpEventType.UploadProgress) {
+                       this.progress.percentage = Math.round(100 * event.loaded / event.total);
+                   } else if (event instanceof HttpResponse) {
+                       alert('File Successfully Uploaded');
+                   }
+                   this.selectedFiles = undefined;
+               },
+           );
+       }
 
-    selectFile(event) {
-        this.selectedFiles = event.target.files;
-    }
+       selectFile(event) {
+           this.selectedFiles = event.target.files;
+       }*/
 }

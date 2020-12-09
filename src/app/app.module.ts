@@ -18,7 +18,6 @@ import { BarionInformationComponent } from './components/barion-information/bari
 import { DecorateMakeCarouselComponent } from './components/shared/decorate-make-carousel/decorate-make-carousel.component';
 import { FrameModule } from './modules/frame/frame.module';
 import { LocalStorageService } from './services/localStorage.service';
-import { WishItemComponent } from './components/wish-list/wish-item/wish-item.component';
 
 const cookieConfig: NgcCookieConsentConfig = {
     'cookie': {
@@ -55,7 +54,6 @@ const cookieConfig: NgcCookieConsentConfig = {
         AppComponent,
         DecorateMakeCarouselComponent,
         BarionInformationComponent,
-
     ],
 
     imports: [

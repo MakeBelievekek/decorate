@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'primeng/carousel';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
@@ -34,7 +35,6 @@ import { DomChangeDirective } from '../../directives/dom-change.directive';
     imports: [
         CommonModule,
         MatToolbarModule,
-       // MatSidenavModule,
         MatListModule,
         MatButtonModule,
         LayoutModule,
@@ -51,6 +51,12 @@ import { DomChangeDirective } from '../../directives/dom-change.directive';
         ContentHeaderComponent,
         BackgroundImgDirective,
         CommonModule,
+        MatToolbarModule,
+        MatListModule,
+        MatButtonModule,
+        LayoutModule,
+        MatBadgeModule,
+        MatIconModule,
         CarouselModule,
         BreadcrumbComponent,
     ],

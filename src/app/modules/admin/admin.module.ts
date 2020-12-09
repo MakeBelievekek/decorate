@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -9,6 +8,7 @@ import { AdminSidebarComponent } from '../../components/admin/admin-sidebar/admi
 import { AdminComponent } from '../../components/admin/admin.component';
 import { CategoryFormComponent } from '../../components/admin/category-form/category-form.component';
 import { PaymentHistoryComponent } from '../../components/admin/payment-history/payment-history.component';
+import { FrameModule } from '../frame/frame.module';
 
 import { AdminRoutingModule } from './admin-routing.module';
 
@@ -24,10 +24,10 @@ import { AdminRoutingModule } from './admin-routing.module';
         AdminProductFormComponent,
     ],
     imports: [
-        CommonModule,
         RouterModule,
         ReactiveFormsModule,
         AdminRoutingModule,
+        FrameModule
     ],
 })
 export class AdminModule {
