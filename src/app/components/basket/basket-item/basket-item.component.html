@@ -1,12 +1,12 @@
 <div class="basket-item-grid">
-    <img src="{{this.product.image}}" alt="">
+    <img [src]="this.product.image" alt="">
     <div class="basket-details">
-        <p>{{product.productDesc}}</p>
-        <p>Termék Kód: {{product.id}}</p>
+       <!-- <p>{{product.productDesc}}</p> -->
+        <p>Termék Kód: {{product.itemNumber}}</p>
         <p>Size: roll</p>
     </div>
     <div class="qty ">
-        <app-plus-minus-input (counter)="countChange($event)" [step]="1" [min]="1" [max]="100"
+        <app-plus-minus-input (counter)="countChange($event)" [step]="1" [min]="1" [max]="10000"
                               [initialValue]="this.localQty"
                               [prodId]="product.id"
                               ariaLabelLess="Less 10"
@@ -17,7 +17,7 @@
     </div>
     <div class="total-price">
         {{this.totalPriceCounter}}
-        <em class="fa fa-minus-circle"></em>
+        <em class="fa fa-minus-circle" (click)="removeFromBasket()"></em>
     </div>
 </div>
 

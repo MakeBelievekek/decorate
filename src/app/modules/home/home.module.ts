@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { BreadcrumbComponent } from '../../components/breadcrumb/breadcrumb.component';
 import { ContentComponent } from '../../components/home/content/content.component';
 import { HomeComponent } from '../../components/home/home.component';
 import { NewsComponent } from '../../components/home/news/news.component';

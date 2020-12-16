@@ -15,7 +15,7 @@ const routes: Routes = [
     {path: 'termekkategoriak/fuggonyok/blackout/:id', loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),},
     {path: 'termekkategoriak/fuggonyok/sotetito/:id', loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),},
     {path: 'termekkategoriak/fuggonyok/fenyatereszto/:id', loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),},
-    {path: 'termekkategoriak/textilkiegeszito/:id', loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),},
+    {path: 'termekkategoriak/butorszovet/:id', loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),},
     {path: 'termekkategoriak/parna/:id', loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),},
     {path: 'termekkategoriak/tapeta/:id', loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),},
     {path: 'termekkategoriak/lakasdekoracio/:id', loadChildren: () => import('src/app/modules/product/product.module').then(m => m.ProductModule),},

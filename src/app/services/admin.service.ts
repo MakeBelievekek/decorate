@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 import { AttributeData } from '../models/attributeData';
 import { AttributeModel } from '../models/attributeModel';
 import { FormDataModel } from '../models/formDataModel';
 import { ProductModel } from '../models/productModel';
-import { ApiErrorHandler } from './apiErrorHandler';
-import {environment} from '../../environments/environment';
+import { ApiResponseMessageHandler } from './apiResponseMessageHandler';
 
 
 const ADMIN_BASE_URL = environment.apiUrl + 'api/restricted/admin';
@@ -19,15 +19,14 @@ const BASE_URL = environment.apiUrl + 'api/public';
 })
 export class AdminService {
 
-    constructor(private http: HttpClient, private errorHandler: ApiErrorHandler) {
+    constructor(private http: HttpClient, private errorHandler: ApiResponseMessageHandler) {
     }
 
 
     toggleService = new Subject<boolean>();
 
     createProduct(data: ProductModel, typeOfProduct): Observable<ProductModel> {
-        return this.http.post<ProductModel>(BASE_URL + '/' + typeOfProduct, data)
-            .pipe(retry(1), catchError(this.errorHandler.handleError));
+        return this.http.post<ProductModel>(BASE_URL + '/' + typeOfProduct, data);
     }
 
     saveExcelProducts(data: ProductModel[]) {
@@ -38,10 +37,6 @@ export class AdminService {
         return this.http.get<FormDataModel>(ADMIN_BASE_URL + '/formData');
     }
 
-    /*  saveProductFromExcel(data: ProductModel[]) {
-          return this.http.post<ProductModel>(ADMIN_BASE_URL + '/' + typeOfProduct, data);
-      }
-  */
     createCheckboxControls(colors: AttributeData[], patterns: AttributeData[], styles: AttributeData[], form: FormGroup) {
         colors.forEach(() => {
             const control = new FormControl(false);
@@ -76,12 +71,6 @@ export class AdminService {
     }
 
     saveAttribute(attribute: AttributeModel) {
-        return this.http.post(ADMIN_BASE_URL + '/attribute', attribute)
-            .pipe(retry(1), catchError(this.errorHandler.handleError));
-    }
-
-    saveAttributesFromExcel(attributes: AttributeModel[]) {
-        return this.http.post(ADMIN_BASE_URL + '/attribute/excelAttribute', attributes)
-            .pipe(retry(1), catchError(this.errorHandler.handleError));
+        return this.http.post(ADMIN_BASE_URL + '/attribute', attribute);
     }
 }

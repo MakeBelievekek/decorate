@@ -1,12 +1,13 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
 import { AttributeData } from '../../../models/attributeData';
 import { AttributeListItemModel } from '../../../models/attributeListItemModel';
 import { FormDataModel } from '../../../models/formDataModel';
 import { ImageModel } from '../../../models/imageModel';
 import { ProductModel } from '../../../models/productModel';
 import { AdminService } from '../../../services/admin.service';
+import { ApiResponseMessageHandler } from '../../../services/apiResponseMessageHandler';
 import { FileUploadService } from '../../../services/fileUpload.service';
 
 @Component({
@@ -53,12 +54,12 @@ export class AdminProductFormComponent implements OnInit {
         cleaningInst: string;
         curtainType: string;
     };
-    shortLink: string = '';
+    resp: string = '';
     loading: boolean = false;
     file: File = null;
 
 
-    constructor(private adminService: AdminService, private toastr: ToastrService, private fileUploadService: FileUploadService) {
+    constructor(private adminService: AdminService, private fileUploadService: FileUploadService, private responseHandler: ApiResponseMessageHandler) {
         this.productForm = new FormGroup({
             'productType': new FormControl(''),
             'curtainType': new FormControl(''),
@@ -157,19 +158,18 @@ export class AdminProductFormComponent implements OnInit {
         this.file = event.target.files[0];
     }
 
-    // OnClick of button Upload
+
     onUpload() {
         this.loading = !this.loading;
         console.log(this.file);
         this.fileUploadService.upload(this.file).subscribe(
-            (event: any) => {
-                if (typeof (event) === 'object') {
-
-                    // Short link via api response
-                    this.shortLink = event.link;
-
-                    this.loading = false; // Flag variable
+            (resp: HttpResponse<any>) => {
+                if (resp instanceof HttpResponse) {
+                    console.log('ittttttttttttttttttttttttt');
+                    this.responseHandler.handleResponse(resp);
                 }
+            }, (err) => {
+                this.responseHandler.handleError(err);
             },
         );
     }

@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -17,6 +17,7 @@ import { AppComponent } from './app.component';
 import { BarionInformationComponent } from './components/barion-information/barion-information.component';
 import { DecorateMakeCarouselComponent } from './components/shared/decorate-make-carousel/decorate-make-carousel.component';
 import { FrameModule } from './modules/frame/frame.module';
+import { InterceptorService } from './services/InterceptorService';
 import { LocalStorageService } from './services/localStorage.service';
 
 const cookieConfig: NgcCookieConsentConfig = {
@@ -71,7 +72,7 @@ const cookieConfig: NgcCookieConsentConfig = {
         }),
         NgbTooltipModule,
         NgxLoadingModule.forRoot({}),
-        FrameModule
+        FrameModule,
     ],
     providers: [LocalStorageService, ConfirmationService, MessageService],
     bootstrap: [AppComponent],

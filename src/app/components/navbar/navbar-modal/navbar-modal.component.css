@@ -19,14 +19,19 @@
     z-index: 1;
     left: 123px;
     top: 64px;
-    width: 800px;
+
     box-shadow: 0 0 10px;
+
 }
 
 
 .custom-modal-content {
     background-color: var(--primaryGray);
-    height: 300px;
+    height: 400px;
+}
+
+.bolder {
+    font-weight: bold;
 }
 
 .product-categoris {
@@ -37,7 +42,13 @@
     display: flex;
     flex-direction: column;
     width: 250px;
-    height: 300px;
+}
+
+.attributes {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 100%;
 }
 
 .details {
@@ -48,7 +59,7 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    width: 200px;
+    width: 230px;
     margin-left: 10px;
 }
 
@@ -61,9 +72,9 @@
 
 h4 {
     padding: 20px 10px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin: 0;
-    font-family: 'Pluto Sans W01 Regular', serif
+    font-family: 'Pluto Sans W01 Regular', serif;
 }
 
 .arrow {
@@ -122,35 +133,35 @@ img {
 }
 
 .slide-bottom {
-  -webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 @-webkit-keyframes slide-bottom {
-  0% {
-    -webkit-transform: translateY(-300px);
-    transform: translateY(-300px);
-  }
-  100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
+    0% {
+        -webkit-transform: translateY(-300px);
+        transform: translateY(-300px);
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
 }
 
 
 .slide-top {
-  -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-  animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    -webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
 @-webkit-keyframes slide-top {
-  0% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  100% {
-    -webkit-transform: translateY(-300px);
-    transform: translateY(-300px);
-  }
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    100% {
+        -webkit-transform: translateY(-300px);
+        transform: translateY(-300px);
+    }
 }
 

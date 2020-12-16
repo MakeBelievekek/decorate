@@ -35,8 +35,9 @@ export class BasketItemComponent implements OnInit {
                 }
             }
         }
-        console.log(this.product.image)
+        console.log(this.product.image);
     }
+
     countChange(event) {
         this.totalPriceCounter = event.value * this.product.price;
         this.countAllTotal(event);
@@ -46,5 +47,10 @@ export class BasketItemComponent implements OnInit {
         this.total.value = this.product.price;
         this.total.plusOrNot = event.plusOrNot;
         this.totalPrice.emit(this.total);
+    }
+
+    removeFromBasket() {
+        this.localStorageService.remove.next(this.product.id);
+        this.localStorageService.removeFromLocal(this.product.id, CART_KEY);
     }
 }

@@ -29,7 +29,7 @@ export class PlusMinusInputComponent implements OnInit {
         plusOrNot: boolean;
         value: number;
     };
-    item: LocalProductModel = new class implements LocalProductModel {
+     item: LocalProductModel = new class implements LocalProductModel {
         id: number;
         productType: string;
         qty: number;
@@ -39,14 +39,8 @@ export class PlusMinusInputComponent implements OnInit {
 
     ngOnInit() {
         this.value = this.initialValue ? this.value = this.initialValue : 0;
+        this.setProdToLocal();
         this.renderedValue = this.value.toString();
-        /*if (this.localStorageService.getItemIdFromLocalStorage(CART_KEY)) {
-          if (!this.localStorageService.getItemIdFromLocalStorage(CART_KEY).includes(this.prodId)) {
-            this.localStorageService.storeOnLocalStorage(this.item, CART_KEY);
-          }
-        } else {
-          this.localStorageService.storeOnLocalStorage(this.item, CART_KEY);
-        }*/
     }
 
     toggleMore = () => {
@@ -56,9 +50,14 @@ export class PlusMinusInputComponent implements OnInit {
             this.total.value = this.value;
             this.total.plusOrNot = true;
             this.counter.emit(this.total);
-            this.localStorageService.updateItem(this.prodId, this.value, CART_KEY);
+            console.log(this.value);
+
         }
     };
+
+    addToLocal() {
+        this.localStorageService.updateItem(this.prodId, this.value, CART_KEY);
+    }
 
     toggleLess = () => {
         if (this.value - this.step >= this.min) {
@@ -67,9 +66,14 @@ export class PlusMinusInputComponent implements OnInit {
             this.total.value = this.value;
             this.total.plusOrNot = false;
             this.counter.emit(this.total);
-            this.localStorageService.updateItem(this.prodId, this.value, CART_KEY);
+            console.log(this.value);
         }
     };
+
+    removeFromLocal() {
+        this.localStorageService.updateItem(this.prodId, this.value, CART_KEY);
+
+    }
 
     setProdToLocal() {
         this.item.qty = this.value;

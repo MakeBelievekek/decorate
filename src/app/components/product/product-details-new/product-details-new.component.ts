@@ -4,7 +4,6 @@ import { LocalProductModel } from '../../../models/localProductModel';
 import { ScreenSizeModel } from '../../../models/ScreenSize.model';
 import { LocalStorageService } from '../../../services/localStorage.service';
 
-const CART_KEY = 'local_cartList';
 
 @Component({
     selector: 'app-product-details-new',
@@ -23,12 +22,17 @@ export class ProductDetailsNewComponent implements OnInit {
         productType: string = 'WALLPAPER';
         qty: number = 1;
     };
-  localQty: number = 1;
+    localQty: number = 1;
+
     constructor(private localStorageService: LocalStorageService) {
     }
 
     ngOnInit(): void {
         this.dummyProduct = new DummyProductModel();
+    }
+
+    addToLocal(localKey: string) {
+        this.localStorageService.storeOnLocalStorage(this.item, localKey);
     }
 
     openModal() {

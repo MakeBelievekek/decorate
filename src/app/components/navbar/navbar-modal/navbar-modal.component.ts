@@ -1,95 +1,229 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Router} from '@angular/router';
-import {ModalControllerModel} from '../../../models/modalController.model';
-import {NavbarImageModel} from '../../../models/navbarImageModel';
-import {ModalService} from '../../../services/modal.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { FilterModel } from '../../../models/filterModel';
+import { ModalControllerModel } from '../../../models/modalController.model';
+import { ProductCategoryModalModel } from '../../../models/ProductCategoryModalModel';
+import { ModalService } from '../../../services/modal.service';
+import { ProductService } from '../../../services/product.service';
 
 const curtainPath = '/termekkategoriak/fuggonyok/';
 const otherPath = '/termekkategoriak/';
 
 @Component({
-  selector: 'app-navbar-modal',
-  templateUrl: './navbar-modal.component.html',
-  styleUrls: ['./navbar-modal.component.css'],
+    selector: 'app-navbar-modal',
+    templateUrl: './navbar-modal.component.html',
+    styleUrls: ['./navbar-modal.component.css'],
 })
 export class NavbarModalComponent implements OnInit {
-  colors: string[] = ['kék', 'sárga', 'zöld', 'piros', 'fehér', 'fekete', 'rózsaszín', 'lila'];
-  curtains: NavbarImageModel[] = [
-    {imageType: 'blackout', imgUrl: 'https://i.imgur.com/skSjNC7.jpg', navigationUrl: 'blackout'},
-    {imageType: 'ifjusági', imgUrl: 'https://i.imgur.com/KccMcuE.jpg', navigationUrl: 'ifjusagi'},
-    {imageType: 'sötétítő', imgUrl: 'https://i.imgur.com/1nyTupT.jpg', navigationUrl: 'sotetito'},
-    {imageType: 'fényáteresztő', imgUrl: 'https://i.imgur.com/yxO6nVd.jpg', navigationUrl: 'fenyatereszto'},
 
-  ];
-  otherProducts: NavbarImageModel[] = [{
-    imageType: 'párnák', imgUrl: 'https://i.imgur.com/9Vn98K4.jpg', navigationUrl: 'parna',
-  },
-    {imageType: 'tapéták', imgUrl: 'https://i.imgur.com/wjoNXAQ.jpg', navigationUrl: 'tapeta'},
-    {imageType: 'textilek', imgUrl: 'https://i.imgur.com/PKnlBMP.jpg', navigationUrl: 'textilkiegeszito'},
-    {imageType: 'dekorációk', imgUrl: 'https://i.imgur.com/t05z935.jpg', navigationUrl: 'lakasdekoracio'}];
-  modalControl: ModalControllerModel;
-  isColorVisible: boolean = true;
-  isCurtainVisible: boolean = false;
-  isOtherVisible: boolean = false;
-  firstImage: string = 'https://i.imgur.com/1nyTupT.jpg';
-  actualImage: string = 'https://i.imgur.com/1nyTupT.jpg';
-  @Input() isShowing: boolean;
-  @Input() animationState:string;
-  @Output() productModalCloseAnimFinished = new EventEmitter<boolean>();
+    products: ProductCategoryModalModel[] = [{
+        productType: 'Ifjúsági föggöny',
+        productDatabaseName: 'ifjusagi',
+        isShown: true,
+        color: false,
+        pattern: false,
+        style: false,
+        colorList: ['kék'],
+        patternList: ['Lovas'],
+        styleList: ['csíkos'],
+    },
+        {
+            productType: 'Blackout föggöny',
+            productDatabaseName: 'blackout',
+            isShown: false,
+            color: false,
+            pattern: false,
+            style: false,
+            colorList: ['fekete'],
+            patternList: ['vonat'],
+            styleList: ['szögletes'],
+        },
+        {
+            productType: 'Sötétítő föggöny',
+            productDatabaseName: 'sotetito',
+            isShown: false,
+            color: false,
+            pattern: false,
+            style: false,
+            colorList: ['sárga'],
+            patternList: ['sapka'],
+            styleList: ['kerek'],
+        },
+        {
+            productType: 'Fényáteresztő föggöny',
+            productDatabaseName: 'fenyatereszto',
+            isShown: false,
+            color: false,
+            pattern: false,
+            style: false,
+            colorList: ['zöld'],
+            patternList: ['csizma'],
+            styleList: ['háromszög'],
+        },
+        {
+            productType: 'Bútorszövet',
+            productDatabaseName: 'butorszovet',
+            isShown: false,
+            color: false,
+            pattern: false,
+            style: false,
+            colorList: ['lila'],
+            patternList: ['szamár'],
+            styleList: ['rombusz'],
+        },
+        {
+            productType: 'Lakásdekoráció',
+            productDatabaseName: 'lakasdekoracio',
+            isShown: false,
+            color: false,
+            pattern: false,
+            style: false,
+            colorList: ['rózsaszín'],
+            patternList: ['tehén'],
+            styleList: ['szép'],
+        }];
 
-  constructor(private modalService: ModalService, private router: Router) {
-  }
+    actualProduct: ProductCategoryModalModel = new class implements ProductCategoryModalModel {
+        color: boolean;
+        colorList: string[];
+        isShown: boolean;
+        pattern: boolean;
+        patternList: string[];
+        productDatabaseName: string;
+        productType: string;
+        style: boolean;
+        styleList: string[];
+    };
+    filter: FilterModel = new class implements FilterModel {
+        attr: string;
+        attrType: string;
+        productType: string;
+    };
+    modalControl: ModalControllerModel;
+    @Input() isShowing: boolean;
+    @Input() animationState: string;
+    @Output() productModalCloseAnimFinished = new EventEmitter<boolean>();
+    margin: string = '0px';
 
-  ngOnInit(): void {
-    this.modalControl = this.modalService.modalControl;
-  }
+    constructor(private modalService: ModalService, private router: Router,private activatedRoute:ActivatedRoute) {
 
-  keepModalOnScreen() {
-    this.closeNavigationModal()
-  }
-
-
-  visible(chooise: string) {
-    switch (chooise) {
-      case 'color': {
-        this.isColorVisible = true;
-        this.isCurtainVisible = false;
-        this.isOtherVisible = false;
-        break;
-      }
-      case 'curtain': {
-        this.isColorVisible = false;
-        this.isOtherVisible = false;
-        this.isCurtainVisible = true;
-        break;
-      }
-      case 'other': {
-        this.isOtherVisible = true;
-        this.isColorVisible = false;
-        this.isCurtainVisible = false;
-        break;
-      }
     }
-  }
 
-  showPicture(actual: string) {
-    this.actualImage = actual;
-  }
+    ngOnInit(): void {
+        this.actualProduct = this.products[0];
+        this.modalControl = this.modalService.modalControl;
+    }
 
-  firstImageRender() {
-    this.actualImage = this.firstImage;
-  }
+    keepModalOnScreen() {
+        this.closeNavigationModal();
+    }
 
-  curtainNavigate(url: string) {
-    this.router.navigateByUrl(curtainPath + url);
-  }
 
-  otherNavigate(url: string) {
-    this.router.navigateByUrl(otherPath + url);
-  }
+    visible(product: ProductCategoryModalModel) {
+        this.products.forEach(value => {
+            value.isShown = false;
+            value.color = false;
+            value.pattern = false;
+            value.style = false;
+        });
+        product.isShown = !product.isShown;
+        this.actualProduct = product;
+        switch (this.actualProduct) {
+            case this.products[0]: {
+                this.margin = '0px';
+                break;
+            }
+            case this.products[1]: {
+                this.margin = '64px';
+                break;
+            }
+            case this.products[2]: {
+                this.margin = '128px';
+                break;
+            }
+            case this.products[3]: {
+                this.margin = '192px';
+                break;
+            }
+            /*        case this.products[4]: {
+                       this.margin = '256px';
+                       break;
+                   }
+                   case this.products[5]: {
+                       this.margin = '320px';
+                       break;
+                   }*/
+        }
+    }
 
-  closeNavigationModal() {
-    this.isShowing = false;
-    this.productModalCloseAnimFinished.emit(true);
-  }
+    attrVisible(attr: string) {
+        switch (attr) {
+            case 'color': {
+                this.actualProduct.color = true;
+                this.actualProduct.pattern = false;
+                this.actualProduct.style = false;
+                break;
+            }
+            case 'pattern': {
+                this.actualProduct.color = false;
+                this.actualProduct.pattern = true;
+                this.actualProduct.style = false;
+                break;
+            }
+            case 'style': {
+                this.actualProduct.color = false;
+                this.actualProduct.pattern = false;
+                this.actualProduct.style = true;
+                break;
+            }
+        }
+    }
+
+    curtainNavigate(url: string) {
+        this.router.navigateByUrl(curtainPath + url);
+    }
+
+    otherNavigate(url: string) {
+        this.router.navigateByUrl(otherPath + url);
+    }
+
+    closeNavigationModal() {
+        this.isShowing = false;
+        this.productModalCloseAnimFinished.emit(true);
+    }
+
+    saveAttribute(attr: string) {
+        this.filter.attr = attr;
+        this.filter.productType = this.actualProduct.productDatabaseName;
+        if (this.actualProduct.style) {
+            this.filter.attrType = 'style';
+        }
+        if (this.actualProduct.color) {
+            this.filter.attrType = 'color';
+        }
+        if (this.actualProduct.pattern) {
+            this.filter.attrType = 'pattern';
+        }
+        this.buildPath(this.filter);
+    }
+
+    buildPath(filter: FilterModel) {
+        let path = '';
+        if (filter.productType === 'ifjusagi' || filter.productType === 'blackout' ||
+            filter.productType === 'fenyatereszto' || filter.productType === 'sotetito') {
+            path = curtainPath;
+        } else {
+            path = otherPath;
+        }
+        this.router.navigate([path], {
+            relativeTo: this.activatedRoute,
+            queryParams: {
+                termekkategoria: filter.productType,
+                tipus: filter.attrType,
+                attributum: filter.attr,
+            },
+            queryParamsHandling: 'merge',
+        });
+
+    }
 }

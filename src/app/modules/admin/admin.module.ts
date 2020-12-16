@@ -29,6 +29,7 @@ import { AdminRoutingModule } from './admin-routing.module';
         AdminRoutingModule,
         FrameModule
     ],
+
 })
 export class AdminModule {
 }

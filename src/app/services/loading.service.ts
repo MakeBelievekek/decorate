@@ -26,16 +26,16 @@ export class LoadingService {
         distinctUntilChanged(),
     );
 
-    private isConsideredEvent(event: RouterEvent): boolean {
+     isConsideredEvent(event: RouterEvent): boolean {
         return this.isNavigationStart(event)
             || this.isNavigationEnd(event);
     }
 
-    private isNavigationStart(event: RouterEvent): boolean {
+    isNavigationStart(event: RouterEvent): boolean {
         return event instanceof NavigationStart;
     }
 
-    private isNavigationEnd(event: RouterEvent): boolean {
+     isNavigationEnd(event: RouterEvent): boolean {
         return event instanceof NavigationEnd
             || event instanceof NavigationCancel
             || event instanceof NavigationError;
