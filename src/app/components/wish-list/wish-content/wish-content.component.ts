@@ -17,7 +17,6 @@ export class WishContentComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.productsFromLocalStorage);
 
     }
 

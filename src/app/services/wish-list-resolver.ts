@@ -21,13 +21,10 @@ export class WishListResolver implements Resolve<ProductListItemForLocal[]> {
         if (this.localStorageService.getItemsFromLocalStorage(WISH_KEY).length != 0) {
             this.isEmpty = true;
         }
-        console.log(this.isEmpty);
         if (this.isEmpty) {
-            console.log(this.localStorageService.getItemsFromLocalStorage(WISH_KEY));
             const productIds = [];
             for (const prod of this.localStorageService.getItemsFromLocalStorage(WISH_KEY)) {
                 productIds.push(prod.id);
-                console.log(productIds);
             }
             productIds.map(String);
             const prodString = productIds.toString();

@@ -64,5 +64,7 @@ export class ProductDetailsNewComponent implements OnInit {
         this.isModalOpen = false;
     }
 
-
+    setValue(event: number) {
+        this.item.qty = event;
+    }
 }

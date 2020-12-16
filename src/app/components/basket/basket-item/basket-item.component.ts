@@ -35,7 +35,6 @@ export class BasketItemComponent implements OnInit {
                 }
             }
         }
-        console.log(this.product.image);
     }
 
     countChange(event) {

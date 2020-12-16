@@ -50,7 +50,7 @@
         <div><h3>Ár {{this.dummyProduct.price |currency}} Ft</h3></div>
     </div>
     <div style="display: flex; flex-wrap: wrap; width: 400px; align-items: center; margin-left: 10px">
-        <app-plus-minus-input  [step]="1" [min]="0" [max]="10000" [initialValue]="1"></app-plus-minus-input>
+        <app-plus-minus-input (numberOfQty)="setValue($event)"   [step]="1" [min]="0" [max]="10000" [initialValue]="1"></app-plus-minus-input>
         <div style="margin-left: 15px; font-size: 1.5rem; padding-bottom: 3px">tekercs</div>
     </div>
 

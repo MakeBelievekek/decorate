@@ -55,6 +55,7 @@ em {
     width: 100px;
     height: 100px;
     margin: 20px;
+    object-fit: cover;
 }
 
 .qty {
@@ -75,5 +76,9 @@ em {
 }
 
 .total-price > em {
+    cursor: pointer;
+}
+.product-name {
+    font-weight: bolder;
     cursor: pointer;
 }

@@ -17,7 +17,6 @@ export class LoadingService {
 
     constructor(private router: Router) {
 
-
     }
 
     isNavigationPending$: Observable<boolean> = this.router.events.pipe(

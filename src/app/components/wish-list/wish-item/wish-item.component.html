@@ -1,12 +1,12 @@
 <div class="basket-item-grid">
     <img src="{{this.product.image}}" alt="">
     <div class="basket-details">
-        <p>{{product.productDesc}}</p>
-        <p>Termék Kód: {{product.id}}</p>
+        <p class="product-name">{{product.name}}</p>
+        <p >Termék Kód: {{product.itemNumber}}</p>
         <p>Size: roll</p>
     </div>
     <div class="remove">
-        <em class="fa fa-minus-circle"></em>
+        <em class="fa fa-minus-circle" (click)="removeFromWish()"></em>
     </div>
 </div>
 

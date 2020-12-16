@@ -28,9 +28,7 @@ export class BasketComponent implements OnInit {
                     this.productsFromLocalStorage.splice(i, 1);
                 }
             }
-            this.productsFromLocalStorage.forEach(value => console.log(value));
         });
-
     }
 
     payment() {

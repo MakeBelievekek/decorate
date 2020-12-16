@@ -25,11 +25,12 @@ export class PlusMinusInputComponent implements OnInit {
     @Input() ariaLabelMore: string;
     @Input() prodId: number;
     @Output() counter: EventEmitter<TotalPriceModel> = new EventEmitter();
+    @Output() numberOfQty: EventEmitter<number> = new EventEmitter<number>();
     total: TotalPriceModel = new class implements TotalPriceModel {
         plusOrNot: boolean;
         value: number;
     };
-     item: LocalProductModel = new class implements LocalProductModel {
+    item: LocalProductModel = new class implements LocalProductModel {
         id: number;
         productType: string;
         qty: number;
@@ -50,13 +51,14 @@ export class PlusMinusInputComponent implements OnInit {
             this.total.value = this.value;
             this.total.plusOrNot = true;
             this.counter.emit(this.total);
+            this.numberOfQty.emit(this.value);
             console.log(this.value);
 
         }
     };
 
     addToLocal() {
-        this.localStorageService.updateItem(this.prodId, this.value, CART_KEY);
+        this.localStorageService.updateItemFromBasket(this.prodId, this.value, CART_KEY);
     }
 
     toggleLess = () => {
@@ -66,12 +68,13 @@ export class PlusMinusInputComponent implements OnInit {
             this.total.value = this.value;
             this.total.plusOrNot = false;
             this.counter.emit(this.total);
+            this.numberOfQty.emit(this.value);
             console.log(this.value);
         }
     };
 
     removeFromLocal() {
-        this.localStorageService.updateItem(this.prodId, this.value, CART_KEY);
+        this.localStorageService.updateItemFromBasket(this.prodId, this.value, CART_KEY);
 
     }
 

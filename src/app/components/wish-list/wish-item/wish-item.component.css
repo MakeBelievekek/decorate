@@ -11,10 +11,15 @@ em {
     color: red;
 }
 
+.product-name {
+    font-weight: bolder;
+    cursor: pointer;
+}
+
 .basket-item-grid {
     display: grid;
-    grid-template-columns: 1fr minmax(140px, 1fr) 2fr 1fr 1fr;
-    grid-template-areas: 'a b c d e';
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-areas: 'a b e';
     background-color: var(--primaryWhite);
     margin-bottom: 5px;
     margin-left: 50px;

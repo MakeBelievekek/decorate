@@ -4,7 +4,6 @@ import { FilterModel } from '../../../models/filterModel';
 import { ModalControllerModel } from '../../../models/modalController.model';
 import { ProductCategoryModalModel } from '../../../models/ProductCategoryModalModel';
 import { ModalService } from '../../../services/modal.service';
-import { ProductService } from '../../../services/product.service';
 
 const curtainPath = '/termekkategoriak/fuggonyok/';
 const otherPath = '/termekkategoriak/';
@@ -16,72 +15,7 @@ const otherPath = '/termekkategoriak/';
 })
 export class NavbarModalComponent implements OnInit {
 
-    products: ProductCategoryModalModel[] = [{
-        productType: 'Ifjúsági föggöny',
-        productDatabaseName: 'ifjusagi',
-        isShown: true,
-        color: false,
-        pattern: false,
-        style: false,
-        colorList: ['kék'],
-        patternList: ['Lovas'],
-        styleList: ['csíkos'],
-    },
-        {
-            productType: 'Blackout föggöny',
-            productDatabaseName: 'blackout',
-            isShown: false,
-            color: false,
-            pattern: false,
-            style: false,
-            colorList: ['fekete'],
-            patternList: ['vonat'],
-            styleList: ['szögletes'],
-        },
-        {
-            productType: 'Sötétítő föggöny',
-            productDatabaseName: 'sotetito',
-            isShown: false,
-            color: false,
-            pattern: false,
-            style: false,
-            colorList: ['sárga'],
-            patternList: ['sapka'],
-            styleList: ['kerek'],
-        },
-        {
-            productType: 'Fényáteresztő föggöny',
-            productDatabaseName: 'fenyatereszto',
-            isShown: false,
-            color: false,
-            pattern: false,
-            style: false,
-            colorList: ['zöld'],
-            patternList: ['csizma'],
-            styleList: ['háromszög'],
-        },
-        {
-            productType: 'Bútorszövet',
-            productDatabaseName: 'butorszovet',
-            isShown: false,
-            color: false,
-            pattern: false,
-            style: false,
-            colorList: ['lila'],
-            patternList: ['szamár'],
-            styleList: ['rombusz'],
-        },
-        {
-            productType: 'Lakásdekoráció',
-            productDatabaseName: 'lakasdekoracio',
-            isShown: false,
-            color: false,
-            pattern: false,
-            style: false,
-            colorList: ['rózsaszín'],
-            patternList: ['tehén'],
-            styleList: ['szép'],
-        }];
+    @Input() products: ProductCategoryModalModel[] = [];
 
     actualProduct: ProductCategoryModalModel = new class implements ProductCategoryModalModel {
         color: boolean;
@@ -105,7 +39,7 @@ export class NavbarModalComponent implements OnInit {
     @Output() productModalCloseAnimFinished = new EventEmitter<boolean>();
     margin: string = '0px';
 
-    constructor(private modalService: ModalService, private router: Router,private activatedRoute:ActivatedRoute) {
+    constructor(private modalService: ModalService, private router: Router, private activatedRoute: ActivatedRoute) {
 
     }
 

@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { ImageModel } from '../../../models/imageModel';
 import { ProductListItemForLocal } from '../../../models/productListItemForLocal';
 import { ScreenSizeModel } from '../../../models/ScreenSize.model';
 import { ScreenService } from '../../../services/screen.service';
@@ -15,6 +16,8 @@ export class SalesComponent implements OnInit {
     a: ProductListItemForLocal = new class implements ProductListItemForLocal {
         id: number;
         image: string = 'https://i.imgur.com/wjoNXAQ.jpg';
+        images:ImageModel[];
+        typeOfProduct:string;
         itemNumber: string;
         name: string = 'Tapéta';
         price: number = 20000;
@@ -25,6 +28,8 @@ export class SalesComponent implements OnInit {
     b: ProductListItemForLocal = new class implements ProductListItemForLocal {
         id: number;
         image: string = 'https://i.imgur.com/wjoNXAQ.jpg';
+        images:ImageModel[];
+        typeOfProduct:string;
         itemNumber: string;
         name: string = 'Tapéta';
         price: number = 20000;
@@ -35,6 +40,8 @@ export class SalesComponent implements OnInit {
     c: ProductListItemForLocal = new class implements ProductListItemForLocal {
         id: number;
         image: string = 'https://i.imgur.com/wjoNXAQ.jpg';
+        images:ImageModel[];
+        typeOfProduct:string;
         itemNumber: string;
         name: string = 'Tapéta';
         price: number = 20000;
@@ -45,6 +52,8 @@ export class SalesComponent implements OnInit {
     d: ProductListItemForLocal = new class implements ProductListItemForLocal {
         id: number;
         image: string = 'https://i.imgur.com/wjoNXAQ.jpg';
+        images:ImageModel[];
+        typeOfProduct:string;
         itemNumber: string;
         name: string = 'Tapéta';
         price: number = 20000;
@@ -55,6 +64,8 @@ export class SalesComponent implements OnInit {
     e: ProductListItemForLocal = new class implements ProductListItemForLocal {
         id: number;
         image: string = 'https://i.imgur.com/wjoNXAQ.jpg';
+        images:ImageModel[];
+        typeOfProduct:string;
         itemNumber: string;
         name: string = 'Tapéta';
         price: number = 10000;
@@ -65,6 +76,8 @@ export class SalesComponent implements OnInit {
     f: ProductListItemForLocal = new class implements ProductListItemForLocal {
         id: number;
         image: string = 'https://i.imgur.com/wjoNXAQ.jpg';
+        images:ImageModel[];
+        typeOfProduct:string;
         itemNumber: string;
         name: string = 'Tapéta';
         price: number = 10000;
@@ -75,6 +88,8 @@ export class SalesComponent implements OnInit {
     g: ProductListItemForLocal = new class implements ProductListItemForLocal {
         id: number;
         image: string = 'https://i.imgur.com/wjoNXAQ.jpg';
+        images:ImageModel[];
+        typeOfProduct:string;
         itemNumber: string;
         name: string = 'Tapéta';
         price: number = 10000;
