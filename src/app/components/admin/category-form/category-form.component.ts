@@ -13,7 +13,10 @@ export class CategoryFormComponent implements OnInit {
 
     categoryForm: FormGroup;
     attribute: AttributeModel = new class implements AttributeModel {
+        created: string;
         description: string;
+        id: number;
+        modified: string;
         type: string;
     };
     attributeTypes: string[] = ['', 'Color', 'Pattern', 'Style', 'Composition'];
@@ -39,41 +42,41 @@ export class CategoryFormComponent implements OnInit {
         });
     }
 
- /*   onFileChange(event) {
-        let workBook = null;
-        let jsonData = null;
-        const reader = new FileReader();
-        const file = event.target.files[0];
-        reader.onload = (event) => {
-            const data = reader.result;
-            workBook = XLSX.read(data, {type: 'binary'});
-            jsonData = workBook.SheetNames.reduce((initial, name) => {
-                const sheet = workBook.Sheets[name];
-                initial[name] = XLSX.utils.sheet_to_json(sheet);
-                return initial;
-            }, {});
-            for (var key in jsonData) {
-                if (jsonData.hasOwnProperty(key)) {
-                    for (let attr of jsonData[key]) {
-                        this.attribute = attr;
-                        this.attributesFromExcel.push(this.attribute);
-                    }
-                }
-            }
-            this.fileInputLabel = file.name;
-        };
-        reader.readAsBinaryString(file);
-    }
+    /*   onFileChange(event) {
+           let workBook = null;
+           let jsonData = null;
+           const reader = new FileReader();
+           const file = event.target.files[0];
+           reader.onload = (event) => {
+               const data = reader.result;
+               workBook = XLSX.read(data, {type: 'binary'});
+               jsonData = workBook.SheetNames.reduce((initial, name) => {
+                   const sheet = workBook.Sheets[name];
+                   initial[name] = XLSX.utils.sheet_to_json(sheet);
+                   return initial;
+               }, {});
+               for (var key in jsonData) {
+                   if (jsonData.hasOwnProperty(key)) {
+                       for (let attr of jsonData[key]) {
+                           this.attribute = attr;
+                           this.attributesFromExcel.push(this.attribute);
+                       }
+                   }
+               }
+               this.fileInputLabel = file.name;
+           };
+           reader.readAsBinaryString(file);
+       }
 
-    saveExcel() {
-        if (this.attributesFromExcel) {
-            this.adminService.saveAttributesFromExcel(this.attributesFromExcel)
-                .subscribe(() => {}
-                    , (err) => {
-                        this.toastr.error(err);
-                    }
-                    , () => {this.toastr.success("Sikeres mentés")});
-        }
-    }
-    */
+       saveExcel() {
+           if (this.attributesFromExcel) {
+               this.adminService.saveAttributesFromExcel(this.attributesFromExcel)
+                   .subscribe(() => {}
+                       , (err) => {
+                           this.toastr.error(err);
+                       }
+                       , () => {this.toastr.success("Sikeres mentés")});
+           }
+       }
+       */
 }

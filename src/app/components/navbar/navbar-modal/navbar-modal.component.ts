@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AttributeModel } from '../../../models/attributeModel';
 import { FilterModel } from '../../../models/filterModel';
 import { ModalControllerModel } from '../../../models/modalController.model';
 import { ProductCategoryModalModel } from '../../../models/ProductCategoryModalModel';
@@ -19,14 +20,14 @@ export class NavbarModalComponent implements OnInit {
 
     actualProduct: ProductCategoryModalModel = new class implements ProductCategoryModalModel {
         color: boolean;
-        colorList: string[];
+        colorList: AttributeModel[];
         isShown: boolean;
         pattern: boolean;
-        patternList: string[];
+        patternList: AttributeModel[];
         productDatabaseName: string;
         productType: string;
         style: boolean;
-        styleList: string[];
+        styleList: AttributeModel[];
     };
     filter: FilterModel = new class implements FilterModel {
         attr: string;
