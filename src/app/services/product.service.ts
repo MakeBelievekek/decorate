@@ -1,7 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { ProductCategoryModalModel } from '../models/ProductCategoryModalModel';
 import { ProductListItemForLocal } from '../models/productListItemForLocal';
 import { ShippingOptions } from '../models/shippingOptions';
 
@@ -16,6 +17,8 @@ export class ProductService {
     constructor(private http: HttpClient) {
     }
 
+    productCategoryModelSubject = new Subject<ProductCategoryModalModel[]>();
+
     getProductsForLocalStorage(productsIds: string): Observable<ProductListItemForLocal[]> {
         return this.http.get<any>(PRODUCT_BASE_URL + '/local/' + productsIds);
     }
@@ -24,12 +27,16 @@ export class ProductService {
         return this.http.get<ShippingOptions[]>(PRODUCT_BASE_URL + '/shippingOptions');
     }
 
-  getProducts(productCategoryParam: string, productAttrType: string, productAttr: string) {
+    getProducts(productCategoryParam: string, productAttrType: string, productAttr: string) {
         const params = new HttpParams()
-            .set('productCategory',productCategoryParam )
-            .set('attrType',productAttrType )
-            .set('attr',productAttr )
+            .set('productCategory', productCategoryParam)
+            .set('attrType', productAttrType)
+            .set('attr', productAttr)
         ;
         return this.http.get(PRODUCT_BASE_URL, {params});
+    }
+
+    getAttributesForDropdown(): Observable<ProductCategoryModalModel[]> {
+        return this.http.get<ProductCategoryModalModel[]>(PRODUCT_BASE_URL + '/productTypes');
     }
 }

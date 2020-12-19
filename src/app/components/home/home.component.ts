@@ -1,45 +1,48 @@
-import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
-import {ScreenSizeModel} from '../../models/ScreenSize.model';
-import {HomeService} from '../../services/home.service';
-import {PaymentService} from '../../services/payment.service';
-import {ProductService} from '../../services/product.service';
-import {ScreenService} from '../../services/screen.service';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ProductCategoryModalModel } from '../../models/ProductCategoryModalModel';
+import { ScreenSizeModel } from '../../models/ScreenSize.model';
+import { HomeService } from '../../services/home.service';
+import { PaymentService } from '../../services/payment.service';
+import { ProductService } from '../../services/product.service';
+import { ScreenService } from '../../services/screen.service';
 
 const CASH_KEY = 'valami';
 
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit, AfterViewInit {
-  loaded: boolean = false;
-  images;
-  darkenerImg: string;
-  translucentImg: string;
-  blackoutImg: string;
-  childrenImg: string;
-  decorationImg: string;
-  pillowImg: string;
-  wallpaperImg: string;
-  furnitureFabricImg: string;
-  paymentId: string;
+export class HomeComponent implements OnInit {
+    loaded: boolean = false;
+    images;
+    darkenerImg: string;
+    translucentImg: string;
+    blackoutImg: string;
+    childrenImg: string;
+    decorationImg: string;
+    pillowImg: string;
+    wallpaperImg: string;
+    furnitureFabricImg: string;
+    paymentId: string;
+    attributes: ProductCategoryModalModel[] = [];
 
-  constructor(private productService: ProductService, private home: HomeService, private route: ActivatedRoute,
-              private paymentService: PaymentService, private toastr: ToastrService,
-              private screenService: ScreenService) {
-  }
+    constructor(private productService: ProductService, private home: HomeService, private route: ActivatedRoute,
+                private paymentService: PaymentService, private toastr: ToastrService,
+                private screenService: ScreenService) {
+    }
 
-  screenSize: ScreenSizeModel = new class implements ScreenSizeModel {
-    height: number;
-    width: number;
-  };
+    screenSize: ScreenSizeModel = new class implements ScreenSizeModel {
+        height: number;
+        width: number;
+    };
 
 
     ngOnInit(): void {
+        this.getAttributes();
         this.changeContentOnResize();
         this.images = this.route.snapshot.data.images;
         this.route.queryParams.subscribe(params => {
@@ -88,18 +91,21 @@ export class HomeComponent implements OnInit, AfterViewInit {
         }
     }
 
-  showSuccessPayment() {
-    this.toastr.success('Sikeres Fizetés');
-  }
+    showSuccessPayment() {
+        this.toastr.success('Sikeres Fizetés');
+    }
 
-  @HostListener('window:resize', ['$event'])
-  changeContentOnResize() {
-    this.screenSize = this.screenService.getScreenSize();
-  }
+    @HostListener('window:resize', ['$event'])
+    changeContentOnResize() {
+        this.screenSize = this.screenService.getScreenSize();
+    }
 
-  ngAfterViewInit(): void {
+    getAttributes() {
+        this.productService.getAttributesForDropdown().subscribe((data) => {
+            this.attributes = data;
+        }, () => {}, () => {this.productService.productCategoryModelSubject.next(this.attributes);});
 
-  }
+    }
 
 
 }

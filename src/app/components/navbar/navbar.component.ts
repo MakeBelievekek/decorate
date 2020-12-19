@@ -5,6 +5,7 @@ import { ScreenControlModel } from '../../models/screenControl.model';
 import { ScreenSizeModel } from '../../models/ScreenSize.model';
 import { LocalStorageService } from '../../services/localStorage.service';
 import { ModalService } from '../../services/modal.service';
+import { ProductService } from '../../services/product.service';
 import { ScreenService } from '../../services/screen.service';
 
 
@@ -29,78 +30,21 @@ export class NavbarComponent implements OnInit {
     modalControl: ModalControllerModel;
     productSelectorDropDownState = 'close';
     isProductSelectorDropdownOpen: boolean;
-    products: ProductCategoryModalModel[] = [{
-        productType: 'Ifjúsági föggöny',
-        productDatabaseName: 'ifjusagi',
-        isShown: true,
-        color: false,
-        pattern: false,
-        style: false,
-        colorList: ['kék'],
-        patternList: ['Lovas'],
-        styleList: ['csíkos'],
-    },
-        {
-            productType: 'Blackout föggöny',
-            productDatabaseName: 'blackout',
-            isShown: false,
-            color: false,
-            pattern: false,
-            style: false,
-            colorList: ['fekete'],
-            patternList: ['vonat'],
-            styleList: ['szögletes'],
-        },
-        {
-            productType: 'Sötétítő föggöny',
-            productDatabaseName: 'sotetito',
-            isShown: false,
-            color: false,
-            pattern: false,
-            style: false,
-            colorList: ['sárga'],
-            patternList: ['sapka'],
-            styleList: ['kerek'],
-        },
-        {
-            productType: 'Fényáteresztő föggöny',
-            productDatabaseName: 'fenyatereszto',
-            isShown: false,
-            color: false,
-            pattern: false,
-            style: false,
-            colorList: ['zöld'],
-            patternList: ['csizma'],
-            styleList: ['háromszög'],
-        },
-        {
-            productType: 'Bútorszövet',
-            productDatabaseName: 'butorszovet',
-            isShown: false,
-            color: false,
-            pattern: false,
-            style: false,
-            colorList: ['lila'],
-            patternList: ['szamár'],
-            styleList: ['rombusz'],
-        },
-        {
-            productType: 'Lakásdekoráció',
-            productDatabaseName: 'lakasdekoracio',
-            isShown: false,
-            color: false,
-            pattern: false,
-            style: false,
-            colorList: ['rózsaszín'],
-            patternList: ['tehén'],
-            styleList: ['szép'],
-        }];
+    products: ProductCategoryModalModel[] = [];
     isShow: boolean = false;
 
-    constructor(private modalService: ModalService, private screenService: ScreenService, private localStorageService: LocalStorageService) {
+    constructor(private modalService: ModalService,
+                private screenService: ScreenService,
+                private localStorageService: LocalStorageService,
+                private productService: ProductService) {
     }
 
     ngOnInit(): void {
+        this.productService.productCategoryModelSubject.subscribe((data) => {
+            this.products = data;
+            console.log(this.products);
+        });
+        console.log('valami');
         this.screenControl = this.screenService.screenControl;
         if (this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
             this.numberOfItemsInBasket = this.localStorageService.getItemsFromLocalStorage(CART_KEY).length;

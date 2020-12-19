@@ -1,4 +1,7 @@
 export interface AttributeModel {
-  type: string;
-  description: string;
+    id: number
+    type: string;
+    description: string;
+    modified: string;
+    created: string;
 }

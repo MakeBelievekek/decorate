@@ -1,3 +1,5 @@
+import { AttributeModel } from './attributeModel';
+
 export interface ProductCategoryModalModel {
     productType: string;
     productDatabaseName: string;
@@ -5,7 +7,7 @@ export interface ProductCategoryModalModel {
     color: boolean
     pattern: boolean
     style: boolean
-    colorList: string[];
-    patternList: string[];
-    styleList: string[];
+    colorList: AttributeModel[];
+    patternList: AttributeModel[];
+    styleList: AttributeModel[];
 }
