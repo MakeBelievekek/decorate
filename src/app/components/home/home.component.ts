@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.getAttributes();
+
         this.changeContentOnResize();
         this.images = this.route.snapshot.data.images;
         this.route.queryParams.subscribe(params => {
@@ -100,12 +100,7 @@ export class HomeComponent implements OnInit {
         this.screenSize = this.screenService.getScreenSize();
     }
 
-    getAttributes() {
-        this.productService.getAttributesForDropdown().subscribe((data) => {
-            this.attributes = data;
-        }, () => {}, () => {this.productService.productCategoryModelSubject.next(this.attributes);});
 
-    }
 
 
 }

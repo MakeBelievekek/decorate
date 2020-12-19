@@ -40,11 +40,8 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.productService.productCategoryModelSubject.subscribe((data) => {
-            this.products = data;
-            console.log(this.products);
-        });
-        console.log('valami');
+
+        this.getAttributes();
         this.screenControl = this.screenService.screenControl;
         if (this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
             this.numberOfItemsInBasket = this.localStorageService.getItemsFromLocalStorage(CART_KEY).length;
@@ -54,6 +51,12 @@ export class NavbarComponent implements OnInit {
         }
         this.modalControl = this.modalService.modalControl;
 
+    }
+
+    getAttributes() {
+        this.productService.getAttributesForDropdown().subscribe((data) => {
+            this.products = data;
+        });
     }
 
 
