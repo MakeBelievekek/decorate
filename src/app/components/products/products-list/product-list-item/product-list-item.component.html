@@ -1,8 +1,8 @@
 <div class="product-list-card-container">
     <div class="product-list-card-img animate__animated animate__fadeIn"
          appBackgroundImg
-         [mainBackgroundImage]="this.dummyProduct.imageList[0]?.imgUrl"
-         [secondaryBackgroundImage]="this.dummyProduct.imageList[1]?.imgUrl"
+         [mainBackgroundImage]="this.product.imageList[0]?.imgUrl"
+         [secondaryBackgroundImage]="this.product.imageList[1]?.imgUrl"
          (mouseenter)="toggleControl()"
          (mouseleave)="toggleControl()"
     >
@@ -57,14 +57,14 @@
     <div class="product-list-card-text">
         <div class="product-list-card-text-flex-container">
             <div
-                [matTooltip]="this.dummyProduct?.name"
+                [matTooltip]="this.product?.name"
                 matTooltipPosition="below"
                 matTooltipShowDelay="500"
             >
-                {{this.dummyProduct?.name}}
+                {{this.product?.name}}
             </div>
             <div>
-                {{this.dummyProduct?.price}} ft
+                {{this.product?.price}} ft
             </div>
         </div>
     </div>

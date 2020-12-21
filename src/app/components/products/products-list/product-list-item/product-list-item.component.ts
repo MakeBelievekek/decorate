@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DummyProductModel } from '../../../../models/dummyProductModel';
+import { ProductModel } from '../../../../models/productModel';
 
 @Component({
     selector: 'app-product-list-item',
@@ -9,7 +10,7 @@ import { DummyProductModel } from '../../../../models/dummyProductModel';
 export class ProductListItemComponent implements OnInit {
     showControl: boolean;
     likeHover: boolean;
-    @Input() dummyProduct: DummyProductModel;
+    @Input() product: ProductModel;
     showTooltip: boolean;
     placeholder: string;
 
@@ -18,7 +19,7 @@ export class ProductListItemComponent implements OnInit {
     }
 
     ngOnInit(): void {
-      console.log(this.dummyProduct.name);
+      console.log(this.product);
     }
 
     toggleLikeHover(): void {

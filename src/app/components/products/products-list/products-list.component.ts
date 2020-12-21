@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DummyProductModel } from '../../../models/dummyProductModel';
+import { ProductModel } from '../../../models/productModel';
 
 @Component({
     selector: 'app-products-list',
@@ -8,8 +9,9 @@ import { DummyProductModel } from '../../../models/dummyProductModel';
     styleUrls: ['./products-list.component.css'],
 })
 export class ProductsListComponent implements OnInit {
+    @Input() products: ProductModel[];
 
-    constructor(private route:Router) {
+    constructor(private route: Router) {
         this.dumy1.imageList[0].imgUrl = 'https://i.imgur.com/Vcfn5DW.jpg';
         this.dumy1.imageList[1].imgUrl = 'https://i.imgur.com/CjhCxAf.jpg';
         this.dumy1.price = 11700;
@@ -42,7 +44,7 @@ export class ProductsListComponent implements OnInit {
         this.dumys.push(this.dumy4);
     }
 
-  route1() {
-    this.route.navigateByUrl('termekkategoriak/tapeta/1')
-  }
+    route1() {
+        this.route.navigateByUrl('termekkategoriak/tapeta/1');
+    }
 }

@@ -1,5 +1,6 @@
-<div class="product-list-container" >
-  <ng-container *ngFor="let a of this.dumys">
-    <app-product-list-item class="product-list-card-container" [dummyProduct]="a" (click)="route1()"></app-product-list-item>
-  </ng-container>
+<div class="product-list-container">
+    <ng-container *ngFor="let prod of this.products">
+        <app-product-list-item class="product-list-card-container" [product]="prod"
+                               (click)="route1()"></app-product-list-item>
+    </ng-container>
 </div>

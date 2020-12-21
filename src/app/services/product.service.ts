@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { ProductCategoryModalModel } from '../models/ProductCategoryModalModel';
 import { ProductListItemForLocal } from '../models/productListItemForLocal';
+import { ProductModel } from '../models/productModel';
 import { ShippingOptions } from '../models/shippingOptions';
 
 const PRODUCT_BASE_URL = environment.apiUrl + 'api/public/product';
@@ -27,13 +28,13 @@ export class ProductService {
         return this.http.get<ShippingOptions[]>(PRODUCT_BASE_URL + '/shippingOptions');
     }
 
-    getProducts(productCategoryParam: string, productAttrType: string, productAttr: string) {
+    getProducts(productCategoryParam: string, productAttrType: string, productAttr: string[]): Observable<ProductModel[]> {
         const params = new HttpParams()
             .set('productCategory', productCategoryParam)
             .set('attrType', productAttrType)
-            .set('attr', productAttr)
+            .set('attrs', productAttr.join(','))
         ;
-        return this.http.get(PRODUCT_BASE_URL, {params});
+        return this.http.get<ProductModel[]>(PRODUCT_BASE_URL, {params});
     }
 
     getAttributesForDropdown(): Observable<ProductCategoryModalModel[]> {

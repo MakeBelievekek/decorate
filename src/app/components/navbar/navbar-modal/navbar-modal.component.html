@@ -45,16 +45,16 @@
                 <div class="details">
                     <ul *ngIf="this.actualProduct.color">
                         <li *ngFor="let a of this.actualProduct.colorList"
-                            (click)="saveAttribute(a.description)">{{a.description}}</li>
+                            (click)="saveAttribute(a)">{{a.description}}</li>
                     </ul>
                     <ul *ngIf="this.actualProduct.pattern">
                         <li *ngFor="let a of this.actualProduct.patternList"
-                            (click)="saveAttribute(a.description)">{{a.description}}
+                            (click)="saveAttribute(a)">{{a.description}}
                         </li>
                     </ul>
                     <ul *ngIf="this.actualProduct.style">
                         <li *ngFor="let a of this.actualProduct.styleList"
-                            (click)="saveAttribute(a.description)"
+                            (click)="saveAttribute(a)"
                         >{{a.description}}</li>
                     </ul>
                 </div>

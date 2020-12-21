@@ -30,7 +30,7 @@ export class NavbarModalComponent implements OnInit {
         styleList: AttributeModel[];
     };
     filter: FilterModel = new class implements FilterModel {
-        attr: string;
+        attr: string[] = [];
         attrType: string;
         productType: string;
     };
@@ -80,14 +80,6 @@ export class NavbarModalComponent implements OnInit {
                 this.margin = '192px';
                 break;
             }
-            /*        case this.products[4]: {
-                       this.margin = '256px';
-                       break;
-                   }
-                   case this.products[5]: {
-                       this.margin = '320px';
-                       break;
-                   }*/
         }
     }
 
@@ -127,9 +119,13 @@ export class NavbarModalComponent implements OnInit {
         this.productModalCloseAnimFinished.emit(true);
     }
 
-    saveAttribute(attr: string) {
-        this.filter.attr = attr;
+    saveAttribute(attr: AttributeModel) {
+        this.filter.attr.push(attr.description);
         this.filter.productType = this.actualProduct.productDatabaseName;
+        if (this.actualProduct.productDatabaseName === null) {
+            this.filter.attr.push(this.actualProduct.productType);
+            this.filter.productType = 'CURTAIN';
+        }
         if (this.actualProduct.style) {
             this.filter.attrType = 'style';
         }
@@ -140,12 +136,12 @@ export class NavbarModalComponent implements OnInit {
             this.filter.attrType = 'pattern';
         }
         this.buildPath(this.filter);
+        this.filter.attr = [];
     }
 
     buildPath(filter: FilterModel) {
         let path = '';
-        if (filter.productType === 'ifjusagi' || filter.productType === 'blackout' ||
-            filter.productType === 'fenyatereszto' || filter.productType === 'sotetito') {
+        if (filter.productType === 'CURTAIN') {
             path = curtainPath;
         } else {
             path = otherPath;
