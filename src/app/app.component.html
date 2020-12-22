@@ -1,4 +1,7 @@
+<app-navbar>
+    <app-content-header></app-content-header>
+    <ngx-loading [show]=" isSpinnerVisible$ | async "></ngx-loading>
+    <router-outlet></router-outlet>
 
-<ngx-loading [show]=" isSpinnerVisible$ | async "></ngx-loading>
-<router-outlet></router-outlet>
-
+    <app-footer></app-footer>
+</app-navbar>

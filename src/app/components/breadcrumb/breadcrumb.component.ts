@@ -28,12 +28,11 @@ export class BreadcrumbComponent implements OnInit {
     ngOnInit(): void {
         this.router.events.pipe(filter((event: RouterEvent) => this.loadingService.isNavigationEnd(event)),
             distinctUntilChanged()).subscribe(() => {
-            console.log('navigálok');
             this.initial();
             this.buildBreadCrumb(this.router, this.path, this.stations, this.breadcrumbs);
-            console.log(this.breadcrumbs);
         });
     }
+
     initial() {
         this.breadcrumbs = [];
         this.path = this.router.url;
@@ -63,6 +62,7 @@ export class BreadcrumbComponent implements OnInit {
             }
         }
     }
+
     private isNavigationEnd(event: RouterEvent): boolean {
         return event instanceof NavigationEnd;
     }

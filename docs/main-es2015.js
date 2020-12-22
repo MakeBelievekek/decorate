@@ -870,7 +870,7 @@ class AdminProductFormComponent {
         data.productPatterns = this.adminService.createPatternsArrayToSend(this.productForm, this.patterns);
         data.productStyles = this.adminService.createStylesArrayToSend(this.productForm, this.styles);
         this.getAttributesId(data);
-        this.productModel.attributeListItemData = this.attributeId;
+        this.productModel.attributeCreationFormDataList = this.attributeId;
         this.productModel.productType = data.productType;
         this.productModel.curtainType = data.curtainType;
         this.productModel.productDesc = data.productDesc;

@@ -14,10 +14,10 @@
         <div class="custom-modal-content">
             <div class="product-categoris">
                 <div class="drop">
-                    <div class="drop-title" (mouseenter)="visible(p)"
+                    <div class="drop-title" (mouseenter)="visible(p)" [routerLink]="buildRoute(p)"
                          [ngStyle]="{'border-bottom': p.isShown ? '3px solid black' : '1px solid black'}"
-                         *ngFor="let p of this.products">
-                        <h4 [ngClass]="{'bolder': p.isShown}">{{p.productType}} </h4>
+                         *ngFor="let p of this.products" (click)="sendData()">
+                        <h4  [ngClass]="{'bolder': p.isShown}">{{p.productType}} </h4>
                         <i class="right" [ngClass]="{ 'arrowHover' : p.isShown,'arrow':! p.isShown}"></i>
                     </div>
                 </div>
@@ -44,17 +44,17 @@
                 </div>
                 <div class="details">
                     <ul *ngIf="this.actualProduct.color">
-                        <li *ngFor="let a of this.actualProduct.colorList"
-                            (click)="saveAttribute(a)">{{a.description}}</li>
+                        <li [routerLink]="buildRoute(this.actualProduct)" *ngFor="let a of this.actualProduct.colorList"
+                            (click)="setAttribute(a);sendData()">{{a.description}}</li>
                     </ul>
                     <ul *ngIf="this.actualProduct.pattern">
-                        <li *ngFor="let a of this.actualProduct.patternList"
-                            (click)="saveAttribute(a)">{{a.description}}
+                        <li [routerLink]="buildRoute(this.actualProduct)" *ngFor="let a of this.actualProduct.patternList"
+                            (click)="setAttribute(a);sendData()">{{a.description}}
                         </li>
                     </ul>
                     <ul *ngIf="this.actualProduct.style">
-                        <li *ngFor="let a of this.actualProduct.styleList"
-                            (click)="saveAttribute(a)"
+                        <li [routerLink]="buildRoute(this.actualProduct)" *ngFor="let a of this.actualProduct.styleList"
+                            (click)="setAttribute(a);sendData()"
                         >{{a.description}}</li>
                     </ul>
                 </div>

@@ -38,7 +38,7 @@ export class AdminProductFormComponent implements OnInit {
     attributeId: AttributeListItemModel[] = [];
     productModel: ProductModel = new class implements ProductModel {
         annotation: string;
-        attributeListItemData: AttributeListItemModel[];
+        attributeCreationFormDataList: AttributeListItemModel[];
         composition: string;
         imageList: ImageModel[] = [];
         itemNumber: string;
@@ -127,7 +127,7 @@ export class AdminProductFormComponent implements OnInit {
         data.productPatterns = this.adminService.createPatternsArrayToSend(this.productForm, this.patterns);
         data.productStyles = this.adminService.createStylesArrayToSend(this.productForm, this.styles);
         this.getAttributesId(data);
-        this.productModel.attributeListItemData = this.attributeId;
+        this.productModel.attributeCreationFormDataList = this.attributeId;
         this.productModel.productType = data.productType;
         this.productModel.curtainType = data.curtainType;
         this.productModel.productDesc = data.productDesc;

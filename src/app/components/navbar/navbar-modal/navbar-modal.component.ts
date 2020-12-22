@@ -5,9 +5,11 @@ import { FilterModel } from '../../../models/filterModel';
 import { ModalControllerModel } from '../../../models/modalController.model';
 import { ProductCategoryModalModel } from '../../../models/ProductCategoryModalModel';
 import { ModalService } from '../../../services/modal.service';
+import { NavigateService } from '../../../services/navigateService';
+import { RegexService } from '../../../services/regexService';
 
-const curtainPath = '/termekkategoriak/fuggonyok/';
-const otherPath = '/termekkategoriak/';
+const curtainPath = '/fuggony/';
+const otherPath = '';
 
 @Component({
     selector: 'app-navbar-modal',
@@ -30,17 +32,23 @@ export class NavbarModalComponent implements OnInit {
         styleList: AttributeModel[];
     };
     filter: FilterModel = new class implements FilterModel {
-        attr: string[] = [];
+        attr: string[];
         attrType: string;
         productType: string;
+        productDatabaseName: string;
     };
     modalControl: ModalControllerModel;
     @Input() isShowing: boolean;
     @Input() animationState: string;
     @Output() productModalCloseAnimFinished = new EventEmitter<boolean>();
     margin: string = '0px';
+    path: string = '';
 
-    constructor(private modalService: ModalService, private router: Router, private activatedRoute: ActivatedRoute) {
+    constructor(private modalService: ModalService,
+                private router: Router,
+                private activatedRoute: ActivatedRoute,
+                private regexService: RegexService,
+                private navigateService: NavigateService) {
 
     }
 
@@ -106,55 +114,27 @@ export class NavbarModalComponent implements OnInit {
         }
     }
 
-    curtainNavigate(url: string) {
-        this.router.navigateByUrl(curtainPath + url);
-    }
-
-    otherNavigate(url: string) {
-        this.router.navigateByUrl(otherPath + url);
-    }
-
     closeNavigationModal() {
         this.isShowing = false;
         this.productModalCloseAnimFinished.emit(true);
     }
 
-    saveAttribute(attr: AttributeModel) {
-        this.filter.attr.push(attr.description);
-        this.filter.productType = this.actualProduct.productDatabaseName;
-        if (this.actualProduct.productDatabaseName === null) {
-            this.filter.attr.push(this.actualProduct.productType);
-            this.filter.productType = 'CURTAIN';
-        }
-        if (this.actualProduct.style) {
-            this.filter.attrType = 'style';
-        }
-        if (this.actualProduct.color) {
-            this.filter.attrType = 'color';
-        }
-        if (this.actualProduct.pattern) {
-            this.filter.attrType = 'pattern';
-        }
-        this.buildPath(this.filter);
+    setAttribute(attr: AttributeModel) {
         this.filter.attr = [];
+        this.filter.attr.push(attr.description);
+        this.actualProduct.productDatabaseName === null ? this.filter.attr.push(this.actualProduct.productType) : null;
     }
 
-    buildPath(filter: FilterModel) {
-        let path = '';
-        if (filter.productType === 'CURTAIN') {
-            path = curtainPath;
-        } else {
-            path = otherPath;
-        }
-        this.router.navigate([path], {
-            relativeTo: this.activatedRoute,
-            queryParams: {
-                termekkategoria: filter.productType,
-                tipus: filter.attrType,
-                attributum: filter.attr,
-            },
-            queryParamsHandling: 'merge',
-        });
+    sendData() {
+        this.filter.productDatabaseName = this.actualProduct.productDatabaseName;
+        this.filter.productType = this.actualProduct.productType;
+        this.actualProduct.productDatabaseName === null ? this.filter.productDatabaseName = 'CURTAIN' : this.actualProduct.productDatabaseName;
+        this.navigateService.sendData(this.filter);
+    }
 
+    buildRoute(p: ProductCategoryModalModel) {
+        return p.productDatabaseName === null ?
+            '/fuggony/' + this.regexService.urlWithoutAccents(p.productType) :
+            '/' + this.regexService.urlWithoutAccents(p.productType);
     }
 }

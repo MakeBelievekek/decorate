@@ -56,6 +56,7 @@ export class NavbarComponent implements OnInit {
     getAttributes() {
         this.productService.getAttributesForDropdown().subscribe((data) => {
             this.products = data;
+            console.log(this.products);
         });
     }
 

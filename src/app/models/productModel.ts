@@ -17,5 +17,5 @@ export interface ProductModel {
   recommendedGlue: string;
   cleaningInst: string;
   imageList: ImageModel[];
-  attributeListItemData: AttributeListItemModel[];
+  attributeCreationFormDataList: AttributeListItemModel[];
 }

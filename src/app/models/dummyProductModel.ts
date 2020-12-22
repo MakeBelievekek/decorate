@@ -41,6 +41,6 @@ export class DummyProductModel {
   imageList = [ {imageType: 'main', imgUrl: 'https://i.imgur.com/Vcfn5DW.jpg'},
                 {imageType: 'secondary', imgUrl: 'https://i.imgur.com/CjhCxAf.jpg'},
                 {imageType: 'secondary', imgUrl: 'https://i.imgur.com/wUlw1vQ.jpg'}];
-  attributeListItemData = [{id: 110}];
+
   color = 'Szürke';
 }

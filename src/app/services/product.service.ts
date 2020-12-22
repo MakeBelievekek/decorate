@@ -28,16 +28,29 @@ export class ProductService {
         return this.http.get<ShippingOptions[]>(PRODUCT_BASE_URL + '/shippingOptions');
     }
 
-    getProducts(productCategoryParam: string, productAttrType: string, productAttr: string[]): Observable<ProductModel[]> {
+    getProductsWithQuery(productCategoryParam: string, productAttr: string[]): Observable<ProductModel[]> {
         const params = new HttpParams()
             .set('productCategory', productCategoryParam)
-            .set('attrType', productAttrType)
             .set('attrs', productAttr.join(','))
         ;
-        return this.http.get<ProductModel[]>(PRODUCT_BASE_URL, {params});
+        return this.http.get<ProductModel[]>(PRODUCT_BASE_URL + '/productsWithQuery', {params});
+    }
+
+    getProduct(productCategoryParam: string, productName: string): Observable<ProductModel> {
+        const params = new HttpParams()
+            .set('productCategory', productCategoryParam)
+            .set('productName', productName)
+        ;
+        return this.http.get<ProductModel>(PRODUCT_BASE_URL + '/product', {params});
     }
 
     getAttributesForDropdown(): Observable<ProductCategoryModalModel[]> {
         return this.http.get<ProductCategoryModalModel[]>(PRODUCT_BASE_URL + '/productTypes');
+    }
+
+    getProducts(productType: string): Observable<ProductModel[]> {
+        const params = new HttpParams()
+            .set('productCategory', productType);
+        return this.http.get<ProductModel[]>(PRODUCT_BASE_URL + '/products', {params});
     }
 }

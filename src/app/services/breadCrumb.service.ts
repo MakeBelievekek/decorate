@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { RegexService } from './regexService';
 
 @Injectable({
     providedIn: 'root',
@@ -10,38 +11,43 @@ export class BreadCrumbService {
 
     }
 
-    getBread(bread: string) :string {
+    getBread(bread: string): string {
         switch (bread) {
-            case 'termekkategoriak': {
-                return  'Termékkategoriák';
+            case 'fuggony': {
+                return 'Függöny';
             }
-            case 'fuggonyok': {
-                return  'Függönyök';
+            case 'gyerekfuggony': {
+                return 'Gyerekfüggöny';
             }
-            case 'ifjusagi': {
-                return  'Ifjúsági';
+            case 'sotetitofuggony': {
+                return 'Sötétítő függöny';
             }
-            case 'sotetito': {
-                return  'Sötétítő';
-            }
-            case 'fenyatereszto': {
-                return  'Fényáteresztő';
+            case 'fenyateresztofuggony': {
+                return 'Fényáteresztő függöny';
             }
             case 'blackout': {
-                return  'Blackout';
+                return 'Blackout függöny';
+            }
+            case 'butorszovet': {
+                return 'Bútorszövet';
+            }
+            case 'dekorfuggony': {
+                return 'Dekorfüggöny';
             }
             case 'textilkiegeszito': {
-                return  'Textilkiegészítők';
+                return 'Textilkiegészít';
             }
             case 'tapeta': {
-                return  'Tapéták';
+                return 'Tapéta';
             }
             case 'lakasdekoracio': {
-                return  'Lakásdekorációk';
+                return 'Lakásdekoráció';
             }
             case 'parna': {
-                return  'Párnák';
+                return 'Párna';
             }
+            default:
+                return bread;
         }
     }
 }
