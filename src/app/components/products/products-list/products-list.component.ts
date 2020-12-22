@@ -32,7 +32,6 @@ export class ProductsListComponent implements OnInit {
 
         PATH += convertedProductType + curtainSubTypeIfExist + convertedProductName;
 
-        console.log(product.attributeCreationFormDataList);
         this.route.navigateByUrl(PATH);
     }
 }

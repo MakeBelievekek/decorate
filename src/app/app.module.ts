@@ -1,24 +1,23 @@
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgcCookieConsentConfig, NgcCookieConsentModule } from 'ngx-cookieconsent';
-import { NgxLoadingModule } from 'ngx-loading';
-import { ToastrModule } from 'ngx-toastr';
-import { StorageServiceModule } from 'ngx-webstorage-service';
-import { AccordionModule } from 'primeng/accordion';
-import { ConfirmationService, MessageService } from 'primeng/api';
-import { environment } from '../environments/environment';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BarionInformationComponent } from './components/barion-information/barion-information.component';
-import { DecorateMakeCarouselComponent } from './components/shared/decorate-make-carousel/decorate-make-carousel.component';
-import { FrameModule } from './modules/frame/frame.module';
-import { InterceptorService } from './services/InterceptorService';
-import { LocalStorageService } from './services/localStorage.service';
+import {HttpClientModule} from '@angular/common/http';
+import {NgModule} from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {RouterModule} from '@angular/router';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgcCookieConsentConfig, NgcCookieConsentModule} from 'ngx-cookieconsent';
+import {NgxLoadingModule} from 'ngx-loading';
+import {ToastrModule} from 'ngx-toastr';
+import {StorageServiceModule} from 'ngx-webstorage-service';
+import {AccordionModule} from 'primeng/accordion';
+import {ConfirmationService, MessageService} from 'primeng/api';
+import {environment} from '../environments/environment';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {BarionInformationComponent} from './components/barion-information/barion-information.component';
+import {DecorateMakeCarouselComponent} from './components/shared/decorate-make-carousel/decorate-make-carousel.component';
+import {FrameModule} from './modules/frame/frame.module';
+import {LocalStorageService} from './services/localStorage.service';
 
 const cookieConfig: NgcCookieConsentConfig = {
     'cookie': {
@@ -76,7 +75,8 @@ const cookieConfig: NgcCookieConsentConfig = {
     ],
     providers: [LocalStorageService, ConfirmationService, MessageService],
     bootstrap: [AppComponent],
-    exports: [],
+  exports: [
+  ],
 })
 export class AppModule {
 }

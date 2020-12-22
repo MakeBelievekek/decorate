@@ -18,7 +18,7 @@ export class BasketContentResolver implements Resolve<ProductListItemForLocal[]>
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ProductListItemForLocal[]> {
-        if (this.localStorageService.getItemsFromLocalStorage(CART_KEY).length != 0) {
+        if (this.localStorageService.getItemsFromLocalStorage(CART_KEY).length !== 0) {
             this.isEmpty = true;
         }
         if (this.isEmpty) {

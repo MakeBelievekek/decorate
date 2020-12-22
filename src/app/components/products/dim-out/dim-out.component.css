@@ -1,0 +1,9 @@
+
+.decorate-dimmer {
+  position: absolute;
+  height: 1000px;
+  width: 100%;
+  z-index: 859;
+  background-color: black;
+  opacity: 0.3;
+}

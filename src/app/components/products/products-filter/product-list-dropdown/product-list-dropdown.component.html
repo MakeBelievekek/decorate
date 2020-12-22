@@ -1,0 +1,27 @@
+<div class="products-filter-color-selector-dropdown"
+     [style.top.px]="this.parentTopOffset"
+     [style.left.px]="this.parentLeftOffset"
+     [style.marginTop.px]="this.marginTopPx"
+     (click)="$event.stopPropagation()"
+>
+  <div *ngFor="let filter of (this.filters | async)">
+    <div style="display: flex; width: 100px; margin-top: 7px">
+      <div class="color-dropdown-item" *ngIf="true"
+      ><i
+        class="fa fa-square-o" aria-hidden="true"></i><a>{{filter}}</a></div>
+    </div>
+    <div class="color-dropdown-item" *ngIf="false"
+    ><i
+      class="fa fa-check-square" aria-hidden="true"></i><a>{{filter}}</a></div>
+  </div>
+  <div class="color-dropdown-control-area">
+    <div class="color-button">Szürés</div>
+    <div class="color-button">Törlés</div>
+  </div>
+</div>
+
+<app-dim-out [top]="this.dimmerOffset"
+             [height]="this.dimmerHeight"
+             [marginTopPx]="this.marginTopPx"
+></app-dim-out>
+

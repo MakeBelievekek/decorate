@@ -53,45 +53,10 @@
 		c1.902-1.903,2.847-4.093,2.847-6.565C284.929,80.607,283.984,78.417,282.082,76.511z"/>
             </g>
         </svg>
-
-      <div *ngIf="this.isColorDropdownOpen" class="products-filter-color-selector-dropdown"
-           (click)="$event.stopPropagation()"
-      >
-        <div *ngFor="let color of this.filterControl.colors">
-          <div style="display: flex; width: 100px; margin-top: 7px">
-            <div class="color-dropdown-item" *ngIf="!this.filterControl.activeColors.includes(color)"
-                 (click)="handleActiveColors(color)"><i
-              class="fa fa-square-o" aria-hidden="true"></i><a>{{color}}</a></div>
-          </div>
-          <div class="color-dropdown-item" *ngIf="this.filterControl.activeColors.includes(color)"
-               (click)="handleActiveColors(color)"><i
-            class="fa fa-check-square" aria-hidden="true"></i><a>{{color}}</a></div>
-        </div>
-        <div class="color-dropdown-control-area">
-          <div class="color-button">Szürés</div>
-          <div class="color-button" (click)="clearColorFilters()">Törlés</div>
-        </div>
-      </div>
-      <!-- <a>Színek<i class="fa fa-chevron-down" aria-hidden="true"></i></a>
-     </div>
-     <div class="dropdown-content"
-          [ngClass]="{'show-large-dropdown': this.modalControl.control === 'color' && this.modalControl.showModal}"
-          (click)="$event.stopPropagation()"
-          [style.top.px]=this.dropDownMeasurements.top
-          [style.width.px]=this.dropDownMeasurements.width
-     >
-       <div *ngFor="let color of this.filterControl.colors">
-         <div class="color-dropdown-item" *ngIf="!this.filterControl.activeColors.includes(color)"
-              (click)="handleActiveColors(color)"><i
-           class="fa fa-square-o" aria-hidden="true"></i><a>{{color}}</a></div>
-         <div class="color-dropdown-item" *ngIf="this.filterControl.activeColors.includes(color)"
-              (click)="handleActiveColors(color)"><i
-           class="fa fa-check-square" aria-hidden="true"></i><a>{{color}}</a></div>
-       </div>
-       <div class="color-dropdown-control-area">
-         <div class="color-button" (click)="clearColorFilters()">clear</div>
-         <div class="color-button">filter</div>
-       </div>-->
+      <app-product-list-dropdown [parentElement]="this.colorElement"
+                                 [marginTopPx]="8"
+                                 *ngIf="this.colorDropdownOpen">
+      </app-product-list-dropdown>
     </div>
   </div>
 </div>
@@ -166,7 +131,7 @@
             <div class="small-color-items-container">
               <ng-container *ngFor="let color of this.filterControl.colors">
                 <div class="small-color-item">
-                  <div *ngIf="!this.filterControl.activeColors.includes(color)" (click)="handleActiveColors(color)"
+                  <div *ngIf="!this.filterControl.activeColors.includes(color)"
                   >
                     <svg id="Capa_1" enable-background="new 0 0 482.239 482.239" height="1.25rem"
                          viewBox="0 0 482.239 482.239"
@@ -176,7 +141,7 @@
                     </svg>
                     {{color}}
                   </div>
-                  <div *ngIf="this.filterControl.activeColors.includes(color)" (click)="handleActiveColors(color)"
+                  <div *ngIf="this.filterControl.activeColors.includes(color)"
                   >
                     <svg id="Capa_1" enable-background="new 0 0 451.111 451.111" height="1.25rem"
                          viewBox="0 0 451.111 451.111"
@@ -193,13 +158,13 @@
             </div>
             <div class="color-dropdown-control-area">
               <div class="color-button">Szürés</div>
-              <div class="color-button" (click)="clearColorFilters()">Törlés</div>
+              <div class="color-button" >Törlés</div>
             </div>
           </div>
         </ng-container>
       </div>
     </app-decorate-modal>
   </div>
-
-
 </div>
+
+

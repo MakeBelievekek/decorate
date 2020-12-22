@@ -13,12 +13,11 @@ const otherPath = '';
 export class NavigateService {
     constructor() {}
 
-    private filterSubject = new BehaviorSubject<FilterModel>(null);
-    filterObservable$: Observable<FilterModel> = this.filterSubject.asObservable();
-    ngUnsubscribe = new Subject<void>();
-
+    private filterModelSubject = new Subject<FilterModel>();
+    filterObservable$: Observable<FilterModel> = this.filterModelSubject.asObservable();
+    ngUnsubscribe$ = new Subject<void>();
 
     sendData(filter: FilterModel) {
-        this.filterSubject.next(filter);
+        this.filterModelSubject.next(filter);
     }
 }

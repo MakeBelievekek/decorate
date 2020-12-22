@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductListItemForLocal } from '../../models/productListItemForLocal';
+import {ProductListItemForLocal} from '../../models/productListItemForLocal';
 import { LocalStorageService } from '../../services/localStorage.service';
 
 @Component({
