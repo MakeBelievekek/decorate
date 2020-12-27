@@ -1,13 +1,14 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {ModalControllerModel} from '../../models/modalController.model';
 import {ProductCategoryModalModel} from '../../models/ProductCategoryModalModel';
 import {ScreenControlModel} from '../../models/screenControl.model';
 import {ScreenSizeModel} from '../../models/ScreenSize.model';
 import {LocalStorageService} from '../../services/localStorage.service';
 import {ModalService} from '../../services/modal.service';
-import {ProductService} from '../../services/product.service';
 import {ScreenService} from '../../services/screen.service';
-
+import {CategoryStore} from '../../services/stores/category-store';
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs';
 
 const CART_KEY = 'local_cartList';
 const WISH_LIST = 'local_wishList';
@@ -17,7 +18,8 @@ const WISH_LIST = 'local_wishList';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit {
+
+export class NavbarComponent implements OnInit, OnDestroy {
   showSideSlide: boolean;
   animationState = null;
   screenControl: ScreenControlModel;
@@ -32,15 +34,15 @@ export class NavbarComponent implements OnInit {
   isProductSelectorDropdownOpen: boolean;
   products: ProductCategoryModalModel[] = [];
   isShow = false;
+  private unsubscribe$ = new Subject<void>();
 
   constructor(private modalService: ModalService,
               private screenService: ScreenService,
               private localStorageService: LocalStorageService,
-              private productService: ProductService) {
+              private categoryStore: CategoryStore) {
   }
 
   ngOnInit(): void {
-
     this.getAttributes();
     this.screenControl = this.screenService.screenControl;
     if (this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
@@ -54,10 +56,14 @@ export class NavbarComponent implements OnInit {
   }
 
   getAttributes() {
-    this.productService.getAttributesForDropdown().subscribe((data) => {
-      this.products = data;
-      console.log(this.products);
-    });
+    this.categoryStore.categoriesForFiltering$
+      .pipe(
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe((categoriesForFiltering) => {
+        this.products = categoriesForFiltering;
+        console.log(this.products);
+      });
   }
 
 
@@ -119,5 +125,10 @@ export class NavbarComponent implements OnInit {
 
   openProducts() {
     this.isShow = !this.isShow;
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

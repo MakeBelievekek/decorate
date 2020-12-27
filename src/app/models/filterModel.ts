@@ -1,3 +1,5 @@
+import {AttributeModel} from './attributeModel';
+
 export interface FilterModel {
     productType: string;
     productDatabaseName: string;
@@ -6,8 +8,8 @@ export interface FilterModel {
 }
 
 export class FilterModel {
-  productType = '';
-  productDatabaseName = '';
-  attrType = '';
-  attr = [''];
+  productType: string;
+  productDatabaseName: string;
+  attrType: string;
+  attr: Array<string> = [];
 }

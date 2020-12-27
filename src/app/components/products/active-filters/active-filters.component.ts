@@ -1,8 +1,8 @@
 import {Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FilterControlModel} from '../../../models/filterControl.model';
-import {FilterService} from '../../../services/filter.service';
+import {ActiveFilterService} from '../../../services/active-filter.service';
 import {Observable} from 'rxjs';
-import {filter} from 'rxjs/operators';
+import {AttributeModel} from '../../../models/attributeModel';
 
 @Component({
   selector: 'app-active-filters',
@@ -12,23 +12,22 @@ import {filter} from 'rxjs/operators';
 export class ActiveFiltersComponent implements OnInit, OnDestroy{
   filterControl: FilterControlModel;
   activeFilterExists$: Observable<boolean>;
-  activeFilters$: Observable<Array<string>>;
+  activeFilters$: Observable<Array<AttributeModel>>;
   @Input() number: number;
   @ViewChild('activeColorFilter') activeColorFilter: ElementRef;
 
-  constructor(private filterService: FilterService) {
+  constructor(private filterService: ActiveFilterService) {
   }
 
   ngOnInit(): void {
     this.activeFilterExists$ = this.filterService.isAnyFilterActive$;
-    this.activeFilters$ = this.filterService.activeColorFilters$;
-    this.filterService.checkForActiveFiltersOnInit();
-  }
-
-  removeActiveFilter(filterToDelete: string) {
-    this.filterService.removeActiveColorFilter(filterToDelete);
+    this.activeFilters$ = this.filterService.activeFilters$;
   }
 
   ngOnDestroy(): void {
+  }
+
+  deactivateFilter(attribute: AttributeModel) {
+    this.filterService.deactivateFilter(attribute);
   }
 }

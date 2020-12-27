@@ -4839,9 +4839,9 @@ BasketContentResolver.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵd
 
 /***/ "./src/app/services/filter.service.ts":
 /*!********************************************!*\
-  !*** ./src/app/services/filter.service.ts ***!
+  !*** ./src/app/services/active-filter.service.ts ***!
   \********************************************/
-/*! exports provided: FilterService */
+/*! exports provided: ActiveFilterService */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

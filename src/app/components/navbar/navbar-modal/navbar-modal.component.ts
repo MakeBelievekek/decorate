@@ -5,8 +5,9 @@ import {FilterModel} from '../../../models/filterModel';
 import {ModalControllerModel} from '../../../models/modalController.model';
 import {ProductCategoryModalModel} from '../../../models/ProductCategoryModalModel';
 import {ModalService} from '../../../services/modal.service';
-import {NavigateService} from '../../../services/navigateService';
 import {RegexService} from '../../../services/regexService';
+import {SearchModel} from '../../../models/searchModel';
+import {ActiveFilterService} from '../../../services/active-filter.service';
 
 const curtainPath = '/fuggony/';
 const otherPath = '';
@@ -20,35 +21,22 @@ export class NavbarModalComponent implements OnInit {
 
   @Input() products: ProductCategoryModalModel[] = [];
 
-  actualProduct: ProductCategoryModalModel = new class implements ProductCategoryModalModel {
-    color: boolean;
-    colorList: AttributeModel[];
-    isShown: boolean;
-    pattern: boolean;
-    patternList: AttributeModel[];
-    productDatabaseName: string;
-    productType: string;
-    style: boolean;
-    styleList: AttributeModel[];
-  };
-  filter: FilterModel = new class implements FilterModel {
-    attr: string[];
-    attrType: string;
-    productType: string;
-    productDatabaseName: string;
-  };
+  actualProduct = new ProductCategoryModalModel();
+  filter = new FilterModel();
   modalControl: ModalControllerModel;
   @Input() isShowing: boolean;
   @Input() animationState: string;
   @Output() productModalCloseAnimFinished = new EventEmitter<boolean>();
-  margin: string = '0px';
-  path: string = '';
+  margin = '0px';
+  path = '';
+  params: any;
 
   constructor(private modalService: ModalService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private regexService: RegexService,
-              private navigateService: NavigateService) {
+              private activeFilterService: ActiveFilterService,
+              ) {
 
   }
 
@@ -119,22 +107,33 @@ export class NavbarModalComponent implements OnInit {
     this.productModalCloseAnimFinished.emit(true);
   }
 
-  setAttribute(attr: AttributeModel) {
-    this.filter.attr = [];
-    this.filter.attr.push(attr.description);
-    this.actualProduct.productDatabaseName === null ? this.filter.attr.push(this.actualProduct.productType) : null;
-  }
-
-  sendData() {
-    this.filter.productDatabaseName = this.actualProduct.productDatabaseName;
-    this.filter.productType = this.actualProduct.productType;
-    this.actualProduct.productDatabaseName === null ? this.filter.productDatabaseName = 'CURTAIN' : this.actualProduct.productDatabaseName;
-    this.navigateService.sendData(this.filter);
-  }
-
-  buildRoute(p: ProductCategoryModalModel) {
+  buildRoute(p: ProductCategoryModalModel): Array<string> {
     return p.productDatabaseName === null ?
-      '/fuggony/' + this.regexService.urlWithoutAccents(p.productType) :
-      '/' + this.regexService.urlWithoutAccents(p.productType);
+      ['termekek', 'fuggony', this.regexService.urlWithoutAccents(p.productType)] :
+      ['termekek', this.regexService.urlWithoutAccents(p.productType)];
+  }
+
+  generateParams(searchModel: SearchModel): any {
+    if (searchModel) {
+      const {subType, ...rest} = searchModel;
+      return rest;
+    }
+  }
+
+  generateParamsWhitAttribute(actualProduct: ProductCategoryModalModel, attribute: AttributeModel): any {
+    const searchModel = {...actualProduct.searchModel};
+    if (!searchModel.attributeIds) {
+      searchModel.attributeIds = [];
+    }
+    searchModel.attributeIds.push(attribute.id);
+    this.activeFilterService.initiateActiveFilter();
+    this.activeFilterService.activateFilter(attribute);
+    return this.generateParams(searchModel);
+  }
+
+  navigate(actualProduct: ProductCategoryModalModel, attribute: AttributeModel) {
+    const searchModelForQueryParams = this.generateParamsWhitAttribute(actualProduct, attribute);
+    const route = this.buildRoute(actualProduct);
+    this.router.navigate(route, {queryParams: searchModelForQueryParams});
   }
 }

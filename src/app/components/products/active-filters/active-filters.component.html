@@ -6,12 +6,12 @@
     Aktív szürők:
   </div>
   <div class="active-product-filter-items-container">
-    <ng-container *ngFor="let  filter of (this.activeFilters$ | async)" >
+    <ng-container *ngFor="let  attribute of (this.activeFilters$ | async)" >
       <div class="active-product-filter-item"
-           (click)="this.removeActiveFilter(filter)"
+           (click)="this.deactivateFilter(attribute)"
            >
         <div class="active-product-filter-item-text">
-          {{filter}}
+          {{attribute.description}}
         </div>
         <div class="active-product-filter-item-icon">
           <svg id="Capa_1" enable-background="new 0 0 386.667 386.667" height="0.65rem" width="0.65rem"

@@ -44,9 +44,6 @@ export class ProductService {
         return this.http.get<ProductModel>(PRODUCT_BASE_URL + '/product', {params});
     }
 
-    getAttributesForDropdown(): Observable<ProductCategoryModalModel[]> {
-        return this.http.get<ProductCategoryModalModel[]>(PRODUCT_BASE_URL + '/productTypes');
-    }
 
     getProducts(productType: string): Observable<ProductModel[]> {
         const params = new HttpParams()

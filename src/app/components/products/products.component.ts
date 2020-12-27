@@ -1,66 +1,38 @@
 import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {takeUntil} from 'rxjs/operators';
+import {first, pluck, shareReplay, skip} from 'rxjs/operators';
 
 import {FilterModel} from '../../models/filterModel';
 import {ProductModel} from '../../models/productModel';
 import {ScreenControlModel} from '../../models/screenControl.model';
-import {NavigateService} from '../../services/navigateService';
-import {ProductService} from '../../services/product.service';
 import {ScreenService} from '../../services/screen.service';
 import {Observable, Subject} from 'rxjs';
+import {CategoryStore} from '../../services/stores/category-store';
+import {ProductCategoryModalModel} from '../../models/ProductCategoryModalModel';
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class ProductsComponent implements OnInit {
   @ViewChild('productContainer') productContainer: ElementRef;
   @ViewChild('productContent') productContent: ElementRef;
   screenControl: ScreenControlModel;
-  filter: FilterModel = new class implements FilterModel {
-    attr: string[] = [];
-    attrType: string;
-    productType: string;
-    productDatabaseName: string;
-  };
-  products: ProductModel[] = [];
-  filterModel$: Observable<FilterModel>;
+  filter = new FilterModel();
 
 
   constructor(private screenService: ScreenService,
               private activatedRoute: ActivatedRoute,
-              private productService: ProductService,
-              private navigateService: NavigateService) {
-
+              private categoryStore: CategoryStore) {
   }
 
   ngOnInit(): void {
-    this.navigateService.filterObservable$
-      .pipe(takeUntil(this.navigateService.ngUnsubscribe$))
-      .subscribe((data) => {
-        console.log(data);
-        this.filter = data;
-        if (!this.filter?.attr) {
-          this.productService.getProducts(this.filter?.productType).subscribe((products) => {
-            this.products = products;
-          });
-        } else {
-          this.productService.getProductsWithQuery(this.filter.productDatabaseName, this.filter.attr).subscribe((data) => {
-            this.products = data;
-          });
-        }
-      });
     this.screenControl = this.screenService.screenControl;
+    console.log('ezért csináltad');
   }
 
   setScreenAttributes() {
-    this.screenService.setContent(this.productContainer, this.productContent);
-  }
-
-  ngOnDestroy(): void {
-    this.navigateService.ngUnsubscribe$.next();
-    this.navigateService.ngUnsubscribe$.complete();
+    // this.screenService.setContent(this.productContainer, this.productContent);
   }
 }

@@ -16,6 +16,7 @@ import {DimOutComponent} from '../../components/products/dim-out/dim-out.compone
 import {ProductListDropdownComponent} from '../../components/products/products-filter/product-list-dropdown/product-list-dropdown.component';
 
 
+
 @NgModule({
   declarations: [
     ActiveFiltersComponent,
@@ -27,8 +28,7 @@ import {ProductListDropdownComponent} from '../../components/products/products-f
     ProductListItemComponent,
     NameShortenerPipe,
     DimOutComponent,
-    ProductListDropdownComponent
-
+    ProductListDropdownComponent,
 
   ],
   imports: [

@@ -4,8 +4,8 @@
       <app-products-header></app-products-header>
     </header>
     <app-products-filter (productContentScreenAttributes)="setScreenAttributes()"></app-products-filter>
-    <app-active-filters *ngIf="this.screenControl.largeScreen"></app-active-filters>
-    <app-products-list [products]="products"></app-products-list>
+    <app-active-filters *ngIf="true"></app-active-filters>
+    <router-outlet></router-outlet>
   </div>
 </div>
 

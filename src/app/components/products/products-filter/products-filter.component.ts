@@ -2,9 +2,14 @@ import {AfterViewInit, Component, ElementRef, EventEmitter, HostListener, OnInit
 import {FilterControlModel} from '../../../models/filterControl.model';
 import {ModalControllerModel} from '../../../models/modalController.model';
 import {ScreenControlModel} from '../../../models/screenControl.model';
-import {FilterService} from '../../../services/filter.service';
+import {ActiveFilterService} from '../../../services/active-filter.service';
 import {ModalService} from '../../../services/modal.service';
 import {ScreenService} from '../../../services/screen.service';
+import {ActivatedRoute} from '@angular/router';
+import {map, pluck, shareReplay, take, tap} from 'rxjs/operators';
+import {Observable} from 'rxjs';
+import {ProductsModalComponent} from '../products-modal/products-modal.component';
+import {MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/button-toggle';
 
 
 @Component({
@@ -12,7 +17,7 @@ import {ScreenService} from '../../../services/screen.service';
   templateUrl: './products-filter.component.html',
   styleUrls: ['./products-filter.component.css']
 })
-export class ProductsFilterComponent implements OnInit, AfterViewInit {
+export class ProductsFilterComponent implements OnInit {
   modalControl: ModalControllerModel;
   filterControl: FilterControlModel;
   screenControl: ScreenControlModel;
@@ -22,7 +27,6 @@ export class ProductsFilterComponent implements OnInit, AfterViewInit {
   colorButtonTopOffSet: number;
   colorButtonLeftOffSet: number;
   dimmerOfSet: number;
-  showDimmer: boolean;
   dimmerHeight: number;
   colorDropdownOpen: boolean;
   dropDownMeasurements: any = {top: 0, width: 0};
@@ -31,11 +35,14 @@ export class ProductsFilterComponent implements OnInit, AfterViewInit {
   @ViewChild('colourElement') colorElement: ElementRef;
   @ViewChild('orderButton') orderButton: ElementRef;
   showSmallColorFilter: boolean;
+  showDimmer: boolean;
+  filterAttributes$: Observable<ProductsModalComponent>;
 
 
   constructor(private modalService: ModalService,
               private screenService: ScreenService,
-              private filterService: FilterService) {
+              private filterService: ActiveFilterService,
+              private route: ActivatedRoute) {
     this.productContentScreenAttributes = new EventEmitter<string>();
   }
 
@@ -46,18 +53,21 @@ export class ProductsFilterComponent implements OnInit, AfterViewInit {
     this.filterControl.activeOrder = this.filterService.filterControl.order[0];
     this.screenService.getScreenSize().width < 1001 ? this.smallScreen = true : this.smallScreen = false;
 
-
+    this.filterAttributes$ = this.route.data.pipe(
+      take(1),
+      pluck('productList'),
+      shareReplay(),
+      map(([categories, productList]) => categories)
+    );
+    this.route.queryParams.subscribe(value => {
+      console.log('Filternél rá kell iratkozni a queryparamsra');
+    });
   }
 
   // TODO be le kell rakni egy plusz feltételt amikor pici dropdown van akkor más mutason
   toggleOrderModal(): void {
     this.isColorDropdownOpen = false;
     this.isOrderDropdownOpen = !this.isOrderDropdownOpen;
-
-
-    /* this.modalService.toggleModal('order');
-     if (this.modalControl.control === 'order' && this.modalControl.showModal && this.screenControl.smallDropdown) {
-     }*/
   }
 
   toggleColorModal(): void {
@@ -110,13 +120,5 @@ export class ProductsFilterComponent implements OnInit, AfterViewInit {
     const topOffset = this.filterControlContainer.nativeElement.offsetTop + this.filterControlContainer.nativeElement.offsetHeight;
     const contentWidth = this.filterControlContainer.nativeElement.offsetWidth;
     return {top: topOffset, width: contentWidth};
-  }
-
-  ngAfterViewInit(): void {
-   /* console.log('x is : ', this.filterControlContainer.nativeElement.getBoundingClientRect());
-    console.log('bodyclientrect : ', document.body.getBoundingClientRect());
-    console.log('scroll height : ', document.body.scrollHeight);
-    console.log('akkor ez a távolság az: ', this.filterControlContainer.nativeElement.getBoundingClientRect().top
-      + Math.abs(document.body.getBoundingClientRect().top));*/
   }
 }

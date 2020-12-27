@@ -2,6 +2,13 @@ export interface AttributeModel {
   id: number;
   type: string;
   description: string;
-  modified: string;
-  created: string;
+  isActive: boolean;
+}
+
+
+export class AttributeModel {
+  id = NaN;
+  type = '';
+  description = '';
+  isActive = false;
 }

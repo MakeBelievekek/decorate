@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input, OnInit} from '@angular/core';
-import {FilterService} from '../../../../services/filter.service';
+import {ActiveFilterService} from '../../../../services/active-filter.service';
 import {Observable} from 'rxjs';
 
 @Component({
@@ -16,7 +16,7 @@ export class ProductListDropdownComponent implements OnInit {
   dimmerOffset: number;
   dimmerHeight: number;
 
-  constructor(private filterService: FilterService, private elRef: ElementRef) {
+  constructor(private filterService: ActiveFilterService, private elRef: ElementRef) {
   }
 
   ngOnInit(): void {

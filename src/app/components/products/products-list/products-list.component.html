@@ -1,5 +1,5 @@
 <div class="product-list-container">
-    <ng-container *ngFor="let prod of this.products">
+    <ng-container *ngFor="let prod of (this.productsList$ | async)">
         <app-product-list-item class="product-list-card-container" [product]="prod"
                                (click)="navigateToProduct(prod)"></app-product-list-item>
     </ng-container>
