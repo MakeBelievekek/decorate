@@ -62,19 +62,6 @@ justify-content: center;
   position: relative;
 }
 
-.products-filter-color-selector-dropdown {
-  position: absolute;
-  top: 2rem;
-  z-index: 1000;
-  border: solid 0.3px black;
-  background: whitesmoke;
-  width: 525px;
-  display: flex;
-  flex-wrap: wrap;
-  cursor: auto;
-  padding-left: 10px;
-  padding-right: 10px;
-}
 .filter-element {
   position: relative;
 }

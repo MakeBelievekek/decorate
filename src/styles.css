@@ -12,9 +12,9 @@
 }
 
 :root {
-    --primaryGray: #e8e8e8;
+    --primaryGray: #f2f2f2;
     --primaryGreen: #C6D7CD;
-    --mozaikColor: #cd928d;
+    --mozaikColor: rgb(255, 165, 165);
     --primaryLetterBlack: #515358;
     --primaryWhite: #fefefe;
 

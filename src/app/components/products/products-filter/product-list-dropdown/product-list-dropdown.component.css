@@ -1,0 +1,59 @@
+.products-filter-color-selector-dropdown {
+  position: absolute;
+  top: 2rem;
+  z-index: 1000;
+  border: solid 0.3px black;
+  background: whitesmoke;
+  width: 525px;
+  display: flex;
+  flex-wrap: wrap;
+  cursor: auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.products-filter-color-selector-dropdown a {
+  font-family: Arial, fantasy;
+  color: #222;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.products-filter-color-selector-dropdown i {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.color-dropdown-item {
+  display: inline-block;
+  cursor: pointer;
+}
+
+
+.color-dropdown-control-area {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.color-dropdown-item {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.color-button {
+  display: flex;
+  width: 7rem;
+  height: 3rem;
+  cursor: pointer;
+  background: #c6d7cd;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+}
+
+.color-button:hover {
+  background: #b4cbbd;
+}

@@ -10023,10 +10023,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   "./src/app/services/filter.service.ts":
   /*!********************************************!*\
-    !*** ./src/app/services/filter.service.ts ***!
+    !*** ./src/app/services/active-filter.service.ts ***!
     \********************************************/
 
-  /*! exports provided: FilterService */
+  /*! exports provided: ActiveFilterService */
 
   /***/
   function srcAppServicesFilterServiceTs(module, __webpack_exports__, __webpack_require__) {

@@ -1,17 +1,17 @@
 <div class="active-product-filter-container" #activeColorFilter>
-  <div class="active-product-filter-message" *ngIf="!this.activeFilterExists">
+  <div class="active-product-filter-message" *ngIf="!(this.activeFilterExists$ | async)">
     Nincsen szürő!
   </div>
-  <div class="active-product-filter-message" *ngIf="this.activeFilterExists">
+  <div class="active-product-filter-message" *ngIf="(this.activeFilterExists$ | async)">
     Aktív szürők:
   </div>
   <div class="active-product-filter-items-container">
-    <ng-container *ngFor="let  color of this.filterControl.activeColors" >
+    <ng-container *ngFor="let  attribute of (this.activeFilters$ | async)" >
       <div class="active-product-filter-item"
-           (click)="this.handleActiveColors(color)"
+           (click)="this.deactivateFilter(attribute)"
            >
-        <div class="active-product-filter-item-text" appReloadOnNgForNewElement (newElement)="setActiveFilterExists()">
-          {{color}}
+        <div class="active-product-filter-item-text">
+          {{attribute.description}}
         </div>
         <div class="active-product-filter-item-icon">
           <svg id="Capa_1" enable-background="new 0 0 386.667 386.667" height="0.65rem" width="0.65rem"

@@ -1,40 +1,33 @@
-import {Component, ElementRef, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FilterControlModel} from '../../../models/filterControl.model';
-import {FilterService} from '../../../services/filter.service';
+import {ActiveFilterService} from '../../../services/active-filter.service';
+import {Observable} from 'rxjs';
+import {AttributeModel} from '../../../models/attributeModel';
 
 @Component({
   selector: 'app-active-filters',
   templateUrl: './active-filters.component.html',
   styleUrls: ['./active-filters.component.css']
 })
-export class ActiveFiltersComponent implements OnInit {
+export class ActiveFiltersComponent implements OnInit, OnDestroy{
   filterControl: FilterControlModel;
-  activeFilterExists: boolean;
+  activeFilterExists$: Observable<boolean>;
+  activeFilters$: Observable<Array<AttributeModel>>;
   @Input() number: number;
   @ViewChild('activeColorFilter') activeColorFilter: ElementRef;
 
-  constructor(private filterService: FilterService) {
+  constructor(private filterService: ActiveFilterService) {
   }
 
   ngOnInit(): void {
-    this.filterControl = this.filterService.filterControl;
-    this.setActiveFilterExists();
+    this.activeFilterExists$ = this.filterService.isAnyFilterActive$;
+    this.activeFilters$ = this.filterService.activeFilters$;
   }
 
-  handleActiveColors(color: string): void {
-    this.filterService.handleActiveColors(color);
-    this.setActiveFilterExists();
+  ngOnDestroy(): void {
   }
 
-  setActiveFilterExists() {
-    if (this.filterControl.activeColors.length < 1) {
-      this.activeFilterExists = false;
-    } else {
-      this.activeFilterExists = true;
-    }
-  }
-
-  trackFilters() {
-    this.setActiveFilterExists();
+  deactivateFilter(attribute: AttributeModel) {
+    this.filterService.deactivateFilter(attribute);
   }
 }

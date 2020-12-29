@@ -1,65 +1,38 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { take } from 'rxjs/operators';
+import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {first, pluck, shareReplay, skip} from 'rxjs/operators';
 
-import { FilterModel } from '../../models/filterModel';
-import { ProductModel } from '../../models/productModel';
-import { ScreenControlModel } from '../../models/screenControl.model';
-import { NavigateService } from '../../services/navigateService';
-import { ProductService } from '../../services/product.service';
-import { ScreenService } from '../../services/screen.service';
+import {FilterModel} from '../../models/filterModel';
+import {ProductModel} from '../../models/productModel';
+import {ScreenControlModel} from '../../models/screenControl.model';
+import {ScreenService} from '../../services/screen.service';
+import {Observable, Subject} from 'rxjs';
+import {CategoryStore} from '../../services/stores/category-store';
+import {ProductCategoryModalModel} from '../../models/ProductCategoryModalModel';
 
 @Component({
-    selector: 'app-products',
-    templateUrl: './products.component.html',
-    styleUrls: ['./products.component.css'],
+  selector: 'app-products',
+  templateUrl: './products.component.html',
+  styleUrls: ['./products.component.css'],
 })
-export class ProductsComponent implements OnInit, OnDestroy {
-    @ViewChild('productContainer') productContainer: ElementRef;
-    @ViewChild('productContent') productContent: ElementRef;
-    screenControl: ScreenControlModel;
-    filter: FilterModel = new class implements FilterModel {
-        attr: string[] = [];
-        attrType: string;
-        productType: string;
-        productDatabaseName: string;
-    };
-    products: ProductModel[] = [];
-    filterObservable$: Observable<FilterModel> = this.navigateService.filterObservable$;
-    subscription: Subscription;
+export class ProductsComponent implements OnInit {
+  @ViewChild('productContainer') productContainer: ElementRef;
+  @ViewChild('productContent') productContent: ElementRef;
+  screenControl: ScreenControlModel;
+  filter = new FilterModel();
 
-    constructor(private screenService: ScreenService,
-                private activatedRoute: ActivatedRoute,
-                private productService: ProductService,
-                private navigateService: NavigateService) {
 
-    }
+  constructor(private screenService: ScreenService,
+              private activatedRoute: ActivatedRoute,
+              private categoryStore: CategoryStore) {
+  }
 
-    ngOnInit(): void {
+  ngOnInit(): void {
+    this.screenControl = this.screenService.screenControl;
+    console.log('ezért csináltad');
+  }
 
-        this.subscription = this.filterObservable$.pipe(take(1))
-            .subscribe((data) => {
-                this.filter = data;
-                //  console.log(this.filter.productType)
-                if (!this.filter?.attr) {
-                    this.productService.getProducts(this.filter?.productType).subscribe((products) => {
-                        this.products = products;
-                    });
-                } else {
-                    this.productService.getProductsWithQuery(this.filter.productDatabaseName, this.filter.attr).subscribe((data) => {
-                        this.products = data;
-                    });
-                }
-            });
-        this.screenControl = this.screenService.screenControl;
-    }
-
-    setScreenAttributes() {
-        this.screenService.setContent(this.productContainer, this.productContent);
-    }
-
-    ngOnDestroy(): void {
-        this.subscription.unsubscribe();
-    }
+  setScreenAttributes() {
+    // this.screenService.setContent(this.productContainer, this.productContent);
+  }
 }
