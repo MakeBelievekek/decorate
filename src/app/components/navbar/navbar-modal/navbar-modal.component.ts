@@ -126,6 +126,7 @@ export class NavbarModalComponent implements OnInit {
     }
 
     sendData() {
+        console.log("WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWw")
         this.filter.productDatabaseName = this.actualProduct.productDatabaseName;
         this.filter.productType = this.actualProduct.productType;
         this.actualProduct.productDatabaseName === null ? this.filter.productDatabaseName = 'CURTAIN' : this.actualProduct.productDatabaseName;

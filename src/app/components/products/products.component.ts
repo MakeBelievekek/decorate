@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { takeUntil } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 import { FilterModel } from '../../models/filterModel';
 import { ProductModel } from '../../models/productModel';
@@ -25,6 +26,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
         productDatabaseName: string;
     };
     products: ProductModel[] = [];
+    filterObservable$: Observable<FilterModel> = this.navigateService.filterObservable$;
+    subscription: Subscription;
 
     constructor(private screenService: ScreenService,
                 private activatedRoute: ActivatedRoute,
@@ -35,10 +38,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
 
-        this.navigateService.filterObservable$
-            .pipe(takeUntil(this.navigateService.ngUnsubscribe))
+        this.subscription = this.filterObservable$.pipe(take(1))
             .subscribe((data) => {
                 this.filter = data;
+                //  console.log(this.filter.productType)
                 if (!this.filter?.attr) {
                     this.productService.getProducts(this.filter?.productType).subscribe((products) => {
                         this.products = products;
@@ -57,8 +60,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-
-        this.navigateService.ngUnsubscribe.next();
-        this.navigateService.ngUnsubscribe.complete();
+        this.subscription.unsubscribe();
     }
 }
