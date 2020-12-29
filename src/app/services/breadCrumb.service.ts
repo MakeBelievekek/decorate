@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { RegexService } from './regexService';
 
 @Injectable({
     providedIn: 'root',
@@ -15,6 +14,9 @@ export class BreadCrumbService {
         switch (bread) {
             case 'fuggony': {
                 return 'Függöny';
+            }
+            case 'termekek': {
+                return 'Termékek';
             }
             case 'gyerekfuggony': {
                 return 'Gyerekfüggöny';
@@ -35,7 +37,7 @@ export class BreadCrumbService {
                 return 'Dekorfüggöny';
             }
             case 'textilkiegeszito': {
-                return 'Textilkiegészít';
+                return 'Textilkiegészítő';
             }
             case 'tapeta': {
                 return 'Tapéta';
@@ -47,7 +49,10 @@ export class BreadCrumbService {
                 return 'Párna';
             }
             default:
-                return bread;
+                const newBread = bread.split('?');
+                return bread.includes('?') ? this.getBread(newBread[0]) : bread;
+
+
         }
     }
 }

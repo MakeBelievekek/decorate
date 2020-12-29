@@ -1,11 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {NavigationEnd, Router, RouterEvent} from '@angular/router';
-import {distinctUntilChanged, filter} from 'rxjs/operators';
-import {BreadcrumbModel} from '../../models/breadcrumbModel';
-import {BreadCrumbService} from '../../services/breadCrumb.service';
-import {LoadingService} from '../../services/loading.service';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterEvent } from '@angular/router';
+import { distinctUntilChanged, filter } from 'rxjs/operators';
+import { BreadcrumbModel } from '../../models/breadcrumbModel';
+import { BreadCrumbService } from '../../services/breadCrumb.service';
+import { LoadingService } from '../../services/loading.service';
 
-const constPath = '/termekkategoriak';
 
 @Component({
   selector: 'app-breadcrumb',
@@ -59,13 +58,4 @@ export class BreadcrumbComponent implements OnInit {
       }
     }
   }
-
-  private isNavigationEnd(event: RouterEvent): boolean {
-    return event instanceof NavigationEnd;
-  }
-
-  cons(url: string) {
-    console.log(url);
-  }
-
 }

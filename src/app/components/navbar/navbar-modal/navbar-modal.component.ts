@@ -9,9 +9,6 @@ import { ActiveFilterService } from '../../../services/active-filter.service';
 import { ModalService } from '../../../services/modal.service';
 import { RegexService } from '../../../services/regexService';
 
-const curtainPath = '/fuggony/';
-const otherPath = '';
-
 @Component({
     selector: 'app-navbar-modal',
     templateUrl: './navbar-modal.component.html',
@@ -28,8 +25,6 @@ export class NavbarModalComponent implements OnInit {
     @Input() animationState: string;
     @Output() productModalCloseAnimFinished = new EventEmitter<boolean>();
     margin = '';
-    path = '';
-    params: any;
 
     constructor(private modalService: ModalService,
                 private router: Router,
