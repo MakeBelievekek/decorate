@@ -73,7 +73,7 @@ export class AttributeFilterResolver implements Resolve<any> {
 
   private setAttributesToActive(attributeList: Array<AttributeModel>, searchModel: SearchModel) {
     const attributesGroupedByAttributeId = new Map();
-    // console.log(attributeList);
+    console.log(attributeList);
     this.groupAttributesById(attributeList, attributesGroupedByAttributeId);
     // console.log(attributesGroupedByAttributeId);
     // this.makeAttributesActive(searchModel, attributesGroupedByAttributeId);
