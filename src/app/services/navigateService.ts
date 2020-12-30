@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { FilterModel } from '../models/filterModel';
-import { RegexService } from './regexService';
 
 const curtainPath = 'fuggony';
 const otherPath = '';

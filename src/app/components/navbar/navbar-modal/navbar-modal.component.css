@@ -36,6 +36,7 @@
 
 .product-categoris {
     display: flex;
+    position: relative;
 }
 
 .drop {
@@ -45,11 +46,13 @@
 }
 
 .attributes {
-    display: flex;
-    flex-direction: column;
-    width: 250px;
-    height: 100%;
+    position: absolute;
+    left: 250px;
 }
+
+.filler {
+    width: 250px;
+    height: 100%;}
 
 .details {
     width: 250px;
