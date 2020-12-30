@@ -1,6 +1,7 @@
 import {Component, ElementRef, Input, OnInit} from '@angular/core';
 import {ActiveFilterService} from '../../../../services/active-filter.service';
 import {Observable} from 'rxjs';
+import {AttributeModel} from '../../../../models/attributeModel';
 
 @Component({
   selector: 'app-product-list-dropdown',
@@ -8,7 +9,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./product-list-dropdown.component.css']
 })
 export class ProductListDropdownComponent implements OnInit {
-  @Input() filters: Observable<Array<string>>;
+  @Input() attributes: Observable<Array<AttributeModel>>;
   @Input() parentElement: ElementRef;
   @Input() marginTopPx: number;
   parentTopOffset: number;
@@ -21,7 +22,6 @@ export class ProductListDropdownComponent implements OnInit {
 
   ngOnInit(): void {
     document.body.append(this.elRef.nativeElement);
-    this.filters = this.filterService.colors$;
     this.calculatePosition();
   }
 

@@ -1,51 +1,47 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
-import {combineLatest, Observable} from 'rxjs';
+import {Observable} from 'rxjs';
 import {ProductModel} from '../../models/productModel';
-import {take} from 'rxjs/operators';
 import {CategoryStore} from '../stores/category-store';
-import {ProductCategoryModalModel} from '../../models/ProductCategoryModalModel';
 import {ProductListService} from '../product-list.service';
-import {CategoryService} from '../category.service';
+import {AttributeService} from '../attribute.service';
 import {QueryParamService} from '../query-param.service';
+import {AttributeModel} from '../../models/attributeModel';
+import {SearchModel} from '../../models/searchModel';
+import {ActiveFilterService} from '../active-filter.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProductListResolver implements Resolve<Observable<[ProductCategoryModalModel, Array<ProductModel>]>> {
+export class ProductListResolver implements Resolve<Observable<any>> {
 
   constructor(
     private categoryStore: CategoryStore,
     private productListService: ProductListService,
-    private categoryService: CategoryService,
-    private queryParamService: QueryParamService) {
+    private attributeService: AttributeService,
+    private queryParamService: QueryParamService,
+    private activeFilterService: ActiveFilterService) {
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<[ProductCategoryModalModel, Array<ProductModel>]> {
-    console.log('ittttttttttttttttttttttttttttttt ', route.queryParams);
-    const payLoad = this.queryParamService.createPayLoad(route.queryParams);
-    console.log('ittttttttttttttttttttttttttttttt ', payLoad);
-    const products$ = this.productListService.getProductsByQueryParams(route.queryParams);
-    let categoriesHasLoaded = false;
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
+    const hasCategoriesLoaded$ = this.categoryStore.hasCategoriesLoaded$;
+    const searchModel = this.queryParamService.createSearchModel(route.queryParams);
+    const products$: Observable<Array<ProductModel>> = this.productListService.getProductsBySearchModel(searchModel);
+    return products$;
+  }
 
-    this.categoryStore.hasCategoriesLoaded$.pipe(
-      take(1),
-    ).subscribe((isLoaded) => categoriesHasLoaded = isLoaded);
-
-    let productsWhitCategories$;
-
-    if (categoriesHasLoaded) {
-      const categoryModel$: Observable<ProductCategoryModalModel> = this.categoryStore.getCategoriesForAttributeParams(payLoad);
-      productsWhitCategories$ = combineLatest([categoryModel$, products$]);
-    } else {
-      const categoriesForFilter$ = this.categoryService.getCategoriesForFilterFromBackend(payLoad).pipe(
-        take(1)
-      );
-      productsWhitCategories$ = combineLatest([categoriesForFilter$, products$]);
+  private activateAttributesForSearchModel(productTypeAttributeList: Array<AttributeModel>, searchModel: SearchModel): void {
+    const attributesGroupedByAttributeId = new Map();
+    const {attributeIds} = searchModel;
+    productTypeAttributeList.forEach(productAttribute => attributesGroupedByAttributeId.set(productAttribute.id, productAttribute));
+    if (attributeIds) {
+      attributeIds.forEach(searchAttributeId => {
+        if (attributesGroupedByAttributeId.has(searchAttributeId)) {
+          attributesGroupedByAttributeId.get(searchAttributeId).isActive = true;
+        }
+      });
     }
-
-    return productsWhitCategories$;
   }
-
-
 }
+
+

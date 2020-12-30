@@ -55,6 +55,7 @@
         </svg>
       <app-product-list-dropdown [parentElement]="this.colorElement"
                                  [marginTopPx]="8"
+                                 [attributes]="this.colors$"
                                  *ngIf="this.colorDropdownOpen">
       </app-product-list-dropdown>
     </div>
@@ -64,7 +65,7 @@
 
 <!-- small screen -->
 <div *ngIf="this.smallScreen">
-  <div class="small-filter-container">
+  <div class="small-filter-container" >
     <div class="small-filter-item small-border-right" (click)="toggleOrderModal()">
       Sorrend
     </div>

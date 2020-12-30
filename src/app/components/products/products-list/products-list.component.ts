@@ -25,21 +25,18 @@ export class ProductsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsList$ = this.activatedRoute.data.pipe(
-      take(1),
       pluck('productList'),
       shareReplay(),
-      map(([categories, productList]) => productList)
-      );
-
-    this.activatedRoute.queryParams.pipe(
+    );
+   /* this.activatedRoute.queryParams.pipe(
       skip(1)
     ).subscribe(
       (queryParams) => {
-        this.productsList$ = this.productListService.getProductsByQueryParams(queryParams).pipe(
+        this.productsList$ = this.productListService.getProductsBySearchModel(queryParams).pipe(
           take(1),
         );
       }
-    );
+    );*/
   }
 
 

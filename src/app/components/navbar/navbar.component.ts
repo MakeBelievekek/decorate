@@ -56,13 +56,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   getAttributes() {
-    this.categoryStore.categoriesForFiltering$
+    this.categoryStore.attributesByCategoryForFiltering$
       .pipe(
         takeUntil(this.unsubscribe$)
       )
       .subscribe((categoriesForFiltering) => {
         this.products = categoriesForFiltering;
-        console.log(this.products);
       });
   }
 

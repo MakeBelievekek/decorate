@@ -1511,9 +1511,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           return _class3;
         }())();
-        this.colors = [];
+        this.colorList = [];
         this.patterns = [];
-        this.styles = [];
+        this.styleList = [];
         this.productTypes = ['', 'Wallpaper', 'Curtain'];
         this.curtainTypes = ['', 'Blackout', 'Children', 'Translucent', 'Darkener'];
         this.primary = new ( /*#__PURE__*/function () {
@@ -4893,7 +4893,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       function ContentComponent() {
         _classCallCheck(this, ContentComponent);
 
-        this.color = 'red';
+        this.colorList = 'red';
       }
 
       _createClass(ContentComponent, [{

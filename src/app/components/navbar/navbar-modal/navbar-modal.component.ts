@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AttributeModel} from '../../../models/attributeModel';
 import {FilterModel} from '../../../models/filterModel';
@@ -17,7 +17,7 @@ const otherPath = '';
   templateUrl: './navbar-modal.component.html',
   styleUrls: ['./navbar-modal.component.css'],
 })
-export class NavbarModalComponent implements OnInit {
+export class NavbarModalComponent implements OnInit, OnDestroy {
 
   @Input() products: ProductCategoryModalModel[] = [];
 
@@ -36,7 +36,7 @@ export class NavbarModalComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private regexService: RegexService,
               private activeFilterService: ActiveFilterService,
-              ) {
+  ) {
 
   }
 
@@ -122,18 +122,25 @@ export class NavbarModalComponent implements OnInit {
 
   generateParamsWhitAttribute(actualProduct: ProductCategoryModalModel, attribute: AttributeModel): any {
     const searchModel = {...actualProduct.searchModel};
-    if (!searchModel.attributeIds) {
-      searchModel.attributeIds = [];
-    }
-    searchModel.attributeIds.push(attribute.id);
-    this.activeFilterService.initiateActiveFilter();
-    this.activeFilterService.activateFilter(attribute);
+    searchModel.attributeIds = [attribute.id];
+
     return this.generateParams(searchModel);
   }
 
-  navigate(actualProduct: ProductCategoryModalModel, attribute: AttributeModel) {
+  navigateWhitAttribute(actualProduct: ProductCategoryModalModel, attribute: AttributeModel) {
     const searchModelForQueryParams = this.generateParamsWhitAttribute(actualProduct, attribute);
     const route = this.buildRoute(actualProduct);
-    this.router.navigate(route, {queryParams: searchModelForQueryParams});
+
+    this.router.navigate(route, {queryParams: {...searchModelForQueryParams}});
+  }
+
+  navigateWhitMainType(product: ProductCategoryModalModel) {
+    const searchModelForQueryParams = this.generateParams(product.searchModel);
+    const route = this.buildRoute(product);
+
+    this.router.navigate(route, {queryParams: {...searchModelForQueryParams}});
+  }
+
+  ngOnDestroy(): void {
   }
 }
