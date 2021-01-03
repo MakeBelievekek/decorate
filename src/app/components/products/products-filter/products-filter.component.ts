@@ -10,6 +10,9 @@ import {map, pluck, shareReplay, take, tap} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {ProductsModalComponent} from '../products-modal/products-modal.component';
 import {MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/button-toggle';
+import {AttributeModel} from '../../../models/attributeModel';
+import {ProductAttributes} from '../../../models/productAttributes';
+import {log} from 'util';
 
 
 @Component({
@@ -36,32 +39,55 @@ export class ProductsFilterComponent implements OnInit {
   @ViewChild('orderButton') orderButton: ElementRef;
   showSmallColorFilter: boolean;
   showDimmer: boolean;
-  filterAttributes$: Observable<ProductsModalComponent>;
-
+  productAttributes$: Observable<ProductAttributes>;
+  colors$: Observable<Array<AttributeModel>>;
+  patterns$: Observable<Array<AttributeModel>>;
+  styles$: Observable<Array<AttributeModel>>;
+  compositions$: Observable<Array<AttributeModel>>;
 
   constructor(private modalService: ModalService,
               private screenService: ScreenService,
-              private filterService: ActiveFilterService,
+              private activeFilterService: ActiveFilterService,
               private route: ActivatedRoute) {
     this.productContentScreenAttributes = new EventEmitter<string>();
   }
 
   ngOnInit(): void {
     this.modalControl = this.modalService.modalControl;
-    this.filterControl = this.filterService.filterControl;
+    this.filterControl = this.activeFilterService.filterControl;
     this.screenControl = this.screenService.screenControl;
-    this.filterControl.activeOrder = this.filterService.filterControl.order[0];
+    this.filterControl.activeOrder = this.activeFilterService.filterControl.order[0];
     this.screenService.getScreenSize().width < 1001 ? this.smallScreen = true : this.smallScreen = false;
 
-    this.filterAttributes$ = this.route.data.pipe(
-      take(1),
-      pluck('productList'),
-      shareReplay(),
-      map(([categories, productList]) => categories)
-    );
-    this.route.queryParams.subscribe(value => {
-      console.log('Filternél rá kell iratkozni a queryparamsra');
+
+    this.activeFilterService.activeProductAttributes$.subscribe(value => {
+      console.log(value);
     });
+    /*  this.productAttributes$ = this.route.data.pipe(
+        take(1),
+        pluck('attribute'),
+        shareReplay(),
+      );
+      this.colors$ = this.productAttributes$.pipe(
+        pluck('colorList'),
+        map((colors) => colors),
+      );
+      this.patterns$ = this.productAttributes$.pipe(
+        pluck('patternList'),
+        map((patternList) => patternList),
+      );
+      this.styles$ = this.productAttributes$.pipe(
+        pluck('styleList'),
+        map((styleList) => styleList),
+      );
+      this.compositions$ = this.productAttributes$.pipe(
+        pluck('compositionList'),
+        map((compositionList) => compositionList),
+      );
+
+      this.route.queryParams.subscribe(value => {
+      });
+    */
   }
 
   // TODO be le kell rakni egy plusz feltételt amikor pici dropdown van akkor más mutason
@@ -90,10 +116,6 @@ export class ProductsFilterComponent implements OnInit {
     }
     this.isOrderDropdownOpen = false;
     this.isColorDropdownOpen = !this.isColorDropdownOpen;
-    /* this.productContentScreenAttributes.emit('show');
-     this.dropDownMeasurements = this.getTopOfSetAndWidth();
-     this.dropDownMeasurements.top += 6;
-     this.modalService.toggleModal('color');*/
   }
 
   toggleDesignModal(): void {
@@ -109,7 +131,7 @@ export class ProductsFilterComponent implements OnInit {
   }
 
   handleActiveOrders(order: string): void {
-    this.filterService.handleActiveOrder(order);
+    this.activeFilterService.handleActiveOrder(order);
   }
 
   toggleSmallColorFilter() {

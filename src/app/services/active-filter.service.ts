@@ -1,9 +1,10 @@
 import {Injectable} from '@angular/core';
 import {FilterControlModel} from '../models/filterControl.model';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {filter, map, shareReplay, tap} from 'rxjs/operators';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
+import {filter, map, pluck, shareReplay, tap} from 'rxjs/operators';
 import {AttributeModel} from '../models/attributeModel';
 import {ProductCategoryModalModel} from '../models/ProductCategoryModalModel';
+import {ProductAttributes} from '../models/productAttributes';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,25 @@ import {ProductCategoryModalModel} from '../models/ProductCategoryModalModel';
 export class ActiveFilterService {
   private activeCategoriesModal = new BehaviorSubject<ProductCategoryModalModel>(null);
   activeCategoriesModal$: Observable<ProductCategoryModalModel> = this.activeCategoriesModal.asObservable();
-  private activeColorAttributes = new BehaviorSubject<AttributeModel>(null);
-  activeColorAttributes$: Observable<ProductCategoryModalModel> = this.activeCategoriesModal.asObservable();
+  private activeProductAttributes = new Subject<ProductAttributes>();
+  activeProductAttributes$: Observable<ProductAttributes> = this.activeProductAttributes.asObservable();
+
+  /*  colors$ = this.activeProductAttributes$.pipe(
+      pluck('colorList'),
+      map((colors) => colors),
+    );*/
+  patterns$ = this.activeProductAttributes$.pipe(
+    pluck('patternList'),
+    map((patternList) => patternList),
+  );
+  styles$ = this.activeProductAttributes$.pipe(
+    pluck('styleList'),
+    map((styleList) => styleList),
+  );
+  compositions$ = this.activeProductAttributes$.pipe(
+    pluck('compositionList'),
+    map((compositionList) => compositionList),
+  );
 
   private activeFilters = new BehaviorSubject<Array<AttributeModel>>([]);
   activeFilters$: Observable<Array<AttributeModel>> = this.activeFilters.asObservable();
@@ -29,6 +47,10 @@ export class ActiveFilterService {
       activeColors: [],
       activeDesigners: []
     };
+  }
+
+  addActiveProductAttributes(activeProductAttributes: ProductAttributes) {
+    this.activeProductAttributes.next(activeProductAttributes);
   }
 
   resetActiveFilters() {
@@ -67,22 +89,22 @@ export class ActiveFilterService {
   }
 
   private setAttributeToActiveState(activeAttributeId: number): void {
-    const activeCategoryModalModel = this.activeCategoriesModal.getValue();
-    const {colorList, styleList, patternList} = activeCategoryModalModel;
-    const allAttributes = [...colorList, ...styleList, ...patternList];
-    const attributeModels = allAttributes.filter(attribute => attribute.id === activeAttributeId);
-    attributeModels.map(attribute => {
-      attribute.isActive = true;
-      const {type} = attribute;
-      const isColorAttribute = type === 'COLOR';
-      const isStyleAttribute = type === 'STYLE';
-      const isPatternAttribute = type === 'PATTERN';
-      if (isColorAttribute) {
-        activeCategoryModalModel.colorList = [...colorList];
-      } else if (isStyleAttribute) {
-        activeCategoryModalModel.colorList = [...colorList];
-      }
-    });
+    /*    const activeCategoryModalModel = this.activeCategoriesModal.getValue();
+        const {colorList, styleList, patternList} = activeCategoryModalModel;
+        const allAttributes = [...colorList, ...styleList, ...patternList];
+        const attributeModels = allAttributes.filter(attribute => attribute.id === activeAttributeId);
+        attributeModels.map(attribute => {
+          attribute.isActive = true;
+          const {type} = attribute;
+          const isColorAttribute = type === 'COLOR';
+          const isStyleAttribute = type === 'STYLE';
+          const isPatternAttribute = type === 'PATTERN';
+          if (isColorAttribute) {
+            activeCategoryModalModel.colorList = [...colorList];
+          } else if (isStyleAttribute) {
+            activeCategoryModalModel.colorList = [...colorList];
+          }
+        });*/
   }
 
   filterControl: FilterControlModel;

@@ -1,5 +1,6 @@
 import {AttributeModel} from './attributeModel';
 import {SearchModel} from './searchModel';
+import {ProductAttributes} from './productAttributes';
 
 export interface ProductCategoryModalModel {
   productType: string;
@@ -9,9 +10,7 @@ export interface ProductCategoryModalModel {
   color: boolean;
   pattern: boolean;
   style: boolean;
-  colorList: AttributeModel[];
-  patternList: AttributeModel[];
-  styleList: AttributeModel[];
+  productAttributes: ProductAttributes;
 }
 
 export class ProductCategoryModalModel {
@@ -22,8 +21,6 @@ export class ProductCategoryModalModel {
   color: boolean;
   pattern: boolean;
   style: boolean;
-  colorList: Array<AttributeModel> = [];
-  patternList: Array<AttributeModel> = [];
-  styleList: Array<AttributeModel> = [];
+  productAttributes: ProductAttributes;
 }
 

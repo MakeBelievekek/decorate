@@ -7,8 +7,8 @@ export interface AttributeModel {
 
 
 export class AttributeModel {
-  id = NaN;
-  type = '';
-  description = '';
-  isActive = false;
+  id: number;
+  type: string;
+  description: string;
+  isActive: boolean;
 }

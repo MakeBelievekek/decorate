@@ -4,15 +4,15 @@
      [style.marginTop.px]="this.marginTopPx"
      (click)="$event.stopPropagation()"
 >
-  <div *ngFor="let filter of (this.filters | async)">
+  <div *ngFor="let attribute of (this.attributes | async)">
     <div style="display: flex; width: 100px; margin-top: 7px">
       <div class="color-dropdown-item" *ngIf="true"
       ><i
-        class="fa fa-square-o" aria-hidden="true"></i><a>{{filter}}</a></div>
+        class="fa fa-square-o" aria-hidden="true"></i><a>{{attribute.description}}</a></div>
     </div>
     <div class="color-dropdown-item" *ngIf="false"
     ><i
-      class="fa fa-check-square" aria-hidden="true"></i><a>{{filter}}</a></div>
+      class="fa fa-check-square" aria-hidden="true"></i><a>{{attribute.description}}</a></div>
   </div>
   <div class="color-dropdown-control-area">
     <div class="color-button">Szürés</div>

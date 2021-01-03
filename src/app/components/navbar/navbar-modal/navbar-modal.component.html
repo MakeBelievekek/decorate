@@ -1,125 +1,76 @@
 <div (click)="this.keepModalOnScreen()"
      (mouseleave)="this.animationState = 'close'"
 >
-    <!-- PRODUCTS MODAL STATES -->
+  <!-- PRODUCTS MODAL STATES -->
 
-    <div class="products-modal"
-         [ngClass]="{  'slide-bottom': this.animationState === 'open',
+  <div class="products-modal"
+       [ngClass]="{  'slide-bottom': this.animationState === 'open',
               'slide-top': this.animationState === 'close'}"
-         (animationEnded)="this.closeNavigationModal()"
-         [animationName]="'slide-top'"
-         appAnim
-         (mouseleave)="this.modalControl.showModal =false ; visible(this.products[0])">
-        <!-- Modal content -->
-        <div class="custom-modal-content">
-            <div class="product-categoris">
-                <div class="drop">
-                    <ng-container *ngFor="let product of this.products">
-                        <div class="drop-title"
-                             (mouseenter)="visible(product)"
-                             [routerLink]="buildRoute(product)"
-                             [queryParams]="generateParams(product.searchModel)"
-                             [ngStyle]="{'border-bottom': product.isShown ? '3px solid black' : '1px solid black'}"
-                        >
-                            <h4 [ngClass]="{'bolder': product.isShown}">{{product.productType}} </h4>
-                            <i class="right"
-                               [ngClass]="{ 'arrowHover' : product.isShown,'arrow':! product.isShown}"></i>
-                        </div>
-                    </ng-container>
-                </div>
-                <div class="filler">
-
-                </div>
-                <div class="attributes" [ngStyle]="{'top' : this.actualProduct.isShown ? this.margin : '0'}"
-                     *ngIf="this.actualProduct">
-                    <div class="drop-title" (mouseenter)="attrVisible('color')"
-                         [ngStyle]="{'border-bottom': this.actualProduct.color ? '2px solid black' : '1px solid black'}">
-                        <h4 [ngClass]="{'bolder': this.actualProduct.color}">Szín </h4>
-                        <i class="right"
-                           [ngClass]="{ 'arrowHover' :this.actualProduct.color,'arrow':! this.actualProduct.color}"></i>
-                    </div>
-                    <div class="drop-title" (mouseenter)="attrVisible('pattern')"
-                         [ngStyle]="{'border-bottom': this.actualProduct.pattern ? '2px solid black' : '1px solid black'}">
-                        <h4 [ngClass]="{'bolder': this.actualProduct.pattern}">Minta </h4>
-                        <i class="right"
-                           [ngClass]="{ 'arrowHover' : this.actualProduct.pattern,'arrow':! this.actualProduct.pattern}"></i>
-                    </div>
-                    <div class="drop-title" (mouseenter)="attrVisible('style')"
-                         [ngStyle]="{'border-bottom': this.actualProduct.style ? '2px solid black' : '1px solid black'}">
-                        <h4 [ngClass]="{'bolder': this.actualProduct.style}">Stílus </h4>
-                        <i class="right"
-                           [ngClass]="{ 'arrowHover' : this.actualProduct.style,'arrow':! this.actualProduct.style}"></i>
-                    </div>
-                </div>
-                <div class="details">
-                    <ul *ngIf="this.actualProduct.color">
-                        <ng-container *ngFor="let color of this.actualProduct.colorList">
-                            <li
-                                (click)="this.navigate(this.actualProduct, color)">
-                                {{color.description}}</li>
-                        </ng-container>
-                    </ul>
-                    <ul *ngIf="this.actualProduct.pattern">
-                        <ng-container *ngFor="let pattern of this.actualProduct.patternList">
-                            <li
-                                (click)="this.navigate(this.actualProduct, pattern)">
-                                {{pattern.description}}
-                            </li>
-                        </ng-container>
-                    </ul>
-                    <ul *ngIf="this.actualProduct.style">
-                        <ng-container *ngFor="let style of this.actualProduct.styleList">
-                            <li
-                                (click)="this.navigate(this.actualProduct, style)">
-                                {{style.description}}</li>
-                        </ng-container>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- <div class="products-modal animate__animated animate__fadeOutUp"
-          *ngIf="this.modalControl.control === 'products' && !this.modalControl.showModal">-->
+       (animationEnded)="this.closeNavigationModal()"
+       [animationName]="'slide-top'"
+       appAnim
+       (mouseleave)="this.modalControl.showModal =false ; visible(this.products[0])">
     <!-- Modal content -->
-    <!--   <div class="custom-modal-content">
-           <div class="product-categoris">
-               <div class="drop">
-                   <div class="drop-title" (mouseenter)="visible('color')"
-                        [ngStyle]="{'border-bottom': isColorVisible ? '1px solid black' : '1px solid gray'}">
-                       <h4 [ngStyle]="{color: isColorVisible ? 'black' : 'gray'}">SZÍNEK </h4>
-                       <i class="right" [ngClass]="{ 'arrowHover' :isColorVisible,'arrow':!isColorVisible}"></i>
-                   </div>
-                   <div class="drop-title" (mouseenter)="visible('curtain')"
-                        [ngStyle]="{'border-bottom':  isCurtainVisible ? '1px solid black' : '1px solid gray'}">
-                       <h4 [ngStyle]="{color: isCurtainVisible ? 'black' : 'gray'}">FÜGGÖNYÖK</h4>
-                       <i class="right" [ngClass]="{ 'arrowHover' :isCurtainVisible,'arrow':!isCurtainVisible}"></i>
-                   </div>
-                   <div class="drop-title" (mouseenter)="visible('other')"
-                        [ngStyle]="{'border-bottom':  isOtherVisible ? '1px solid black' : '1px solid gray'}">
-                       <h4 [ngStyle]="{color: isOtherVisible ? 'black' : 'gray'}">EGYÉB TERMÉKEINK</h4>
-                       <i class="right" [ngClass]="{ 'arrowHover' :isOtherVisible,'arrow':!isOtherVisible}"></i>
-                   </div>
-               </div>
-               <div class="details">
-                   <ul *ngIf="isColorVisible">
-                       <li *ngFor="let a of this.colors">{{a}}</li>
-                   </ul>
-                   <ul *ngIf="isOtherVisible">
-                       <li (click)="otherNavigate(a.navigationUrl) " *ngFor="let a of this.otherProducts"
-                           (mouseover)="showPicture(a.imgUrl)"
-                           (mouseleave)="firstImageRender()">{{a.imageType}}</li>
-                   </ul>
-                   <ul *ngIf="isCurtainVisible">
-                       <li (click)="curtainNavigate(a.navigationUrl)" *ngFor="let a of this.curtains"
-                           (mouseover)="showPicture(a.imgUrl)"
-                           (mouseleave)="firstImageRender()">{{a.imageType}}</li>
-                   </ul>
-               </div>
-               <div class="modal-img">
-                   <img [src]="this.actualImage" alt="">
-               </div>
-           </div>
-       </div>
-   </div> -->
+    <div class="custom-modal-content">
+      <div class="product-categoris">
+        <div class="drop">
+          <ng-container *ngFor="let product of this.products">
+            <div class="drop-title"
+                 (mouseenter)="visible(product)"
+                 [ngStyle]="{'border-bottom': product.isShown ? '3px solid black' : '1px solid black'}"
+                 (click)="navigateWhitMainType(product)"
+                 >
+              <h4 [ngClass]="{'bolder': product.isShown}">{{product.productType}} </h4>
+              <i class="right" [ngClass]="{ 'arrowHover' : product.isShown,'arrow':! product.isShown}"></i>
+            </div>
+          </ng-container>
+        </div>
+        <div class="attributes" [ngStyle]="{'margin-top' : this.actualProduct.isShown ? this.margin : '0'}"
+             *ngIf="this.actualProduct">
+          <div class="drop-title" (mouseenter)="attrVisible('color')"
+               [ngStyle]="{'border-bottom': this.actualProduct.color ? '2px solid black' : '1px solid black'}">
+            <h4 [ngClass]="{'bolder': this.actualProduct.color}">Szín </h4>
+            <i class="right"
+               [ngClass]="{ 'arrowHover' :this.actualProduct.color,'arrow':! this.actualProduct.color}"></i>
+          </div>
+          <div class="drop-title" (mouseenter)="attrVisible('pattern')"
+               [ngStyle]="{'border-bottom': this.actualProduct.pattern ? '2px solid black' : '1px solid black'}">
+            <h4 [ngClass]="{'bolder': this.actualProduct.pattern}">Minta </h4>
+            <i class="right"
+               [ngClass]="{ 'arrowHover' : this.actualProduct.pattern,'arrow':! this.actualProduct.pattern}"></i>
+          </div>
+          <div class="drop-title" (mouseenter)="attrVisible('style')"
+               [ngStyle]="{'border-bottom': this.actualProduct.style ? '2px solid black' : '1px solid black'}">
+            <h4 [ngClass]="{'bolder': this.actualProduct.style}">Stílus </h4>
+            <i class="right"
+               [ngClass]="{ 'arrowHover' : this.actualProduct.style,'arrow':! this.actualProduct.style}"></i>
+          </div>
+        </div>
+        <div class="details">
+          <ul *ngIf="this.actualProduct.color">
+            <ng-container *ngFor="let color of this.actualProduct.productAttributes.colorList">
+              <li
+                (click)="this.navigateWhitAttribute(this.actualProduct, color)">
+              {{color.description}}</li>
+            </ng-container>
+          </ul>
+          <ul *ngIf="this.actualProduct.pattern">
+            <ng-container *ngFor="let pattern of this.actualProduct.productAttributes.patternList">
+              <li
+                  (click)="this.navigateWhitAttribute(this.actualProduct, pattern)">
+                {{pattern.description}}
+              </li>
+            </ng-container>
+          </ul>
+          <ul *ngIf="this.actualProduct.style">
+            <ng-container *ngFor="let style of this.actualProduct.productAttributes.styleList">
+              <li
+                  (click)="this.navigateWhitAttribute(this.actualProduct, style)">
+              {{style.description}}</li>
+            </ng-container>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
