@@ -80,6 +80,7 @@ export class LocalStorageService {
     }
 
     removeFromLocal(id: number, key: string) {
+        console.log(id)
         let cart: LocalProductModel[] = this.getItemsFromLocalStorage(key);
         let newCart: LocalProductModel[] = [];
         for (let i = 0; i < cart.length; i++) {

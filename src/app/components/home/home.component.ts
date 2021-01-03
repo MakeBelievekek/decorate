@@ -48,10 +48,10 @@ export class HomeComponent implements OnInit {
         this.route.queryParams.subscribe(params => {
             this.paymentId = params['paymentId'];
             if (this.paymentId) {
-                this.paymentService.completePayment(this.paymentId).subscribe(() => {});
-                this.showSuccessPayment();
+                this.paymentService.completePayment(this.paymentId).subscribe((data) => {
+                    this.showSuccessPayment(data.paymentStatus);
+                });
             }
-        }, () => {}, () => {
         });
         for (let im of this.images) {
             switch (im.type) {
@@ -91,16 +91,18 @@ export class HomeComponent implements OnInit {
         }
     }
 
-    showSuccessPayment() {
-        this.toastr.success('Sikeres Fizetés');
+    showSuccessPayment(result: string) {
+        if (result === 'Succeeded')
+            this.toastr.success('Sikeres fizetés');
+        else {
+            this.toastr.error('Sikertelen fizetés');
+        }
     }
 
     @HostListener('window:resize', ['$event'])
     changeContentOnResize() {
         this.screenSize = this.screenService.getScreenSize();
     }
-
-
 
 
 }

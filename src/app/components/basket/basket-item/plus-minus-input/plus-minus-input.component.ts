@@ -74,6 +74,7 @@ export class PlusMinusInputComponent implements OnInit {
     };
 
     removeFromLocal() {
+
         this.localStorageService.updateItemFromBasket(this.prodId, this.value, CART_KEY);
 
     }

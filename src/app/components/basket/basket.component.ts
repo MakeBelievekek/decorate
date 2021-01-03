@@ -29,6 +29,7 @@ export class BasketComponent implements OnInit {
                 }
             }
         });
+        console.log(this.productsFromLocalStorage);
     }
 
     payment() {

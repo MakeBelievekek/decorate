@@ -35,6 +35,7 @@ export class BasketItemComponent implements OnInit {
                 }
             }
         }
+
     }
 
     countChange(event) {
