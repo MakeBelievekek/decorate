@@ -41,6 +41,7 @@ export class NavbarModalComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
+        console.log(this.products);
         this.actualProduct = this.products[0];
         this.modalControl = this.modalService.modalControl;
     }
@@ -62,7 +63,6 @@ export class NavbarModalComponent implements OnInit, OnDestroy {
         let actual = this.products.indexOf(this.actualProduct);
         let max = this.products.length - 3;
         this.margin = actual > max ? max * 64 + 'px' : actual * 64 + 'px';
-
     }
 
     attrVisible(attr: string) {
