@@ -48,7 +48,7 @@ export class NavbarModalComponent implements OnInit, OnDestroy {
   keepModalOnScreen() {
     this.closeNavigationModal();
   }
-
+//eltűntek a dolgaim
 
   visible(product: ProductCategoryModalModel) {
     this.products.forEach(value => {
