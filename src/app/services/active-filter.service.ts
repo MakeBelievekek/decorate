@@ -12,24 +12,20 @@ import {ProductAttributes} from '../models/productAttributes';
 export class ActiveFilterService {
   private activeCategoriesModal = new BehaviorSubject<ProductCategoryModalModel>(null);
   activeCategoriesModal$: Observable<ProductCategoryModalModel> = this.activeCategoriesModal.asObservable();
-  private activeProductAttributes = new Subject<ProductAttributes>();
+  private activeProductAttributes = new BehaviorSubject<ProductAttributes>(null);
   activeProductAttributes$: Observable<ProductAttributes> = this.activeProductAttributes.asObservable();
 
-  /*  colors$ = this.activeProductAttributes$.pipe(
-      pluck('colorList'),
-      map((colors) => colors),
-    );*/
+/*  colors$ = this.activeProductAttributes$.pipe(
+    pluck('colorList'),
+  );*/
   patterns$ = this.activeProductAttributes$.pipe(
     pluck('patternList'),
-    map((patternList) => patternList),
   );
   styles$ = this.activeProductAttributes$.pipe(
     pluck('styleList'),
-    map((styleList) => styleList),
   );
   compositions$ = this.activeProductAttributes$.pipe(
     pluck('compositionList'),
-    map((compositionList) => compositionList),
   );
 
   private activeFilters = new BehaviorSubject<Array<AttributeModel>>([]);
@@ -49,8 +45,9 @@ export class ActiveFilterService {
     };
   }
 
-  addActiveProductAttributes(activeProductAttributes: ProductAttributes) {
+  setActiveProductAttributes(activeProductAttributes: ProductAttributes) {
     this.activeProductAttributes.next(activeProductAttributes);
+    console.log('added');
   }
 
   resetActiveFilters() {

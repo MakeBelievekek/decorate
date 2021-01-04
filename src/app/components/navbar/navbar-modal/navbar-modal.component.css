@@ -42,7 +42,7 @@
 .drop {
     display: flex;
     flex-direction: column;
-    width: 250px;
+    width: 500px;
 }
 
 .attributes {

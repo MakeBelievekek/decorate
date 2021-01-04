@@ -1,33 +1,38 @@
-import {Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {FilterControlModel} from '../../../models/filterControl.model';
 import {ActiveFilterService} from '../../../services/active-filter.service';
-import {Observable} from 'rxjs';
+import {Observable, Subject} from 'rxjs';
 import {AttributeModel} from '../../../models/attributeModel';
+import {map, takeUntil} from 'rxjs/operators';
+import {flattenDeep} from 'lodash';
 
 @Component({
   selector: 'app-active-filters',
   templateUrl: './active-filters.component.html',
   styleUrls: ['./active-filters.component.css']
 })
-export class ActiveFiltersComponent implements OnInit, OnDestroy{
+export class ActiveFiltersComponent implements OnInit, OnDestroy {
   filterControl: FilterControlModel;
-  activeFilterExists$: Observable<boolean>;
-  activeFilters$: Observable<Array<AttributeModel>>;
+  activeAttributes$: Observable<Array<AttributeModel>>;
   @Input() number: number;
   @ViewChild('activeColorFilter') activeColorFilter: ElementRef;
+  private unsubscribe$ = new Subject<void>();
 
-  constructor(private filterService: ActiveFilterService) {
+  constructor(private activeFilterService: ActiveFilterService) {
   }
 
   ngOnInit(): void {
-    this.activeFilterExists$ = this.filterService.isAnyFilterActive$;
-    this.activeFilters$ = this.filterService.activeFilters$;
+    this.activeAttributes$ = this.activeFilterService.activeProductAttributes$.pipe(
+      takeUntil(this.unsubscribe$),
+      map((activeProductAttributes) => Object.values(activeProductAttributes) as Array<Array<AttributeModel>>),
+      map(attributeList => flattenDeep(attributeList)),
+      map(attributeList => attributeList.filter(attribute => attribute.isActive))
+    );
+
   }
 
   ngOnDestroy(): void {
-  }
-
-  deactivateFilter(attribute: AttributeModel) {
-    this.filterService.deactivateFilter(attribute);
+    this.unsubscribe$.next();
+    this.unsubscribe$.complete();
   }
 }

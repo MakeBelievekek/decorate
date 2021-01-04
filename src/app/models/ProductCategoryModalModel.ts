@@ -1,4 +1,3 @@
-import {AttributeModel} from './attributeModel';
 import {SearchModel} from './searchModel';
 import {ProductAttributes} from './productAttributes';
 

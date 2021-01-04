@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, OnDestroy, OnInit, Output, ViewChild} from '@angular/core';
 import {FilterControlModel} from '../../../models/filterControl.model';
 import {ModalControllerModel} from '../../../models/modalController.model';
 import {ScreenControlModel} from '../../../models/screenControl.model';
@@ -6,14 +6,11 @@ import {ActiveFilterService} from '../../../services/active-filter.service';
 import {ModalService} from '../../../services/modal.service';
 import {ScreenService} from '../../../services/screen.service';
 import {ActivatedRoute} from '@angular/router';
-import {map, pluck, shareReplay, take, tap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
-import {ProductsModalComponent} from '../products-modal/products-modal.component';
-import {MAT_BUTTON_TOGGLE_DEFAULT_OPTIONS} from '@angular/material/button-toggle';
+import {map, pluck, shareReplay, takeUntil} from 'rxjs/operators';
+import {Observable, Subject} from 'rxjs';
 import {AttributeModel} from '../../../models/attributeModel';
 import {ProductAttributes} from '../../../models/productAttributes';
-import {log} from 'util';
-
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-products-filter',
@@ -59,35 +56,23 @@ export class ProductsFilterComponent implements OnInit {
     this.filterControl.activeOrder = this.activeFilterService.filterControl.order[0];
     this.screenService.getScreenSize().width < 1001 ? this.smallScreen = true : this.smallScreen = false;
 
+    this.productAttributes$ = this.activeFilterService.activeProductAttributes$.pipe(
+      shareReplay(),
+    );
 
-    this.activeFilterService.activeProductAttributes$.subscribe(value => {
-      console.log(value);
-    });
-    /*  this.productAttributes$ = this.route.data.pipe(
-        take(1),
-        pluck('attribute'),
-        shareReplay(),
-      );
-      this.colors$ = this.productAttributes$.pipe(
-        pluck('colorList'),
-        map((colors) => colors),
-      );
-      this.patterns$ = this.productAttributes$.pipe(
-        pluck('patternList'),
-        map((patternList) => patternList),
-      );
-      this.styles$ = this.productAttributes$.pipe(
-        pluck('styleList'),
-        map((styleList) => styleList),
-      );
-      this.compositions$ = this.productAttributes$.pipe(
-        pluck('compositionList'),
-        map((compositionList) => compositionList),
-      );
+    this.colors$ = this.productAttributes$.pipe(
+      pluck('colorList'),
+    );
 
-      this.route.queryParams.subscribe(value => {
-      });
-    */
+    this.patterns$ = this.productAttributes$.pipe(
+      pluck('patternList'),
+    );
+    this.styles$ = this.productAttributes$.pipe(
+      pluck('styleList'),
+    );
+    this.compositions$ = this.productAttributes$.pipe(
+      pluck('compositionList'),
+    );
   }
 
   // TODO be le kell rakni egy plusz feltételt amikor pici dropdown van akkor más mutason

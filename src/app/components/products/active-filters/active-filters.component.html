@@ -1,14 +1,13 @@
 <div class="active-product-filter-container" #activeColorFilter>
-  <div class="active-product-filter-message" *ngIf="!(this.activeFilterExists$ | async)">
+  <div class="active-product-filter-message" *ngIf="(this.activeAttributes$ | async).length === 0">
     Nincsen szürő!
   </div>
-  <div class="active-product-filter-message" *ngIf="(this.activeFilterExists$ | async)">
+  <div class="active-product-filter-message" *ngIf="(this.activeAttributes$ | async).length !== 0">
     Aktív szürők:
   </div>
   <div class="active-product-filter-items-container">
-    <ng-container *ngFor="let  attribute of (this.activeFilters$ | async)" >
+    <ng-container *ngFor="let  attribute of (this.activeAttributes$ | async) as attributes" >
       <div class="active-product-filter-item"
-           (click)="this.deactivateFilter(attribute)"
            >
         <div class="active-product-filter-item-text">
           {{attribute.description}}
