@@ -2009,11 +2009,11 @@ class CheckoutComponent {
         });
     }
     ngOnInit() {
-        this.product = this.route.snapshot.data.basketItems;
+        this.products = this.route.snapshot.data.basketItems;
         this.startingPrice();
     }
     startingPrice() {
-        for (let par of this.product) {
+        for (let par of this.products) {
             for (let loc of this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
                 if (par.id === loc.id) {
                     par.qty = loc.qty;

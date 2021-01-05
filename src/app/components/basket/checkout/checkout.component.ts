@@ -7,19 +7,18 @@ import { BillingModel } from '../../../models/billingModel';
 import { LocalDetailsModel } from '../../../models/localDetailsModel';
 import { LocalProductModel } from '../../../models/localProductModel';
 import { OrderModel } from '../../../models/orderModel';
+import { PayingOptionEnum } from '../../../models/payingOptionEnum';
 import { PaymentOptionDto } from '../../../models/paymentOptionDto';
 import { ProductListItemForLocal } from '../../../models/productListItemForLocal';
-import { ResponseTransaction } from '../../../models/responseTransaction';
 import { ShippingModel } from '../../../models/shippingModel';
 import { ShippingOptions } from '../../../models/shippingOptions';
-import { TransactionsModel } from '../../../models/transactionsModel';
 import { UserModel } from '../../../models/userModel';
 import { BasketService } from '../../../services/basket.service';
+import { CheckoutService } from '../../../services/checkout.service';
 import { LocalStorageService } from '../../../services/localStorage.service';
 import { PaymentService } from '../../../services/payment.service';
 import { ProductService } from '../../../services/product.service';
 import { handleValidationErrors } from '../../../validation/validation';
-
 
 const CART_KEY = 'local_cartList';
 const DETAILS_KEY = 'local_detailsList';
@@ -33,7 +32,8 @@ export class CheckoutComponent implements OnInit {
 
     constructor(private route: ActivatedRoute, private localStorageService: LocalStorageService,
                 private productService: ProductService, private basketService: BasketService,
-                private paymentService: PaymentService, private router: Router, @Inject(DOCUMENT) private document: Document) {
+                private paymentService: PaymentService, private router: Router, @Inject(DOCUMENT) private document: Document,
+                private checkoutService: CheckoutService) {
         this.personalDetailsForm = new FormGroup({
             lastname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
             firstname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
@@ -67,7 +67,7 @@ export class CheckoutComponent implements OnInit {
         firstName: string;
         lastName: string;
     };
-    product: ProductListItemForLocal[];
+    products: ProductListItemForLocal[];
     allTotal: number = 0;
     isLoggedIn: boolean;
     isFilledAddress: boolean;
@@ -91,21 +91,9 @@ export class CheckoutComponent implements OnInit {
     atpList: AtpListItem[] = [];
     paymentOptions: PaymentOptionDto[] = [];
     order: OrderModel;
-    response: ResponseTransaction = new class implements ResponseTransaction {
-        CallbackUrl: string;
-        Errors: string[];
-        GatewayUrl: string;
-        PaymentId: string;
-        PaymentRequestId: string;
-        QRUrl: string;
-        RecurrenceResult: string;
-        RedirectUrl: string;
-        Status: string;
-        Transactions: TransactionsModel[];
-    };
 
     ngOnInit(): void {
-        this.product = this.route.snapshot.data.basketItems;
+        this.products = this.route.snapshot.data.basketItems;
         this.startingPrice();
         this.productService.getShippingOptions().subscribe((data) => {
             this.shippingOptions = data;
@@ -118,7 +106,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     startingPrice() {
-        for (let par of this.product) {
+        for (let par of this.products) {
             for (let loc of this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
                 if (par.id === loc.id) {
                     par.qty = loc.qty;
@@ -150,10 +138,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     resetAll() {
-        this.isLoggedIn = false;
-        this.isDifferentAddress = false;
-        this.isPayment = false;
-        this.isFilledAddress = false;
+        this.isLoggedIn = this.isDifferentAddress = this.isPayment = this.isFilledAddress = false;
     }
 
     editDeliveryAddress() {
@@ -165,7 +150,8 @@ export class CheckoutComponent implements OnInit {
     continueToPayment() {
         this.isFilledAddress = !this.isFilledAddress;
         this.isPayment = !this.isPayment;
-        this.currentlyCheckedPayingOption = 'Barion bankkártyás fizetés';
+        this.currentlyCheckedPayingOption = PayingOptionEnum.BARION_KARTYAS_FIZETES;
+        console.log(this.currentlyCheckedPayingOption);
     }
 
     savePersonalInfo() {
@@ -224,35 +210,31 @@ export class CheckoutComponent implements OnInit {
         };
     }
 
+    /* if (this.currentlyCheckedShippingOption === targetType) {
+                this.currentlyCheckedShippingOption = 'NONE';
+            }*/
+
     selectShippingOption(targetType: string) {
-        if (this.currentlyCheckedShippingOption === targetType) {
-            this.currentlyCheckedShippingOption = 'NONE';
-        }
         this.getShippingPrice(targetType);
         this.currentlyCheckedShippingOption = targetType;
-        for (let pay of this.shippingOptions) {
-            if (pay.typeOfDelivery === targetType) {
-                this.paymentOptions = pay.paymentOptions;
+        this.shippingOptions.forEach(opt => {
+            if (opt.typeOfDelivery === targetType) {
+                this.paymentOptions = opt.paymentOptions;
                 this.paymentOptions.sort((a, b) => a.type < b.type ? -1 : 1);
             }
-        }
+        });
     }
 
     selectPayingOption(targetType: PaymentOptionDto) {
-        if (this.currentlyCheckedPayingOption === targetType.type) {
-            this.currentlyCheckedPayingOption = 'NONE';
-            return;
-        }
         this.selectedPayingOption = targetType;
         this.currentlyCheckedPayingOption = targetType.type;
     }
 
     getShippingPrice(option: string) {
-        for (let opt of this.shippingOptions) {
-            if (option === opt.typeOfDelivery) {
+        this.shippingOptions.forEach(opt => {
+            if (option === opt.typeOfDelivery)
                 this.actualDeliveryPrice = opt.price;
-            }
-        }
+        });
     }
 
     createOrderRequest() {
@@ -273,14 +255,19 @@ export class CheckoutComponent implements OnInit {
     }
 
     sendingRequest(order: OrderModel) {
-        if (order.paymentOption === 'Barion bankkártyás fizetés') {
+        if (order.paymentOption === PayingOptionEnum.BARION_KARTYAS_FIZETES) {
             this.paymentService.sendingBarionOrder(order).subscribe((data) => {
                 let response = data;
                 response = JSON.parse(response.body);
                 this.goToUrl(response.GatewayUrl);
             });
         } else {
-            this.paymentService.sendingOrder(order).subscribe(() => {}, error => handleValidationErrors(error, this.personalDetailsForm));
+            this.paymentService.sendingOrder(order).subscribe(() => {
+                setInterval(() => {
+                    this.checkoutService.sendData(this.products);
+                  //  this.router.navigate(['/']);
+                }, 1000);
+            }, error => handleValidationErrors(error, this.personalDetailsForm));
         }
     }
 

@@ -9,9 +9,6 @@ import { ActiveFilterService } from '../../../services/active-filter.service';
 import { ModalService } from '../../../services/modal.service';
 import { RegexService } from '../../../services/regexService';
 
-const curtainPath = '/fuggony/';
-const otherPath = '';
-
 @Component({
     selector: 'app-navbar-modal',
     templateUrl: './navbar-modal.component.html',

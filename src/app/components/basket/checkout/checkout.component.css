@@ -155,7 +155,7 @@ select {
 }
 
 .check-basket-details > p, .check-basket-recapitulative > p {
-    margin: 0px;
+    margin: 0;
     overflow: hidden;
     white-space: initial;
     font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;

@@ -1,4 +1,3 @@
-
 <div class="checkout-container">
     <div class="check-content">
         <h4>Biztonságos Fizetés</h4>
@@ -236,7 +235,7 @@
             </div>
             <div *ngIf="isPayment && isLoggedIn">
                 <div class="card-group payment"
-                     *ngIf="this.currentlyCheckedPayingOption==='Barion bankkártyás fizetés'">
+                     *ngIf="this.currentlyCheckedPayingOption === 'Barion bankkártyás fizetés'">
                     <img
                         class="paymentOptions"
                         src="https://tapetakorzo.hu/wp-content/plugins/pay-via-barion-for-woocommerce/assets/barion-card-payment-mark-2017-300px.png"
@@ -253,7 +252,7 @@
     <div class="checkout-basket">
         <div class="chk-bsk">
             <div class="check-basket-header"><span id="header-title2">Rendelés Összesités</span></div>
-            <div *ngFor="let prod of product">
+            <div *ngFor="let prod of products">
                 <div class="check-card">
                     <img [src]="prod.image" alt="">
                     <div class="check-basket-details">

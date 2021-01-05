@@ -1,14 +1,15 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { take } from 'rxjs/operators';
 import { ProductCategoryModalModel } from '../../models/ProductCategoryModalModel';
+import { ProductListItemForLocal } from '../../models/productListItemForLocal';
 import { ScreenSizeModel } from '../../models/ScreenSize.model';
+import { CheckoutService } from '../../services/checkout.service';
 import { HomeService } from '../../services/home.service';
 import { PaymentService } from '../../services/payment.service';
 import { ProductService } from '../../services/product.service';
 import { ScreenService } from '../../services/screen.service';
-
-const CASH_KEY = 'valami';
 
 
 @Component({
@@ -17,7 +18,6 @@ const CASH_KEY = 'valami';
     styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-    loaded: boolean = false;
     images;
     darkenerImg: string;
     translucentImg: string;
@@ -29,10 +29,11 @@ export class HomeComponent implements OnInit {
     furnitureFabricImg: string;
     paymentId: string;
     attributes: ProductCategoryModalModel[] = [];
+    products: ProductListItemForLocal[] = [];
 
     constructor(private productService: ProductService, private home: HomeService, private route: ActivatedRoute,
                 private paymentService: PaymentService, private toastr: ToastrService,
-                private screenService: ScreenService) {
+                private screenService: ScreenService, private checkoutService: CheckoutService) {
     }
 
     screenSize: ScreenSizeModel = new class implements ScreenSizeModel {
@@ -42,7 +43,10 @@ export class HomeComponent implements OnInit {
 
 
     ngOnInit(): void {
-
+        this.checkoutService.productsObservable$.pipe(take(1)).subscribe((data) => {
+            this.products = data;
+            console.log(this.products);
+        });
         this.changeContentOnResize();
         this.images = this.route.snapshot.data.images;
         this.route.queryParams.subscribe(params => {
