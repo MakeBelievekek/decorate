@@ -136,6 +136,7 @@ export class CheckoutComponent implements OnInit {
         this.isFilledAddress = !this.isFilledAddress;
         this.isPayment = !this.isPayment;
         this.isDifferentAddress = false;
+        this.shippingAddressForm.reset();
     }
 
     continueToPayment() {
