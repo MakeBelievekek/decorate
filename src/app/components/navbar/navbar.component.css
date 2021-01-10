@@ -1,7 +1,6 @@
 *:focus {
     outline: none;
 }
-
 .menu-spacer {
     flex: 1 1 auto;
 }
@@ -148,7 +147,7 @@ em {
 
 }
 
- a {
+a {
     text-decoration: none;
     color: black;
     display: block;
@@ -165,7 +164,7 @@ em {
 }
 
 .product-type {
-  padding: 5px 0 5px 100px;
+    padding: 5px 0 5px 100px;
 }
 
 

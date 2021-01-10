@@ -4,9 +4,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AtpListItem } from '../../../models/atpListItem';
 import { BillingModel } from '../../../models/billingModel';
-import { LocalDetailsModel } from '../../../models/localDetailsModel';
 import { LocalProductModel } from '../../../models/localProductModel';
 import { OrderModel } from '../../../models/orderModel';
+import { OrderSubjectDto } from '../../../models/orderSubjectDto';
 import { PayingOptionEnum } from '../../../models/payingOptionEnum';
 import { PaymentOptionDto } from '../../../models/paymentOptionDto';
 import { ProductListItemForLocal } from '../../../models/productListItemForLocal';
@@ -19,6 +19,7 @@ import { LocalStorageService } from '../../../services/localStorage.service';
 import { PaymentService } from '../../../services/payment.service';
 import { ProductService } from '../../../services/product.service';
 import { handleValidationErrors } from '../../../validation/validation';
+
 
 const CART_KEY = 'local_cartList';
 const DETAILS_KEY = 'local_detailsList';
@@ -41,7 +42,6 @@ export class CheckoutComponent implements OnInit {
         });
         this.billingAddressForm = new FormGroup({
             company: new FormControl(''),
-            country: new FormControl(),
             address: new FormControl(),
             address2: new FormControl(),
             city: new FormControl(),
@@ -50,47 +50,45 @@ export class CheckoutComponent implements OnInit {
             phone: new FormControl(),
         });
         this.shippingAddressForm = new FormGroup({
-            shipCompany: new FormControl(),
-            shipAddress: new FormControl(),
-            shipAddress2: new FormControl(),
-            shipCity: new FormControl(),
-            shipProvince: new FormControl(),
-            shipZip: new FormControl(),
+            company: new FormControl(),
+            address: new FormControl(),
+            address2: new FormControl(),
+            city: new FormControl(),
+            province: new FormControl(),
+            zip: new FormControl(),
             shipInfo: new FormControl(),
             shipMethod: new FormControl(),
             foxpost: new FormControl(),
         });
+        this.provinces = this.checkoutService.provinces;
+        this.localProducts = this.localStorageService.getItemsFromLocalStorage(CART_KEY);
     }
 
-    details: LocalDetailsModel = new class implements LocalDetailsModel {
-        email: string;
-        firstName: string;
-        lastName: string;
-    };
+    personalDetailsForm: FormGroup;
+    billingAddressForm: FormGroup;
+    shippingAddressForm: FormGroup;
+    personalDetails: UserModel = new UserModel();
+    orderSubjectDto: OrderSubjectDto = new OrderSubjectDto();
+    order: OrderModel = new OrderModel();
+    billingDetails: BillingModel = new BillingModel();
+    shippingDetails: ShippingModel = new ShippingModel();
     products: ProductListItemForLocal[];
+    localProducts: LocalProductModel[];
+    selectedPayingOption: PaymentOptionDto;
+    shippingOptions: ShippingOptions[] = [];
+    atpList: AtpListItem[] = [];
+    paymentOptions: PaymentOptionDto[] = [];
     allTotal: number = 0;
     isLoggedIn: boolean;
     isFilledAddress: boolean;
     isDifferentAddress: boolean;
     isPayment: boolean;
-    personalDetailsForm: FormGroup;
-    billingAddressForm: FormGroup;
-    shippingAddressForm: FormGroup;
-    personalDetails: UserModel;
-    shippingDetails: ShippingModel;
-    selectedPayingOption: PaymentOptionDto;
-    billingDetails: BillingModel;
-    provinces: string [] = ['Bács-Kiskun', 'Baranya', 'Békés', 'Borsod-Abaúj-Zemplén', 'Csongrád',
-        'Fejér', 'Győr-Moson-Sopron', 'Hajdú-Bihar', 'Heves', 'Jász-Nagykun-Szolnok', 'Komárom-Esztergom',
-        'Nógrád', 'Pest', 'Somogy', 'Szabolcs-Szatmár-Bereg', 'Tolna', 'Vas', 'Veszprém', 'Zala'];
+    provinces: string [];
     country: string = 'Magyarország';
     currentlyCheckedShippingOption: string;
     currentlyCheckedPayingOption: string;
-    shippingOptions: ShippingOptions[] = [];
     actualDeliveryPrice: number = 0;
-    atpList: AtpListItem[] = [];
-    paymentOptions: PaymentOptionDto[] = [];
-    order: OrderModel;
+
 
     ngOnInit(): void {
         this.products = this.route.snapshot.data.basketItems;
@@ -102,20 +100,15 @@ export class CheckoutComponent implements OnInit {
                 this.atpList = data;
             }, () => {}, () => {this.atpList.sort((a, b) => a.city.localeCompare(b.city));},
         );
-
     }
 
     startingPrice() {
-        for (let par of this.products) {
-            for (let loc of this.localStorageService.getItemsFromLocalStorage(CART_KEY)) {
-                if (par.id === loc.id) {
-                    par.qty = loc.qty;
-                    this.allTotal += (par.price * par.qty);
-                }
-            }
-        }
+        this.products.forEach(product => {
+            let localProductModel = this.localProducts.find(localProduct => product.id === localProduct.id);
+            product.qty = localProductModel.qty;
+            this.allTotal += product.qty * product.price;
+        });
     }
-
 
     saveDetails() {
         if (this.localStorageService.getItemsFromLocalStorage(DETAILS_KEY).length != 0) {
@@ -123,10 +116,8 @@ export class CheckoutComponent implements OnInit {
             this.savePersonalInfo();
         }
         this.continueToAddress();
-        this.details.lastName = this.personalDetailsForm.controls['lastname'].value;
-        this.details.firstName = this.personalDetailsForm.controls['firstname'].value;
-        this.details.email = this.personalDetailsForm.controls['email'].value;
-        this.localStorageService.storeDetailsOnLocalStorage(this.details, DETAILS_KEY);
+        this.savePersonalInfo();
+        this.localStorageService.storeDetailsOnLocalStorage(this.personalDetails, DETAILS_KEY);
     }
 
     setDeliveryAddress() {
@@ -151,68 +142,27 @@ export class CheckoutComponent implements OnInit {
         this.isFilledAddress = !this.isFilledAddress;
         this.isPayment = !this.isPayment;
         this.currentlyCheckedPayingOption = PayingOptionEnum.BARION_KARTYAS_FIZETES;
-        console.log(this.currentlyCheckedPayingOption);
     }
 
     savePersonalInfo() {
-        const personalDetails = {...this.personalDetailsForm.value};
-        this.personalDetails = new class implements UserModel {
-            email: string = personalDetails.email;
-            firstName: string = personalDetails.firstname;
-            lastName: string = personalDetails.lastname;
-        };
+        this.personalDetails = {...this.personalDetailsForm.value};
     }
 
     saveBillingInfo() {
-        const billingInfo = {...this.billingAddressForm.value};
-        this.billingDetails = new class implements BillingModel {
-            address: string = billingInfo.address;
-            address2: string = billingInfo.address2;
-            city: string = billingInfo.city;
-            company: string = billingInfo.company;
-            country: string = 'Magyarország';
-            phone: string = billingInfo.phone;
-            province: string = billingInfo.province;
-            zip: number = billingInfo.zip;
-        };
+        this.billingDetails = {...this.billingAddressForm.value};
+        this.billingDetails.country = this.country;
         if (this.isDifferentAddress) {
             this.saveShipping();
         } else {
-            const shippingInfo = {...this.shippingAddressForm.value};
-            this.shippingDetails = new class implements ShippingModel {
-                address: string = billingInfo.address;
-                address2: string = billingInfo.address2;
-                city: string = billingInfo.city;
-                company: string = billingInfo.company;
-                country: string = 'Magyarország';
-                shipInfo: string = shippingInfo.shipInfo;
-                shipMethod: string = shippingInfo.shipMethod;
-                foxpost: string = shippingInfo.foxpost;
-                province: string = billingInfo.province;
-                zip: number = billingInfo.zip;
-            };
+            this.shippingDetails = {...this.shippingAddressForm.value, ...this.billingDetails};
         }
+        console.log(this.shippingDetails);
     }
 
     saveShipping() {
-        const shippingInfo = {...this.shippingAddressForm.value};
-        this.shippingDetails = new class implements ShippingModel {
-            address: string = shippingInfo.shipAddress;
-            address2: string = shippingInfo.shipAddress2;
-            city: string = shippingInfo.shipCity;
-            company: string = shippingInfo.shipCompany;
-            country: string = 'Magyarország';
-            shipInfo: string = shippingInfo.shipInfo;
-            shipMethod: string = shippingInfo.shipMethod;
-            foxpost: string = shippingInfo.foxpost;
-            province: string = shippingInfo.shipProvince;
-            zip: number = shippingInfo.shipZip;
-        };
+        this.shippingDetails = {...this.shippingAddressForm.value};
+        this.shippingDetails.country = this.country;
     }
-
-    /* if (this.currentlyCheckedShippingOption === targetType) {
-                this.currentlyCheckedShippingOption = 'NONE';
-            }*/
 
     selectShippingOption(targetType: string) {
         this.getShippingPrice(targetType);
@@ -238,13 +188,6 @@ export class CheckoutComponent implements OnInit {
     }
 
     createOrderRequest() {
-        this.order = new class implements OrderModel {
-            billing: BillingModel;
-            itemId: LocalProductModel[];
-            paymentOption: string;
-            shipping: ShippingModel;
-            user: UserModel;
-        };
         this.order.user = this.personalDetails;
         this.order.itemId = this.localStorageService.getItemsFromLocalStorage(CART_KEY);
         this.order.billing = this.billingDetails;
@@ -255,6 +198,7 @@ export class CheckoutComponent implements OnInit {
     }
 
     sendingRequest(order: OrderModel) {
+        this.checkoutService.orderCompletion();
         if (order.paymentOption === PayingOptionEnum.BARION_KARTYAS_FIZETES) {
             this.paymentService.sendingBarionOrder(order).subscribe((data) => {
                 let response = data;
@@ -262,16 +206,25 @@ export class CheckoutComponent implements OnInit {
                 this.goToUrl(response.GatewayUrl);
             });
         } else {
-            this.paymentService.sendingOrder(order).subscribe(() => {
-                setInterval(() => {
-                    this.checkoutService.sendData(this.products);
-                  //  this.router.navigate(['/']);
-                }, 1000);
-            }, error => handleValidationErrors(error, this.personalDetailsForm));
+            this.paymentService.sendingOrder(order).subscribe((orderId) => {
+                    this.orderSubjectDto.orderId = orderId.message;
+                    this.orderSubjectDto.totalPrice = this.allTotal;
+                    console.log(this.orderSubjectDto.orderId);
+                }, (error) => {handleValidationErrors(error, this.personalDetailsForm);},
+                () => {
+                    this.checkoutService.sendData(this.createOrderSubject(order));
+                    this.router.navigate(['/']);
+                });
         }
     }
 
     goToUrl(url: string): void {
         this.document.location.href = url;
+    }
+
+    createOrderSubject(order: OrderModel) {
+        this.orderSubjectDto = {...this.orderSubjectDto, ...order};
+        this.orderSubjectDto.products = this.products;
+        return this.orderSubjectDto;
     }
 }

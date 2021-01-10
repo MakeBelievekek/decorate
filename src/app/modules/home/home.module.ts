@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { CheckoutModalComponent } from '../../components/basket/checkout/checkout-modal/checkout-modal.component';
 import { ContentComponent } from '../../components/home/content/content.component';
 import { HomeComponent } from '../../components/home/home.component';
 import { NewsComponent } from '../../components/home/news/news.component';
@@ -22,11 +24,15 @@ import { HomeRoutingModule } from './home-routing.module';
         SecondContentComponent,
         ThirdContentComponent,
         NguiInViewComponent,
+        CheckoutModalComponent,
+
     ],
     imports: [
         RouterModule,
         FrameModule,
         HomeRoutingModule,
+        ModalModule,
+        ModalModule.forRoot(),
     ],
 })
 export class HomeModule {

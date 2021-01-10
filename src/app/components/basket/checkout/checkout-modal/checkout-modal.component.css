@@ -1,0 +1,121 @@
+*:focus {
+    outline: none;
+}
+
+h3, h5, p {
+    font-family: Pluto Sans W01 Regular, serif;
+}
+
+h3 {
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+h5 {
+    color: var(--primaryGreen);
+    font-weight: bold;
+}
+
+.modal-header {
+    background-color: var(--primaryLetterBlack);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr .2fr;
+    grid-template-areas: "a b" "c d";
+    min-height: 100px;
+}
+
+.products {
+    grid-area: a;
+    display: flex;
+    flex-direction: column;
+}
+
+.information {
+    grid-area: b;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-details {
+    grid-area: c;
+    margin: 20px 0 0 0;
+}
+
+.price-container {
+    grid-area: d;
+}
+
+.titles, .product {
+    display: flex;
+    justify-content: center;
+}
+
+.basket-continue-btn {
+    margin: 20px 0 0 0;
+    width: 200px;
+    background: var(--primaryGreen);
+    border-radius: 25px;
+    border: 1px solid var(--primaryGreen);
+    padding: 7px;
+    font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.product-details, .product-name {
+    display: flex;
+    align-items: center;
+    min-height: 70px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.product-details, .title {
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+.product-details {
+    justify-content: center;
+}
+
+.product-name, .first-title {
+    font-weight: bold;
+    flex-basis: 0;
+    flex-grow: 2;
+}
+
+.title {
+    text-align: center;
+    font-weight: bold;
+}
+
+.first-title, .product-name, .order-details {
+    padding: 0 0 0 50px;
+}
+
+.shipping-details {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+.details > p {
+    font-size: .9rem;
+}
+
+.details, .price-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 20px;
+}
+
+.price-container, .order-details > p {
+    font-size: .9rem;
+}
+
+.price-container > h3 {
+    margin: 5px 0 0 0;
+}

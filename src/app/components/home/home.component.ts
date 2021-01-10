@@ -2,8 +2,8 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs/operators';
+import { OrderSubjectDto } from '../../models/orderSubjectDto';
 import { ProductCategoryModalModel } from '../../models/ProductCategoryModalModel';
-import { ProductListItemForLocal } from '../../models/productListItemForLocal';
 import { ScreenSizeModel } from '../../models/ScreenSize.model';
 import { CheckoutService } from '../../services/checkout.service';
 import { HomeService } from '../../services/home.service';
@@ -18,6 +18,11 @@ import { ScreenService } from '../../services/screen.service';
     styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+
+    screenSize: ScreenSizeModel = new class implements ScreenSizeModel {
+        height: number;
+        width: number;
+    };
     images;
     darkenerImg: string;
     translucentImg: string;
@@ -27,36 +32,44 @@ export class HomeComponent implements OnInit {
     pillowImg: string;
     wallpaperImg: string;
     furnitureFabricImg: string;
+
     paymentId: string;
     attributes: ProductCategoryModalModel[] = [];
-    products: ProductListItemForLocal[] = [];
+    products: OrderSubjectDto;
+    foundOrder: boolean = false;
 
-    constructor(private productService: ProductService, private home: HomeService, private route: ActivatedRoute,
+    constructor(private productService: ProductService, private homeService: HomeService, private route: ActivatedRoute,
                 private paymentService: PaymentService, private toastr: ToastrService,
                 private screenService: ScreenService, private checkoutService: CheckoutService) {
     }
 
-    screenSize: ScreenSizeModel = new class implements ScreenSizeModel {
-        height: number;
-        width: number;
-    };
-
-
     ngOnInit(): void {
-        this.checkoutService.productsObservable$.pipe(take(1)).subscribe((data) => {
-            this.products = data;
-            console.log(this.products);
-        });
+        console.log('COMPONENT')
+        this.checkoutService.orderObservable$
+            .pipe(take(1))
+            .subscribe((data) => {
+                this.foundOrder = data;
+                console.log(data);
+            });
+        this.checkoutService.productsObservable$
+            .pipe(take(1))
+            .subscribe((data) => {
+                this.products = data;
+                console.log(this.products);
+            });
         this.changeContentOnResize();
         this.images = this.route.snapshot.data.images;
         this.route.queryParams.subscribe(params => {
             this.paymentId = params['paymentId'];
             if (this.paymentId) {
                 this.paymentService.completePayment(this.paymentId).subscribe((data) => {
-                    this.showSuccessPayment(data.paymentStatus);
+                    this.showSuccessPayment(data.message);
                 });
             }
         });
+        if (this.foundOrder) {
+            this.checkoutService.openModal();
+        }
         for (let im of this.images) {
             switch (im.type) {
                 case 'Darkener': {
@@ -93,6 +106,7 @@ export class HomeComponent implements OnInit {
                 }
             }
         }
+
     }
 
     showSuccessPayment(result: string) {

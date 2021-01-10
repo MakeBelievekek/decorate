@@ -1,20 +1,24 @@
 import { BillingModel } from './billingModel';
-import { LocalProductModel } from './localProductModel';
+import { ProductListItemForLocal } from './productListItemForLocal';
 import { ShippingModel } from './shippingModel';
 import { UserModel } from './userModel';
 
-export interface OrderModel {
-    itemId: LocalProductModel[];
+export interface OrderSubjectDto {
+    products: ProductListItemForLocal[];
     user: UserModel;
     shipping: ShippingModel;
     billing: BillingModel;
     paymentOption: string;
+    orderId: string;
+    totalPrice: number;
 }
 
-export class OrderModel {
-    itemId: LocalProductModel[] = [];
+export class OrderSubjectDto {
+    products: ProductListItemForLocal[] = [];
     user: UserModel;
     shipping: ShippingModel;
     billing: BillingModel;
     paymentOption: string;
+    orderId: string;
+    totalPrice: number;
 }

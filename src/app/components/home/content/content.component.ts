@@ -1,13 +1,4 @@
-import {
-    AfterContentChecked,
-    AfterViewChecked,
-    AfterViewInit,
-    Component,
-    EventEmitter,
-    Input,
-    OnInit,
-    Output,
-} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 
 @Component({

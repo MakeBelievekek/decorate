@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { BarionMessage } from '../models/barionMessage';
+import { ResponseMessage } from '../models/responseMessage';
 import { OrderModel } from '../models/orderModel';
 import { PaymentResponseModel } from '../models/paymentResponseModel';
 
@@ -25,11 +25,11 @@ export class PaymentService {
         return this.http.post<any>(PAYMENT_BASE_URL + '/orderRequestBarion', order);
     }
 
-    sendingOrder(order: OrderModel): Observable<any> {
-        return this.http.post<any>(PAYMENT_BASE_URL + '/orderRequest', order);
+    sendingOrder(order: OrderModel): Observable<ResponseMessage> {
+        return this.http.post<ResponseMessage>(PAYMENT_BASE_URL + '/orderRequest', order);
     }
 
-    completePayment(paymentId: string): Observable<BarionMessage> {
-        return this.http.post<BarionMessage>(PAYMENT_BASE_URL + '/checkPaymentStatus', paymentId);
+    completePayment(paymentId: string): Observable<ResponseMessage> {
+        return this.http.post<ResponseMessage>(PAYMENT_BASE_URL + '/checkPaymentStatus', paymentId);
     }
 }
