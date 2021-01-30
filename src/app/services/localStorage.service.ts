@@ -1,8 +1,9 @@
 import { Inject, Injectable } from '@angular/core';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { Subject } from 'rxjs';
-import { LocalDetailsModel } from '../models/localDetailsModel';
 import { LocalProductModel } from '../models/localProductModel';
+import { OrderSubjectDto } from '../models/orderSubjectDto';
+import { UserModel } from '../models/userModel';
 
 
 @Injectable({
@@ -16,7 +17,6 @@ export class LocalStorageService {
     }
 
     public storeOnLocalStorage(item: LocalProductModel, key: string): void {
-
         if (!this.getItemIdFromLocalStorage(key).includes(item.id)) {
             let currentCartList = this.storage.get(key) || [];
             currentCartList.push({
@@ -29,7 +29,12 @@ export class LocalStorageService {
         }
     }
 
-    storeDetailsOnLocalStorage(data: LocalDetailsModel, key: string) {
+    public storeOrderOnLocalstorage(order: OrderSubjectDto, key: string) {
+        this.storage.set(key, order);
+    }
+
+    storeDetailsOnLocalStorage(data: UserModel, key: string) {
+        console.log(data);
         let details = this.storage.get(key) || [];
         details.push({
             lastname: data.lastName,
@@ -80,7 +85,7 @@ export class LocalStorageService {
     }
 
     removeFromLocal(id: number, key: string) {
-        console.log(id)
+        console.log(id);
         let cart: LocalProductModel[] = this.getItemsFromLocalStorage(key);
         let newCart: LocalProductModel[] = [];
         for (let i = 0; i < cart.length; i++) {

@@ -96,18 +96,24 @@
      [animationName]="'slide-left'"
      appAnim
 >
-    <a routerLink="/" (click)="enableScroll()">Főoldal</a>
-    <a (click)="enableScroll() ; openProducts()">Termékek</a>
-    <div *ngIf="this.isShow">
-        <div *ngFor="let prod of products">
-            <a class="product-type">{{prod.productType}}</a>
+    <div class="sideBar-content">
+        <a routerLink="/" (click)="enableScroll()">Főoldal</a>
+        <div class="sideBar-row">
+            <a (click)="enableScroll() ; openProducts()">Termékek</a>
+            <span class="bottom arrow " (click)="openProducts()"
+                  [ngClass]="{'up-arrow': this.isShow,'bottom-arrow': !this.isShow}"></span>
         </div>
+        <div *ngIf="this.isShow">
+            <div *ngFor="let prod of products">
+                <a class="product-type"> <span class="right arrow "></span> {{prod.productType}}</a>
+            </div>
+        </div>
+        <a>Rólunk</a>
+        <a routerLink="/kivansaglista" (click)="enableScroll()">Kívánságlista</a>
+        <a>Kapcsolat</a>
+        <a>Bejelentkezés</a>
+        <a>Keresés</a>
     </div>
-    <a>Rólunk</a>
-    <a routerLink="/kivansaglista" (click)="enableScroll()">Kívánságlista</a>
-    <a>Kapcsolat</a>
-    <a>Bejelentkezés</a>
-    <a>Keresés</a>
 </div>
 <!-- side menu end  -->
 

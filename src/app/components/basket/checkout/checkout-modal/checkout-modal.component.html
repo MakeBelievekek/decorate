@@ -1,72 +1,3 @@
-<!-- <div class="modal fade" bsModal #orderModal="bs-modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Köszönjük! A rendelést megkaptuk.</h5>
-                <button type="button"
-                        class="close"
-                        id="closeButton"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                        (click)="closeModal()">
-                    <span>&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="grid-container">
-                    <div class="products">
-                        <div class="titles">
-                            <div class="first-title">Terméknév</div>
-                            <div class="title">Mennyiség</div>
-                            <div class="title">Ár</div>
-                        </div>
-                        <div class="product" *ngFor="let prod of products">
-                            <p class="product-name">{{prod.name}}</p>
-                            <p class="product-details">{{prod.qty}}</p>
-                            <p class="product-details">{{prod.price}} Ft</p>
-                        </div>
-                    </div>
-                    <div class="information">
-                        <div class="shipping-details">
-                            <div class="details">
-                                <h3>Számlázási cím</h3>
-                                <p>Preseka Zsolt</p>
-                                <p>Budaörs </p>
-                                <p>Kőhát utca 1 </p>
-                                <p>2040</p>
-                                <p>0620 3252355</p>
-                            </div>
-                            <div class="details">
-                                <h3>Szállítási cím</h3>
-                                <p>Preseka Zsolt</p>
-                                <p>Budaörs </p>
-                                <p>Kőhát utca 1 </p>
-                                <p>2040</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="order-details">
-                        <p>Rendelés időpontja: 2021-01-05</p>
-                        <p>Rendelési azonosító: 111231414</p>
-                    </div>
-                    <div class="price-container">
-                        <p>Fizetési mód : bankkártyás vásárlás</p>
-                        <p>Szállítási mód : GLS</p>
-                        <h3>Végösszeg : {{total}} Ft</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="basket-continue-btn"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                        (click)="closeModal()">Bezárás
-                </button>
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <ng-template #template>
             <div class="modal-header">
                 <h5 class="modal-title">Köszönjük! A rendelést megkaptuk.</h5>
@@ -82,39 +13,39 @@
                             <div class="title">Mennyiség</div>
                             <div class="title">Ár</div>
                         </div>
-                        <div class="product" *ngFor="let prod of order.products">
-                            <p class="product-name">{{prod.name}}</p>
-                            <p class="product-details">{{prod.qty}}</p>
-                            <p class="product-details">{{prod.price}} Ft</p>
+                        <div class="product" *ngFor="let prod of order?.productList">
+                            <p class="product-name">{{prod?.name}}</p>
+                            <p class="product-details">{{prod?.qty}}</p>
+                            <p class="product-details">{{prod?.price}} Ft</p>
                         </div>
                     </div>
                     <div class="information">
                         <div class="shipping-details">
                             <div class="details">
                                 <h3>Számlázási cím</h3>
-                                <p>{{order.user.lastName}} {{order.user.firstName}}</p>
-                                <p>{{order.billing.city}}</p>
-                                <p>{{order.billing.address}}</p>
-                                <p>{{order.billing.zip}}</p>
-                                <p>{{order.billing.phone}}</p>
+                                <p>{{order?.user?.lastName}} {{order?.user?.firstName}}</p>
+                                <p>{{order?.billing?.city}}</p>
+                                <p>{{order?.billing?.address}}</p>
+                                <p>{{order?.billing?.zip}}</p>
+                                <p>{{order?.billing?.phone}}</p>
                             </div>
                             <div class="details">
                                 <h3>Szállítási cím</h3>
-                                <p>{{order.user.lastName}} {{order.user.firstName}}</p>
-                                <p>{{order.shipping.city}}</p>
-                                <p>{{order.shipping.address}}</p>
-                                <p>{{order.shipping.zip}}</p>
+                                <p>{{order?.user?.lastName}} {{order?.user?.firstName}}</p>
+                                <p>{{order?.shipping?.city}}</p>
+                                <p>{{order?.shipping?.address}}</p>
+                                <p>{{order?.shipping?.zip}}</p>
                             </div>
                         </div>
                     </div>
                     <div class="order-details">
                         <p>Rendelés időpontja: 2021-01-05</p>
-                        <p>Rendelési azonosító: {{order.orderId}}</p>
+                        <p>Rendelési azonosító: {{order?.orderNumber}}</p>
                     </div>
                     <div class="price-container">
-                        <p>Fizetési mód : {{order.paymentOption}}</p>
-                        <p>Szállítási mód : {{order.shipping.shipMethod}}</p>
-                        <h3>Végösszeg : {{order.totalPrice}} Ft</h3>
+                        <p>Fizetési mód : {{order?.paymentOption}}</p>
+                        <p>Szállítási mód : {{order?.shipping?.shipMethod}}</p>
+                        <h3>Végösszeg : {{order?.totalPrice}} Ft</h3>
                     </div>
                 </div>
             </div>

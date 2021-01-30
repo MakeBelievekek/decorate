@@ -23,6 +23,7 @@ import { handleValidationErrors } from '../../../validation/validation';
 
 const CART_KEY = 'local_cartList';
 const DETAILS_KEY = 'local_detailsList';
+const ORDER_KEY = 'local_orderList';
 
 @Component({
     selector: 'app-checkout',
@@ -36,8 +37,8 @@ export class CheckoutComponent implements OnInit {
                 private paymentService: PaymentService, private router: Router, @Inject(DOCUMENT) private document: Document,
                 private checkoutService: CheckoutService) {
         this.personalDetailsForm = new FormGroup({
-            lastname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
-            firstname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+            lastName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
+            firstName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(15)]),
             email: new FormControl('', [Validators.required, Validators.email]),
         });
         this.billingAddressForm = new FormGroup({
@@ -84,6 +85,7 @@ export class CheckoutComponent implements OnInit {
     isDifferentAddress: boolean;
     isPayment: boolean;
     provinces: string [];
+    gateWayUrl: string;
     country: string = 'Magyarország';
     currentlyCheckedShippingOption: string;
     currentlyCheckedPayingOption: string;
@@ -111,13 +113,8 @@ export class CheckoutComponent implements OnInit {
     }
 
     saveDetails() {
-        if (this.localStorageService.getItemsFromLocalStorage(DETAILS_KEY).length != 0) {
-            this.localStorageService.deleteItem(DETAILS_KEY);
-            this.savePersonalInfo();
-        }
-        this.continueToAddress();
         this.savePersonalInfo();
-        this.localStorageService.storeDetailsOnLocalStorage(this.personalDetails, DETAILS_KEY);
+        this.continueToAddress();
     }
 
     setDeliveryAddress() {
@@ -199,20 +196,26 @@ export class CheckoutComponent implements OnInit {
     }
 
     sendingRequest(order: OrderModel) {
-        this.checkoutService.orderCompletion();
         if (order.paymentOption === PayingOptionEnum.BARION_KARTYAS_FIZETES) {
-            this.paymentService.sendingBarionOrder(order).subscribe((data) => {
+            this.paymentService.processOrder(order).subscribe((data) => {
+                this.orderSubjectDto.totalPrice = this.allTotal;
+                this.orderSubjectDto.orderNumber = '';
+                this.checkoutService.sendData(this.createOrderSubject(order));
                 let response = data;
                 response = JSON.parse(response.body);
-                this.goToUrl(response.GatewayUrl);
+                console.log(response);
+                this.gateWayUrl = response.GatewayUrl;
+                 this.goToUrl(this.gateWayUrl);
             });
         } else {
-            this.paymentService.sendingOrder(order).subscribe((orderId) => {
-                    this.orderSubjectDto.orderId = orderId.message;
+            this.paymentService.processOrder(order).subscribe((orderId) => {
+                    this.orderSubjectDto.orderNumber = orderId.message;
                     this.orderSubjectDto.totalPrice = this.allTotal;
-                    console.log(this.orderSubjectDto.orderId);
+                    this.orderSubjectDto.openModal = true;
+                    console.log(this.orderSubjectDto.orderNumber);
                 }, (error) => {handleValidationErrors(error, this.personalDetailsForm);},
                 () => {
+                    console.log('COMPLETION');
                     this.checkoutService.sendData(this.createOrderSubject(order));
                     this.router.navigate(['/']);
                 });
@@ -225,7 +228,8 @@ export class CheckoutComponent implements OnInit {
 
     createOrderSubject(order: OrderModel) {
         this.orderSubjectDto = {...this.orderSubjectDto, ...order};
-        this.orderSubjectDto.products = this.products;
+        this.orderSubjectDto.productList = this.products;
+        this.localStorageService.storeOrderOnLocalstorage(this.orderSubjectDto, ORDER_KEY);
         return this.orderSubjectDto;
     }
 }

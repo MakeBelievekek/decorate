@@ -1,22 +1,27 @@
-import { AfterViewInit, Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { delay, take } from 'rxjs/operators';
-import { OrderModel } from '../../../../models/orderModel';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { OrderSubjectDto } from '../../../../models/orderSubjectDto';
 import { CheckoutService } from '../../../../services/checkout.service';
+import { LocalStorageService } from '../../../../services/localStorage.service';
+
+const ORDER_KEY = 'local_orderList';
 
 @Component({
     selector: 'app-checkout-modal',
     templateUrl: './checkout-modal.component.html',
     styleUrls: ['./checkout-modal.component.css'],
 })
-export class CheckoutModalComponent implements OnInit, AfterViewInit {
+export class CheckoutModalComponent implements OnInit, AfterViewInit, OnDestroy {
 
-    constructor(private checkoutService: CheckoutService, private modalService: BsModalService) { }
+    constructor(private checkoutService: CheckoutService, private modalService: BsModalService, private localStorageService: LocalStorageService) { }
 
-    @Input() order: OrderSubjectDto;
+    @Input() order: OrderSubjectDto = new OrderSubjectDto();
+    isOpen: boolean = false;
     @ViewChild('template') template: TemplateRef<any>;
     modalRef: BsModalRef;
+    unSubscribe$ = new Subject<void>();
 
     ngOnInit(): void {
 
@@ -27,11 +32,18 @@ export class CheckoutModalComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.checkoutService.modalTriggerObservable$.pipe(take(1), delay(1000)).subscribe((data) => {
-            if (data) {
-                this.openModal(this.template);
+        this.checkoutService.modalTriggerObservable$.pipe(takeUntil(this.unSubscribe$)).subscribe((data) => {
+            this.isOpen = data;
+            if (this.isOpen) {
+                setTimeout(() => {this.openModal(this.template);}, 2000);
                 this.checkoutService.reset();
+                this.localStorageService.deleteItem(ORDER_KEY);
             }
         });
+    }
+
+    ngOnDestroy(): void {
+        this.unSubscribe$.next();
+        this.unSubscribe$.complete();
     }
 }

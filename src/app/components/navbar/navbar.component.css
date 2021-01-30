@@ -1,6 +1,7 @@
 *:focus {
     outline: none;
 }
+
 .menu-spacer {
     flex: 1 1 auto;
 }
@@ -147,6 +148,22 @@ em {
 
 }
 
+.sideBar-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.sideBar-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.arrow-position {
+    display: flex;
+
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -163,8 +180,31 @@ a {
     background-color: #cccccc;
 }
 
+.arrow, .bottom-arrow, .up-arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    margin-right: 10px;
+}
+
+.bottom-arrow {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    margin-right: 10px;
+}
+.up-arrow {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    margin-right: 10px;
+}
 .product-type {
-    padding: 5px 0 5px 100px;
+    padding: 5px 0 5px 20px;
 }
 
 

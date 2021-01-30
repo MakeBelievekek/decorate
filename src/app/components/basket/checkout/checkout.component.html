@@ -11,49 +11,49 @@
                 <p>Kérlek add meg a vezetékneved, keresztneved és az email címed</p>
                 <form [formGroup]="personalDetailsForm" method="post">
                     <div class="form-group">
-                        <label for="lastname"
+                        <label for="lastName"
                         >Vezetéknév <span>*</span></label>
-                        <input class="form-control" id="lastname" formControlName="lastname" placeholder=""
+                        <input class="form-control" id="lastName" formControlName="lastName" placeholder=""
                                [ngClass]="{
-                    'is-invalid': personalDetailsForm.get('lastname').invalid &&
-                    (personalDetailsForm.get('lastname').touched || personalDetailsForm.get('lastname').dirty),'is-valid': personalDetailsForm.get('lastname').valid &&
-                    (personalDetailsForm.get('lastname').touched || personalDetailsForm.get('lastname').dirty) }">
-                        <div *ngIf=" personalDetailsForm.get('lastname').invalid &&
-                    (personalDetailsForm.get('lastname').touched || personalDetailsForm.get('lastname').dirty)"
+                    'is-invalid': personalDetailsForm.get('lastName').invalid &&
+                    (personalDetailsForm.get('lastName').touched || personalDetailsForm.get('lastName').dirty),'is-valid': personalDetailsForm.get('lastName').valid &&
+                    (personalDetailsForm.get('lastName').touched || personalDetailsForm.get('lastName').dirty) }">
+                        <div *ngIf=" personalDetailsForm.get('lastName').invalid &&
+                    (personalDetailsForm.get('lastName').touched || personalDetailsForm.get('lastName').dirty)"
                              class="invalid-feedback">
-                            <div *ngIf="personalDetailsForm.get('lastname').errors.required">Kérlek adj meg egy
+                            <div *ngIf="personalDetailsForm.get('lastName').errors.required">Kérlek adj meg egy
                                 vezetéknév
                             </div>
-                            <div *ngIf="personalDetailsForm.get('lastname').errors.maxlength">Vezetéknév nem lehet
+                            <div *ngIf="personalDetailsForm.get('lastName').errors.maxlength">Vezetéknév nem lehet
                                 hosszabb 15
                                 karakternél
                             </div>
-                            <div *ngIf="personalDetailsForm.get('lastname').errors.minlength">Vezetéknév nem lehet
+                            <div *ngIf="personalDetailsForm.get('lastName').errors.minlength">Vezetéknév nem lehet
                                 rövidebb 3
                                 karakternél
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="firstname">Keresztnév <span>*</span></label>
+                        <label for="firstName">Keresztnév <span>*</span></label>
                         <input class="form-control"
-                               id="firstname"
-                               formControlName="firstname"
-                               placeholder="" [ngClass]="{'is-invalid': personalDetailsForm.get('firstname').invalid &&
-                    (personalDetailsForm.get('firstname').touched || personalDetailsForm.get('firstname').dirty || personalDetailsForm.get('firstname').errors.serverError),
-                    'is-valid': personalDetailsForm.get('firstname').valid &&
-                    (personalDetailsForm.get('firstname').touched || personalDetailsForm.get('firstname').dirty) }">
-                        <div *ngIf=" personalDetailsForm.get('firstname').invalid &&
-                    (personalDetailsForm.get('firstname').touched || personalDetailsForm.get('firstname').dirty || personalDetailsForm.get('firstname').errors.serverError)"
+                               id="firstName"
+                               formControlName="firstName"
+                               placeholder="" [ngClass]="{'is-invalid': personalDetailsForm.get('firstName').invalid &&
+                    (personalDetailsForm.get('firstName').touched || personalDetailsForm.get('firstName').dirty || personalDetailsForm.get('firstName').errors.serverError),
+                    'is-valid': personalDetailsForm.get('firstName').valid &&
+                    (personalDetailsForm.get('firstName').touched || personalDetailsForm.get('firstName').dirty) }">
+                        <div *ngIf=" personalDetailsForm.get('firstName').invalid &&
+                    (personalDetailsForm.get('firstName').touched || personalDetailsForm.get('firstName').dirty || personalDetailsForm.get('firstName').errors.serverError)"
                              class="invalid-feedback">
-                            <div *ngIf="personalDetailsForm.get('firstname').errors.required">Kérlek adj meg egy
+                            <div *ngIf="personalDetailsForm.get('firstName').errors.required">Kérlek adj meg egy
                                 keresztnevet
                             </div>
-                            <div *ngIf="personalDetailsForm.get('firstname').errors.maxlength">Keresztnév nem lehet
+                            <div *ngIf="personalDetailsForm.get('firstName').errors.maxlength">Keresztnév nem lehet
                                 hosszabb 15
                                 karakternél
                             </div>
-                            <div *ngIf="personalDetailsForm.get('firstname').errors.minlength">Keresztnév nem lehet
+                            <div *ngIf="personalDetailsForm.get('firstName').errors.minlength">Keresztnév nem lehet
                                 rövidebb 3
                                 karakternél
                             </div>
@@ -288,7 +288,7 @@
                 <table class="checkout-table">
                     <tbody>
                         <tr>
-                            <td>{{this.personalDetails.lastName + ' ' + this.personalDetails.firstName}}</td>
+                            <td>{{personalDetails.lastName + ' ' + personalDetails.firstName}}</td>
                         </tr>
                         <tr>
                             <td>{{this.billingDetails.address}}</td>
@@ -307,7 +307,7 @@
                 <table class="checkout-table">
                     <tbody>
                         <tr>
-                            <td>{{this.personalDetails.lastName + ' ' + this.personalDetails.firstName}}</td>
+                            <td>{{personalDetails.lastName + ' ' + personalDetails.firstName}}</td>
                         </tr>
                         <tr>
                             <td>{{this.shippingDetails.address}}</td>

@@ -1,28 +1,26 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { take } from 'rxjs/operators';
 import { OrderSubjectDto } from '../../models/orderSubjectDto';
 import { ProductCategoryModalModel } from '../../models/ProductCategoryModalModel';
 import { ScreenSizeModel } from '../../models/ScreenSize.model';
 import { CheckoutService } from '../../services/checkout.service';
 import { HomeService } from '../../services/home.service';
+import { LocalStorageService } from '../../services/localStorage.service';
 import { PaymentService } from '../../services/payment.service';
 import { ProductService } from '../../services/product.service';
 import { ScreenService } from '../../services/screen.service';
 
+const ORDER_KEY = 'local_orderList';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
 
-    screenSize: ScreenSizeModel = new class implements ScreenSizeModel {
-        height: number;
-        width: number;
-    };
+    screenSize: ScreenSizeModel = new ScreenSizeModel();
     images;
     darkenerImg: string;
     translucentImg: string;
@@ -32,44 +30,40 @@ export class HomeComponent implements OnInit {
     pillowImg: string;
     wallpaperImg: string;
     furnitureFabricImg: string;
-
     paymentId: string;
     attributes: ProductCategoryModalModel[] = [];
-    products: OrderSubjectDto;
-    foundOrder: boolean = false;
+    order: OrderSubjectDto = new OrderSubjectDto();
 
     constructor(private productService: ProductService, private homeService: HomeService, private route: ActivatedRoute,
-                private paymentService: PaymentService, private toastr: ToastrService,
+                private paymentService: PaymentService, private toastr: ToastrService, private localStorageService: LocalStorageService,
                 private screenService: ScreenService, private checkoutService: CheckoutService) {
     }
 
     ngOnInit(): void {
-        console.log('COMPONENT')
-        this.checkoutService.orderObservable$
-            .pipe(take(1))
-            .subscribe((data) => {
-                this.foundOrder = data;
-                console.log(data);
-            });
-        this.checkoutService.productsObservable$
-            .pipe(take(1))
-            .subscribe((data) => {
-                this.products = data;
-                console.log(this.products);
-            });
         this.changeContentOnResize();
         this.images = this.route.snapshot.data.images;
         this.route.queryParams.subscribe(params => {
             this.paymentId = params['paymentId'];
             if (this.paymentId) {
                 this.paymentService.completePayment(this.paymentId).subscribe((data) => {
-                    this.showSuccessPayment(data.message);
+                    this.order = this.localStorageService.getItemsFromLocalStorage(ORDER_KEY);
+                    this.localStorageService.deleteItem(ORDER_KEY);
+                    this.order.openModal = data.paymentStatus === 'Succeeded';
+                    this.order.orderNumber = data.orderId;
+                   // this.order.openModal = true;
+                }, () => {}, () => {
+                    if (!this.order.openModal)
+                        this.toastr.error('Sikertelen vásárlás');
+                    else
+                        this.checkoutService.openModal(true);
                 });
+            } else {
+                this.order = this.localStorageService.getItemsFromLocalStorage(ORDER_KEY);
+                if (this.order.openModal)
+                    this.checkoutService.openModal(true);
             }
         });
-        if (this.foundOrder) {
-            this.checkoutService.openModal();
-        }
+
         for (let im of this.images) {
             switch (im.type) {
                 case 'Darkener': {
@@ -106,15 +100,10 @@ export class HomeComponent implements OnInit {
                 }
             }
         }
-
     }
 
-    showSuccessPayment(result: string) {
-        if (result === 'Succeeded')
-            this.toastr.success('Sikeres fizetés');
-        else {
-            this.toastr.error('Sikertelen fizetés');
-        }
+    openModal() {
+        this.checkoutService.openModal(true);
     }
 
     @HostListener('window:resize', ['$event'])
@@ -122,5 +111,7 @@ export class HomeComponent implements OnInit {
         this.screenSize = this.screenService.getScreenSize();
     }
 
+    ngOnDestroy(): void {
+    }
 
 }

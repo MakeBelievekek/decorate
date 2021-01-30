@@ -3,7 +3,7 @@ import { ProductListItemForLocal } from './productListItemForLocal';
 import { ShippingModel } from './shippingModel';
 import { UserModel } from './userModel';
 
-export interface OrderSubjectDto {
+export interface CallBackDto {
 
     productList: ProductListItemForLocal[];
     user: UserModel;
@@ -11,17 +11,18 @@ export interface OrderSubjectDto {
     billing: BillingModel;
     paymentOption: string;
     orderNumber: string;
-    totalPrice: number;
-    openModal: boolean;
+    paymentStatus: string
+
+
+
 }
 
-export class OrderSubjectDto {
-    productList: ProductListItemForLocal[] = [];
+export class CallBackDto {
     user: UserModel;
     shipping: ShippingModel;
     billing: BillingModel;
-    paymentOption: string;
     orderNumber: string;
-    totalPrice: number;
-    openModal: boolean = false;
+    paymentStatus: string;
+    paymentOption: string;
+    productList: ProductListItemForLocal[] = [];
 }

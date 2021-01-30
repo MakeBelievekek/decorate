@@ -22,7 +22,6 @@ export class HomeService {
     furnitureFabricImg: string;
 
     constructor(private http: HttpClient) {
-        console.log('SERVICE')
     }
 
     getHomeImages(): Observable<HomeModel[]> {
